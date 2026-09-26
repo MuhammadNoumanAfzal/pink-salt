@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us & Request a Quote — SALTORA | Himalayan Pink Salt Exporter</title>
+    <title>Contact Us & Request a Quote — SALTORA</title>
     
     <!-- Meta SEO -->
-    <meta name="description" content="Contact SALTORA for commercial B2B pink salt quotations, pricing, FOB terms, and custom export specifications from Pakistan.">
-    <meta name="keywords" content="Contact Saltora, Request Pink Salt Quote, B2B Salt Quotation, Export Himalayan Salt Pakistan">
+    <meta name="description" content="Get in touch with SALTORA for Himalayan pink salt price quotes, specifications, bulk orders, and private label inquiries. Direct B2B export desk.">
+    <meta name="keywords" content="Contact Saltora, Pink Salt Quote, Buy Pink Salt Bulk, Salt Range Export Contact, B2B Salt Inquiry">
     
     <!-- Vite Assets (Tailwind CSS + Alpine JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -18,7 +18,7 @@
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group">
+            <a href="/" class="flex items-center gap-3 group cursor-pointer">
                 <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('logo-fallback').classList.remove('hidden');">
                 <div id="logo-fallback" class="hidden flex items-center gap-2">
                     <svg class="w-8 h-8 text-saltora-terracotta" viewBox="0 0 24 24" fill="currentColor">
@@ -30,23 +30,25 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center space-x-9 text-xs font-semibold tracking-widest text-saltora-text uppercase">
-                <a href="/about" class="hover:text-saltora-terracotta transition-colors">ABOUT</a>
-                <a href="/products" class="hover:text-saltora-terracotta transition-colors">PRODUCTS</a>
-                <a href="/certifications" class="hover:text-saltora-terracotta transition-colors">CERTIFICATIONS</a>
-                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors">EXPORT & LOGISTICS</a>
-                <a href="/contact" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1">CONTACT</a>
+                <a href="/about" class="hover:text-saltora-terracotta transition-colors cursor-pointer">ABOUT</a>
+                <a href="/products" class="hover:text-saltora-terracotta transition-colors cursor-pointer">PRODUCTS</a>
+                <a href="/certifications" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CERTIFICATIONS</a>
+                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer">EXPORT & LOGISTICS</a>
+                <a href="/contact" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer">CONTACT</a>
             </nav>
 
             <!-- Header Action Button -->
             <div class="hidden sm:flex items-center">
-                <a href="#contact-form" class="bg-saltora-dark hover:bg-black text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group">
+                <a href="#contact-form" class="bg-saltora-dark hover:bg-black text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group cursor-pointer">
                     <span>REQUEST A QUOTE</span>
-                    <span class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
                 </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -56,218 +58,214 @@
 
         <!-- Mobile Drawer -->
         <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
-            <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta">ABOUT</a>
-            <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta">PRODUCTS</a>
-            <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta">CERTIFICATIONS</a>
-            <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta">EXPORT & LOGISTICS</a>
-            <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-terracotta font-bold">CONTACT</a>
-            <a @click="mobileMenuOpen = false" href="#contact-form" class="block w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase">
+            <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
+            <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
+            <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
+            <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
+            <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">CONTACT</a>
+            <a @click="mobileMenuOpen = false" href="#contact-form" class="block w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer">
                 REQUEST A QUOTE ↗
             </a>
         </div>
     </header>
 
-    <!-- MAIN CONTACT SECTION -->
-    <section class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
-            <!-- Left Column: Contact Details & Info -->
-            <div class="lg:col-span-5 space-y-8">
-                <!-- Sub-tag -->
+    <!-- HERO SECTION -->
+    <section class="relative bg-saltora-dark text-white py-24 md:py-32 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+        <!-- Backdrop Image - Brighter & Warm -->
+        <img src="/heroimg.jpg" alt="Salt Crystals Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div class="space-y-6 max-w-3xl animate-hero-left">
                 <div class="flex items-center gap-3 text-xs font-bold tracking-mega text-saltora-terracotta uppercase">
                     <span class="w-8 h-px bg-saltora-terracotta"></span>
-                    <span>REQUEST A QUOTE</span>
+                    <span>CONTACT & INQUIRIES</span>
                 </div>
 
-                <!-- Headline -->
-                <h1 class="text-4xl sm:text-5xl font-serif text-saltora-text font-normal leading-[1.12]">
-                    Let's talk about your salt requirement
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-white font-normal leading-[1.08]">
+                    Start your salt inquiry
                 </h1>
 
-                <!-- Subtext -->
-                <p class="text-saltora-muted text-sm sm:text-base font-light leading-relaxed">
-                    Share your product, quantity, packaging and destination port. Saltora responds with a professional, written quotation — under clear FOB terms.
+                <p class="text-stone-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+                    Direct export desk for international importers, wholesalers and private-label buyers. Receive a clear, written quotation for your target specifications.
                 </p>
+            </div>
 
-                <!-- Contact Info Items -->
-                <div class="space-y-6 pt-2">
+            <!-- Hero Stats Badge Right -->
+            <div class="animate-hero-right shrink-0">
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-sm space-y-3 max-w-xs shadow-2xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-saltora-terracotta/20 border border-saltora-terracotta flex items-center justify-center text-saltora-terracotta">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-serif font-bold text-white">&lt; 24 HOURS</span>
+                            <span class="text-[10px] text-stone-300 uppercase tracking-wider font-medium">Export Desk Response Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTINUOUS MARQUEE TICKER BAR -->
+    <div class="bg-saltora-terracotta text-white py-3 overflow-hidden shadow-inner border-y border-saltora-terracotta-dark">
+        <div class="marquee-track flex whitespace-nowrap gap-12 text-xs font-semibold tracking-widest uppercase items-center">
+            <div class="flex items-center gap-10 shrink-0">
+                <span class="flex items-center gap-2">✦ 24-HOUR RESPONSE SLA ON ALL QUOTE INQUIRIES</span>
+                <span class="flex items-center gap-2">✦ DIRECT PRODUCER & EXPORTER PRICING</span>
+                <span class="flex items-center gap-2">✦ CUSTOM PRIVATE LABEL & OEM PACKAGING</span>
+                <span class="flex items-center gap-2">✦ SAMPLES AVAILABLE ON REQUEST</span>
+            </div>
+            <div class="flex items-center gap-10 shrink-0">
+                <span class="flex items-center gap-2">✦ 24-HOUR RESPONSE SLA ON ALL QUOTE INQUIRIES</span>
+                <span class="flex items-center gap-2">✦ DIRECT PRODUCER & EXPORTER PRICING</span>
+                <span class="flex items-center gap-2">✦ CUSTOM PRIVATE LABEL & OEM PACKAGING</span>
+                <span class="flex items-center gap-2">✦ SAMPLES AVAILABLE ON REQUEST</span>
+            </div>
+            <div class="flex items-center gap-10 shrink-0">
+                <span class="flex items-center gap-2">✦ 24-HOUR RESPONSE SLA ON ALL QUOTE INQUIRIES</span>
+                <span class="flex items-center gap-2">✦ DIRECT PRODUCER & EXPORTER PRICING</span>
+                <span class="flex items-center gap-2">✦ CUSTOM PRIVATE LABEL & OEM PACKAGING</span>
+                <span class="flex items-center gap-2">✦ SAMPLES AVAILABLE ON REQUEST</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM & DETAILS GRID -->
+    <section id="contact-form" class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- Left 5 Cols: Contact Information -->
+            <div class="lg:col-span-5 space-y-8 reveal-on-scroll reveal-from-left">
+                <div class="space-y-3">
+                    <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">DIRECT EXPORT DESK</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif text-saltora-text font-normal">
+                        Get in touch
+                    </h2>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">
+                        Whether you need trial samples, bulk supersack quotes or OEM private-label pricing, our export team responds promptly.
+                    </p>
+                </div>
+
+                <div class="space-y-6 pt-4 border-t border-saltora-border/70 text-xs">
                     
-                    <!-- Email -->
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 border border-saltora-border rounded-sm flex items-center justify-center text-saltora-text text-base shrink-0 bg-white">
-                            ✉
+                    <div class="flex items-start gap-4 group cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-saltora-blush flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-colors duration-300 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
                         </div>
-                        <div>
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">EMAIL</span>
-                            <a href="mailto:saltora1329@gmail.com" class="font-medium text-sm text-saltora-text hover:text-saltora-terracotta transition-colors">saltora1329@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <!-- WhatsApp -->
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 border border-saltora-border rounded-sm flex items-center justify-center text-saltora-text text-base shrink-0 bg-white">
-                            📞
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">WHATSAPP</span>
-                            <a href="https://wa.me/923180735748" class="font-medium text-sm text-saltora-text hover:text-saltora-terracotta transition-colors">+92 318 0735748</a>
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">EMAIL INQUIRIES</span>
+                            <a href="mailto:saltora1329@gmail.com" class="font-semibold text-saltora-text text-sm group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta inline-block">saltora1329@gmail.com</a>
                         </div>
                     </div>
 
-                    <!-- Website -->
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 border border-saltora-border rounded-sm flex items-center justify-center text-saltora-text text-base shrink-0 bg-white">
-                            🌐
+                    <div class="flex items-start gap-4 group cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-saltora-blush flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-colors duration-300 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
                         </div>
-                        <div>
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">WEBSITE</span>
-                            <a href="http://www.saltora.net" target="_blank" class="font-medium text-sm text-saltora-text hover:text-saltora-terracotta transition-colors">www.saltora.net</a>
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">WHATSAPP / PHONE</span>
+                            <a href="https://wa.me/923180735748" class="font-semibold text-saltora-text text-sm group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta inline-block">+92 318 0735748</a>
                         </div>
                     </div>
 
-                    <!-- Response -->
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 border border-saltora-border rounded-sm flex items-center justify-center text-saltora-text text-base shrink-0 bg-white">
-                            🕒
+                    <div class="flex items-start gap-4 group cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-saltora-blush flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-colors duration-300 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            </svg>
                         </div>
-                        <div>
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">RESPONSE</span>
-                            <p class="font-medium text-xs text-saltora-text">We reply to serious B2B inquiries promptly</p>
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">OFFICIAL WEBSITE</span>
+                            <a href="http://www.saltora.net" target="_blank" class="font-semibold text-saltora-text text-sm group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta inline-block">www.saltora.net</a>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Social Follow Icons -->
-                <div class="pt-2">
-                    <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block mb-3">FOLLOW</span>
-                    <div class="flex items-center space-x-2 text-saltora-text">
-                        <a href="#" class="w-9 h-9 border border-saltora-border rounded-sm flex items-center justify-center hover:border-saltora-terracotta hover:text-saltora-terracotta transition-colors bg-white">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                        <a href="#" class="w-9 h-9 border border-saltora-border rounded-sm flex items-center justify-center hover:border-saltora-terracotta hover:text-saltora-terracotta transition-colors bg-white">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.7 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
-                        </a>
-                        <a href="#" class="w-9 h-9 border border-saltora-border rounded-sm flex items-center justify-center hover:border-saltora-terracotta hover:text-saltora-terracotta transition-colors bg-white">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                        </a>
-                        <a href="#" class="w-9 h-9 border border-saltora-border rounded-sm flex items-center justify-center hover:border-saltora-terracotta hover:text-saltora-terracotta transition-colors bg-white text-xs font-bold">
-                            TT
-                        </a>
-                        <a href="https://wa.me/923180735748" class="w-9 h-9 border border-saltora-border rounded-sm flex items-center justify-center hover:border-saltora-terracotta hover:text-saltora-terracotta transition-colors bg-white">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99 0-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Export Terms Dark Box -->
-                <div class="bg-[#1C1917] p-6 border border-stone-800 rounded-sm text-white space-y-2 shadow-lg mt-8">
-                    <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">EXPORT TERMS</span>
-                    <p class="font-serif text-lg font-normal leading-snug text-white">
-                        FOB — 50% advance & 50% upon presentation of Bill of Lading
+                <div class="bg-saltora-dark text-white p-6 rounded-sm space-y-2 border border-saltora-dark-border shadow-md reveal-on-scroll reveal-scale">
+                    <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">STANDARD EXPORT TERMS</span>
+                    <h4 class="font-serif text-lg font-normal text-amber-100">FOB — Free On Board</h4>
+                    <p class="text-xs text-stone-300 font-light leading-relaxed">
+                        50% Advance deposit & 50% upon presentation of Bill of Lading. Port of Dispatch: Karachi Port / Port Qasim, Pakistan.
                     </p>
                 </div>
             </div>
 
-            <!-- Right Column: Contact Quote Form Box -->
-            <div id="contact-form" class="lg:col-span-7 bg-[#FAF7F2] p-8 sm:p-10 border border-saltora-border rounded-sm shadow-sm">
-                
-                <form action="mailto:saltora1329@gmail.com" method="post" enctype="text/plain" class="space-y-6 text-xs">
+            <!-- Right 7 Cols: Inquiry Form -->
+            <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-sm border border-saltora-border shadow-sm reveal-on-scroll reveal-from-right">
+                <form action="#" method="POST" @submit.prevent="alert('Thank you! Your quote request has been submitted. Saltora export desk will contact you within 24 hours.')" class="space-y-6">
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">FULL NAME *</label>
-                            <input type="text" name="Full Name" required placeholder="Your full name" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Full Name *</label>
+                            <input type="text" required placeholder="e.g. John Doe" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">COMPANY NAME *</label>
-                            <input type="text" name="Company Name" required placeholder="Your company" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
+
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Company Name *</label>
+                            <input type="text" required placeholder="e.g. Global Foods Trading" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">BUSINESS EMAIL *</label>
-                            <input type="email" name="Email" required placeholder="name@company.com" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Business Email *</label>
+                            <input type="email" required placeholder="name@company.com" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">COUNTRY *</label>
-                            <input type="text" name="Country" required placeholder="Destination country" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
+
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="+1 234 567 8900" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">PHONE / WHATSAPP</label>
-                            <input type="text" name="Phone" placeholder="+00 000 000 000" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
-                        </div>
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">PRODUCT REQUIRED *</label>
-                            <select name="Product Required" required class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text focus:outline-none focus:border-saltora-terracotta transition-colors">
-                                <option value="">Select a product</option>
-                                <option value="Himalayan Pink Salt (Standard)">Himalayan Pink Salt (Standard)</option>
-                                <option value="Fine Himalayan Pink Salt">Fine Himalayan Pink Salt</option>
-                                <option value="Coarse Himalayan Pink Salt">Coarse Himalayan Pink Salt</option>
-                                <option value="Himalayan Salt Granules">Himalayan Salt Granules</option>
-                                <option value="Animal Salt Lick Blocks">Animal Salt Lick Blocks</option>
-                                <option value="Private Label OEM Packaging">Private Label OEM Packaging</option>
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Product Category *</label>
+                            <select class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
+                                <option>Fine Pink Salt (Table Grade)</option>
+                                <option>Coarse Pink Salt (Grinder Grade)</option>
+                                <option>Himalayan Salt Granules</option>
+                                <option>Salt Chunks / Lumps</option>
+                                <option>Industrial Bulk Salt</option>
+                                <option>Custom / Private Label Packaging</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">QUANTITY REQUIRED *</label>
-                            <input type="text" name="Quantity Required" required placeholder="e.g. 1 x 20ft container / 25 MT" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
-                        </div>
-                        <div class="space-y-1.5">
-                            <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">PACKAGING REQUIREMENT</label>
-                            <select name="Packaging Requirement" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text focus:outline-none focus:border-saltora-terracotta transition-colors">
-                                <option value="">Select packaging</option>
-                                <option value="25kg Bags">25kg Food-Grade Sacks</option>
-                                <option value="50lb Bags">50lb Craft Sacks</option>
-                                <option value="1000kg FIBC Jumbo Bags">1000kg FIBC Bulk Jumbo Bags</option>
-                                <option value="Retail Pouches">Retail Stand-up Pouches</option>
-                                <option value="Custom Box Packaging">Custom OEM Box Packaging</option>
-                            </select>
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Target Quantity & Port</label>
+                            <input type="text" placeholder="e.g. 20ft FCL to Port of Rotterdam" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
-                    <div class="space-y-1.5">
-                        <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">DESTINATION PORT</label>
-                        <input type="text" name="Destination Port" placeholder="e.g. Jebel Ali, Rotterdam, New York" class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Message / Specifications</label>
+                        <textarea rows="4" placeholder="Detail your required grain size, packaging format, private label branding or special specifications..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm"></textarea>
                     </div>
 
-                    <div class="space-y-1.5">
-                        <label class="block font-semibold tracking-wider text-saltora-muted uppercase text-[10px]">MESSAGE</label>
-                        <textarea name="Message" rows="3" placeholder="Tell us about your requirement — specifications, target timeline, private-label needs..." class="w-full bg-transparent border-b border-saltora-border py-2 text-saltora-text placeholder-saltora-muted/60 focus:outline-none focus:border-saltora-terracotta transition-colors resize-none"></textarea>
-                    </div>
-
-                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4">
-                        <button type="submit" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-8 py-4 font-bold tracking-wider uppercase text-xs transition-all shadow flex items-center gap-2 group">
-                            <span>REQUEST A QUOTE</span>
-                            <span class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                        </button>
-
-                        <a href="mailto:saltora1329@gmail.com" class="text-xs font-bold tracking-wider text-saltora-text uppercase flex items-center gap-2 hover:text-saltora-terracotta transition-colors">
-                            <span>✉</span>
-                            <span>SALTORA1329@GMAIL.COM</span>
-                        </a>
-                    </div>
-
-                    <p class="text-[10px] text-saltora-muted/70 pt-2 font-light">
-                        This form opens your email application with the inquiry pre-filled — nothing is stored on this website.
-                    </p>
+                    <button type="submit" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 cursor-pointer group">
+                        <span>SUBMIT QUOTE INQUIRY</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </button>
 
                 </form>
-
             </div>
 
         </div>
     </section>
 
     <!-- FOOTER SECTION -->
-    <footer class="bg-[#141211] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
+    <footer id="contact" class="bg-[#141211] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             <div class="lg:col-span-2 space-y-4">
                 <div class="flex items-center gap-3">
@@ -282,16 +280,7 @@
                 </p>
 
                 <div class="flex items-center space-x-3 pt-2 text-stone-400">
-                    <a href="#" class="w-8 h-8 rounded-full border border-stone-700 flex items-center justify-center hover:border-white hover:text-white transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="#" class="w-8 h-8 rounded-full border border-stone-700 flex items-center justify-center hover:border-white hover:text-white transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.7 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
-                    </a>
-                    <a href="#" class="w-8 h-8 rounded-full border border-stone-700 flex items-center justify-center hover:border-white hover:text-white transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                    </a>
-                    <a href="https://wa.me/923180735748" class="w-8 h-8 rounded-full border border-stone-700 flex items-center justify-center hover:border-white hover:text-white transition-colors">
+                    <a href="https://wa.me/923180735748" class="w-8 h-8 rounded-full border border-stone-700 flex items-center justify-center hover:border-white hover:text-white transition-colors cursor-pointer">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99 0-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                     </a>
                 </div>
@@ -300,12 +289,12 @@
             <div class="space-y-3">
                 <h4 class="font-serif text-sm text-white font-normal uppercase tracking-wider">NAVIGATE</h4>
                 <ul class="space-y-2 text-stone-400 font-light">
-                    <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-                    <li><a href="/products" class="hover:text-white transition-colors">Products</a></li>
-                    <li><a href="/certifications" class="hover:text-white transition-colors">Certifications</a></li>
-                    <li><a href="/export-logistics" class="hover:text-white transition-colors">Export & Logistics</a></li>
-                    <li><a href="/contact" class="hover:text-white transition-colors text-white font-medium">Contact</a></li>
+                    <li><a href="/" class="hover:text-white transition-colors cursor-pointer">Home</a></li>
+                    <li><a href="/about" class="hover:text-white transition-colors cursor-pointer">About</a></li>
+                    <li><a href="/products" class="hover:text-white transition-colors cursor-pointer">Products</a></li>
+                    <li><a href="/certifications" class="hover:text-white transition-colors cursor-pointer">Certifications</a></li>
+                    <li><a href="/export-logistics" class="hover:text-white transition-colors cursor-pointer">Export & Logistics</a></li>
+                    <li><a href="/contact" class="hover:text-white transition-colors text-white font-medium cursor-pointer">Contact</a></li>
                 </ul>
             </div>
 
@@ -313,16 +302,22 @@
                 <h4 class="font-serif text-sm text-white font-normal uppercase tracking-wider">CONTACT</h4>
                 <div class="space-y-2 text-stone-400 font-light">
                     <p class="flex items-center gap-2">
-                        <span class="text-stone-500">✉</span>
-                        <a href="mailto:saltora1329@gmail.com" class="hover:text-white transition-colors">saltora1329@gmail.com</a>
+                        <svg class="w-3.5 h-3.5 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <a href="mailto:saltora1329@gmail.com" class="hover:text-white transition-colors cursor-pointer">saltora1329@gmail.com</a>
                     </p>
                     <p class="flex items-center gap-2">
-                        <span class="text-stone-500">📞</span>
-                        <a href="tel:+923180735748" class="hover:text-white transition-colors">+92 318 0735748</a>
+                        <svg class="w-3.5 h-3.5 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <a href="tel:+923180735748" class="hover:text-white transition-colors cursor-pointer">+92 318 0735748</a>
                     </p>
                     <p class="flex items-center gap-2">
-                        <span class="text-stone-500">🌐</span>
-                        <a href="http://www.saltora.net" target="_blank" class="hover:text-white transition-colors">www.saltora.net</a>
+                        <svg class="w-3.5 h-3.5 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                        <a href="http://www.saltora.net" target="_blank" class="hover:text-white transition-colors cursor-pointer">www.saltora.net</a>
                     </p>
                 </div>
 

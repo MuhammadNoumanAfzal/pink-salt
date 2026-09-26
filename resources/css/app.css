@@ -16,6 +16,10 @@
   h1, h2, h3, h4, .font-heading {
     font-family: 'Cormorant Garamond', Georgia, serif;
   }
+
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
 }
 
 /* Custom Scrollbar */
@@ -33,18 +37,122 @@
   background: #964B42;
 }
 
-/* Marquee Animation */
-@keyframes marquee {
+/* Continuous Infinite Marquee Animation */
+@keyframes continuousMarquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
   display: flex;
-  width: 200%;
-  animation: marquee 25s linear infinite;
+  width: max-content;
+  animation: continuousMarquee 38s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Hero Section Page-Load Initial Entry Animations */
+@keyframes heroSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-hero-left {
+  animation: heroSlideLeft 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-right {
+  animation: heroSlideRight 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+/* Ultra Smooth & Gentle Scroll Reveal (1.5s Duration, 35px Offset) */
+.reveal-on-scroll,
+.reveal-from-left,
+.reveal-from-right,
+.reveal-from-bottom,
+.reveal-from-top,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Default / From Bottom */
+.reveal-on-scroll,
+.reveal-from-bottom {
+  transform: translateY(35px);
+}
+
+/* From Left */
+.reveal-from-left {
+  transform: translateX(-35px);
+}
+
+/* From Right */
+.reveal-from-right {
+  transform: translateX(35px);
+}
+
+/* From Top */
+.reveal-from-top {
+  transform: translateY(-35px);
+}
+
+/* Scale Reveal */
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+/* Revealed State */
+.reveal-on-scroll.is-revealed,
+.reveal-from-left.is-revealed,
+.reveal-from-right.is-revealed,
+.reveal-from-bottom.is-revealed,
+.reveal-from-top.is-revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Delays for Fluid Grid Reveal */
+.stagger-1 { transition-delay: 140ms; }
+.stagger-2 { transition-delay: 280ms; }
+.stagger-3 { transition-delay: 420ms; }
+.stagger-4 { transition-delay: 560ms; }
+.stagger-5 { transition-delay: 700ms; }
+.stagger-6 { transition-delay: 840ms; }
+
+/* Interactive Card Elevate & Glow */
+.card-hover-effect {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(28, 25, 23, 0.09);
+  border-color: rgba(150, 75, 66, 0.45);
 }
