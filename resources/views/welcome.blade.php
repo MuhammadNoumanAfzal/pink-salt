@@ -9,6 +9,10 @@
     <meta name="description" content="SALTORA is a premier Himalayan pink salt exporter based in Pakistan, supplying B2B bulk, private label, fine, coarse, and industrial salt to global markets.">
     <meta name="keywords" content="Himalayan Pink Salt, Salt Exporter Pakistan, Bulk Pink Salt, Private Label Salt, Saltora, Salt Range Sourcing">
     
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="shortcut icon" type="image/png" href="/logo.png">
+    
     <!-- Vite Assets (Tailwind CSS + Alpine JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,13 +23,8 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="/" class="flex items-center gap-3 group cursor-pointer">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('logo-fallback').classList.remove('hidden');">
-                <div id="logo-fallback" class="hidden flex items-center gap-2">
-                    <svg class="w-8 h-8 text-saltora-terracotta" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 19h20L12 2zm0 3.8L17.5 17H6.5L12 5.8z" />
-                    </svg>
-                    <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
-                </div>
+                <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -509,12 +508,12 @@
     </section>
 
     <!-- SECTION 1: SOURCING, MANUFACTURING & SUPPLY (DARK MODE) -->
-    <section id="sourcing" class="bg-[#181513] text-white py-20 md:py-28 px-6 md:px-12 border-t border-stone-800 overflow-hidden">
+    <section id="sourcing" class="bg-gradient-to-b from-[#1E1917] via-[#151210] to-[#1E1917] text-white py-20 md:py-28 px-6 md:px-12 border-t border-stone-800 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 
                 <!-- Left Text Process Steps (Reveals Left-to-Right) -->
-                <div class="lg:col-span-6 space-y-6 reveal-from-left">
+                <div class="lg:col-span-6 space-y-6 reveal-on-scroll reveal-from-left">
                     <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
                         FROM MINE TO MARKET
                     </div>
@@ -558,7 +557,7 @@
                             <span class="font-serif text-2xl font-normal text-stone-400 group-hover:text-saltora-terracotta transition-colors shrink-0">04</span>
                             <div class="space-y-1">
                                 <h4 class="font-serif text-xl text-white font-normal group-hover:text-amber-100 transition-colors">Packing & Export</h4>
-                                <p class="text-xs text-stone-400 font-light leading-relaxed">Packed in standard 25kg bags, FIBC bulk supersacks, or custom private-label formats with clear export documentation.</p>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">Products are packed to agreed specifications, documented, and prepared for international shipment under FOB terms.</p>
                             </div>
                         </div>
 
@@ -566,13 +565,13 @@
                 </div>
 
                 <!-- Right Mine Image (Reveals Right-to-Left) -->
-                <div class="lg:col-span-6 relative reveal-from-right">
+                <div class="lg:col-span-6 relative reveal-on-scroll reveal-from-right">
                     <div class="relative rounded-sm overflow-hidden border border-stone-800 shadow-2xl group cursor-pointer">
                         <img src="/sourcingsec.jpg" alt="The Salt Range Pakistan Mine Tunnel" class="w-full h-[540px] object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
                         <div class="absolute bottom-6 left-6 text-white z-10">
                             <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block mb-1">ORIGIN</span>
-                            <h4 class="font-serif text-2xl font-normal text-amber-100">The Salt Range, Pakistan</h4>
+                            <h4 class="font-serif text-2xl sm:text-3xl font-normal text-white">The Salt Range, Pakistan</h4>
                         </div>
                     </div>
                 </div>
@@ -853,7 +852,7 @@
     </section>
 
     <!-- FOOTER SECTION -->
-    <footer id="contact" class="bg-[#141211] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
+    <footer id="contact" class="bg-[#181513] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             
             <div class="lg:col-span-2 space-y-4">

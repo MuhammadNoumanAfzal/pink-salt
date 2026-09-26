@@ -9,6 +9,10 @@
     <meta name="description" content="Get in touch with SALTORA for Himalayan pink salt price quotes, specifications, bulk orders, and private label inquiries. Direct B2B export desk.">
     <meta name="keywords" content="Contact Saltora, Pink Salt Quote, Buy Pink Salt Bulk, Salt Range Export Contact, B2B Salt Inquiry">
     
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="shortcut icon" type="image/png" href="/logo.png">
+    
     <!-- Vite Assets (Tailwind CSS + Alpine JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,13 +23,8 @@
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="/" class="flex items-center gap-3 group cursor-pointer">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.onerror=null; this.classList.add('hidden'); document.getElementById('logo-fallback').classList.remove('hidden');">
-                <div id="logo-fallback" class="hidden flex items-center gap-2">
-                    <svg class="w-8 h-8 text-saltora-terracotta" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 19h20L12 2zm0 3.8L17.5 17H6.5L12 5.8z" />
-                    </svg>
-                    <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
-                </div>
+                <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -265,7 +264,7 @@
     </section>
 
     <!-- FOOTER SECTION -->
-    <footer id="contact" class="bg-[#141211] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
+    <footer id="contact" class="bg-[#181513] text-stone-400 py-16 px-6 md:px-12 border-t border-stone-800 text-xs">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             <div class="lg:col-span-2 space-y-4">
                 <div class="flex items-center gap-3">
