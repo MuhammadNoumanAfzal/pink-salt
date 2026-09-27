@@ -19,26 +19,24 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        .custom-modal-scroll::-webkit-scrollbar {
-            width: 6px;
+        /* Completely Hide Scrollbar for Modals (View & Edit) */
+        .custom-modal-scroll::-webkit-scrollbar,
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
         }
-        .custom-modal-scroll::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 8px;
-        }
-        .custom-modal-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 8px;
-        }
-        .custom-modal-scroll::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        .custom-modal-scroll,
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
         }
     </style>
 </head>
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="adminProductsPage()">
 
     <!-- LEFT SIDEBAR -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between min-h-screen sticky top-0 z-30 shadow-xs">
+    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#e07a5f] to-[#d4a373] p-0.5 shadow-md shadow-[#e07a5f]/20">
@@ -53,40 +51,46 @@
             </div>
 
             <nav class="p-4 space-y-1 text-xs font-semibold">
+                <!-- 1. Dashboard Overview -->
                 <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <i class="fa-solid fa-chart-line text-sm"></i>
                     <span>Dashboard Overview</span>
                 </a>
 
-                <a href="{{ route('admin.products.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-[#e07a5f]/10 text-[#e07a5f] font-bold transition-all">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-boxes-stacked text-sm"></i>
-                        <span>Product Catalog Sub-page</span>
-                    </div>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded-full font-bold">{{ count($products) }}</span>
-                </a>
-
+                <!-- 2. Categories -->
                 <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-folder-tree text-sm"></i>
+                        <i class="fa-solid fa-layer-group text-sm"></i>
                         <span>Categories</span>
                     </div>
                 </a>
 
+                <!-- 3. Subcategories -->
                 <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-diagram-nested text-sm"></i>
+                        <i class="fa-solid fa-tags text-sm"></i>
                         <span>Subcategories</span>
                     </div>
                 </a>
 
+                <!-- 4. Product Catalog -->
+                <a href="{{ route('admin.products.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-[#e07a5f]/10 text-[#e07a5f] font-bold transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-boxes-stacked text-sm"></i>
+                        <span>Product Catalog</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] rounded-full font-bold">{{ count($products) }}</span>
+                </a>
+
+                <!-- 5. Bulk Orders -->
                 <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
-                        <span>Bulk Store Orders</span>
+                        <span>Bulk Orders</span>
                     </div>
                 </a>
 
+                <!-- 6. Customer Messages -->
                 <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-envelope-open-text text-sm"></i>
@@ -95,12 +99,12 @@
                 </a>
 
                 <div class="pt-4 border-t border-slate-100">
-                    <a href="/sitemap" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all">
+                    <a href="/sitemap" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all">
                         <i class="fa-solid fa-sitemap text-sm text-emerald-600"></i>
                         <span>HTML Sitemap</span>
                     </a>
 
-                    <a href="/" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all mt-1">
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all mt-1">
                         <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
                         <span>View Live Store</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-auto opacity-60"></i>
@@ -149,8 +153,6 @@
                             <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200">
                                 <th class="p-4">Product Info</th>
                                 <th class="p-4">Category</th>
-                                <th class="p-4">Mesh / Grain</th>
-                                <th class="p-4">Purity Grade</th>
                                 <th class="p-4 text-center">Catalog Status</th>
                                 <th class="p-4 text-right">Actions</th>
                             </tr>
@@ -160,37 +162,40 @@
                             <tr class="hover:bg-slate-50/60">
                                 <td class="p-4">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200">
+                                        <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
                                         <div>
                                             <h4 class="font-bold text-slate-900 text-sm">{{ $prod->name }}</h4>
                                             <p class="text-slate-500 text-[11px] line-clamp-1 max-w-xs">{{ $prod->short_desc }}</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="p-4 font-semibold text-slate-700">{{ $prod->category }}</td>
-                                <td class="p-4 text-slate-600">{{ $prod->mesh_size ?? 'N/A' }}</td>
-                                <td class="p-4 text-slate-600">{{ $prod->purity ?? '98.5% NaCl' }}</td>
-                                <td class="p-4 text-center">
+                                <td class="p-4 font-semibold text-slate-700 whitespace-nowrap">{{ $prod->category }}</td>
+                                <td class="p-4 text-center whitespace-nowrap">
                                     <button @click="toggleStatus({{ $prod->id }})"
                                         class="px-3 py-1 rounded-full text-[10px] font-bold border transition-all inline-flex items-center gap-1.5 cursor-pointer {{ $prod->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
                                         <span class="w-1.5 h-1.5 rounded-full {{ $prod->is_active ? 'bg-emerald-600' : 'bg-rose-600' }}"></span>
                                         {{ $prod->is_active ? 'Active' : 'Disabled' }}
                                     </button>
                                 </td>
-                                <td class="p-4 text-right space-x-2">
-                                    <button @click="viewProductDetails({{ json_encode($prod) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors text-xs cursor-pointer" title="View Details">
-                                        <i class="fa-solid fa-eye text-sky-600"></i>
-                                    </button>
-                                    <button @click="editProduct({{ json_encode($prod) }})" class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg transition-colors text-xs cursor-pointer" title="Edit Product">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-colors text-xs cursor-pointer" title="Delete Product">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                <td class="p-4 text-right whitespace-nowrap">
+                                    <div class="flex items-center justify-end gap-1.5">
+                                        <button @click="viewProductDetails({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="View Details">
+                                            <i class="fa-solid fa-eye text-xs"></i>
+                                            <span>View</span>
+                                        </button>
+                                        <button @click="editProduct({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Edit Product">
+                                            <i class="fa-solid fa-pen-to-square text-xs"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Delete Product">
+                                            <i class="fa-solid fa-trash text-xs"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
-                            <tr><td colspan="6" class="p-8 text-center text-slate-400">No products found.</td></tr>
+                            <tr><td colspan="4" class="p-8 text-center text-slate-400">No products found.</td></tr>
                             @endforelse
                         </tbody>
                     </table>

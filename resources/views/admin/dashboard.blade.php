@@ -21,20 +21,17 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        /* Custom Clean Scrollbar for Modals */
-        .custom-modal-scroll::-webkit-scrollbar {
-            width: 6px;
+        /* Completely Hide Scrollbar for Modals (View & Edit) */
+        .custom-modal-scroll::-webkit-scrollbar,
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
         }
-        .custom-modal-scroll::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 8px;
-        }
-        .custom-modal-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 8px;
-        }
-        .custom-modal-scroll::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        .custom-modal-scroll,
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
         }
 
         /* Print Media Styles */
@@ -63,7 +60,7 @@
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="adminDashboard()">
 
     <!-- LEFT SIDEBAR NAVIGATION -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between min-h-screen sticky top-0 z-30 shadow-xs">
+    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -80,6 +77,7 @@
 
             <!-- Navigation Links -->
             <nav class="p-4 space-y-1 text-xs font-semibold">
+                <!-- 1. Dashboard Overview -->
                 <button @click="activeTab = 'overview'" 
                     :class="activeTab === 'overview' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
@@ -87,40 +85,39 @@
                     <span>Dashboard Overview</span>
                 </button>
 
-                <div>
-                    <button @click="activeTab = 'products'" 
-                        :class="activeTab === 'products' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
-                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-cubes text-sm"></i>
-                            <span>Product Catalog</span>
-                        </div>
-                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($products) }}</span>
-                    </button>
-                    <a href="{{ route('admin.products.index') }}" class="block px-3 py-1 text-[11px] text-[#e07a5f] font-semibold hover:underline ml-7">
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Open Sub-Page
-                    </a>
-                </div>
-
-                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all">
+                <!-- 2. Categories -->
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-folder-tree text-sm"></i>
+                        <i class="fa-solid fa-layer-group text-sm"></i>
                         <span>Categories</span>
                     </div>
                 </a>
 
-                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all">
+                <!-- 3. Subcategories -->
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-diagram-nested text-sm"></i>
+                        <i class="fa-solid fa-tags text-sm"></i>
                         <span>Subcategories</span>
                     </div>
                 </a>
 
+                <!-- 4. Product Catalog -->
+                <button @click="activeTab = 'products'" 
+                    :class="activeTab === 'products' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-cubes text-sm"></i>
+                        <span>Product Catalog</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($products) }}</span>
+                </button>
+
+                <!-- 5. Bulk Orders -->
                 <button @click="activeTab = 'orders'" 
                     :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-[#e07a5f] fa-bag-shopping text-sm"></i>
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span>Bulk Orders</span>
                     </div>
                     @if($stats['pending_quotes'] > 0)
@@ -130,6 +127,7 @@
                     @endif
                 </button>
 
+                <!-- 6. Customer Messages -->
                 <button @click="activeTab = 'inquiries'" 
                     :class="activeTab === 'inquiries' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
@@ -150,7 +148,7 @@
                         <span>HTML Sitemap</span>
                     </a>
 
-                    <a href="/" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left">
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left">
                         <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
                         <span>View Live Store</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-auto opacity-60"></i>
@@ -314,8 +312,6 @@
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Product Info</th>
                                     <th class="p-4">Category</th>
-                                    <th class="p-4">Mesh / Grain</th>
-                                    <th class="p-4">Purity & Packaging</th>
                                     <th class="p-4 text-center">Catalog Status</th>
                                     <th class="p-4 text-right">Actions</th>
                                 </tr>
@@ -325,37 +321,40 @@
                                 <tr class="hover:bg-slate-50/60 transition-colors">
                                     <td class="p-4">
                                         <div class="flex items-center gap-3">
-                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200">
+                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
                                             <div>
                                                 <h4 class="font-bold text-slate-900 text-sm">{{ $prod->name }}</h4>
                                                 <p class="text-slate-500 text-[11px] line-clamp-1 max-w-xs">{{ $prod->short_desc }}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="p-4 font-semibold text-slate-700">{{ $prod->category }}</td>
-                                    <td class="p-4 text-slate-600">{{ $prod->mesh_size ?? 'N/A' }}</td>
-                                    <td class="p-4 text-slate-600">{{ $prod->purity ?? '98.5% Pure' }}</td>
-                                    <td class="p-4 text-center">
+                                    <td class="p-4 font-semibold text-slate-700 whitespace-nowrap">{{ $prod->category }}</td>
+                                    <td class="p-4 text-center whitespace-nowrap">
                                         <button @click="toggleStatus({{ $prod->id }})" 
-                                            class="px-3 py-1 rounded-full text-[10px] font-bold border transition-all inline-flex items-center gap-1.5 {{ $prod->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
+                                            class="px-3 py-1 rounded-full text-[10px] font-bold border transition-all inline-flex items-center gap-1.5 cursor-pointer {{ $prod->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}">
                                             <span class="w-1.5 h-1.5 rounded-full {{ $prod->is_active ? 'bg-emerald-600' : 'bg-rose-600' }}"></span>
                                             {{ $prod->is_active ? 'Active' : 'Disabled' }}
                                         </button>
                                     </td>
-                                    <td class="p-4 text-right space-x-2">
-                                        <button @click="viewProductDetails({{ json_encode($prod) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors text-xs" title="View Details">
-                                            <i class="fa-solid fa-eye text-sky-600"></i>
-                                        </button>
-                                        <button @click="editProduct({{ json_encode($prod) }})" class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg transition-colors text-xs" title="Edit Product">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </button>
-                                        <button @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-colors text-xs" title="Delete Product">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
+                                    <td class="p-4 text-right whitespace-nowrap">
+                                        <div class="flex items-center justify-end gap-1.5">
+                                            <button @click="viewProductDetails({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="View Details">
+                                                <i class="fa-solid fa-eye text-xs"></i>
+                                                <span>View</span>
+                                            </button>
+                                            <button @click="editProduct({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Edit Product">
+                                                <i class="fa-solid fa-pen-to-square text-xs"></i>
+                                                <span>Edit</span>
+                                            </button>
+                                            <button @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Delete Product">
+                                                <i class="fa-solid fa-trash text-xs"></i>
+                                                <span>Delete</span>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty
-                                <tr><td colspan="6" class="p-8 text-center text-slate-400">No products found.</td></tr>
+                                <tr><td colspan="4" class="p-8 text-center text-slate-400">No products found.</td></tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -378,50 +377,56 @@
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Order Ref #</th>
-                                    <th class="p-4">Customer Company</th>
-                                    <th class="p-4">Destination Port</th>
-                                    <th class="p-4">Ordered Products</th>
-                                    <th class="p-4 text-center">Fulfillment Status</th>
+                                    <th class="p-4">Customer & Company</th>
+                                    <th class="p-4">Destination</th>
+                                    <th class="p-4 text-center">Items</th>
+                                    <th class="p-4 text-center">Status</th>
                                     <th class="p-4 text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 @forelse($quotes as $quote)
                                 <tr class="hover:bg-slate-50/60 transition-colors">
-                                    <td class="p-4">
-                                        <span class="font-mono font-bold text-[#e07a5f] text-sm">{{ $quote->quote_number }}</span>
-                                        <span class="block text-[10px] text-slate-400">{{ $quote->created_at->format('M d, Y H:i') }}</span>
+                                    <td class="p-4 whitespace-nowrap">
+                                        <div class="font-mono font-bold text-[#e07a5f] text-xs">{{ $quote->quote_number }}</div>
+                                        <div class="text-[10px] text-slate-400">{{ $quote->created_at->format('M d, Y H:i') }}</div>
                                     </td>
                                     <td class="p-4">
-                                        <div class="font-bold text-slate-900">{{ $quote->company_name }}</div>
-                                        <div class="text-slate-600 text-[11px]">{{ $quote->full_name }} ({{ $quote->email }})</div>
-                                        <div class="text-slate-400 text-[10px]">{{ $quote->phone ?? 'No Phone' }}</div>
+                                        <div class="font-bold text-slate-900 text-xs">{{ $quote->company_name }}</div>
+                                        <div class="text-slate-500 text-[11px]">{{ $quote->full_name }} &bull; <span class="text-slate-400">{{ $quote->email }}</span></div>
                                     </td>
-                                    <td class="p-4 text-slate-700">
-                                        <span class="block font-semibold text-slate-900"><i class="fa-solid fa-earth-americas text-[#e07a5f]"></i> {{ $quote->destination_country }}</span>
-                                        <span class="text-[10px] text-slate-400">{{ $quote->destination_port ?? 'Port of Entry' }}</span>
+                                    <td class="p-4 whitespace-nowrap">
+                                        <div class="font-semibold text-slate-900 text-xs flex items-center gap-1.5">
+                                            <i class="fa-solid fa-earth-americas text-[#e07a5f] text-[11px]"></i> {{ $quote->destination_country }}
+                                        </div>
+                                        <div class="text-[10px] text-slate-400">{{ $quote->destination_port ?? 'Port of Entry' }}</div>
                                     </td>
-                                    <td class="p-4">
-                                        <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-mono text-[11px] font-semibold">
-                                            {{ count($quote->items ?? []) }} Cart Line Items
+                                    <td class="p-4 text-center whitespace-nowrap">
+                                        <span class="inline-flex items-center px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full font-mono text-[11px] font-bold">
+                                            {{ count($quote->items ?? []) }} Line Items
                                         </span>
                                     </td>
-                                    <td class="p-4 text-center">
+                                    <td class="p-4 text-center whitespace-nowrap">
                                         <select @change="updateQuoteStatus({{ $quote->id }}, $event.target.value)" 
-                                            class="bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-800 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
+                                            class="bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-700 shadow-2xs focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                             <option value="pending" {{ $quote->status === 'pending' ? 'selected' : '' }}>Pending</option>
                                             <option value="processing" {{ $quote->status === 'processing' ? 'selected' : '' }}>Processing</option>
                                             <option value="completed" {{ $quote->status === 'completed' ? 'selected' : '' }}>Completed</option>
                                             <option value="cancelled" {{ $quote->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                                         </select>
                                     </td>
-                                    <td class="p-4 text-right space-x-2">
-                                        <button @click="viewQuoteDetails({{ json_encode($quote) }})" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all text-xs font-semibold cursor-pointer">
-                                            View Order Items
-                                        </button>
-                                        <button @click="printInvoice({{ json_encode($quote) }})" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Print Invoice">
-                                            <i class="fa-solid fa-print"></i> Print Invoice
-                                        </button>
+                                    <td class="p-4 text-right whitespace-nowrap">
+                                        <div class="flex items-center justify-end gap-1.5">
+                                            <button @click="viewQuoteDetails({{ json_encode($quote) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="View Order Details">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                            <button @click="printInvoice({{ json_encode($quote) }})" class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Print Invoice">
+                                                <i class="fa-solid fa-print"></i>
+                                            </button>
+                                            <button @click="deleteQuote({{ $quote->id }}, '{{ $quote->quote_number }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Delete Order">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty
@@ -964,6 +969,36 @@
                             Swal.fire({ icon: 'success', title: 'Order Updated', text: data.message, timer: 1200, showConfirmButton: false, background: '#ffffff', color: '#1e293b' });
                         }
                     } catch(e) {}
+                },
+                async deleteQuote(id, number) {
+                    const confirm = await Swal.fire({
+                        title: 'Delete Bulk Order?',
+                        text: `Are you sure you want to delete order "${number}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, Delete',
+                        cancelButtonText: 'Cancel',
+                        background: '#ffffff',
+                        color: '#1e293b',
+                        confirmButtonColor: '#ef4444'
+                    });
+
+                    if (confirm.isConfirmed) {
+                        try {
+                            const res = await fetch(`/admin/quotes/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    'Accept': 'application/json'
+                                }
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                                Swal.fire({ icon: 'success', title: 'Deleted', text: data.message, background: '#ffffff', color: '#1e293b' })
+                                    .then(() => window.location.reload());
+                            }
+                        } catch(e) {}
+                    }
                 },
                 async updateInquiryStatus(id, status) {
                     try {

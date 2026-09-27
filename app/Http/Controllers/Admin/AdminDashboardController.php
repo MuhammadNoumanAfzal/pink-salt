@@ -219,6 +219,17 @@ class AdminDashboardController extends Controller
         ]);
     }
 
+    public function deleteQuote($id)
+    {
+        $quote = QuoteRequest::findOrFail($id);
+        $quote->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Order deleted successfully!'
+        ]);
+    }
+
     public function updateContactStatus(Request $request, $id)
     {
         $contact = ContactSubmission::findOrFail($id);

@@ -79,6 +79,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Order Management
     Route::post('/quotes/{id}/status', [AdminDashboardController::class, 'updateQuoteStatus'])->name('admin.quotes.status');
+    Route::delete('/quotes/{id}', [AdminDashboardController::class, 'deleteQuote'])->name('admin.quotes.delete');
     
     // Contact Submissions Management
     Route::post('/inquiries/{id}/status', [AdminDashboardController::class, 'updateContactStatus'])->name('admin.inquiries.status');

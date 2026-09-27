@@ -22,7 +22,7 @@
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="subcategoryManager()">
 
     <!-- LEFT SIDEBAR NAVIGATION -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between min-h-screen sticky top-0 z-30 shadow-xs">
+    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -39,11 +39,30 @@
 
             <!-- Navigation Links -->
             <nav class="p-4 space-y-1 text-xs font-semibold">
+                <!-- 1. Dashboard Overview -->
                 <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <i class="fa-solid fa-chart-pie text-sm"></i>
                     <span>Dashboard Overview</span>
                 </a>
 
+                <!-- 2. Categories -->
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-sm"></i>
+                        <span>Categories</span>
+                    </div>
+                </a>
+
+                <!-- 3. Subcategories -->
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 bg-[#e07a5f]/10 text-[#e07a5f] font-bold rounded-xl transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-tags text-sm"></i>
+                        <span>Subcategories</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] font-bold rounded-full">{{ count($subcategories) }}</span>
+                </a>
+
+                <!-- 4. Product Catalog -->
                 <a href="{{ route('admin.products.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-cubes text-sm"></i>
@@ -51,21 +70,7 @@
                     </div>
                 </a>
 
-                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-folder-tree text-sm"></i>
-                        <span>Categories</span>
-                    </div>
-                </a>
-
-                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 bg-[#e07a5f]/10 text-[#e07a5f] font-bold rounded-xl transition-all">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-diagram-nested text-sm"></i>
-                        <span>Subcategories</span>
-                    </div>
-                    <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] font-bold rounded-full">{{ count($subcategories) }}</span>
-                </a>
-
+                <!-- 5. Bulk Orders -->
                 <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
@@ -73,6 +78,7 @@
                     </div>
                 </a>
 
+                <!-- 6. Messages -->
                 <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-envelope text-sm"></i>
@@ -80,18 +86,20 @@
                     </div>
                 </a>
 
-                <a href="/sitemap" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
-                    <i class="fa-solid fa-sitemap text-sm"></i>
-                    <span>HTML Sitemap</span>
-                </a>
+                <div class="pt-4 border-t border-slate-100">
+                    <a href="/sitemap" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+                        <i class="fa-solid fa-sitemap text-sm"></i>
+                        <span>HTML Sitemap</span>
+                    </a>
 
-                <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-store text-sm"></i>
-                        <span>Live Store</span>
-                    </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
-                </a>
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-store text-sm"></i>
+                            <span>Live Store</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+                    </a>
+                </div>
             </nav>
         </div>
 
@@ -185,7 +193,6 @@
                             <tr class="bg-slate-50 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                                 <th class="py-3.5 px-6">Subcategory Name</th>
                                 <th class="py-3.5 px-4">Parent Category</th>
-                                <th class="py-3.5 px-4">Slug</th>
                                 <th class="py-3.5 px-4">Products</th>
                                 <th class="py-3.5 px-4">Status</th>
                                 <th class="py-3.5 px-6 text-right">Actions</th>
@@ -198,19 +205,19 @@
                                     <div class="font-bold text-slate-900 text-sm">{{ $sub->name }}</div>
                                     <div class="text-[11px] text-slate-400 line-clamp-1 max-w-xs">{{ $sub->description ?? 'No description' }}</div>
                                 </td>
-                                <td class="py-4 px-4">
+                                <td class="py-4 px-4 whitespace-nowrap">
                                     <span class="px-2.5 py-1 bg-[#e07a5f]/10 text-[#e07a5f] rounded-full text-[11px] font-bold border border-[#e07a5f]/20">
                                         <i class="fa-solid fa-folder text-[10px] mr-1"></i>
                                         {{ $sub->category->name ?? 'Unassigned' }}
                                     </span>
                                 </td>
-                                <td class="py-4 px-4 font-mono text-[11px] text-slate-500">{{ $sub->slug }}</td>
-                                <td class="py-4 px-4">
-                                    <span class="px-2.5 py-1 bg-sky-50 text-sky-700 rounded-full text-[11px] font-bold border border-sky-200/60">
-                                        {{ $sub->products_count }} Products
+                                <td class="py-4 px-4 whitespace-nowrap">
+                                    <span class="px-2.5 py-1 bg-sky-50 text-sky-700 rounded-full text-[11px] font-bold border border-sky-200/60 inline-flex items-center gap-1.5">
+                                        <i class="fa-solid fa-cubes text-[10px]"></i>
+                                        <span>{{ $sub->products_count }} Products</span>
                                     </span>
                                 </td>
-                                <td class="py-4 px-4">
+                                <td class="py-4 px-4 whitespace-nowrap">
                                     <button @click="toggleStatus({{ $sub->id }})" class="cursor-pointer">
                                         @if($sub->is_active)
                                         <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[11px] font-bold border border-emerald-200/60 flex items-center gap-1.5 w-max">
@@ -223,18 +230,26 @@
                                         @endif
                                     </button>
                                 </td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button @click="openEditModal({{ json_encode($sub) }})" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-all cursor-pointer">
-                                        <i class="fa-solid fa-pen-to-square mr-1"></i> Edit
-                                    </button>
-                                    <button @click="deleteSubcategory({{ $sub->id }}, '{{ addslashes($sub->name) }}')" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs font-bold transition-all cursor-pointer">
-                                        <i class="fa-solid fa-trash mr-1"></i> Delete
-                                    </button>
+                                <td class="py-4 px-6 text-right whitespace-nowrap">
+                                    <div class="flex items-center justify-end gap-1.5">
+                                        <button @click="viewSubcategory({{ json_encode($sub) }})" class="px-2.5 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="View Details">
+                                            <i class="fa-solid fa-eye text-xs"></i>
+                                            <span>View</span>
+                                        </button>
+                                        <button @click="openEditModal({{ json_encode($sub) }})" class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Edit Subcategory">
+                                            <i class="fa-solid fa-pen-to-square text-xs"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button @click="deleteSubcategory({{ $sub->id }}, '{{ addslashes($sub->name) }}')" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1" title="Delete Subcategory">
+                                            <i class="fa-solid fa-trash text-xs"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6" class="py-8 text-center text-slate-400">No subcategories found in store database.</td>
+                                <td colspan="5" class="py-8 text-center text-slate-400">No subcategories found in store database.</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -324,6 +339,41 @@
                     if (!this.searchQuery) return true;
                     const q = this.searchQuery.toLowerCase();
                     return name.includes(q) || slug.includes(q);
+                },
+                viewSubcategory(sub) {
+                    const statusHtml = sub.is_active 
+                        ? '<span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">Active</span>' 
+                        : '<span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-bold">Inactive</span>';
+
+                    const parentCatName = sub.category ? sub.category.name : 'Unassigned';
+
+                    Swal.fire({
+                        title: `<strong>${sub.name}</strong>`,
+                        html: `
+                            <div class="text-left space-y-3 mt-2 text-xs font-sans">
+                                <div class="bg-[#e07a5f]/10 p-3 rounded-xl border border-[#e07a5f]/20 flex items-center justify-between">
+                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Parent Category:</span>
+                                    <span class="font-bold text-[#e07a5f] text-xs">${parentCatName}</span>
+                                </div>
+                                <div class="flex items-center justify-between pt-1">
+                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Status:</span>
+                                    ${statusHtml}
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px] block mb-1">Description:</span>
+                                    <p class="text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 leading-relaxed">${sub.description || 'No description provided.'}</p>
+                                </div>
+                                <div class="bg-sky-50 p-3 rounded-xl border border-sky-200/60 text-center">
+                                    <span class="block text-[10px] text-sky-700 font-bold uppercase tracking-wider">Associated Products</span>
+                                    <span class="text-lg font-bold text-sky-900">${sub.products_count || 0}</span>
+                                </div>
+                            </div>
+                        `,
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        width: '400px',
+                        padding: '1.25rem'
+                    });
                 },
                 openAddModal() {
                     this.isEdit = false;

@@ -37,6 +37,23 @@
   background: #964B42;
 }
 
+/* Hide Scrollbar for Modals (View, Edit, Add) */
+.custom-modal-scroll::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar,
+.swal2-html-container::-webkit-scrollbar,
+.swal2-popup::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.custom-modal-scroll,
+.no-scrollbar,
+.swal2-html-container,
+.swal2-popup {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
 /* Continuous Infinite Marquee Animation */
 @keyframes continuousMarquee {
   0% { transform: translateX(0%); }
