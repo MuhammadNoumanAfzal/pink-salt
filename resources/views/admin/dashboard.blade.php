@@ -78,7 +78,7 @@
             <!-- Navigation Links -->
             <nav class="p-4 space-y-1 text-xs font-semibold">
                 <!-- 1. Dashboard Overview -->
-                <button @click="activeTab = 'overview'" 
+                <button @click="switchTab('overview')" 
                     :class="activeTab === 'overview' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <i class="fa-solid fa-chart-pie text-sm"></i>
@@ -102,7 +102,7 @@
                 </a>
 
                 <!-- 4. Product Catalog -->
-                <button @click="activeTab = 'products'" 
+                <button @click="switchTab('products')" 
                     :class="activeTab === 'products' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <div class="flex items-center gap-3">
@@ -113,7 +113,7 @@
                 </button>
 
                 <!-- 5. Bulk Orders -->
-                <button @click="activeTab = 'orders'" 
+                <button @click="switchTab('orders')" 
                     :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <div class="flex items-center gap-3">
@@ -128,7 +128,7 @@
                 </button>
 
                 <!-- 6. Customer Messages -->
-                <button @click="activeTab = 'inquiries'" 
+                <button @click="switchTab('inquiries')" 
                     :class="activeTab === 'inquiries' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <div class="flex items-center gap-3">
@@ -212,7 +212,7 @@
 
                 <!-- Stat Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between">
+                    <div @click="switchTab('products')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-[#e07a5f]/40 transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Products</span>
                             <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_products'] }}</h3>
@@ -225,7 +225,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between">
+                    <div @click="switchTab('orders')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-amber-300 transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Store Orders</span>
                             <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_quotes'] }}</h3>
@@ -238,7 +238,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between">
+                    <div @click="switchTab('inquiries')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-rose-300 transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Customer Messages</span>
                             <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_inquiries'] }}</h3>
@@ -293,9 +293,9 @@
 
             </div>
 
-            <!-- TAB 2: PRODUCTS CATALOG -->
+            <!-- TAB 2: PRODUCT CATALOG -->
             <div x-show="activeTab === 'products'" class="space-y-6">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h2 class="text-xl font-bold font-serif text-slate-900">Product Catalog</h2>
                         <p class="text-xs text-slate-500">Manage store products, grade specifications, and active status.</p>
@@ -306,6 +306,33 @@
                 </div>
 
                 <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
+                        <h3 class="font-serif text-sm font-bold text-slate-900">Catalog Products</h3>
+
+                        <div class="flex items-center gap-3">
+                            <select x-model="prodStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                                <option value="all">All Statuses</option>
+                                <option value="active">Active Only</option>
+                                <option value="inactive">Disabled Only</option>
+                            </select>
+
+                            <select x-model="prodCategoryFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                                <option value="all">All Categories</option>
+                                <option value="Edible Salt">Edible Salt</option>
+                                <option value="Industrial & Chemical">Industrial & Chemical</option>
+                                <option value="Animal Feed Salt">Animal Feed Salt</option>
+                                <option value="De-Icing Salt">De-Icing Salt</option>
+                                <option value="Salt Lamps & Craft">Salt Lamps & Craft</option>
+                                <option value="Spa & Wellness">Spa & Wellness</option>
+                            </select>
+
+                            <div class="relative w-64">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" x-model="prodSearchQuery" placeholder="Search product..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
@@ -318,7 +345,7 @@
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 @forelse($products as $prod)
-                                <tr class="hover:bg-slate-50/60 transition-colors">
+                                <tr class="hover:bg-slate-50/60 transition-colors" x-show="(prodStatusFilter === 'all' || ('{{ $prod->is_active }}' === '1' && prodStatusFilter === 'active') || ('{{ $prod->is_active }}' === '0' && prodStatusFilter === 'inactive')) && (prodCategoryFilter === 'all' || '{{ addslashes($prod->category) }}' === prodCategoryFilter) && (prodSearchQuery === '' || '{{ strtolower(addslashes($prod->name)) }} {{ strtolower(addslashes($prod->short_desc ?? '')) }}'.includes(prodSearchQuery.toLowerCase()))">
                                     <td class="p-4">
                                         <div class="flex items-center gap-3">
                                             <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
@@ -364,7 +391,7 @@
 
             <!-- TAB 3: BULK STORE ORDERS WITH PRINT INVOICE -->
             <div x-show="activeTab === 'orders'" class="space-y-6">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h2 class="text-xl font-bold font-serif text-slate-900">Bulk Store Orders</h2>
                         <p class="text-xs text-slate-500">Importers & buyer export order requests placed through the store.</p>
@@ -372,6 +399,25 @@
                 </div>
 
                 <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
+                        <h3 class="font-serif text-sm font-bold text-slate-900">Store Orders</h3>
+
+                        <div class="flex items-center gap-3">
+                            <select x-model="orderStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                                <option value="all">All Order Statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+
+                            <div class="relative w-64">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" x-model="orderSearchQuery" placeholder="Search ref #, buyer, port..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
@@ -386,7 +432,7 @@
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 @forelse($quotes as $quote)
-                                <tr class="hover:bg-slate-50/60 transition-colors">
+                                <tr class="hover:bg-slate-50/60 transition-colors" x-show="(orderStatusFilter === 'all' || '{{ $quote->status }}' === orderStatusFilter) && (orderSearchQuery === '' || '{{ strtolower(addslashes($quote->quote_number)) }} {{ strtolower(addslashes($quote->company_name)) }} {{ strtolower(addslashes($quote->full_name)) }} {{ strtolower(addslashes($quote->email)) }} {{ strtolower(addslashes($quote->destination_country)) }}'.includes(orderSearchQuery.toLowerCase()))">
                                     <td class="p-4 whitespace-nowrap">
                                         <div class="font-mono font-bold text-[#e07a5f] text-xs">{{ $quote->quote_number }}</div>
                                         <div class="text-[10px] text-slate-400">{{ $quote->created_at->format('M d, Y H:i') }}</div>
@@ -440,12 +486,33 @@
 
             <!-- TAB 4: CUSTOMER MESSAGES -->
             <div x-show="activeTab === 'inquiries'" class="space-y-6">
-                <div>
-                    <h2 class="text-xl font-bold font-serif text-slate-900">Customer Messages</h2>
-                    <p class="text-xs text-slate-500">Inquiries submitted via the store contact form.</p>
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                        <h2 class="text-xl font-bold font-serif text-slate-900">Customer Messages</h2>
+                        <p class="text-xs text-slate-500">Inquiries submitted via the store contact form.</p>
+                    </div>
                 </div>
 
                 <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
+                        <h3 class="font-serif text-sm font-bold text-slate-900">Store Inquiries</h3>
+
+                        <div class="flex items-center gap-3">
+                            <select x-model="inquiryStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                                <option value="all">All Message Statuses</option>
+                                <option value="new">New</option>
+                                <option value="read">Read</option>
+                                <option value="replied">Replied</option>
+                                <option value="archived">Archived</option>
+                            </select>
+
+                            <div class="relative w-64">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" x-model="inquirySearchQuery" placeholder="Search sender, subject..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
@@ -454,12 +521,12 @@
                                     <th class="p-4">Subject</th>
                                     <th class="p-4">Message Preview</th>
                                     <th class="p-4 text-center">Status</th>
-                                    <th class="p-4 text-right">Action</th>
+                                    <th class="p-4 text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 @forelse($inquiries as $inq)
-                                <tr class="hover:bg-slate-50/60 transition-colors">
+                                <tr class="hover:bg-slate-50/60 transition-colors" x-show="(inquiryStatusFilter === 'all' || '{{ $inq->status }}' === inquiryStatusFilter) && (inquirySearchQuery === '' || '{{ strtolower(addslashes($inq->name)) }} {{ strtolower(addslashes($inq->email)) }} {{ strtolower(addslashes($inq->subject ?? '')) }} {{ strtolower(addslashes($inq->message)) }}'.includes(inquirySearchQuery.toLowerCase()))">
                                     <td class="p-4">
                                         <div class="font-bold text-slate-900">{{ $inq->name }}</div>
                                         <div class="text-slate-600 text-[11px]">{{ $inq->email }}</div>
@@ -468,17 +535,22 @@
                                     <td class="p-4 text-slate-600 max-w-sm"><p class="line-clamp-2 text-slate-500 text-[11px]">{{ $inq->message }}</p></td>
                                     <td class="p-4 text-center">
                                         <select @change="updateInquiryStatus({{ $inq->id }}, $event.target.value)" 
-                                            class="bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-800 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
+                                            class="bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-800 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                             <option value="new" {{ $inq->status === 'new' ? 'selected' : '' }}>New</option>
                                             <option value="read" {{ $inq->status === 'read' ? 'selected' : '' }}>Read</option>
                                             <option value="replied" {{ $inq->status === 'replied' ? 'selected' : '' }}>Replied</option>
                                             <option value="archived" {{ $inq->status === 'archived' ? 'selected' : '' }}>Archived</option>
                                         </select>
                                     </td>
-                                    <td class="p-4 text-right">
-                                        <button @click="viewInquiry({{ json_encode($inq) }})" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg transition-all text-xs font-semibold cursor-pointer">
-                                            Read Message
-                                        </button>
+                                    <td class="p-4 text-right whitespace-nowrap">
+                                        <div class="flex items-center justify-end gap-1.5">
+                                            <button @click="viewInquiry({{ json_encode($inq) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Read Message">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                            <button @click="deleteInquiry({{ $inq->id }}, '{{ addslashes($inq->name) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Delete Message">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty
@@ -842,8 +914,30 @@
         });
 
         function adminDashboard() {
+            const params = new URLSearchParams(window.location.search);
+            let initialTab = params.get('tab') || 'overview';
+            if (initialTab === 'quotes') initialTab = 'orders';
+
             return {
-                activeTab: 'overview',
+                activeTab: initialTab,
+                switchTab(tab) {
+                    this.activeTab = tab;
+                    const url = new URL(window.location.href);
+                    const paramVal = (tab === 'orders') ? 'quotes' : tab;
+                    if (tab === 'overview') {
+                        url.searchParams.delete('tab');
+                    } else {
+                        url.searchParams.set('tab', paramVal);
+                    }
+                    window.history.pushState({}, '', url);
+                },
+                prodSearchQuery: '',
+                prodStatusFilter: 'all',
+                prodCategoryFilter: 'all',
+                orderSearchQuery: '',
+                orderStatusFilter: 'all',
+                inquirySearchQuery: '',
+                inquiryStatusFilter: 'all',
                 showProductModal: false,
                 showViewProductModal: false,
                 showQuoteModal: false,
@@ -1012,6 +1106,36 @@
                             Swal.fire({ icon: 'success', title: 'Message Updated', text: data.message, timer: 1200, showConfirmButton: false, background: '#ffffff', color: '#1e293b' });
                         }
                     } catch(e) {}
+                },
+                async deleteInquiry(id, name) {
+                    const confirm = await Swal.fire({
+                        title: 'Delete Message?',
+                        text: `Are you sure you want to delete message from "${name}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, Delete',
+                        cancelButtonText: 'Cancel',
+                        background: '#ffffff',
+                        color: '#1e293b',
+                        confirmButtonColor: '#ef4444'
+                    });
+
+                    if (confirm.isConfirmed) {
+                        try {
+                            const res = await fetch(`/admin/inquiries/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    'Accept': 'application/json'
+                                }
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                                Swal.fire({ icon: 'success', title: 'Deleted', text: data.message, background: '#ffffff', color: '#1e293b' })
+                                    .then(() => window.location.reload());
+                            }
+                        } catch(e) {}
+                    }
                 },
                 viewQuoteDetails(quote) {
                     this.selectedQuote = quote;

@@ -173,6 +173,12 @@
                     <h3 class="font-serif text-base font-bold text-slate-900">All Subcategories</h3>
 
                     <div class="flex items-center gap-3">
+                        <select x-model="statusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <option value="all">All Statuses</option>
+                            <option value="active">Active Only</option>
+                            <option value="inactive">Inactive Only</option>
+                        </select>
+
                         <select x-model="selectedCategoryFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
                             <option value="">All Parent Categories</option>
                             @foreach($categories as $cat)
@@ -200,7 +206,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-xs font-medium text-slate-700">
                             @forelse($subcategories as $sub)
-                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="matchesFilter('{{ $sub->category_id }}', '{{ strtolower($sub->name) }}', '{{ strtolower($sub->slug) }}')">
+                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="matchesFilter('{{ $sub->category_id }}', '{{ strtolower(addslashes($sub->name)) }}', '{{ strtolower(addslashes($sub->slug)) }}', {{ $sub->is_active ? 'true' : 'false' }})">
                                 <td class="py-4 px-6">
                                     <div class="font-bold text-slate-900 text-sm">{{ $sub->name }}</div>
                                     <div class="text-[11px] text-slate-400 line-clamp-1 max-w-xs">{{ $sub->description ?? 'No description' }}</div>
@@ -322,6 +328,7 @@
         function subcategoryManager() {
             return {
                 searchQuery: '',
+                statusFilter: 'all',
                 selectedCategoryFilter: '',
                 modalOpen: false,
                 isEdit: false,
@@ -332,10 +339,12 @@
                     description: '',
                     is_active: true
                 },
-                matchesFilter(catId, name, slug) {
+                matchesFilter(catId, name, slug, isActive) {
                     if (this.selectedCategoryFilter && String(catId) !== String(this.selectedCategoryFilter)) {
                         return false;
                     }
+                    if (this.statusFilter === 'active' && !isActive) return false;
+                    if (this.statusFilter === 'inactive' && isActive) return false;
                     if (!this.searchQuery) return true;
                     const q = this.searchQuery.toLowerCase();
                     return name.includes(q) || slug.includes(q);

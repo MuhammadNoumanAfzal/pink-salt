@@ -83,4 +83,5 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     
     // Contact Submissions Management
     Route::post('/inquiries/{id}/status', [AdminDashboardController::class, 'updateContactStatus'])->name('admin.inquiries.status');
+    Route::delete('/inquiries/{id}', [AdminDashboardController::class, 'deleteContact'])->name('admin.inquiries.delete');
 });

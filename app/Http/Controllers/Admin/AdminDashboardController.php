@@ -243,4 +243,15 @@ class AdminDashboardController extends Controller
             'message' => 'Message status updated to ' . ucfirst($request->status)
         ]);
     }
+
+    public function deleteContact($id)
+    {
+        $contact = ContactSubmission::findOrFail($id);
+        $contact->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Message deleted successfully!'
+        ]);
+    }
 }

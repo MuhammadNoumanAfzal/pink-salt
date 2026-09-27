@@ -147,6 +147,33 @@
 
             <!-- Products Sub-Page Datatable -->
             <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
+                    <h3 class="font-serif text-base font-bold text-slate-900">Product List</h3>
+
+                    <div class="flex items-center gap-3">
+                        <select x-model="statusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <option value="all">All Statuses</option>
+                            <option value="active">Active Only</option>
+                            <option value="inactive">Disabled Only</option>
+                        </select>
+
+                        <select x-model="categoryFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <option value="all">All Categories</option>
+                            <option value="Edible Salt">Edible Salt</option>
+                            <option value="Industrial & Chemical">Industrial & Chemical</option>
+                            <option value="Animal Feed Salt">Animal Feed Salt</option>
+                            <option value="De-Icing Salt">De-Icing Salt</option>
+                            <option value="Salt Lamps & Craft">Salt Lamps & Craft</option>
+                            <option value="Spa & Wellness">Spa & Wellness</option>
+                        </select>
+
+                        <div class="relative w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" x-model="searchQuery" placeholder="Search products..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
@@ -159,7 +186,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             @forelse($products as $prod)
-                            <tr class="hover:bg-slate-50/60">
+                            <tr class="hover:bg-slate-50/60 transition-colors" x-show="(statusFilter === 'all' || ('{{ $prod->is_active }}' === '1' && statusFilter === 'active') || ('{{ $prod->is_active }}' === '0' && statusFilter === 'inactive')) && (categoryFilter === 'all' || '{{ addslashes($prod->category) }}' === categoryFilter) && (searchQuery === '' || '{{ strtolower(addslashes($prod->name)) }} {{ strtolower(addslashes($prod->short_desc ?? '')) }}'.includes(searchQuery.toLowerCase()))">
                                 <td class="p-4">
                                     <div class="flex items-center gap-3">
                                         <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
@@ -368,6 +395,9 @@
     <script>
         function adminProductsPage() {
             return {
+                searchQuery: '',
+                statusFilter: 'all',
+                categoryFilter: 'all',
                 showProductModal: false,
                 showViewProductModal: false,
                 isEditMode: false,

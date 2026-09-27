@@ -169,11 +169,20 @@
 
             <!-- Categories Table Container -->
             <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
-                <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
                     <h3 class="font-serif text-base font-bold text-slate-900">All Categories</h3>
-                    <div class="relative w-64">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                        <input type="text" x-model="searchQuery" placeholder="Filter categories..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                    
+                    <div class="flex items-center gap-3">
+                        <select x-model="statusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <option value="all">All Statuses</option>
+                            <option value="active">Active Only</option>
+                            <option value="inactive">Inactive Only</option>
+                        </select>
+
+                        <div class="relative w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" x-model="searchQuery" placeholder="Filter categories..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                        </div>
                     </div>
                 </div>
 
@@ -190,7 +199,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-xs font-medium text-slate-700">
                             @forelse($categories as $category)
-                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="matchesSearch('{{ strtolower($category->name) }}', '{{ strtolower($category->slug) }}')">
+                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="(statusFilter === 'all' || ('{{ $category->is_active }}' === '1' && statusFilter === 'active') || ('{{ $category->is_active }}' === '0' && statusFilter === 'inactive')) && (searchQuery === '' || '{{ strtolower(addslashes($category->name)) }} {{ strtolower(addslashes($category->description ?? '')) }}'.includes(searchQuery.toLowerCase()))">
                                 <td class="py-4 px-6 flex items-center gap-3">
                                     <img src="{{ $category->image_url ?? '/product1.jpg' }}" alt="{{ $category->name }}" class="w-11 h-11 rounded-lg object-cover border border-slate-200 shrink-0">
                                     <div>
@@ -311,6 +320,7 @@
         function categoryManager() {
             return {
                 searchQuery: '',
+                statusFilter: 'all',
                 modalOpen: false,
                 isEdit: false,
                 editId: null,
