@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Contact Us & Request a Quote — SALTORA</title>
     
     <!-- Meta SEO -->
@@ -38,8 +39,8 @@
 
             <!-- Header Action Button -->
             <div class="hidden sm:flex items-center">
-                <a href="#contact-form" class="bg-saltora-dark hover:bg-black text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group cursor-pointer">
-                    <span>REQUEST A QUOTE</span>
+                <a href="/products" class="bg-saltora-dark hover:bg-black text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group cursor-pointer">
+                    <span>VIEW PRODUCTS</span>
                     <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                     </svg>
@@ -62,8 +63,8 @@
             <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
             <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
             <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">CONTACT</a>
-            <a @click="mobileMenuOpen = false" href="#contact-form" class="block w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer">
-                REQUEST A QUOTE ↗
+            <a @click="mobileMenuOpen = false" href="/products" class="block w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer">
+                BROWSE PRODUCTS ↗
             </a>
         </div>
     </header>
@@ -200,64 +201,108 @@
 
             <!-- Right 7 Cols: Inquiry Form -->
             <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-sm border border-saltora-border shadow-sm reveal-on-scroll reveal-from-right">
-                <form action="#" method="POST" @submit.prevent="alert('Thank you! Your quote request has been submitted. Saltora export desk will contact you within 24 hours.')" class="space-y-6">
-                    
+                <form id="contactForm" class="space-y-6">
+                    @csrf
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Full Name *</label>
-                            <input type="text" required placeholder="e.g. John Doe" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Company Name *</label>
-                            <input type="text" required placeholder="e.g. Global Foods Trading" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Company Name</label>
+                            <input type="text" name="company" placeholder="e.g. Global Foods Trading" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Business Email *</label>
-                            <input type="email" required placeholder="name@company.com" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Phone / WhatsApp *</label>
-                            <input type="tel" required placeholder="+1 234 567 8900" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Phone / WhatsApp</label>
+                            <input type="tel" name="phone" placeholder="+1 234 567 8900" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Product Category *</label>
-                            <select class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
-                                <option>Fine Pink Salt (Table Grade)</option>
-                                <option>Coarse Pink Salt (Grinder Grade)</option>
-                                <option>Himalayan Salt Granules</option>
-                                <option>Salt Chunks / Lumps</option>
-                                <option>Industrial Bulk Salt</option>
-                                <option>Custom / Private Label Packaging</option>
-                            </select>
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Subject / Product</label>
+                            <input type="text" name="subject" placeholder="e.g. Fine Pink Salt FCL Quote" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Target Quantity & Port</label>
-                            <input type="text" placeholder="e.g. 20ft FCL to Port of Rotterdam" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Destination Country</label>
+                            <input type="text" name="country" placeholder="e.g. United States / Germany" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Message / Specifications</label>
-                        <textarea rows="4" placeholder="Detail your required grain size, packaging format, private label branding or special specifications..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm"></textarea>
+                        <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Message / Specifications *</label>
+                        <textarea name="message" required rows="4" placeholder="Detail your required grain size, packaging format, private label branding or special specifications..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 cursor-pointer group">
-                        <span>SUBMIT QUOTE INQUIRY</span>
+                    <button type="submit" id="submitContactBtn" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 cursor-pointer group">
+                        <span>SUBMIT INQUIRY</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
                     </button>
-
                 </form>
+
+                <script>
+                    document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const btn = document.getElementById('submitContactBtn');
+                        btn.disabled = true;
+                        btn.innerHTML = '<span>SENDING INQUIRY...</span>';
+
+                        try {
+                            const response = await fetch('/contact', {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: new FormData(this)
+                            });
+
+                            const data = await response.json();
+                            if (data.success) {
+                                window.Swal.fire({
+                                    icon: 'success',
+                                    title: 'Inquiry Received!',
+                                    text: data.message,
+                                    background: '#1c1917',
+                                    color: '#f5f5f4',
+                                    confirmButtonColor: '#e07a5f'
+                                });
+                                this.reset();
+                            } else {
+                                window.Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.message || 'Validation error.',
+                                    background: '#1c1917',
+                                    color: '#f5f5f4'
+                                });
+                            }
+                        } catch (err) {
+                            window.Swal.fire({
+                                icon: 'error',
+                                title: 'Network Error',
+                                text: 'Failed to send inquiry.',
+                                background: '#1c1917',
+                                color: '#f5f5f4'
+                            });
+                        } finally {
+                            btn.disabled = false;
+                            btn.innerHTML = '<span>SUBMIT INQUIRY</span>';
+                        }
+                    });
+                </script>
             </div>
 
         </div>
