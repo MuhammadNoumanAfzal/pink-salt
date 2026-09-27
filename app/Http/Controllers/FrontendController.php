@@ -168,5 +168,50 @@ class FrontendController extends Controller
 
         return view('order-success', compact('quote'));
     }
+
+    public function blogs(Request $request)
+    {
+        $query = \App\Models\Post::published()->orderBy('created_at', 'desc');
+
+        if ($request->filled('category') && $request->category !== 'all') {
+            $query->where('category', $request->category);
+        }
+
+        if ($request->filled('search')) {
+            $search = strtolower(trim($request->search));
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('excerpt', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+
+        $posts = $query->paginate(9);
+        $featuredPost = \App\Models\Post::published()->where('is_featured', true)->first() ?: \App\Models\Post::published()->first();
+        $categories = \App\Models\Post::published()->pluck('category')->unique();
+
+        return view('blog', compact('posts', 'featuredPost', 'categories'));
+    }
+
+    public function blogDetail($slug)
+    {
+        $post = \App\Models\Post::published()->where('slug', $slug)->firstOrFail();
+        $post->increment('views');
+
+        $relatedPosts = \App\Models\Post::published()
+            ->where('id', '!=', $post->id)
+            ->where('category', $post->category)
+            ->take(3)
+            ->get();
+
+        if ($relatedPosts->count() < 2) {
+            $relatedPosts = \App\Models\Post::published()
+                ->where('id', '!=', $post->id)
+                ->take(3)
+                ->get();
+        }
+
+        return view('blog-detail', compact('post', 'relatedPosts'));
+    }
 }
 

@@ -13,6 +13,8 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
+        $posts = \App\Models\Post::latest()->get();
+
         $stats = [
             'total_products' => Product::count(),
             'active_products' => Product::where('is_active', true)->count(),
@@ -20,13 +22,15 @@ class AdminDashboardController extends Controller
             'pending_quotes' => QuoteRequest::where('status', 'pending')->count(),
             'total_inquiries' => ContactSubmission::count(),
             'unread_inquiries' => ContactSubmission::where('status', 'new')->count(),
+            'total_blogs' => $posts->count(),
+            'published_blogs' => $posts->where('is_published', true)->count(),
         ];
 
         $products = Product::latest()->get();
         $quotes = QuoteRequest::latest()->get();
         $inquiries = ContactSubmission::latest()->get();
 
-        return view('admin.dashboard', compact('stats', 'products', 'quotes', 'inquiries'));
+        return view('admin.dashboard', compact('stats', 'products', 'quotes', 'inquiries', 'posts'));
     }
 
     public function productsIndex()

@@ -23,6 +23,10 @@ Route::get('/certifications', function () { return view('certifications'); })->n
 Route::get('/export-logistics', function () { return view('export-logistics'); })->name('export-logistics');
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
+// Public Blog Pages
+Route::get('/blog', [FrontendController::class, 'blogs'])->name('blog');
+Route::get('/blog/{slug}', [FrontendController::class, 'blogDetail'])->name('blog.detail');
+
 // Legal & Policy Pages
 Route::get('/terms', function () { return view('terms'); })->name('terms');
 Route::get('/privacy', function () { return view('privacy'); })->name('privacy');
@@ -84,4 +88,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Contact Submissions Management
     Route::post('/inquiries/{id}/status', [AdminDashboardController::class, 'updateContactStatus'])->name('admin.inquiries.status');
     Route::delete('/inquiries/{id}', [AdminDashboardController::class, 'deleteContact'])->name('admin.inquiries.delete');
+
+    // Blog Articles Management
+    Route::get('/blogs', [\App\Http\Controllers\Admin\AdminBlogController::class, 'index'])->name('admin.blogs.index');
+    Route::post('/blogs', [\App\Http\Controllers\Admin\AdminBlogController::class, 'store'])->name('admin.blogs.store');
+    Route::put('/blogs/{id}', [\App\Http\Controllers\Admin\AdminBlogController::class, 'update'])->name('admin.blogs.update');
+    Route::post('/blogs/{id}/toggle', [\App\Http\Controllers\Admin\AdminBlogController::class, 'toggleStatus'])->name('admin.blogs.toggle');
+    Route::delete('/blogs/{id}', [\App\Http\Controllers\Admin\AdminBlogController::class, 'destroy'])->name('admin.blogs.delete');
 });

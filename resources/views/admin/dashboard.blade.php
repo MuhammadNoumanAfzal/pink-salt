@@ -16,11 +16,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
+        /* CKEditor Custom Styling */
+        .ck-editor__editable_inline {
+            min-height: 220px !important;
+            max-height: 400px !important;
+            border-bottom-left-radius: 12px !important;
+            border-bottom-right-radius: 12px !important;
+            background-color: #f8fafc !important;
+            font-size: 13px !important;
+            color: #0f172a !important;
+        }
+        .ck-toolbar {
+            border-top-left-radius: 12px !important;
+            border-top-right-radius: 12px !important;
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+        }
+
         /* Completely Hide Scrollbar for Modals (View & Edit) */
         .custom-modal-scroll::-webkit-scrollbar,
         .no-scrollbar::-webkit-scrollbar {
@@ -140,6 +158,17 @@
                     @else
                         <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($inquiries) }}</span>
                     @endif
+                </button>
+
+                <!-- 7. Blogs & Insights -->
+                <button @click="switchTab('blogs')" 
+                    :class="activeTab === 'blogs' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-newspaper text-sm"></i>
+                        <span>Blogs & Insights</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-[#e07a5f]/20 text-[#e07a5f] text-[10px] font-bold rounded-full">{{ count($posts) }}</span>
                 </button>
 
                 <div class="pt-4 border-t border-slate-100">
@@ -719,6 +748,96 @@
                 </div>
             </div>
 
+            <!-- TAB 5: BLOGS & INSIGHTS -->
+            <div x-show="activeTab === 'blogs'" class="space-y-6">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                        <h2 class="text-xl font-bold font-serif text-slate-900">Blog Articles & Export Insights</h2>
+                        <p class="text-xs text-slate-500">Publish guides, industry news, and trade insights for international buyers.</p>
+                    </div>
+                    <button @click="openCreateBlogModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-plus text-[10px]"></i> Add Blog Article
+                    </button>
+                </div>
+
+                <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
+                        <h3 class="font-serif text-sm font-bold text-slate-900">Articles & News</h3>
+
+                        <div class="flex items-center gap-3">
+                            <select x-model="blogStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
+                                <option value="all">All Statuses</option>
+                                <option value="published">Published Only</option>
+                                <option value="draft">Draft Only</option>
+                            </select>
+
+                            <div class="relative w-64">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" x-model="blogSearchQuery" placeholder="Search title, author, category..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
+                                    <th class="p-4">Article Info</th>
+                                    <th class="p-4">Category & Author</th>
+                                    <th class="p-4 text-center">Views</th>
+                                    <th class="p-4 text-center">Status</th>
+                                    <th class="p-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                @forelse($posts as $p)
+                                <tr class="hover:bg-slate-50/60 transition-colors" x-show="matchBlog('{{ addslashes($p->title) }}', '{{ addslashes($p->author) }}', '{{ addslashes($p->category) }}', {{ $p->is_published ? 'true' : 'false' }})">
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <img src="{{ $p->image_url }}" alt="{{ $p->title }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
+                                            <div>
+                                                <h4 class="font-bold text-slate-900 text-sm line-clamp-1">{{ $p->title }}</h4>
+                                                <p class="text-slate-500 text-[11px] line-clamp-1 max-w-xs">{{ $p->excerpt }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 whitespace-nowrap">
+                                        <div class="font-semibold text-slate-900">{{ $p->category }}</div>
+                                        <div class="text-slate-400 text-[11px]"><i class="fa-solid fa-user text-[9px] mr-1"></i> {{ $p->author }}</div>
+                                    </td>
+                                    <td class="p-4 text-center whitespace-nowrap font-mono font-bold text-slate-700">
+                                        {{ number_format($p->views) }}
+                                    </td>
+                                    <td class="p-4 text-center whitespace-nowrap">
+                                        <button @click="toggleBlogStatus({{ $p->id }})" 
+                                            class="px-3 py-1 rounded-full text-[10px] font-bold border transition-all inline-flex items-center gap-1.5 cursor-pointer {{ $p->is_published ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200' }}">
+                                            <span class="w-1.5 h-1.5 rounded-full {{ $p->is_published ? 'bg-emerald-600' : 'bg-slate-500' }}"></span>
+                                            {{ $p->is_published ? 'Published' : 'Draft' }}
+                                        </button>
+                                    </td>
+                                    <td class="p-4 text-right whitespace-nowrap">
+                                        <div class="flex items-center justify-end gap-1.5">
+                                            <a href="{{ route('blog.detail', $p->slug) }}" target="_blank" class="p-2 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Article on Live Site">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                            <button @click="editBlog({{ json_encode($p) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="Edit Article">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <button @click="deleteBlog({{ $p->id }}, '{{ addslashes($p->title) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="Delete Article">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr><td colspan="5" class="p-8 text-center text-slate-400">No blog articles created yet.</td></tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -1046,6 +1165,96 @@
         </div>
     </div>
 
+    <!-- CREATE / EDIT BLOG MODAL -->
+    <div x-show="showBlogModal" @click.self="showBlogModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto cursor-pointer" x-cloak>
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[85vh] flex flex-col my-auto cursor-default">
+            
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
+                <h3 class="text-lg font-bold font-serif text-slate-900" x-text="isEditBlogMode ? 'Edit Blog Article' : 'Add New Blog Article'"></h3>
+                <button @click="showBlogModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form @submit.prevent="saveBlogWithFile($event)" class="space-y-4 text-xs overflow-y-auto custom-modal-scroll py-4 pr-2 flex-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="sm:col-span-2">
+                        <label class="block text-slate-700 font-semibold mb-1">Article Title *</label>
+                        <input type="text" x-model="blogForm.title" name="title" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-1">Category *</label>
+                        <select x-model="blogForm.category" name="category" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                            <option value="Export Insights">Export Insights</option>
+                            <option value="Logistics & Shipping">Logistics & Shipping</option>
+                            <option value="Quality & Purity">Quality & Purity</option>
+                            <option value="Market Trends">Market Trends</option>
+                            <option value="Company News">Company News</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-1">Author Name *</label>
+                        <input type="text" x-model="blogForm.author" name="author" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-1">Reading Time (e.g. 5 min read)</label>
+                        <input type="text" x-model="blogForm.read_time" name="read_time" placeholder="5 min read" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-1">Custom URL Slug (Optional)</label>
+                        <input type="text" x-model="blogForm.slug" name="slug" placeholder="auto-generated-if-empty" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                    </div>
+
+                    <!-- Direct Image Upload from PC Field -->
+                    <div class="sm:col-span-2 bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-2">
+                        <label class="block text-slate-800 font-bold">Featured Image (Upload from PC or URL)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <span class="text-[10px] text-slate-500 font-semibold uppercase block mb-1">Option 1: Upload from Computer</span>
+                                <input type="file" name="image_file" accept="image/*" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-white hover:file:bg-slate-800 cursor-pointer">
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 font-semibold uppercase block mb-1">Option 2: Image URL Path</span>
+                                <input type="text" x-model="blogForm.image_url" name="image_url" placeholder="/product1.jpg" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="block text-slate-700 font-semibold mb-1">Short Excerpt / Summary *</label>
+                        <textarea x-model="blogForm.excerpt" name="excerpt" rows="2" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="block text-slate-700 font-semibold mb-1">Full Article Content (Rich WYSIWYG Editor) *</label>
+                        <div class="text-slate-900">
+                            <textarea id="blogContentEditor" name="content" x-model="blogForm.content" rows="6" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6 sm:col-span-2">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" x-model="blogForm.is_featured" name="is_featured" value="1" class="w-4 h-4 rounded border-slate-300 text-[#e07a5f]">
+                            <span class="text-slate-800 font-semibold">Featured Article</span>
+                        </label>
+
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" x-model="blogForm.is_published" name="is_published" value="1" class="w-4 h-4 rounded border-slate-300 text-[#e07a5f]">
+                            <span class="text-slate-800 font-semibold">Published Live</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4 border-t border-slate-100 shrink-0">
+                    <button type="button" @click="showBlogModal = false" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50 cursor-pointer">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-xs cursor-pointer">Save Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- PRINTABLE INVOICE TEMPLATE (HIDDEN UNTIL PRINT) -->
     <div id="printableInvoice" class="hidden">
         <div style="max-width: 800px; margin: 0 auto; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #ffffff; color: #0f172a; padding: 24px;">
@@ -1249,6 +1458,24 @@
             }
         });
 
+        let blogEditor = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const editorEl = document.querySelector('#blogContentEditor');
+            if (editorEl && typeof ClassicEditor !== 'undefined') {
+                ClassicEditor
+                    .create(editorEl, {
+                        toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo']
+                    })
+                    .then(editor => {
+                        blogEditor = editor;
+                    })
+                    .catch(err => {
+                        console.warn('CKEditor init skipped:', err);
+                    });
+            }
+        });
+
         function adminDashboard() {
             const params = new URLSearchParams(window.location.search);
             let initialTab = params.get('tab') || 'overview';
@@ -1275,6 +1502,119 @@
                 orderStatusFilter: 'all',
                 inquirySearchQuery: '',
                 inquiryStatusFilter: 'all',
+                blogSearchQuery: '',
+                blogStatusFilter: 'all',
+
+                matchBlog(title, author, category, isPublished) {
+                    const search = (this.globalSearch || this.blogSearchQuery || '').toLowerCase().trim();
+                    if (this.blogStatusFilter === 'published' && !isPublished) return false;
+                    if (this.blogStatusFilter === 'draft' && isPublished) return false;
+                    if (!search) return true;
+                    const text = (title + ' ' + author + ' ' + category).toLowerCase();
+                    return text.includes(search);
+                },
+
+                showProductModal: false,
+                showViewProductModal: false,
+                showQuoteModal: false,
+                showInquiryModal: false,
+                showBlogModal: false,
+                isEditMode: false,
+                isEditBlogMode: false,
+                selectedQuote: null,
+                selectedInquiry: null,
+                selectedViewProduct: null,
+                blogForm: { id: null, title: '', slug: '', category: 'Export Insights', author: 'SALTORA Export Desk', read_time: '5 min read', image_url: '', excerpt: '', content: '', is_published: true, is_featured: false },
+                openCreateBlogModal() {
+                    this.isEditBlogMode = false;
+                    this.blogForm = { id: null, title: '', slug: '', category: 'Export Insights', author: 'SALTORA Export Desk', read_time: '5 min read', image_url: '', excerpt: '', content: '', is_published: true, is_featured: false };
+                    if (typeof blogEditor !== 'undefined' && blogEditor) {
+                        blogEditor.setData('');
+                    }
+                    this.showBlogModal = true;
+                },
+                editBlog(post) {
+                    this.isEditBlogMode = true;
+                    this.blogForm = { ...post };
+                    if (typeof blogEditor !== 'undefined' && blogEditor) {
+                        blogEditor.setData(post.content || '');
+                    }
+                    this.showBlogModal = true;
+                },
+                async saveBlogWithFile(event) {
+                    const url = this.isEditBlogMode ? `/admin/blogs/${this.blogForm.id}` : '/admin/blogs';
+                    const formData = new FormData(event.target);
+                    if (this.isEditBlogMode) {
+                        formData.append('_method', 'PUT');
+                    }
+
+                    if (typeof blogEditor !== 'undefined' && blogEditor) {
+                        formData.set('content', blogEditor.getData());
+                    }
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        if (data.success) {
+                            Swal.fire({ icon: 'success', title: 'Saved!', text: data.message, background: '#ffffff', color: '#1e293b', iconColor: '#e07a5f' })
+                                .then(() => window.location.reload());
+                        } else {
+                            Swal.fire({ icon: 'error', title: 'Error', text: data.message || 'Validation failed.', background: '#ffffff', color: '#1e293b' });
+                        }
+                    } catch (e) {
+                        Swal.fire({ icon: 'error', title: 'System Error', text: 'Operation failed.', background: '#ffffff', color: '#1e293b' });
+                    }
+                },
+                async toggleBlogStatus(id) {
+                    try {
+                        const res = await fetch(`/admin/blogs/${id}/toggle`, {
+                            method: 'POST',
+                            headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'), 'Accept': 'application/json' }
+                        });
+                        const data = await res.json();
+                        if (data.success) {
+                            Swal.fire({ icon: 'success', title: 'Updated!', text: data.message, timer: 1200, showConfirmButton: false, background: '#ffffff', color: '#1e293b' }).then(() => window.location.reload());
+                        }
+                    } catch(e) {}
+                },
+                async deleteBlog(id, title) {
+                    const confirm = await Swal.fire({
+                        title: 'Delete Article?',
+                        text: `Are you sure you want to delete "${title}"?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, Delete',
+                        cancelButtonText: 'Cancel',
+                        background: '#ffffff',
+                        color: '#1e293b',
+                        confirmButtonColor: '#ef4444'
+                    });
+
+                    if (confirm.isConfirmed) {
+                        try {
+                            const res = await fetch(`/admin/blogs/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    'Accept': 'application/json'
+                                }
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                                Swal.fire({ icon: 'success', title: 'Deleted', text: data.message, background: '#ffffff', color: '#1e293b' })
+                                    .then(() => window.location.reload());
+                            }
+                        } catch(e) {}
+                    }
+                },
 
                 matchProduct(name, category, isActive, desc) {
                     const search = (this.globalSearch || this.prodSearchQuery || '').toLowerCase().trim();
