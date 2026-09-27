@@ -199,7 +199,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-xs font-medium text-slate-700">
                             @forelse($categories as $category)
-                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="(statusFilter === 'all' || ('{{ $category->is_active }}' === '1' && statusFilter === 'active') || ('{{ $category->is_active }}' === '0' && statusFilter === 'inactive')) && (searchQuery === '' || '{{ strtolower(addslashes($category->name)) }} {{ strtolower(addslashes($category->description ?? '')) }}'.includes(searchQuery.toLowerCase()))">
+                            <tr class="hover:bg-slate-50/80 transition-colors" x-show="matchCategory('{{ addslashes($category->name) }}', '{{ addslashes($category->description ?? '') }}', {{ $category->is_active ? 'true' : 'false' }})">
                                 <td class="py-4 px-6 flex items-center gap-3">
                                     <img src="{{ $category->image_url ?? '/product1.jpg' }}" alt="{{ $category->name }}" class="w-11 h-11 rounded-lg object-cover border border-slate-200 shrink-0">
                                     <div>
@@ -335,6 +335,13 @@
                     if (!this.searchQuery) return true;
                     const q = this.searchQuery.toLowerCase();
                     return name.includes(q) || slug.includes(q);
+                },
+                matchCategory(name, desc, isActive) {
+                    if (this.statusFilter === 'active' && !isActive) return false;
+                    if (this.statusFilter === 'inactive' && isActive) return false;
+                    if (!this.searchQuery) return true;
+                    const q = this.searchQuery.toLowerCase().trim();
+                    return (name + ' ' + (desc || '')).toLowerCase().includes(q);
                 },
                 viewCategory(cat) {
                     const statusHtml = cat.is_active 

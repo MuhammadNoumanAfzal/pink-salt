@@ -186,7 +186,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             @forelse($products as $prod)
-                            <tr class="hover:bg-slate-50/60 transition-colors" x-show="(statusFilter === 'all' || ('{{ $prod->is_active }}' === '1' && statusFilter === 'active') || ('{{ $prod->is_active }}' === '0' && statusFilter === 'inactive')) && (categoryFilter === 'all' || '{{ addslashes($prod->category) }}' === categoryFilter) && (searchQuery === '' || '{{ strtolower(addslashes($prod->name)) }} {{ strtolower(addslashes($prod->short_desc ?? '')) }}'.includes(searchQuery.toLowerCase()))">
+                            <tr class="hover:bg-slate-50/60 transition-colors" x-show="matchProduct('{{ addslashes($prod->name) }}', '{{ addslashes($prod->category) }}', {{ $prod->is_active ? 'true' : 'false' }}, '{{ addslashes($prod->short_desc ?? '') }}')">
                                 <td class="p-4">
                                     <div class="flex items-center gap-3">
                                         <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
@@ -398,6 +398,14 @@
                 searchQuery: '',
                 statusFilter: 'all',
                 categoryFilter: 'all',
+                matchProduct(name, category, isActive, desc) {
+                    if (this.statusFilter === 'active' && !isActive) return false;
+                    if (this.statusFilter === 'inactive' && isActive) return false;
+                    if (this.categoryFilter !== 'all' && String(category).trim() !== String(this.categoryFilter).trim()) return false;
+                    if (!this.searchQuery) return true;
+                    const q = this.searchQuery.toLowerCase().trim();
+                    return (name + ' ' + category + ' ' + (desc || '')).toLowerCase().includes(q);
+                },
                 showProductModal: false,
                 showViewProductModal: false,
                 isEditMode: false,

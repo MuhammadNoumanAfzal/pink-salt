@@ -338,12 +338,15 @@
                             </div>
                         </div>
                         @empty
-                        <div class="col-span-full bg-white p-12 text-center rounded-sm border border-saltora-border space-y-3">
-                            <svg class="w-12 h-12 text-stone-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="col-span-full bg-white p-12 text-center rounded-sm border border-saltora-border space-y-4">
+                            <svg class="w-12 h-12 text-saltora-terracotta mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                             </svg>
-                            <h4 class="font-serif text-xl text-saltora-text">No Products Found</h4>
-                            <p class="text-xs text-saltora-muted max-w-sm mx-auto">There are currently no salt products in this category or matching your search filter.</p>
+                            <h4 class="font-serif text-2xl text-saltora-text font-normal">Export Catalog Updating</h4>
+                            <p class="text-xs text-saltora-muted max-w-md mx-auto leading-relaxed">Our product line is currently being refreshed. Please contact our export desk directly or request a custom quotation tailored to your specifications.</p>
+                            <a href="/contact" class="inline-flex items-center gap-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 py-2.5 text-xs font-bold tracking-wider uppercase transition-all shadow-sm">
+                                <span>CONTACT EXPORT DESK</span>
+                            </a>
                         </div>
                         @endforelse
                     </div>

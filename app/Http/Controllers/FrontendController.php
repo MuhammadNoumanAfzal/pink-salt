@@ -12,7 +12,7 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        $products = Product::where('is_active', true)->take(6)->get();
+        $products = Product::where('is_active', true)->with(['categoryRef', 'subcategoryRef'])->take(8)->get();
         return view('welcome', compact('products'));
     }
 

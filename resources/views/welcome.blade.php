@@ -281,37 +281,44 @@
             <!-- 4 Product Cards Grid with Dual Buttons & Smooth Bottom Reveal -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <!-- Product 1 -->
-                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-1">
+                @forelse($products as $index => $prod)
+                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-{{ ($index % 4) + 1 }}">
                     <div class="space-y-4">
-                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: 'Himalayan Pink Salt', img: '/product1.jpg', tags: ['EDIBLE / FOOD GRADE', 'RETAIL & BULK'], desc: 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — the core of the Saltora range for food and retail buyers.', specs: {grade: 'Food Grade Natural', grain: 'Mixed / Natural', purity: '98.5%+ NaCl', origin: 'Salt Range, Pakistan'}})">
-                            <img src="/product1.jpg" alt="Himalayan Pink Salt Raw" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})">
+                            <img src="{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}" alt="{{ $prod->name }}" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
                         </div>
 
                         <h3 class="font-serif text-2xl text-saltora-text font-normal pt-1">
-                            Himalayan Pink Salt
+                            {{ $prod->name }}
                         </h3>
 
                         <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                            Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — the core of the Saltora range for food and retail buyers.
+                            {{ Str::limit($prod->short_desc ?? 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form.', 140) }}
                         </p>
 
                         <!-- Product Tag Pills -->
                         <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">EDIBLE / FOOD GRADE</span>
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">RETAIL & BULK</span>
+                            @if($prod->categoryRef)
+                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">{{ $prod->categoryRef->name }}</span>
+                            @endif
+                            @if($prod->subcategoryRef)
+                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">{{ $prod->subcategoryRef->name }}</span>
+                            @endif
+                            @if(!$prod->categoryRef && !$prod->subcategoryRef)
+                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">HIMALAYAN PINK SALT</span>
+                            @endif
                         </div>
                     </div>
 
                     <!-- Dual Action Buttons -->
                     <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                        <button @click="addToCart('Himalayan Pink Salt')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
+                        <button @click="addToCart('{{ addslashes($prod->name) }}')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                             </svg>
                             <span>ADD TO CART</span>
                         </button>
-                        <button @click="openQuickView({name: 'Himalayan Pink Salt', img: '/product1.jpg', tags: ['EDIBLE / FOOD GRADE', 'RETAIL & BULK'], desc: 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — the core of the Saltora range for food and retail buyers.', specs: {grade: 'Food Grade Natural', grain: 'Mixed / Natural', purity: '98.5%+ NaCl', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
                             <svg class="w-3.5 h-3.5 text-saltora-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -320,126 +327,30 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-2">
-                    <div class="space-y-4">
-                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: 'Fine Himalayan Pink Salt', img: '/product2.jpg', tags: ['FINE GRAIN', 'TABLE & MANUFACTURING'], desc: 'Finely milled pink salt with a smooth, even texture — suited to table salt, food manufacturing, seasoning blends and food-service use.', specs: {grade: 'Fine Table Grade', grain: '0.2mm – 0.8mm', purity: '98.8%+ NaCl', origin: 'Salt Range, Pakistan'}})">
-                            <img src="/product2.jpg" alt="Fine Himalayan Pink Salt" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-
-                        <h3 class="font-serif text-2xl text-saltora-text font-normal pt-1">
-                            Fine Himalayan Pink Salt
-                        </h3>
-
-                        <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                            Finely milled pink salt with a smooth, even texture — suited to table salt, food manufacturing, seasoning blends and food-service use.
-                        </p>
-
-                        <!-- Product Tag Pills -->
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">FINE GRAIN</span>
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">TABLE & MANUFACTURING</span>
-                        </div>
+                @empty
+                <div class="col-span-full bg-white/80 border border-dashed border-saltora-border p-12 text-center rounded-sm">
+                    <div class="w-16 h-16 bg-saltora-card rounded-full flex items-center justify-center mx-auto mb-4 text-saltora-terracotta">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
                     </div>
-
-                    <!-- Dual Action Buttons -->
-                    <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                        <button @click="addToCart('Fine Himalayan Pink Salt')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
+                    <h3 class="font-serif text-2xl text-saltora-text font-normal mb-2">Export Catalog Updating</h3>
+                    <p class="text-xs text-saltora-muted max-w-md mx-auto mb-6">
+                        Our product catalog is currently being updated with fresh Himalayan salt export batches. For immediate inquiries or custom bulk specifications, please reach out to our export desk.
+                    </p>
+                    <div class="flex items-center justify-center gap-3 flex-wrap">
+                        <a href="/contact" class="inline-flex items-center gap-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all shadow-sm">
+                            <span>CONTACT EXPORT DESK</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
-                            <span>ADD TO CART</span>
-                        </button>
-                        <button @click="openQuickView({name: 'Fine Himalayan Pink Salt', img: '/product2.jpg', tags: ['FINE GRAIN', 'TABLE & MANUFACTURING'], desc: 'Finely milled pink salt with a smooth, even texture — suited to table salt, food manufacturing, seasoning blends and food-service use.', specs: {grade: 'Fine Table Grade', grain: '0.2mm – 0.8mm', purity: '98.8%+ NaCl', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                            <svg class="w-3.5 h-3.5 text-saltora-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                            </svg>
-                            <span>VIEW DETAILS</span>
-                        </button>
+                        </a>
+                        <a href="/contact" class="inline-flex items-center gap-2 border border-saltora-text/30 hover:border-saltora-text text-saltora-text px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all bg-white">
+                            <span>REQUEST CUSTOM QUOTE</span>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Product 3 -->
-                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-3">
-                    <div class="space-y-4">
-                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: 'Coarse Himalayan Pink Salt', img: '/product3.jpg', tags: ['COARSE GRAIN', 'GRINDERS & GOURMET'], desc: 'Coarse, sparkling pink salt crystals for grinders, gourmet retail, food processing and culinary applications.', specs: {grade: 'Coarse Grinder Grade', grain: '2.0mm – 5.0mm', purity: '98.6%+ NaCl', origin: 'Salt Range, Pakistan'}})">
-                            <img src="/product3.jpg" alt="Coarse Himalayan Pink Salt" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-
-                        <h3 class="font-serif text-2xl text-saltora-text font-normal pt-1">
-                            Coarse Himalayan Pink Salt
-                        </h3>
-
-                        <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                            Coarse, sparkling pink salt crystals for grinders, gourmet retail, food processing and culinary applications.
-                        </p>
-
-                        <!-- Product Tag Pills -->
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">COARSE GRAIN</span>
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">GRINDERS & GOURMET</span>
-                        </div>
-                    </div>
-
-                    <!-- Dual Action Buttons -->
-                    <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                        <button @click="addToCart('Coarse Himalayan Pink Salt')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                            </svg>
-                            <span>ADD TO CART</span>
-                        </button>
-                        <button @click="openQuickView({name: 'Coarse Himalayan Pink Salt', img: '/product3.jpg', tags: ['COARSE GRAIN', 'GRINDERS & GOURMET'], desc: 'Coarse, sparkling pink salt crystals for grinders, gourmet retail, food processing and culinary applications.', specs: {grade: 'Coarse Grinder Grade', grain: '2.0mm – 5.0mm', purity: '98.6%+ NaCl', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                            <svg class="w-3.5 h-3.5 text-saltora-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                            </svg>
-                            <span>VIEW DETAILS</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-4">
-                    <div class="space-y-4">
-                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: 'Himalayan Salt Granules', img: '/product4.jpg', tags: ['GRANULATED', 'FOOD & WELLNESS'], desc: 'Uniform mid-size pink salt granules for food production, bath and wellness products, and further processing by manufacturers.', specs: {grade: 'Granulated Grade', grain: '1.0mm – 3.0mm', purity: '98.7%+ NaCl', origin: 'Salt Range, Pakistan'}})">
-                            <img src="/product4.jpg" alt="Himalayan Salt Granules" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-
-                        <h3 class="font-serif text-2xl text-saltora-text font-normal pt-1">
-                            Himalayan Salt Granules
-                        </h3>
-
-                        <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                            Uniform mid-size pink salt granules for food production, bath and wellness products, and further processing by manufacturers.
-                        </p>
-
-                        <!-- Product Tag Pills -->
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">GRANULATED</span>
-                            <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">FOOD & WELLNESS</span>
-                        </div>
-                    </div>
-
-                    <!-- Dual Action Buttons -->
-                    <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                        <button @click="addToCart('Himalayan Salt Granules')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                            </svg>
-                            <span>ADD TO CART</span>
-                        </button>
-                        <button @click="openQuickView({name: 'Himalayan Salt Granules', img: '/product4.jpg', tags: ['GRANULATED', 'FOOD & WELLNESS'], desc: 'Uniform mid-size pink salt granules for food production, bath and wellness products, and further processing by manufacturers.', specs: {grade: 'Granulated Grade', grain: '1.0mm – 3.0mm', purity: '98.7%+ NaCl', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                            <svg class="w-3.5 h-3.5 text-saltora-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                            </svg>
-                            <span>VIEW DETAILS</span>
-                        </button>
-                    </div>
-                </div>
+                @endforelse
 
             </div>
         </div>

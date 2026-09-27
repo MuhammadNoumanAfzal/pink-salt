@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\AdminSubcategoryController;
 */
 
 // Public Frontend Pages
-Route::get('/', function () { return view('welcome'); })->name('home');
+Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', function () { return view('about'); })->name('about');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
 Route::get('/certifications', function () { return view('certifications'); })->name('certifications');
