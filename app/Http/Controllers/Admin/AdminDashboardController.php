@@ -31,26 +31,31 @@ class AdminDashboardController extends Controller
 
     public function productsIndex()
     {
-        $products = Product::latest()->get();
-        return view('admin.products.index', compact('products'));
+        $products = Product::with(['categoryRef', 'subcategoryRef'])->latest()->get();
+        $categories = \App\Models\Category::with('allSubcategories')->get();
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     public function productsCreate()
     {
-        return view('admin.products.create');
+        $categories = \App\Models\Category::with('allSubcategories')->where('is_active', true)->get();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function productsEdit($id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit', compact('product'));
+        $product = Product::with(['categoryRef', 'subcategoryRef'])->findOrFail($id);
+        $categories = \App\Models\Category::with('allSubcategories')->where('is_active', true)->get();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function storeProduct(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:categories,id',
+            'subcategory_id' => 'nullable|exists:subcategories,id',
+            'category' => 'nullable|string|max:255',
             'badge' => 'nullable|string|max:100',
             'grade' => 'nullable|string|max:100',
             'mesh_size' => 'nullable|string|max:100',
@@ -66,7 +71,6 @@ class AdminDashboardController extends Controller
 
         $imageUrl = $validated['image_url'] ?? '/product1.jpg';
 
-        // Handle direct file upload from PC
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
             $filename = time() . '_' . \Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
@@ -78,10 +82,18 @@ class AdminDashboardController extends Controller
             $imageUrl = '/uploads/products/' . $filename;
         }
 
+        $catName = $validated['category'] ?? null;
+        if (!empty($validated['category_id'])) {
+            $catModel = \App\Models\Category::find($validated['category_id']);
+            if ($catModel) $catName = $catModel->name;
+        }
+
         $product = Product::create([
             'name' => $validated['name'],
             'slug' => \Str::slug($validated['name']),
-            'category' => $validated['category'],
+            'category_id' => $validated['category_id'] ?? null,
+            'subcategory_id' => $validated['subcategory_id'] ?? null,
+            'category' => $catName ?? 'Edible Pink Salt',
             'badge' => $validated['badge'] ?? null,
             'grade' => $validated['grade'] ?? null,
             'mesh_size' => $validated['mesh_size'] ?? null,
@@ -90,8 +102,8 @@ class AdminDashboardController extends Controller
             'short_desc' => $validated['short_desc'],
             'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
             'image_url' => $imageUrl,
-            'is_featured' => $request->has('is_featured'),
-            'is_active' => $request->has('is_active'),
+            'is_featured' => $request->has('is_featured') || $request->input('is_featured') == '1',
+            'is_active' => $request->has('is_active') || $request->input('is_active') == '1',
         ]);
 
         return response()->json([
@@ -107,7 +119,9 @@ class AdminDashboardController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:categories,id',
+            'subcategory_id' => 'nullable|exists:subcategories,id',
+            'category' => 'nullable|string|max:255',
             'badge' => 'nullable|string|max:100',
             'grade' => 'nullable|string|max:100',
             'mesh_size' => 'nullable|string|max:100',
@@ -123,7 +137,6 @@ class AdminDashboardController extends Controller
 
         $imageUrl = $product->image_url;
 
-        // Handle direct file upload from PC
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
             $filename = time() . '_' . \Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
@@ -137,10 +150,18 @@ class AdminDashboardController extends Controller
             $imageUrl = $validated['image_url'];
         }
 
+        $catName = $validated['category'] ?? $product->category;
+        if (!empty($validated['category_id'])) {
+            $catModel = \App\Models\Category::find($validated['category_id']);
+            if ($catModel) $catName = $catModel->name;
+        }
+
         $product->update([
             'name' => $validated['name'],
             'slug' => \Str::slug($validated['name']),
-            'category' => $validated['category'],
+            'category_id' => $validated['category_id'] ?? null,
+            'subcategory_id' => $validated['subcategory_id'] ?? null,
+            'category' => $catName,
             'badge' => $validated['badge'] ?? null,
             'grade' => $validated['grade'] ?? null,
             'mesh_size' => $validated['mesh_size'] ?? null,
@@ -149,8 +170,8 @@ class AdminDashboardController extends Controller
             'short_desc' => $validated['short_desc'],
             'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
             'image_url' => $imageUrl,
-            'is_featured' => $request->has('is_featured'),
-            'is_active' => $request->has('is_active'),
+            'is_featured' => $request->has('is_featured') || $request->input('is_featured') == '1',
+            'is_active' => $request->has('is_active') || $request->input('is_active') == '1',
         ]);
 
         return response()->json([

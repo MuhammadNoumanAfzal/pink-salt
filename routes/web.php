@@ -6,6 +6,9 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminSubcategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes - SALTORA Himalayan Pink Salt Exporter
@@ -15,7 +18,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 // Public Frontend Pages
 Route::get('/', function () { return view('welcome'); })->name('home');
 Route::get('/about', function () { return view('about'); })->name('about');
-Route::get('/products', function () { return view('products'); })->name('products');
+Route::get('/products', [FrontendController::class, 'products'])->name('products');
 Route::get('/certifications', function () { return view('certifications'); })->name('certifications');
 Route::get('/export-logistics', function () { return view('export-logistics'); })->name('export-logistics');
 Route::get('/contact', function () { return view('contact'); })->name('contact');
@@ -59,6 +62,21 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/products/{id}/toggle', [AdminDashboardController::class, 'toggleProductStatus'])->name('admin.products.toggle');
     Route::delete('/products/{id}', [AdminDashboardController::class, 'deleteProduct'])->name('admin.products.delete');
     
+    // Category CRUD Operations
+    Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.categories.index');
+    Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
+    Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
+    Route::post('/categories/{id}/toggle', [AdminCategoryController::class, 'toggleStatus'])->name('admin.categories.toggle');
+    Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.delete');
+    Route::get('/categories/{id}/subcategories', [AdminCategoryController::class, 'getSubcategories'])->name('admin.categories.subcategories');
+
+    // Subcategory CRUD Operations
+    Route::get('/subcategories', [AdminSubcategoryController::class, 'index'])->name('admin.subcategories.index');
+    Route::post('/subcategories', [AdminSubcategoryController::class, 'store'])->name('admin.subcategories.store');
+    Route::put('/subcategories/{id}', [AdminSubcategoryController::class, 'update'])->name('admin.subcategories.update');
+    Route::post('/subcategories/{id}/toggle', [AdminSubcategoryController::class, 'toggleStatus'])->name('admin.subcategories.toggle');
+    Route::delete('/subcategories/{id}', [AdminSubcategoryController::class, 'destroy'])->name('admin.subcategories.delete');
+
     // Order Management
     Route::post('/quotes/{id}/status', [AdminDashboardController::class, 'updateQuoteStatus'])->name('admin.quotes.status');
     

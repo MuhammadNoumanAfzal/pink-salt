@@ -66,14 +66,28 @@
                     <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded-full font-bold">{{ count($products) }}</span>
                 </a>
 
-                <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-folder-tree text-sm"></i>
+                        <span>Categories</span>
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-diagram-nested text-sm"></i>
+                        <span>Subcategories</span>
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span>Bulk Store Orders</span>
                     </div>
                 </a>
 
-                <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
+                <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-envelope-open-text text-sm"></i>
                         <span>Customer Messages</span>

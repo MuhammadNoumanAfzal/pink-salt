@@ -102,6 +102,20 @@
                     </a>
                 </div>
 
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-folder-tree text-sm"></i>
+                        <span>Categories</span>
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-diagram-nested text-sm"></i>
+                        <span>Subcategories</span>
+                    </div>
+                </a>
+
                 <button @click="activeTab = 'orders'" 
                     :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">

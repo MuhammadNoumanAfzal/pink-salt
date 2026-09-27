@@ -53,13 +53,18 @@
 
                         <div>
                             <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                            <select name="category" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                <option value="Edible Salt">Edible Salt</option>
-                                <option value="Industrial & Chemical">Industrial & Chemical</option>
-                                <option value="Animal Feed Salt">Animal Feed Salt</option>
-                                <option value="De-Icing Salt">De-Icing Salt</option>
-                                <option value="Salt Lamps & Craft">Salt Lamps & Craft</option>
-                                <option value="Spa & Wellness">Spa & Wellness</option>
+                            <select name="category_id" id="category_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                <option value="">Select Category...</option>
+                                @foreach($categories as $cat)
+                                <option value="{{ $cat->id }}" data-subcategories="{{ json_encode($cat->allSubcategories) }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 font-semibold mb-1">Subcategory</label>
+                            <select name="subcategory_id" id="subcategory_id_select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                <option value="">Select Subcategory...</option>
                             </select>
                         </div>
 
@@ -122,6 +127,21 @@
     </div>
 
     <script>
+        document.getElementById('category_id_select').addEventListener('change', function() {
+            const subSelect = document.getElementById('subcategory_id_select');
+            subSelect.innerHTML = '<option value="">Select Subcategory...</option>';
+            const selectedOpt = this.options[this.selectedIndex];
+            if (selectedOpt && selectedOpt.dataset.subcategories) {
+                const subs = JSON.parse(selectedOpt.dataset.subcategories);
+                subs.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.id;
+                    opt.textContent = s.name;
+                    subSelect.appendChild(opt);
+                });
+            }
+        });
+
         document.getElementById('createProductForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('saveBtn');

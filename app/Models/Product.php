@@ -10,22 +10,35 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'category_id',
+        'subcategory_id',
         'name',
         'slug',
-        'image',
-        'short_description',
-        'full_description',
-        'grade_spec',
-        'grain_size',
-        'purity',
-        'origin',
         'category',
-        'tags',
+        'badge',
+        'grade',
+        'mesh_size',
+        'purity',
+        'packaging',
+        'image_url',
+        'short_desc',
+        'full_desc',
+        'is_featured',
         'is_active',
     ];
 
     protected $casts = [
-        'tags' => 'array',
+        'is_featured' => 'boolean',
         'is_active' => 'boolean',
     ];
+
+    public function categoryRef()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function subcategoryRef()
+    {
+        return $this->belongsTo(Subcategory::class, 'subcategory_id');
+    }
 }

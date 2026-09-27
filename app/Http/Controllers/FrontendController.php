@@ -23,8 +23,22 @@ class FrontendController extends Controller
 
     public function products()
     {
-        $products = Product::where('is_active', true)->get();
-        return view('products', compact('products'));
+        $categories = \App\Models\Category::where('is_active', true)
+            ->with(['subcategories' => function ($q) {
+                $q->where('is_active', true)->withCount(['products' => function($pq) {
+                    $pq->where('is_active', true);
+                }]);
+            }])
+            ->withCount(['products' => function($pq) {
+                $pq->where('is_active', true);
+            }])
+            ->get();
+
+        $products = Product::where('is_active', true)
+            ->with(['categoryRef', 'subcategoryRef'])
+            ->get();
+
+        return view('products', compact('products', 'categories'));
     }
 
     public function certifications()
