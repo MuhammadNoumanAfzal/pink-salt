@@ -86,7 +86,7 @@
                 </button>
 
                 <!-- 2. Categories -->
-                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-layer-group text-sm"></i>
                         <span>Categories</span>
@@ -94,7 +94,7 @@
                 </a>
 
                 <!-- 3. Subcategories -->
-                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-tags text-sm"></i>
                         <span>Subcategories</span>
@@ -143,12 +143,12 @@
                 </button>
 
                 <div class="pt-4 border-t border-slate-100">
-                    <a href="/sitemap" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left">
+                    <a href="/sitemap" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left cursor-pointer">
                         <i class="fa-solid fa-sitemap text-sm text-emerald-600"></i>
                         <span>HTML Sitemap</span>
                     </a>
 
-                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left">
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left cursor-pointer">
                         <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
                         <span>View Live Store</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-auto opacity-60"></i>
@@ -172,7 +172,7 @@
                 
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 transition-colors" title="Logout">
+                    <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer" title="Logout">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </form>
@@ -467,13 +467,13 @@
                         <h3 class="font-serif text-sm font-bold text-slate-900">Catalog Products</h3>
 
                         <div class="flex items-center gap-3">
-                            <select x-model="prodStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <select x-model="prodStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                 <option value="all">All Statuses</option>
                                 <option value="active">Active Only</option>
                                 <option value="inactive">Disabled Only</option>
                             </select>
 
-                            <select x-model="prodCategoryFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <select x-model="prodCategoryFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                 <option value="all">All Categories</option>
                                 <option value="Edible Salt">Edible Salt</option>
                                 <option value="Industrial & Chemical">Industrial & Chemical</option>
@@ -560,7 +560,7 @@
                         <h3 class="font-serif text-sm font-bold text-slate-900">Store Orders</h3>
 
                         <div class="flex items-center gap-3">
-                            <select x-model="orderStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <select x-model="orderStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                 <option value="all">All Order Statuses</option>
                                 <option value="pending">Pending</option>
                                 <option value="processing">Processing</option>
@@ -655,7 +655,7 @@
                         <h3 class="font-serif text-sm font-bold text-slate-900">Store Inquiries</h3>
 
                         <div class="flex items-center gap-3">
-                            <select x-model="inquiryStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f]">
+                            <select x-model="inquiryStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                 <option value="all">All Message Statuses</option>
                                 <option value="new">New</option>
                                 <option value="read">Read</option>
@@ -723,7 +723,7 @@
     </div>
 
     <!-- CREATE / EDIT PRODUCT MODAL (FIXED SCROLLBAR & FILE UPLOAD FROM PC) -->
-    <div x-show="showProductModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto" x-cloak>
+    <div x-show="showProductModal" @click.self="showProductModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto cursor-pointer" x-cloak>
         <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[85vh] flex flex-col my-auto">
             
             <div class="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
@@ -817,7 +817,7 @@
     </div>
 
     <!-- VIEW PRODUCT DETAILS MODAL -->
-    <div x-show="showViewProductModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto" x-cloak>
+    <div x-show="showViewProductModal" @click.self="showViewProductModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto cursor-pointer" x-cloak>
         <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative max-h-[85vh] flex flex-col my-auto">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
                 <div class="flex items-center gap-2">
@@ -883,83 +883,164 @@
     </div>
 
     <!-- VIEW ORDER DETAILS MODAL -->
-    <div x-show="showQuoteModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs" x-cloak>
-        <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+    <div x-show="showQuoteModal" @click.self="showQuoteModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs cursor-pointer" x-cloak>
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-3xl w-full p-6 shadow-2xl relative space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                 <div>
-                    <h3 class="text-lg font-bold font-serif text-slate-900">Order Invoice Details <span class="text-[#e07a5f] font-mono" x-text="selectedQuote?.quote_number"></span></h3>
-                    <p class="text-xs text-slate-400" x-text="'Placed on ' + selectedQuote?.created_at"></p>
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-xl font-serif font-bold text-slate-900">Order Invoice Details</h3>
+                        <span class="px-2.5 py-0.5 bg-[#e07a5f]/10 text-[#e07a5f] font-mono font-bold rounded-md text-xs border border-[#e07a5f]/30" x-text="selectedQuote?.quote_number"></span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1" x-text="'Registered on ' + (selectedQuote?.created_at ? new Date(selectedQuote.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '')"></p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button @click="printInvoice(selectedQuote)" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 cursor-pointer">
-                        <i class="fa-solid fa-print"></i> Print Invoice
+                    <button @click="printInvoice(selectedQuote)" class="px-4 py-2 bg-[#e07a5f] hover:bg-[#d46a4f] text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer shadow-sm transition-all">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Print Invoice</span>
                     </button>
-                    <button @click="showQuoteModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+                    <button @click="showQuoteModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer p-1.5 rounded-lg hover:bg-slate-100 transition-all"><i class="fa-solid fa-xmark text-lg"></i></button>
                 </div>
             </div>
 
             <div class="space-y-4 text-xs">
-                <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
-                    <div>
-                        <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold">Buyer / Company</span>
+                <!-- Buyer & Destination Info Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] uppercase font-bold text-[#e07a5f] tracking-wider block"><i class="fa-solid fa-building mr-1"></i> Buyer / Importer Details</span>
                         <p class="font-bold text-slate-900 text-sm" x-text="selectedQuote?.company_name"></p>
-                        <p class="text-slate-700" x-text="selectedQuote?.full_name"></p>
-                        <p class="text-slate-500" x-text="selectedQuote?.email"></p>
-                        <p class="text-slate-500" x-text="selectedQuote?.phone"></p>
+                        <p class="text-slate-700 font-semibold"><i class="fa-solid fa-user text-slate-400 mr-1 text-[10px]"></i> <span x-text="selectedQuote?.full_name"></span></p>
+                        <p class="text-slate-600"><i class="fa-solid fa-envelope text-slate-400 mr-1 text-[10px]"></i> <span x-text="selectedQuote?.email"></span></p>
+                        <p class="text-slate-600"><i class="fa-solid fa-phone text-slate-400 mr-1 text-[10px]"></i> <span x-text="selectedQuote?.phone"></span></p>
                     </div>
 
-                    <div>
-                        <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold">Shipment Destination</span>
-                        <p class="font-bold text-[#e07a5f]" x-text="selectedQuote?.destination_country"></p>
-                        <p class="text-slate-700" x-text="'Target Port: ' + (selectedQuote?.destination_port || 'Port of Entry')"></p>
-                        <p class="text-slate-500" x-text="'Delivery Timeline: ' + (selectedQuote?.target_date || 'Flexible')"></p>
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] uppercase font-bold text-[#e07a5f] tracking-wider block"><i class="fa-solid fa-earth-americas mr-1"></i> Shipment Destination</span>
+                        <p class="font-bold text-slate-900 text-sm"><i class="fa-solid fa-location-dot text-[#e07a5f] mr-1"></i> <span x-text="selectedQuote?.destination_country"></span></p>
+                        <p class="text-slate-700 font-semibold" x-text="'Target Port: ' + (selectedQuote?.destination_port || 'Port Qasim / Karachi')"></p>
+                        <p class="text-slate-600" x-text="'Target Date: ' + (selectedQuote?.target_date || 'Standard Export Schedule')"></p>
+                        <div class="pt-1">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border"
+                                  :class="selectedQuote?.status === 'completed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : (selectedQuote?.status === 'processing' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-amber-50 text-amber-700 border-amber-200')"
+                                  x-text="'Status: ' + (selectedQuote?.status ? selectedQuote.status.charAt(0).toUpperCase() + selectedQuote.status.slice(1) : 'Pending')">
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <h4 class="font-bold text-slate-800 mb-2">Cart Line Items Ordered:</h4>
-                    <div class="bg-slate-50 rounded-xl border border-slate-200 divide-y divide-slate-200/60 max-h-48 overflow-y-auto">
-                        <template x-for="item in selectedQuote?.items" :key="item.id">
-                            <div class="p-3 flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900 text-xs" x-text="item.name"></span>
-                                    <span class="text-[10px] text-slate-500 block" x-text="item.category"></span>
-                                </div>
-                                <div class="text-right">
-                                    <span class="font-mono text-[#e07a5f] font-bold" x-text="item.quantity + ' Metric Tons'"></span>
-                                </div>
-                            </div>
-                        </template>
+                <!-- Cart Line Items Table -->
+                <div class="space-y-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Ordered Salt Line Items</span>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead class="bg-slate-900 text-white font-serif uppercase tracking-wider text-[10px]">
+                                <tr>
+                                    <th class="p-3 px-4">Product Name & Grade</th>
+                                    <th class="p-3 px-4">Category</th>
+                                    <th class="p-3 px-4 text-right">Volume (Metric Tons)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <template x-for="item in selectedQuote?.items" :key="item.name">
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="p-3 px-4 font-bold text-slate-900" x-text="item.name"></td>
+                                        <td class="p-3 px-4 text-slate-500 uppercase text-[10px] font-semibold" x-text="item.category || 'Salt Export'"></td>
+                                        <td class="p-3 px-4 text-right font-mono font-bold text-[#e07a5f]" x-text="item.quantity + ' Metric Tons'"></td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+
+                <!-- Notes / Packaging Instructions -->
+                <div x-show="selectedQuote?.notes" class="bg-amber-50/80 border border-amber-200/80 p-3.5 rounded-xl space-y-1">
+                    <span class="font-bold text-amber-900 uppercase text-[10px] block"><i class="fa-solid fa-clipboard-list mr-1"></i> Packaging Instructions & Buyer Notes:</span>
+                    <p class="text-amber-900/90 font-light leading-relaxed" x-text="selectedQuote?.notes"></p>
                 </div>
             </div>
 
-            <div class="flex justify-end pt-4 border-t border-slate-100 mt-4">
-                <button @click="showQuoteModal = false" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs cursor-pointer">Close</button>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                <button @click="printInvoice(selectedQuote)" class="px-5 py-2.5 bg-[#e07a5f] hover:bg-[#d46a4f] text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer shadow-md transition-all">
+                    <i class="fa-solid fa-print text-sm"></i>
+                    <span>Print Proforma Invoice</span>
+                </button>
+                <button @click="showQuoteModal = false" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs cursor-pointer">Close</button>
             </div>
         </div>
     </div>
 
     <!-- VIEW INQUIRY DETAILS MODAL -->
-    <div x-show="showInquiryModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs" x-cloak>
-        <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                <h3 class="text-lg font-bold font-serif text-slate-900">Customer Message</h3>
-                <button @click="showInquiryModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+    <div x-show="showInquiryModal" @click.self="showInquiryModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs cursor-pointer" x-cloak>
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-lg font-bold font-serif text-slate-900">Customer Message</h3>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border"
+                              :class="selectedInquiry?.status === 'replied' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : (selectedInquiry?.status === 'read' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-rose-50 text-rose-700 border-rose-200')"
+                              x-text="selectedInquiry?.status ? selectedInquiry.status.toUpperCase() : 'NEW'">
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-0.5" x-text="'Received on ' + (selectedInquiry?.created_at ? new Date(selectedInquiry.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '')"></p>
+                </div>
+                <button @click="showInquiryModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer p-1.5 rounded-lg hover:bg-slate-100 transition-all"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
             <div class="space-y-4 text-xs">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <p class="text-sm font-bold text-slate-900" x-text="selectedInquiry?.name"></p>
-                    <p class="text-slate-600" x-text="selectedInquiry?.email"></p>
+                <!-- Sender Information Card -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-[#e07a5f] block"><i class="fa-solid fa-id-card mr-1"></i> Sender Information</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
+                        <div>
+                            <span class="text-slate-400 block text-[10px]">Name:</span>
+                            <span class="font-bold text-slate-900 text-sm" x-text="selectedInquiry?.name"></span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block text-[10px]">Email Address:</span>
+                            <a :href="'mailto:' + selectedInquiry?.email" class="font-semibold text-[#e07a5f] hover:underline cursor-pointer" x-text="selectedInquiry?.email"></a>
+                        </div>
+                        <template x-if="selectedInquiry?.company">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Company:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.company"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.phone">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Phone / WhatsApp:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.phone"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.category">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Interested Category:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.category"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.quantity_port">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Target Quantity / Port:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.quantity_port"></span>
+                            </div>
+                        </template>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-slate-400 text-[10px] font-bold uppercase">Message:</span>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-slate-800 whitespace-pre-line mt-1" x-text="selectedInquiry?.message"></div>
+
+                <!-- Message Body -->
+                <div class="space-y-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block"><i class="fa-solid fa-comment-dots mr-1"></i> Inquiry Message Content:</span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-slate-800 whitespace-pre-line leading-relaxed text-xs font-normal shadow-xs">
+                        <i class="fa-solid fa-quote-left text-[#e07a5f]/30 text-base mr-1.5 block mb-1"></i>
+                        <span x-text="selectedInquiry?.message || 'No message text provided.'"></span>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex justify-end pt-4 border-t border-slate-100 mt-4">
+            <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                <a :href="'mailto:' + selectedInquiry?.email" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-sm transition-all">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Reply via Email</span>
+                </a>
                 <button @click="showInquiryModal = false" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs cursor-pointer">Close</button>
             </div>
         </div>
@@ -967,69 +1048,76 @@
 
     <!-- PRINTABLE INVOICE TEMPLATE (HIDDEN UNTIL PRINT) -->
     <div id="printableInvoice" class="hidden">
-        <div class="max-w-3xl mx-auto p-8 border border-slate-300 rounded-lg space-y-6">
-            <div class="flex items-center justify-between border-b-2 border-slate-900 pb-4">
-                <div class="flex items-center gap-3">
-                    <img src="/logo.png" alt="SALTORA Logo" class="w-10 h-10 object-contain">
+        <div style="max-width: 800px; margin: 0 auto; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #ffffff; color: #0f172a; padding: 24px;">
+            
+            <!-- OFFICIAL LETTERHEAD HEADER -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0f172a; padding-bottom: 16px; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="/logo.png" alt="SALTORA Logo" style="height: 48px; width: auto;">
                     <div>
-                        <h1 class="text-2xl font-serif font-bold text-slate-900">SALTORA EXPORTER</h1>
-                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-widest">Himalayan Pink Salt Mines & Export Desk — Pakistan</p>
+                        <h1 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #0f172a; margin: 0; line-height: 1;">SALTORA</h1>
+                        <p style="font-size: 10px; font-weight: 700; color: #e07a5f; text-transform: uppercase; letter-spacing: 2px; margin: 4px 0 0 0;">Himalayan Pink Salt Exporter • Pakistan</p>
+                        <p style="font-size: 9px; color: #64748b; margin: 2px 0 0 0;">Salt Range Mines Office, Khewra / Port of Karachi • Sales: +92 318 0735748 • saltora1329@gmail.com</p>
                     </div>
                 </div>
-                <div class="text-right">
-                    <h2 class="text-xl font-bold font-mono text-[#e07a5f]">PROFORMA INVOICE</h2>
-                    <p class="text-xs font-mono text-slate-600" id="printOrderRef"></p>
-                    <p class="text-[10px] text-slate-400" id="printOrderDate"></p>
+                <div style="text-align: right;">
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #0f172a; margin: 0; text-transform: uppercase;">PROFORMA INVOICE</h2>
+                    <p style="font-family: monospace; font-size: 14px; font-weight: 700; color: #e07a5f; margin: 2px 0 0 0;" id="printOrderRef"></p>
+                    <p style="font-size: 10px; color: #64748b; margin: 2px 0 0 0;" id="printOrderDate"></p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-6 text-xs bg-slate-50 p-4 rounded-lg border border-slate-200">
+            <!-- BUYER & DESTINATION GRID -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 11px; background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
                 <div>
-                    <span class="font-bold text-slate-900 uppercase text-[10px] text-[#e07a5f]">EXPORTER DESK:</span>
-                    <p class="font-bold text-slate-900 mt-1">SALTORA Himalayan Pink Salt Export Desk</p>
-                    <p class="text-slate-600">Port of Karachi / Port Qasim, Pakistan</p>
-                    <p class="text-slate-600">Email: saltora1329@gmail.com | Phone: +92 318 0735748</p>
+                    <span style="font-size: 9px; font-weight: 700; color: #e07a5f; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">BUYER / IMPORTER DETAILS:</span>
+                    <p style="font-weight: 700; color: #0f172a; font-size: 13px; margin: 0;" id="printCustomerCompany"></p>
+                    <p style="color: #334155; margin: 3px 0 0 0;" id="printCustomerName"></p>
+                    <p style="color: #64748b; margin: 2px 0 0 0;" id="printCustomerEmail"></p>
                 </div>
                 <div>
-                    <span class="font-bold text-slate-900 uppercase text-[10px] text-[#e07a5f]">BUYER / IMPORTER DETAILS:</span>
-                    <p class="font-bold text-slate-900 mt-1" id="printCustomerCompany"></p>
-                    <p class="text-slate-700" id="printCustomerName"></p>
-                    <p class="text-slate-600" id="printCustomerEmail"></p>
-                    <p class="text-slate-600" id="printDestinationPort"></p>
+                    <span style="font-size: 9px; font-weight: 700; color: #e07a5f; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">SHIPMENT & PORT DESTINATION:</span>
+                    <p style="font-weight: 700; color: #0f172a; font-size: 13px; margin: 0;" id="printDestinationPort"></p>
+                    <p style="color: #334155; margin: 3px 0 0 0;">Fulfillment Status: <span style="background: #fef3c7; color: #92400e; font-weight: 700; padding: 2px 8px; border-radius: 9999px; font-size: 9px;">Pending Export Review</span></p>
+                    <p style="color: #64748b; margin: 2px 0 0 0;">Payment Terms: <span style="font-weight: 600; color: #0f172a;">FOB Karachi — 50% Advance & 50% B/L</span></p>
                 </div>
             </div>
 
-            <div>
-                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-2">Itemized Export Shipment Breakdown:</h3>
-                <table class="w-full text-left border-collapse text-xs border border-slate-200">
+            <!-- LINE ITEMS TABLE -->
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0 0 8px 0;">Itemized Export Shipment Breakdown:</h3>
+                <table style="width: 100%; text-align: left; border-collapse: collapse; font-size: 11px; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden;">
                     <thead>
-                        <tr class="bg-slate-100 text-slate-700 uppercase font-bold text-[10px]">
-                            <th class="p-3 border border-slate-200">Product Name</th>
-                            <th class="p-3 border border-slate-200">Export Category</th>
-                            <th class="p-3 border border-slate-200 text-right">Tonnage Quantity</th>
+                        <tr style="background: #0f172a; color: #ffffff; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px;">
+                            <th style="padding: 10px 14px; border-right: 1px solid #334155;">Product Name & Grade</th>
+                            <th style="padding: 10px 14px; border-right: 1px solid #334155;">Export Category</th>
+                            <th style="padding: 10px 14px; text-align: right;">Volume (Metric Tons)</th>
                         </tr>
                     </thead>
-                    <tbody id="printItemsList" class="divide-y divide-slate-200"></tbody>
+                    <tbody id="printItemsList" style="background: #ffffff;"></tbody>
+                    <tfoot>
+                        <tr style="background: #f8fafc; font-weight: 700; border-top: 2px solid #cbd5e1;">
+                            <td colspan="2" style="padding: 10px 14px; color: #0f172a; text-transform: uppercase;">TOTAL ESTIMATED SHIPMENT VOLUME:</td>
+                            <td style="padding: 10px 14px; text-align: right; font-family: monospace; font-size: 13px; color: #e07a5f;" id="printTotalTons"></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
-            <div class="border-t border-slate-200 pt-4 flex justify-between items-center text-xs">
-                <div>
-                    <span class="font-bold uppercase text-[10px] text-slate-500 block">STANDARD EXPORT TERMS:</span>
-                    <p class="text-slate-600 italic">FOB Karachi — 50% Advance & 50% upon presentation of Bill of Lading (B/L).</p>
-                </div>
-                <div class="text-right border border-slate-300 p-3 rounded-md bg-slate-50">
-                    <span class="text-[10px] uppercase font-bold text-slate-500 block">Total Order Volume:</span>
-                    <span class="text-lg font-bold font-mono text-slate-900" id="printTotalTons"></span>
-                </div>
+            <!-- BUYER NOTES -->
+            <div id="printBuyerNotes" class="hidden" style="background: #fffbeb; border: 1px solid #fde68a; padding: 12px; border-radius: 8px; font-size: 10px; color: #78350f; margin-bottom: 20px;">
             </div>
 
-            <div class="pt-8 border-t border-slate-200 flex justify-between items-end text-[10px] text-slate-400">
+            <!-- SIGNATURE & STAMP FOOTER -->
+            <div style="padding-top: 24px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; color: #94a3b8;">
                 <div>
-                    <p class="font-bold text-slate-700">SALTORA EXPORT DESK STAMP & SIGNATURE</p>
-                    <div class="w-32 h-12 border-b border-dashed border-slate-400 mt-2"></div>
+                    <p style="font-weight: 700; color: #334155; text-transform: uppercase; margin: 0;">Authorized Signature & Export Desk Stamp</p>
+                    <div style="width: 180px; height: 40px; border-bottom: 1px dashed #94a3b8; margin-top: 8px;"></div>
                 </div>
-                <p>Generated automatically by SALTORA Admin Console • www.saltora.net</p>
+                <div style="text-align: right;">
+                    <p style="font-weight: 700; color: #334155; margin: 0;">SALTORA EXPORT DESK • PAKISTAN</p>
+                    <p style="margin: 2px 0 0 0;">Document Generated automatically • www.saltora.net</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1265,37 +1353,52 @@
                     }
                 },
                 printInvoice(order) {
+                    if (!order) return;
                     document.getElementById('printOrderRef').innerText = 'REF #: ' + order.quote_number;
-                    document.getElementById('printOrderDate').innerText = 'Date: ' + new Date(order.created_at).toLocaleDateString();
+                    const dateObj = new Date(order.created_at);
+                    document.getElementById('printOrderDate').innerText = 'Date: ' + (isNaN(dateObj) ? order.created_at : dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }));
                     document.getElementById('printCustomerCompany').innerText = order.company_name;
-                    document.getElementById('printCustomerName').innerText = 'Contact: ' + order.full_name;
+                    document.getElementById('printCustomerName').innerText = 'Contact: ' + order.full_name + (order.phone ? ' | Phone: ' + order.phone : '');
                     document.getElementById('printCustomerEmail').innerText = 'Email: ' + order.email;
-                    document.getElementById('printDestinationPort').innerText = 'Destination: ' + order.destination_country + ' (' + (order.destination_port || 'Port Qasim') + ')';
+                    document.getElementById('printDestinationPort').innerText = order.destination_country + ' (' + (order.destination_port || 'Port Qasim / Karachi') + ')';
                     
                     let itemsHtml = '';
                     let totalTons = 0;
                     (order.items || []).forEach(item => {
+                        const qty = parseInt(item.quantity || 20);
                         itemsHtml += `
-                            <tr>
-                                <td class="p-3 border border-slate-200 font-bold">${item.name}</td>
-                                <td class="p-3 border border-slate-200 text-slate-600">${item.category}</td>
-                                <td class="p-3 border border-slate-200 text-right font-mono font-bold">${item.quantity} Metric Tons</td>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 10px 14px; font-weight: 700; color: #0f172a; border-right: 1px solid #e2e8f0;">${item.name}</td>
+                                <td style="padding: 10px 14px; color: #64748b; text-transform: uppercase; font-size: 9px; font-weight: 600; border-right: 1px solid #e2e8f0;">${item.category || 'Salt Export'}</td>
+                                <td style="padding: 10px 14px; text-align: right; font-family: monospace; font-weight: 700; color: #e07a5f;">${qty.toLocaleString()} Metric Tons</td>
                             </tr>
                         `;
-                        totalTons += parseInt(item.quantity || 0);
+                        totalTons += qty;
                     });
                     document.getElementById('printItemsList').innerHTML = itemsHtml;
-                    document.getElementById('printTotalTons').innerText = totalTons + ' Metric Tons';
+                    document.getElementById('printTotalTons').innerText = totalTons.toLocaleString() + ' Metric Tons';
+
+                    const printNotesEle = document.getElementById('printBuyerNotes');
+                    if (printNotesEle) {
+                        if (order.notes) {
+                            printNotesEle.innerHTML = `<strong style="text-transform: uppercase;">Packaging Instructions / Buyer Notes:</strong> ${order.notes}`;
+                            printNotesEle.classList.remove('hidden');
+                        } else {
+                            printNotesEle.classList.add('hidden');
+                        }
+                    }
 
                     const printContents = document.getElementById('printableInvoice').innerHTML;
                     const printWindow = window.open('', '', 'height=800,width=900');
-                    printWindow.document.write('<html><head><title>SALTORA Proforma Invoice - ' + order.quote_number + '</title>');
-                    printWindow.document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
-                    printWindow.document.write('</head><body class="bg-white p-8">');
+                    printWindow.document.write('<!DOCTYPE html><html><head><title>SALTORA Proforma Invoice - ' + order.quote_number + '</title>');
+                    printWindow.document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">');
+                    printWindow.document.write('<style>@page { size: A4 portrait; margin: 8mm 10mm; } body { font-family: system-ui, -apple-system, sans-serif; background: #ffffff; color: #0f172a; padding: 10px; margin: 0; } </style>');
+                    printWindow.document.write('</head><body class="bg-white">');
                     printWindow.document.write(printContents);
                     printWindow.document.write('</body></html>');
                     printWindow.document.close();
                     setTimeout(() => {
+                        printWindow.focus();
                         printWindow.print();
                     }, 500);
                 },
