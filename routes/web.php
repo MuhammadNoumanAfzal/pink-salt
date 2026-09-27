@@ -20,6 +20,11 @@ Route::get('/certifications', function () { return view('certifications'); })->n
 Route::get('/export-logistics', function () { return view('export-logistics'); })->name('export-logistics');
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
+// Legal & Policy Pages
+Route::get('/terms', function () { return view('terms'); })->name('terms');
+Route::get('/privacy', function () { return view('privacy'); })->name('privacy');
+Route::get('/return-policy', function () { return view('return-policy'); })->name('return-policy');
+
 // Public Checkout & Order Confirmation Routes
 Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 Route::post('/checkout', [FrontendController::class, 'submitOrder'])->name('checkout.submit');

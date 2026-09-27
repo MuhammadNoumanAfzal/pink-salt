@@ -205,8 +205,21 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-stone-900 text-stone-400 py-8 px-6 text-center text-xs border-t border-stone-800 no-print">
-        <p>© 2026 SALTORA Himalayan Pink Salt Exporter. All Rights Reserved.</p>
+    <footer class="bg-stone-900 text-stone-400 py-10 px-6 border-t border-stone-800 text-xs no-print">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p>© 2026 SALTORA Himalayan Pink Salt Exporter. All Rights Reserved.</p>
+            <div class="flex items-center gap-3">
+                <a href="https://facebook.com" target="_blank" class="w-7 h-7 rounded-full border border-stone-800 bg-stone-900 flex items-center justify-center text-stone-400 hover:text-[#e07a5f] transition-all" title="Facebook"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                <a href="https://instagram.com" target="_blank" class="w-7 h-7 rounded-full border border-stone-800 bg-stone-900 flex items-center justify-center text-stone-400 hover:text-[#e07a5f] transition-all" title="Instagram"><i class="fa-brands fa-instagram text-xs"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="w-7 h-7 rounded-full border border-stone-800 bg-stone-900 flex items-center justify-center text-stone-400 hover:text-[#e07a5f] transition-all" title="LinkedIn"><i class="fa-brands fa-linkedin-in text-xs"></i></a>
+                <a href="https://wa.me/923180735748" target="_blank" class="w-7 h-7 rounded-full border border-stone-800 bg-stone-900 flex items-center justify-center text-stone-400 hover:text-emerald-500 transition-all" title="WhatsApp"><i class="fa-brands fa-whatsapp text-xs"></i></a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="/terms" class="hover:text-white transition-colors">Terms & Conditions</a>
+                <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="/return-policy" class="hover:text-white transition-colors">Return & Refund Policy</a>
+            </div>
+        </div>
     </footer>
 
 </body>

@@ -43,13 +43,14 @@
   100% { transform: translateX(-50%); }
 }
 
-.animate-marquee {
+.animate-marquee, .marquee-track {
   display: flex;
   width: max-content;
-  animation: continuousMarquee 38s linear infinite;
+  animation: continuousMarquee 25s linear infinite;
+  will-change: transform;
 }
 
-.animate-marquee:hover {
+.animate-marquee:hover, .marquee-track:hover {
   animation-play-state: paused;
 }
 
