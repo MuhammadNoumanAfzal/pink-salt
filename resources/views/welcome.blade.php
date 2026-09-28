@@ -75,75 +75,78 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (Ultra-Smooth Initial Load Entry Animations) -->
-    <section class="relative pt-10 pb-16 md:py-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <!-- HERO SECTION (Compact, High-Impact & Ultra-Smooth Load) -->
+    <section class="relative py-8 md:py-12 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            <!-- Left Hero Content (Smooth 1.6s Hero Entrance from Left) -->
-            <div class="lg:col-span-7 space-y-8 animate-hero-left">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-5 animate-hero-left">
                 <!-- Category Tag Line -->
-                <div class="flex items-center gap-3 text-xs font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-8 h-px bg-saltora-terracotta"></span>
+                <div class="flex items-center gap-2.5 text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">
+                    <span class="w-6 h-px bg-saltora-terracotta"></span>
                     <span>HIMALAYAN PINK SALT · EXPORTER · PAKISTAN</span>
                 </div>
 
                 <!-- Main Heading -->
-                <h1 class="text-4xl sm:text-6xl xl:text-7xl font-serif text-saltora-text leading-[1.08] tracking-tight font-normal">
-                    Premium<br>
-                    Himalayan<br>
-                    <span class="italic text-saltora-terracotta font-normal">Pink Salt</span> from<br>
-                    Pakistan
+                <h1 class="text-3xl sm:text-5xl xl:text-6xl font-serif text-saltora-text leading-[1.12] tracking-tight font-normal">
+                    Premium Himalayan <span class="italic text-saltora-terracotta font-normal">Pink Salt</span> Exporter from Pakistan
                 </h1>
 
                 <!-- Subheading Description -->
-                <p class="text-saltora-muted text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+                <p class="text-saltora-muted text-sm sm:text-base leading-relaxed max-w-xl font-normal">
                     SALTORA supplies authentic, quality-focused Himalayan pink salt to international importers, wholesalers, food businesses and private-label brands — with professional, export-ready service from source to shipment.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-8 py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-3 group cursor-pointer">
+                <div class="flex flex-wrap items-center gap-3.5 pt-1">
+                    <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2.5 group cursor-pointer rounded-xs">
                         <span>REQUEST A QUOTE</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
                     </a>
-                    <a href="/products" class="border border-saltora-text/30 hover:border-saltora-text hover:bg-saltora-card text-saltora-text px-8 py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer">
+                    <a href="/products" class="border border-saltora-text/30 hover:border-saltora-text hover:bg-saltora-card text-saltora-text px-6 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer rounded-xs">
                         EXPLORE PRODUCTS
                     </a>
                 </div>
+
+                <!-- Quick Trust Badges Strip -->
+                <div class="pt-3 border-t border-saltora-border/60 flex flex-wrap items-center gap-y-2 gap-x-6 text-[11px] text-saltora-muted font-medium">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-saltora-terracotta text-xs"></i> 98.5%+ Pure NaCl</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-saltora-terracotta text-xs"></i> ISO 22000 & Halal</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-box text-saltora-terracotta text-xs"></i> Bulk & Private Label</span>
+                </div>
             </div>
 
-            <!-- Right Hero Image with Floating Badges (Smooth 1.6s Hero Entrance from Right) -->
+            <!-- Right Hero Image with Compact Floating Badges -->
             <div class="lg:col-span-5 relative animate-hero-right">
-                <div class="relative rounded-sm overflow-hidden shadow-2xl bg-saltora-card border border-saltora-border group">
-                    <img src="/heroimg.jpg" alt="Premium Himalayan Pink Salt Crystals" class="w-full h-[480px] sm:h-[560px] object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer">
+                <div class="relative rounded-lg overflow-hidden shadow-xl bg-saltora-card border border-saltora-border group">
+                    <img src="/heroimg.jpg" alt="Premium Himalayan Pink Salt Crystals" class="w-full h-[340px] sm:h-[400px] lg:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer">
 
                     <!-- Gradient Overlay on Image Bottom -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-
-                    <!-- Overlay Text Bottom Left -->
-                    <div class="absolute bottom-6 left-6 text-white z-10">
-                        <p class="font-serif italic text-xl sm:text-2xl font-normal drop-shadow-md">Pure · Natural · Premium</p>
-                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none"></div>
 
                     <!-- Badge Top Left: CERTIFIED QUALITY -->
-                    <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md p-4 rounded-sm border border-saltora-border shadow-lg z-20 max-w-[200px] cursor-pointer hover:border-saltora-terracotta transition-colors">
-                        <span class="block text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase mb-1">CERTIFIED QUALITY</span>
-                        <h4 class="font-serif text-sm font-bold text-saltora-text leading-snug">ISO 22000:2018</h4>
-                        <p class="text-[11px] text-saltora-muted font-medium leading-tight">Halal · Codex CXS 150</p>
+                    <div class="absolute top-3.5 left-3.5 bg-white/90 backdrop-blur-md px-3.5 py-2.5 rounded border border-white/60 shadow-md z-20 max-w-[170px]">
+                        <span class="block text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase mb-0.5">CERTIFIED QUALITY</span>
+                        <h4 class="font-serif text-xs font-bold text-saltora-text leading-tight">ISO 22000:2018</h4>
+                        <p class="text-[10px] text-saltora-muted font-medium">Halal · Codex CXS 150</p>
                     </div>
 
-                    <!-- Badge Middle Right: BULK B2B -->
-                    <div class="absolute top-1/2 -right-3 -translate-y-1/2 bg-saltora-blush/95 backdrop-blur-md px-4 py-2 border border-saltora-terracotta/20 shadow-md z-20 cursor-pointer hover:scale-105 transition-transform">
-                        <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase">BULK · B2B · PRIVATE LABEL</span>
+                    <!-- Badge Top Right: BULK B2B -->
+                    <div class="absolute top-3.5 right-3.5 bg-saltora-blush/90 backdrop-blur-md px-3 py-1.5 rounded border border-saltora-terracotta/20 shadow-md z-20">
+                        <span class="text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase">BULK · B2B · PRIVATE LABEL</span>
                     </div>
 
-                    <!-- Badge Bottom Right: EXPORT TERMS -->
-                    <div class="absolute bottom-4 right-4 bg-saltora-dark/95 backdrop-blur-md p-4 rounded-sm border border-saltora-dark-border text-white shadow-xl z-20 max-w-[210px] cursor-pointer hover:border-amber-200/40 transition-colors">
-                        <span class="block text-[10px] font-bold tracking-widest text-saltora-muted-light uppercase mb-1">EXPORT TERMS</span>
-                        <h4 class="font-serif text-sm font-semibold text-white leading-snug">FOB — 50% Advance</h4>
-                        <p class="text-[11px] text-gray-300 font-normal">50% on Bill of Lading</p>
+                    <!-- Overlay Text & Export Badge Bottom -->
+                    <div class="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between z-10">
+                        <div class="text-white">
+                            <p class="font-serif italic text-lg sm:text-xl font-normal drop-shadow-md">Pure · Natural · Premium</p>
+                        </div>
+                        <div class="bg-saltora-dark/90 backdrop-blur-md px-3 py-2 rounded border border-saltora-dark-border text-white shadow-lg max-w-[170px]">
+                            <span class="block text-[9px] font-bold tracking-widest text-amber-200/90 uppercase mb-0.5">EXPORT TERMS</span>
+                            <h4 class="font-serif text-xs font-semibold text-white leading-tight">FOB — 50% Advance</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -279,52 +282,77 @@
                 </div>
             </div>
 
-            <!-- 4 Product Cards Grid with Dual Buttons & Smooth Bottom Reveal -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Product Cards Grid: Wider Cards (3 cols instead of 4) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 
                 @forelse($products as $index => $prod)
-                <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between card-hover-effect group reveal-from-bottom stagger-{{ ($index % 4) + 1 }}">
-                    <div class="space-y-4">
-                        <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer" @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})">
-                            <img src="{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}" alt="{{ $prod->name }}" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="bg-white border border-saltora-border/80 rounded-xl p-4.5 sm:p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
+                    <!-- Top Gradient Accent Hover Line -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+
+                    <div class="space-y-3">
+                        <!-- Wider & Shorter Aspect Ratio Image (16:9 ratio) -->
+                        <div class="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-saltora-card cursor-pointer group/img" @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})">
+                            <img src="{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}" alt="{{ $prod->name }}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
+                            
+                            <!-- Dark Overlay Gradient on Hover -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                            <!-- Top Left Quality Badge -->
+                            <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
+                                <span class="bg-white/90 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-xs border border-saltora-terracotta/20 flex items-center gap-1">
+                                    <i class="fa-solid fa-sparkles text-[8px]"></i>
+                                    98.5%+ NaCl
+                                </span>
+                            </div>
+
+                            <!-- Center Hover Quick View Pill -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
+                                <span class="bg-white/95 text-saltora-dark text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase shadow-md border border-saltora-border flex items-center gap-1.5 hover:bg-saltora-terracotta hover:text-white transition-colors duration-200">
+                                    <i class="fa-regular fa-eye text-xs"></i>
+                                    Quick View
+                                </span>
+                            </div>
                         </div>
 
-                        <h3 class="font-serif text-2xl text-saltora-text font-normal pt-1">
+                        <!-- Product Category & Subcategory Tag Pills -->
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            @if($prod->categoryRef)
+                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">{{ $prod->categoryRef->name }}</span>
+                            @endif
+                            @if($prod->subcategoryRef)
+                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2.5 py-0.5 rounded-full uppercase bg-stone-50">{{ $prod->subcategoryRef->name }}</span>
+                            @endif
+                            @if(!$prod->categoryRef && !$prod->subcategoryRef)
+                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">HIMALAYAN PINK SALT</span>
+                            @endif
+                        </div>
+
+                        <!-- Product Title -->
+                        <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug">
                             {{ $prod->name }}
                         </h3>
 
-                        <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                            {{ Str::limit($prod->short_desc ?? 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form.', 140) }}
+                        <!-- Product Description -->
+                        <p class="text-xs text-saltora-muted leading-relaxed font-normal line-clamp-2">
+                            {{ $prod->short_desc ?? 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — ideal for gourmet food and bulk export.' }}
                         </p>
-
-                        <!-- Product Tag Pills -->
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            @if($prod->categoryRef)
-                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">{{ $prod->categoryRef->name }}</span>
-                            @endif
-                            @if($prod->subcategoryRef)
-                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">{{ $prod->subcategoryRef->name }}</span>
-                            @endif
-                            @if(!$prod->categoryRef && !$prod->subcategoryRef)
-                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-white">HIMALAYAN PINK SALT</span>
-                            @endif
-                        </div>
                     </div>
 
-                    <!-- Dual Action Buttons -->
-                    <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                        <button @click="addToCart('{{ addslashes($prod->name) }}')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Side-by-Side Compact Action Buttons -->
+                    <div class="pt-3.5 border-t border-saltora-border/60 mt-4 flex items-center gap-2">
+                        <button @click="addToCart('{{ addslashes($prod->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
+                            <svg class="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                             </svg>
-                            <span>ADD TO CART</span>
+                            <span class="truncate">ADD TO CART</span>
                         </button>
-                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                            <svg class="w-3.5 h-3.5 text-saltora-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
+                            <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                             </svg>
-                            <span>VIEW DETAILS</span>
+                            <span class="truncate group-hover/btn:translate-x-0.5 transition-transform duration-300">DETAILS</span>
                         </button>
                     </div>
                 </div>

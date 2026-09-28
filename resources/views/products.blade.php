@@ -265,9 +265,13 @@
                              x-transition:enter="transition ease-out duration-300"
                              x-transition:enter-start="opacity-0 transform scale-95"
                              x-transition:enter-end="opacity-100 transform scale-100"
-                             class="bg-white border border-saltora-border p-6 rounded-sm flex flex-col justify-between card-hover-effect group reveal-on-scroll reveal-scale">
-                            <div class="space-y-4">
-                                <div class="aspect-4/3 overflow-hidden rounded-sm bg-saltora-card cursor-pointer relative" 
+                             class="bg-white border border-saltora-border/80 rounded-xl p-4.5 sm:p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-on-scroll reveal-scale">
+                            <!-- Top Gradient Accent Hover Line -->
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+
+                            <div class="space-y-3">
+                                <!-- Image Container with Floating Badges & Quick View Overlay (16:9 ratio) -->
+                                <div class="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-saltora-card cursor-pointer group/img" 
                                      @click="openQuickView({
                                          name: '{{ addslashes($product->name) }}', 
                                          img: '{{ $product->image_url }}', 
@@ -278,47 +282,58 @@
                                          desc: '{{ addslashes($product->description) }}', 
                                          specs: {grade: '{{ addslashes($product->categoryRef->name ?? "Natural Rock Salt") }}', grain: '{{ addslashes($product->grain_size ?? "Standard") }}', purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', origin: 'Salt Range, Pakistan'}
                                      })">
-                                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-52 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/product1.jpg';">
-                                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <span class="bg-white/90 backdrop-blur-xs text-saltora-text text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider shadow">Quick View</span>
+                                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" onError="this.onerror=null;this.src='/product1.jpg';">
+                                    
+                                    <!-- Dark Overlay Gradient on Hover -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                                    <!-- Top Left Quality Badge -->
+                                    <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
+                                        <span class="bg-white/90 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-xs border border-saltora-terracotta/20 flex items-center gap-1">
+                                            <i class="fa-solid fa-sparkles text-[8px]"></i>
+                                            98.5%+ NaCl
+                                        </span>
+                                    </div>
+
+                                    <!-- Center Hover Quick View Pill -->
+                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
+                                        <span class="bg-white/95 text-saltora-dark text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase shadow-md border border-saltora-border flex items-center gap-1.5 hover:bg-saltora-terracotta hover:text-white transition-colors duration-200">
+                                            <i class="fa-regular fa-eye text-xs"></i>
+                                            Quick View
+                                        </span>
                                     </div>
                                 </div>
 
-                                <div class="flex items-center justify-between text-[10px] font-bold text-saltora-terracotta uppercase tracking-wider">
-                                    <span>{{ $product->categoryRef->name ?? $product->category }}</span>
-                                    @if($product->subcategoryRef)
-                                        <span class="text-stone-400 font-normal">• {{ $product->subcategoryRef->name }}</span>
-                                    @endif
-                                </div>
-
-                                <h3 class="font-serif text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta cursor-pointer">
-                                    {{ $product->name }}
-                                </h3>
-
-                                <p class="text-xs text-saltora-muted leading-relaxed font-light line-clamp-3">
-                                    {{ $product->description }}
-                                </p>
-
-                                <!-- Product Tag Pills -->
-                                <div class="flex flex-wrap gap-1.5 pt-2">
-                                    <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-1 uppercase bg-[#FAF7F2] transition-colors group-hover:border-saltora-terracotta/40">
+                                <!-- Product Category & Subcategory Tag Pills -->
+                                <div class="flex flex-wrap items-center gap-1.5">
+                                    <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">
                                         {{ $product->categoryRef->name ?? $product->category }}
                                     </span>
                                     @if($product->subcategoryRef)
-                                    <span class="text-[9px] font-semibold tracking-wider text-saltora-terracotta border border-saltora-terracotta/30 px-2 py-1 uppercase bg-saltora-terracotta/5">
+                                    <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2.5 py-0.5 rounded-full uppercase bg-stone-50">
                                         {{ $product->subcategoryRef->name }}
                                     </span>
                                     @endif
                                 </div>
+
+                                <!-- Product Title -->
+                                <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug">
+                                    {{ $product->name }}
+                                </h3>
+
+                                <!-- Product Description -->
+                                <p class="text-xs text-saltora-muted leading-relaxed font-normal line-clamp-2">
+                                    {{ $product->description }}
+                                </p>
                             </div>
 
-                            <!-- Action Buttons -->
-                            <div class="pt-6 border-t border-saltora-border/60 mt-6 space-y-2">
-                                <button @click="addToCart('{{ addslashes($product->name) }}')" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow group/btn">
-                                    <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <!-- Side-by-Side Action Buttons -->
+                            <div class="pt-3.5 border-t border-saltora-border/60 mt-4 flex items-center gap-2">
+                                <button @click="addToCart('{{ addslashes($product->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
+                                    <svg class="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                                     </svg>
-                                    <span>ADD TO CART</span>
+                                    <span class="truncate">ADD TO CART</span>
                                 </button>
                                 <button @click="openQuickView({
                                     name: '{{ addslashes($product->name) }}', 
@@ -329,12 +344,12 @@
                                     tags: ['{{ addslashes(strtoupper($product->categoryRef->name ?? $product->category)) }}', '{{ addslashes(strtoupper($product->subcategoryRef->name ?? "RETAIL & BULK")) }}'], 
                                     desc: '{{ addslashes($product->description) }}', 
                                     specs: {grade: '{{ addslashes($product->categoryRef->name ?? "Natural Rock Salt") }}', grain: '{{ addslashes($product->grain_size ?? "Standard") }}', purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', origin: 'Salt Range, Pakistan'}
-                                })" class="w-full border border-saltora-text/30 hover:border-saltora-text bg-white text-saltora-text py-2 text-xs font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer group/btn">
-                                    <svg class="w-3.5 h-3.5 text-saltora-muted group-hover/btn:text-saltora-text transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                })" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
+                                    <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                     </svg>
-                                    <span class="group-hover/btn:translate-x-0.5 transition-transform duration-300">VIEW DETAILS</span>
+                                    <span class="truncate group-hover/btn:translate-x-0.5 transition-transform duration-300">DETAILS</span>
                                 </button>
                             </div>
                         </div>
