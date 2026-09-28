@@ -180,72 +180,71 @@
             </div>
         </div>
     </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <!-- ABOUT SECTION (Compact & Shorter Layout) -->
+    <section id="about" class="py-10 md:py-14 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            <!-- Left Image Side (Reveals Left-to-Right) -->
+            <!-- Left Image Side -->
             <div class="lg:col-span-5 relative reveal-from-left">
-                <div class="relative rounded-sm overflow-hidden border border-saltora-border shadow-xl group cursor-pointer">
-                    <img src="/aboutimg.jpg" alt="Hands holding authentic Pakistani pink salt" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="relative rounded-md overflow-hidden border border-saltora-border shadow-lg group cursor-pointer">
+                    <img src="/aboutimg.jpg" alt="Hands holding authentic Pakistani pink salt" class="w-full h-[320px] sm:h-[350px] lg:h-[360px] object-cover transition-transform duration-700 group-hover:scale-105">
                     
                     <!-- Floating Dark Box -->
-                    <div class="absolute bottom-4 right-4 bg-saltora-dark text-white p-5 max-w-[240px] border border-saltora-dark-border shadow-2xl">
-                        <h4 class="font-serif text-lg font-normal text-amber-100 mb-1">B2B First</h4>
-                        <p class="text-xs text-stone-300 font-light leading-relaxed">
+                    <div class="absolute bottom-3.5 right-3.5 bg-saltora-dark/95 backdrop-blur-md text-white p-3.5 max-w-[210px] rounded border border-saltora-dark-border shadow-xl">
+                        <h4 class="font-serif text-base font-normal text-amber-100 mb-0.5">B2B First</h4>
+                        <p class="text-[11px] text-stone-300 font-light leading-snug">
                             Importers · Wholesalers · Manufacturers · Private Label
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Text Content (Reveals Right-to-Left) -->
-            <div class="lg:col-span-7 space-y-6 reveal-from-right">
-                <div class="text-xs font-bold tracking-mega text-saltora-terracotta uppercase">
+            <!-- Right Text Content -->
+            <div class="lg:col-span-7 space-y-4 reveal-from-right">
+                <div class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">
                     ABOUT SALTORA
                 </div>
 
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-saltora-text leading-[1.15] font-normal">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-saltora-text leading-tight font-normal">
                     A Pakistani export house built around one exceptional mineral
                 </h2>
 
-                <p class="text-saltora-muted text-base leading-relaxed font-light">
+                <p class="text-saltora-muted text-xs sm:text-sm leading-relaxed font-normal">
                     SALTORA is a professional Himalayan pink salt export business based in Pakistan — the origin of the world's true Himalayan salt. We focus on authentic sourcing, quality-conscious processing and export-ready supply, so international buyers can build reliable, long-term salt programs with confidence.
                 </p>
 
-                <!-- Bulleted Checklist with Dividers -->
-                <div class="space-y-4 pt-2 border-t border-saltora-border/70">
-                    <div class="py-2.5 border-b border-saltora-border/50 flex items-start gap-3">
-                        <svg class="w-4 h-4 text-saltora-terracotta mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Compact 2-Column Checklist Badges -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 border-t border-saltora-border/70 text-xs font-medium text-saltora-text">
+                    <div class="flex items-center gap-2 bg-white/70 p-2.5 rounded border border-saltora-border/60">
+                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <p class="text-xs sm:text-sm font-medium text-saltora-text">Authentic Pakistani Himalayan pink salt, responsibly sourced</p>
+                        <span class="text-[11px] leading-tight">Authentic Pakistani pink salt, responsibly sourced</span>
                     </div>
-                    <div class="py-2.5 border-b border-saltora-border/50 flex items-start gap-3">
-                        <svg class="w-4 h-4 text-saltora-terracotta mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-2 bg-white/70 p-2.5 rounded border border-saltora-border/60">
+                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <p class="text-xs sm:text-sm font-medium text-saltora-text">Quality-focused processing and export preparation</p>
+                        <span class="text-[11px] leading-tight">Quality-focused processing & export preparation</span>
                     </div>
-                    <div class="py-2.5 border-b border-saltora-border/50 flex items-start gap-3">
-                        <svg class="w-4 h-4 text-saltora-terracotta mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-2 bg-white/70 p-2.5 rounded border border-saltora-border/60">
+                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <p class="text-xs sm:text-sm font-medium text-saltora-text">Export-ready formats – bulk, food-grade and retail</p>
+                        <span class="text-[11px] leading-tight">Export-ready formats (bulk, food-grade & retail)</span>
                     </div>
-                    <div class="py-2.5 border-b border-saltora-border/50 flex items-start gap-3">
-                        <svg class="w-4 h-4 text-saltora-terracotta mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-2 bg-white/70 p-2.5 rounded border border-saltora-border/60">
+                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <p class="text-xs sm:text-sm font-medium text-saltora-text">Long-term partnership approach for international buyers</p>
+                        <span class="text-[11px] leading-tight">Long-term partnership approach for global buyers</span>
                     </div>
                 </div>
 
                 <!-- Link Button -->
-                <div class="pt-4">
-                    <a href="/about" class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-saltora-text uppercase border-b border-saltora-text pb-1 hover:text-saltora-terracotta hover:border-saltora-terracotta transition-colors cursor-pointer group">
+                <div class="pt-2">
+                    <a href="/about" class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-saltora-text uppercase border-b border-saltora-text pb-0.5 hover:text-saltora-terracotta hover:border-saltora-terracotta transition-colors cursor-pointer group">
                         <span>MORE ABOUT SALTORA</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
