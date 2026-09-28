@@ -454,71 +454,71 @@
         </div>
     </section>
 
-    <!-- SECTION 1: SOURCING, MANUFACTURING & SUPPLY (DARK MODE) -->
-    <section id="sourcing" class="bg-gradient-to-b from-[#1E1917] via-[#151210] to-[#1E1917] text-white py-20 md:py-28 px-6 md:px-12 border-t border-stone-800 overflow-hidden">
+    <!-- SECTION 1: SOURCING, MANUFACTURING & SUPPLY (DARK MODE - COMPACT & SHORTER) -->
+    <section id="sourcing" class="bg-gradient-to-b from-[#1E1917] via-[#151210] to-[#1E1917] text-white py-10 md:py-14 px-6 md:px-12 border-t border-stone-800 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                 
-                <!-- Left Text Process Steps (Reveals Left-to-Right) -->
-                <div class="lg:col-span-6 space-y-6 reveal-on-scroll reveal-from-left">
-                    <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
+                <!-- Left Text Process Steps -->
+                <div class="lg:col-span-6 space-y-4 reveal-on-scroll reveal-from-left">
+                    <div class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">
                         FROM MINE TO MARKET
                     </div>
 
-                    <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal leading-[1.12]">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-white font-normal leading-tight">
                         Sourcing, manufacturing & supply — one disciplined process
                     </h2>
 
-                    <p class="text-stone-400 text-sm sm:text-base font-light leading-relaxed">
+                    <p class="text-stone-400 text-xs sm:text-sm font-normal leading-relaxed">
                         B2B buyers see exactly how their salt moves: sourced in the Pakistani Salt Range, processed and graded to specification, checked, packed and exported under clear FOB terms.
                     </p>
 
-                    <!-- Process Steps -->
-                    <div class="space-y-6 pt-4 border-t border-stone-800">
+                    <!-- Process Steps (2-Column Grid for Shorter Height) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-stone-800/80">
                         
-                        <div class="py-4 border-b border-stone-800/80 flex items-start gap-6 cursor-pointer group">
-                            <span class="font-serif text-2xl font-normal text-stone-400 group-hover:text-saltora-terracotta transition-colors shrink-0">01</span>
-                            <div class="space-y-1">
-                                <h4 class="font-serif text-xl text-white font-normal group-hover:text-amber-100 transition-colors">Sourcing</h4>
-                                <p class="text-xs text-stone-400 font-light leading-relaxed">Natural rock salt is sourced from the Himalayan salt ranges of Pakistan, selected for colour, purity and mineral character.</p>
+                        <div class="p-3 bg-stone-900/60 rounded border border-stone-800/80 group cursor-pointer hover:border-saltora-terracotta/50 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-serif text-xs font-bold text-saltora-terracotta">01</span>
+                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Sourcing</h4>
                             </div>
+                            <p class="text-[11px] text-stone-400 font-light leading-relaxed">Natural rock salt sourced from the Salt Range, selected for purity & color.</p>
                         </div>
 
-                        <div class="py-4 border-b border-stone-800/80 flex items-start gap-6 cursor-pointer group">
-                            <span class="font-serif text-2xl font-normal text-stone-400 group-hover:text-saltora-terracotta transition-colors shrink-0">02</span>
-                            <div class="space-y-1">
-                                <h4 class="font-serif text-xl text-white font-normal group-hover:text-amber-100 transition-colors">Processing</h4>
-                                <p class="text-xs text-stone-400 font-light leading-relaxed">Salt is cleaned, crushed and graded into buyer-ready formats — fine, coarse, granules or raw chunks — under quality-conscious handling.</p>
+                        <div class="p-3 bg-stone-900/60 rounded border border-stone-800/80 group cursor-pointer hover:border-saltora-terracotta/50 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-serif text-xs font-bold text-saltora-terracotta">02</span>
+                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Processing</h4>
                             </div>
+                            <p class="text-[11px] text-stone-400 font-light leading-relaxed">Cleaned, crushed & graded into fine, coarse or raw chunk formats.</p>
                         </div>
 
-                        <div class="py-4 border-b border-stone-800/80 flex items-start gap-6 cursor-pointer group">
-                            <span class="font-serif text-2xl font-normal text-stone-400 group-hover:text-saltora-terracotta transition-colors shrink-0">03</span>
-                            <div class="space-y-1">
-                                <h4 class="font-serif text-xl text-white font-normal group-hover:text-amber-100 transition-colors">Quality Check</h4>
-                                <p class="text-xs text-stone-400 font-light leading-relaxed">Each lot is reviewed for cleanliness, grain consistency and food-safety discipline before it moves to packing.</p>
+                        <div class="p-3 bg-stone-900/60 rounded border border-stone-800/80 group cursor-pointer hover:border-saltora-terracotta/50 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-serif text-xs font-bold text-saltora-terracotta">03</span>
+                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Quality Check</h4>
                             </div>
+                            <p class="text-[11px] text-stone-400 font-light leading-relaxed">Reviewed for grain consistency, NaCl purity & food safety discipline.</p>
                         </div>
 
-                        <div class="py-4 flex items-start gap-6 cursor-pointer group">
-                            <span class="font-serif text-2xl font-normal text-stone-400 group-hover:text-saltora-terracotta transition-colors shrink-0">04</span>
-                            <div class="space-y-1">
-                                <h4 class="font-serif text-xl text-white font-normal group-hover:text-amber-100 transition-colors">Packing & Export</h4>
-                                <p class="text-xs text-stone-400 font-light leading-relaxed">Products are packed to agreed specifications, documented, and prepared for international shipment under FOB terms.</p>
+                        <div class="p-3 bg-stone-900/60 rounded border border-stone-800/80 group cursor-pointer hover:border-saltora-terracotta/50 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-serif text-xs font-bold text-saltora-terracotta">04</span>
+                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Packing & Export</h4>
                             </div>
+                            <p class="text-[11px] text-stone-400 font-light leading-relaxed">Packed to buyer spec and exported under clear FOB terms.</p>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- Right Mine Image (Reveals Right-to-Left) -->
+                <!-- Right Mine Image -->
                 <div class="lg:col-span-6 relative reveal-on-scroll reveal-from-right">
-                    <div class="relative rounded-sm overflow-hidden border border-stone-800 shadow-2xl group cursor-pointer">
-                        <img src="/sourcingsec.jpg" alt="The Salt Range Pakistan Mine Tunnel" class="w-full h-[540px] object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="relative rounded-md overflow-hidden border border-stone-800 shadow-2xl group cursor-pointer">
+                        <img src="/sourcingsec.jpg" alt="The Salt Range Pakistan Mine Tunnel" class="w-full h-[320px] sm:h-[350px] lg:h-[370px] object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-6 left-6 text-white z-10">
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block mb-1">ORIGIN</span>
-                            <h4 class="font-serif text-2xl sm:text-3xl font-normal text-white">The Salt Range, Pakistan</h4>
+                        <div class="absolute bottom-4 left-4 text-white z-10">
+                            <span class="text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase block mb-0.5">ORIGIN</span>
+                            <h4 class="font-serif text-xl sm:text-2xl font-normal text-white">The Salt Range, Pakistan</h4>
                         </div>
                     </div>
                 </div>

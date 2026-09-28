@@ -130,13 +130,13 @@
                     <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($products) }}</span>
                 </button>
 
-                <!-- 5. Bulk Orders -->
+                <!-- 5. Orders -->
                 <button @click="switchTab('orders')" 
                     :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
-                        <span>Bulk Orders</span>
+                        <span>Orders</span>
                     </div>
                     @if($stats['pending_quotes'] > 0)
                         <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full animate-pulse">{{ $stats['pending_quotes'] }} Pending</span>
@@ -172,11 +172,6 @@
                 </button>
 
                 <div class="pt-4 border-t border-slate-100">
-                    <a href="/sitemap" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left cursor-pointer">
-                        <i class="fa-solid fa-sitemap text-sm text-emerald-600"></i>
-                        <span>HTML Sitemap</span>
-                    </a>
-
                     <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left cursor-pointer">
                         <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
                         <span>View Live Store</span>

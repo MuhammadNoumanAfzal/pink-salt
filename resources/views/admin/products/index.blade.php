@@ -82,11 +82,11 @@
                     <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] rounded-full font-bold">{{ count($products) }}</span>
                 </a>
 
-                <!-- 5. Bulk Orders -->
+                <!-- 5. Orders -->
                 <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
-                        <span>Bulk Orders</span>
+                        <span>Orders</span>
                     </div>
                 </a>
 
@@ -99,11 +99,6 @@
                 </a>
 
                 <div class="pt-4 border-t border-slate-100">
-                    <a href="/sitemap" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all">
-                        <i class="fa-solid fa-sitemap text-sm text-emerald-600"></i>
-                        <span>HTML Sitemap</span>
-                    </a>
-
                     <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all mt-1">
                         <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
                         <span>View Live Store</span>

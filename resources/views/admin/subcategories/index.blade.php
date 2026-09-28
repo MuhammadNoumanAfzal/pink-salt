@@ -70,11 +70,11 @@
                     </div>
                 </a>
 
-                <!-- 5. Bulk Orders -->
+                <!-- 5. Orders -->
                 <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
-                        <span>Bulk Orders</span>
+                        <span>Orders</span>
                     </div>
                 </a>
 
@@ -87,11 +87,6 @@
                 </a>
 
                 <div class="pt-4 border-t border-slate-100">
-                    <a href="/sitemap" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                        <i class="fa-solid fa-sitemap text-sm"></i>
-                        <span>HTML Sitemap</span>
-                    </a>
-
                     <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-store text-sm"></i>
