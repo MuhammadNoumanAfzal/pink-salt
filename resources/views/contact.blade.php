@@ -41,8 +41,10 @@
                 <a href="/contact" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer">CONTACT</a>
             </nav>
 
-            <!-- Header Action Button -->
+            <!-- Header Action Button & Quote CTA -->
             <div class="hidden sm:flex items-center gap-3">
+                {{--
+                <!-- SHOPPING CART COMMENTED OUT -->
                 <button @click="openCartSidebar()" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
                     <svg class="w-4 h-4 text-[#e07a5f] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
@@ -50,6 +52,11 @@
                     <span>SHOPPING CART</span>
                     <span x-show="cartCount > 0" x-text="cartCount" class="bg-[#e07a5f] text-white text-[10px] min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center font-bold shadow-xs" x-cloak></span>
                 </button>
+                --}}
+                <a href="#contactForm" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
+                    <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
+                    <span>REQUEST A QUOTE</span>
+                </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
@@ -68,6 +75,8 @@
             <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
             <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
             <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">CONTACT</a>
+            {{--
+            <!-- SHOPPING CART COMMENTED OUT -->
             <button @click="mobileMenuOpen = false; openCartSidebar()" class="flex items-center justify-center gap-2.5 w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md">
                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
@@ -75,6 +84,11 @@
                 <span>SHOPPING CART</span>
                 <span x-show="cartCount > 0" x-text="'(' + cartCount + ')'" x-cloak></span>
             </button>
+            --}}
+            <a href="#contactForm" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-4 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
+                <i class="fa-solid fa-file-invoice text-amber-200 text-sm"></i>
+                <span>REQUEST A QUOTE</span>
+            </a>
         </div>
     </header>
 
@@ -239,7 +253,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Subject / Product</label>
-                            <input type="text" name="subject" placeholder="e.g. Fine Pink Salt FCL Quote" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <input type="text" name="subject" value="{{ request('product') ? 'Quote Request: ' . request('product') : (request('subject') ?? '') }}" placeholder="e.g. Fine Pink Salt FCL Quote" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
                         <div class="space-y-2">
@@ -311,6 +325,16 @@
                             btn.innerHTML = '<span>SUBMIT INQUIRY</span>';
                         }
                     });
+
+                    // Pre-fill subject if ?product= parameter exists in URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const productParam = urlParams.get('product');
+                    if (productParam) {
+                        const subjInput = document.querySelector('input[name="subject"]');
+                        if (subjInput && !subjInput.value) {
+                            subjInput.value = 'Quote Request: ' + productParam;
+                        }
+                    }
                 </script>
             </div>
 
@@ -408,7 +432,7 @@
                 <a href="/return-policy" class="hover:text-stone-300 transition-colors cursor-pointer">Return & Refund Policy</a>
             </div>
         </div>
-    <x-cart-drawer />
+    {{-- <x-cart-drawer /> --}}
 
 </body>
 </html>

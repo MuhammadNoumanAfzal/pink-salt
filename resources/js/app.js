@@ -77,6 +77,10 @@ Alpine.data('shopManager', () => ({
         this.quickViewModalOpen = false;
     },
 
+    // =========================================================================
+    // ADD TO CART FUNCTIONALITY (COMMENTED OUT IN FAVOR OF DIRECT REQUEST A QUOTE)
+    // =========================================================================
+    /*
     addToCart(product) {
         let pName = typeof product === 'string' ? product : product.name;
         let pCategory = typeof product === 'object' ? product.category : 'Salt Export';
@@ -112,6 +116,15 @@ Alpine.data('shopManager', () => ({
             color: '#1e293b',
             iconColor: '#e07a5f'
         });
+    },
+
+    addToQuote(product) {
+        this.addToCart(product);
+    },
+    */
+    addToCart(product) {
+        let pName = typeof product === 'string' ? product : (product?.name || '');
+        window.location.href = '/contact' + (pName ? '?product=' + encodeURIComponent(pName) : '') + '#contactForm';
     },
 
     addToQuote(product) {

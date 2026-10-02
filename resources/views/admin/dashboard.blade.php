@@ -130,7 +130,8 @@
                     <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($products) }}</span>
                 </button>
 
-                <!-- 5. Orders -->
+                {{--
+                <!-- 5. Orders (COMMENTED OUT) -->
                 <button @click="switchTab('orders')" 
                     :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer">
@@ -144,6 +145,7 @@
                         <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full">{{ count($quotes) }}</span>
                     @endif
                 </button>
+                --}}
 
                 <!-- 6. Customer Messages -->
                 <button @click="switchTab('inquiries')" 
@@ -280,6 +282,8 @@
                         </div>
                     </div>
 
+                    {{--
+                    <!-- Store Orders Stat Card (COMMENTED OUT) -->
                     <div @click="switchTab('orders')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-amber-300 hover:shadow-md transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Store Orders</span>
@@ -290,6 +294,19 @@
                         </div>
                         <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 text-xl">
                             <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                    </div>
+                    --}}
+                    <div @click="switchTab('blogs')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-sky-300 hover:shadow-md transition-all">
+                        <div>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Blog Articles</span>
+                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_blogs'] }}</h3>
+                            <span class="inline-flex items-center gap-1 text-[11px] text-sky-600 font-semibold mt-1">
+                                <i class="fa-solid fa-newspaper text-[9px]"></i> {{ $stats['published_blogs'] }} Published
+                            </span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 text-xl">
+                            <i class="fa-solid fa-newspaper"></i>
                         </div>
                     </div>
 
@@ -380,7 +397,8 @@
 
                 <!-- Lower Section: Recent Orders Preview & Top Destination Markets -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Recent Bulk Orders Quick Widget -->
+                    {{--
+                    <!-- Recent Bulk Orders Quick Widget (COMMENTED OUT) -->
                     <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
                         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
                             <div>
@@ -429,6 +447,64 @@
                                     </tr>
                                     @empty
                                     <tr><td colspan="5" class="p-6 text-center text-slate-400">No orders recorded yet.</td></tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    --}}
+
+                    <!-- Recent Customer Inquiries Quick Widget -->
+                    <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                            <div>
+                                <h3 class="font-serif text-base font-bold text-slate-900">Recent Customer Inquiries</h3>
+                                <p class="text-xs text-slate-400">Latest quote requests and inquiries submitted by buyers</p>
+                            </div>
+                            <button @click="switchTab('inquiries')" class="text-xs font-bold text-[#e07a5f] hover:underline flex items-center gap-1 cursor-pointer">
+                                <span>View All Inquiries</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead>
+                                    <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
+                                        <th class="p-3.5 px-4">Sender</th>
+                                        <th class="p-3.5 px-4">Subject</th>
+                                        <th class="p-3.5 px-4">Country</th>
+                                        <th class="p-3.5 px-4 text-center">Status</th>
+                                        <th class="p-3.5 px-4 text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    @forelse($inquiries->take(4) as $inq)
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="p-3.5 px-4">
+                                            <div class="font-bold text-slate-900">{{ $inq->name }}</div>
+                                            <div class="text-[10px] text-slate-400">{{ $inq->email }}</div>
+                                        </td>
+                                        <td class="p-3.5 px-4 whitespace-nowrap">
+                                            <span class="font-semibold text-slate-800">{{ Str::limit($inq->subject, 30) }}</span>
+                                        </td>
+                                        <td class="p-3.5 px-4 whitespace-nowrap">
+                                            <span class="font-semibold text-slate-700">{{ $inq->country ?? 'International' }}</span>
+                                        </td>
+                                        <td class="p-3.5 px-4 text-center whitespace-nowrap">
+                                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border 
+                                                {{ $inq->status === 'replied' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ($inq->status === 'read' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-amber-50 text-amber-700 border-amber-200') }}">
+                                                {{ ucfirst($inq->status) }}
+                                            </span>
+                                        </td>
+                                        <td class="p-3.5 px-4 text-right whitespace-nowrap">
+                                            <button @click="viewInquiryDetails({{ json_encode($inq) }})" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Details">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    <tr><td colspan="5" class="p-6 text-center text-slate-400">No customer inquiries recorded yet.</td></tr>
                                     @endforelse
                                 </tbody>
                             </table>
@@ -598,7 +674,8 @@
                 </div>
             </div>
 
-            <!-- TAB 3: BULK STORE ORDERS WITH PRINT INVOICE -->
+            {{--
+            <!-- TAB 3: BULK STORE ORDERS WITH PRINT INVOICE (COMMENTED OUT) -->
             <div x-show="activeTab === 'orders'" class="space-y-6">
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
@@ -692,6 +769,7 @@
                     </div>
                 </div>
             </div>
+            --}}
 
             <!-- TAB 4: CUSTOMER MESSAGES -->
             <div x-show="activeTab === 'inquiries'" class="space-y-6">
@@ -1097,7 +1175,8 @@
         </div>
     </div>
 
-    <!-- VIEW ORDER DETAILS MODAL -->
+    {{--
+    <!-- VIEW ORDER DETAILS MODAL (COMMENTED OUT) -->
     <div x-show="showQuoteModal" @click.self="showQuoteModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs cursor-pointer" x-cloak>
         <div class="bg-white border border-slate-200 rounded-2xl max-w-3xl w-full p-6 shadow-2xl relative space-y-5">
             <div class="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -1183,6 +1262,7 @@
             </div>
         </div>
     </div>
+    --}}
 
     <!-- VIEW INQUIRY DETAILS MODAL -->
     <div x-show="showInquiryModal" @click.self="showInquiryModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs cursor-pointer" x-cloak>
@@ -1575,7 +1655,7 @@
         function adminDashboard() {
             const params = new URLSearchParams(window.location.search);
             let initialTab = params.get('tab') || 'overview';
-            if (initialTab === 'quotes') initialTab = 'orders';
+            if (initialTab === 'quotes' || initialTab === 'orders') initialTab = 'overview';
 
             return {
                 activeTab: initialTab,

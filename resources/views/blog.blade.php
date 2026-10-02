@@ -90,34 +90,119 @@
     </header>
 
     <!-- BLOG HERO SECTION -->
-    <section class="bg-saltora-dark text-white py-20 md:py-28 px-6 relative overflow-hidden border-b border-saltora-dark-border" style="background-color: #1a232a;">
-        <div class="max-w-7xl mx-auto text-center space-y-6 relative z-10 animate-fade-in-up">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e07a5f]/20 border border-[#e07a5f]/40 rounded-full text-xs font-bold tracking-wider text-[#e07a5f] uppercase shadow-sm">
-                <i class="fa-solid fa-newspaper text-xs"></i>
-                <span>INDUSTRY INSIGHTS & EXPORT GUIDES</span>
+    <section class="relative bg-[#111820] text-white pt-20 md:pt-28 pb-28 md:pb-36 px-6 overflow-hidden border-b border-white/10">
+        <!-- Ambient Background Image -->
+        <img src="/aboutero.jpg" onerror="this.onerror=null; this.src='/heroimg.jpg';" alt="Saltora Himalayan Pink Salt Editorial Background" class="absolute inset-0 w-full h-full object-cover opacity-20 filter contrast-125 brightness-90 pointer-events-none scale-105 transition-transform duration-1000">
+        
+        <!-- Multi-stop Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f171e]/95 via-[#141d24]/90 to-[#0e141a]/98 pointer-events-none"></div>
+
+        <!-- Ambient Glow Elements -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-[#e07a5f]/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-32 w-80 h-80 bg-[#f4a261]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-80 h-80 bg-[#e07a5f]/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <!-- Subtle Dot Pattern Overlay -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+        <div class="max-w-5xl mx-auto text-center space-y-7 relative z-10 animate-fade-in-up">
+            <!-- Refined Top Pill / Kicker -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/15 backdrop-blur-md rounded-full text-xs font-semibold tracking-wider text-stone-200 uppercase shadow-lg">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e07a5f] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#e07a5f]"></span>
+                </span>
+                <span class="text-[#f4a261] font-bold">SALTORA INTELLIGENCE</span>
+                <span class="text-white/40">&bull;</span>
+                <span class="text-[11px] text-stone-300">B2B EXPORT DESK & MARKET RESEARCH</span>
             </div>
             
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif text-white leading-tight max-w-4xl mx-auto font-bold tracking-tight">
+            <!-- Headline -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.12] max-w-4xl mx-auto font-normal tracking-tight">
                 Himalayan Pink Salt Trade, <br class="hidden sm:inline">
-                <span class="italic text-[#e07a5f] font-normal">Logistics & Market Trends</span>
+                <span class="italic font-normal bg-gradient-to-r from-[#f4a261] via-[#e07a5f] to-[#e76f51] bg-clip-text text-transparent">
+                    Logistics & Market Trends
+                </span>
             </h1>
 
-            <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
-                Stay informed with deep dives from SALTORA's export desk on Khewra salt mining standards, bulk container shipping, ISO certifications, and GCC market demands.
+            <!-- Subtitle -->
+            <p class="text-stone-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+                Stay informed with verified analysis, mining standards, bulk container shipping protocols, ISO certifications, and GCC market demands direct from SALTORA's export desk.
             </p>
 
-            <!-- Search Bar Form with proper padding and icon alignment -->
-            <form action="{{ route('blog') }}" method="GET" class="max-w-xl mx-auto pt-4">
-                <div class="relative flex items-center">
-                    <div class="absolute left-5 top-1/2 -translate-y-1/2 text-stone-400 text-sm pointer-events-none z-10">
+            <!-- Search Bar Form with Glassmorphism & Micro-interactions -->
+            <form action="{{ route('blog') }}" method="GET" class="max-w-2xl mx-auto pt-2">
+                <div class="relative flex items-center bg-white/10 hover:bg-white/[0.13] backdrop-blur-xl border border-white/20 hover:border-white/35 focus-within:border-[#e07a5f] focus-within:ring-2 focus-within:ring-[#e07a5f]/30 rounded-2xl p-1.5 shadow-2xl transition-all duration-300">
+                    <div class="pl-4 pr-2 text-stone-400 text-base pointer-events-none">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search articles, guides, shipping terms..." class="w-full pl-14 pr-32 py-4 bg-white/10 border border-white/20 rounded-2xl text-xs sm:text-sm text-white placeholder-stone-400 focus:outline-none focus:bg-white/20 focus:border-[#e07a5f] backdrop-blur-md transition-all">
-                    <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-[#e07a5f] hover:bg-[#d46a4f] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer shadow-md">
-                        Search
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search articles, guides, FOB shipping terms, certifications..." class="w-full py-3.5 px-2 bg-transparent text-xs sm:text-sm text-white placeholder-stone-400 focus:outline-none">
+                    
+                    @if(request('search'))
+                    <a href="{{ route('blog') }}" class="px-3 text-xs text-stone-400 hover:text-white transition-colors" title="Clear Search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                    @endif
+
+                    <button type="submit" class="px-6 sm:px-8 py-3 bg-[#e07a5f] hover:bg-[#d46a4f] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer shadow-lg hover:shadow-[#e07a5f]/30 active:scale-95 shrink-0 flex items-center gap-2">
+                        <span>Search</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
             </form>
+
+            <!-- Trending Quick Tags -->
+            <div class="flex items-center justify-center gap-2 flex-wrap text-xs pt-1">
+                <span class="text-stone-400 text-[11px] font-medium flex items-center gap-1.5 mr-1">
+                    <i class="fa-solid fa-arrow-trend-up text-[#e07a5f] text-xs"></i>
+                    <span>Trending:</span>
+                </span>
+                <a href="{{ route('blog', ['search' => 'FCL Shipping']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">FCL Shipping</a>
+                <a href="{{ route('blog', ['search' => 'Khewra Mine']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Khewra Mine</a>
+                <a href="{{ route('blog', ['search' => 'ISO 22000']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">ISO 22000</a>
+                <a href="{{ route('blog', ['search' => 'Private Label']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Private Label</a>
+                <a href="{{ route('blog', ['search' => 'Bulk Salt']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Bulk Salt</a>
+            </div>
+
+            <!-- Key Trade Desk Metrics Strip -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto pt-6 border-t border-white/10 text-left">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
+                        <i class="fa-solid fa-ship text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white leading-tight">50+ Ports</div>
+                        <div class="text-[10px] text-stone-400">Global Shipping Routes</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
+                        <i class="fa-solid fa-mountain text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white leading-tight">100% Khewra</div>
+                        <div class="text-[10px] text-stone-400">Authentic Mine Origin</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
+                        <i class="fa-solid fa-certificate text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white leading-tight">ISO & Halal</div>
+                        <div class="text-[10px] text-stone-400">Export Certified Lab Data</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
+                        <i class="fa-solid fa-newspaper text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white leading-tight">Bi-Weekly</div>
+                        <div class="text-[10px] text-stone-400">Market & Price Insights</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

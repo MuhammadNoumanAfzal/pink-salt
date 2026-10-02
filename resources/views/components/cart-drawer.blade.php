@@ -1,3 +1,5 @@
+{{--
+<!-- SHOPPING CART DRAWER (COMMENTED OUT IN FAVOR OF DIRECT REQUEST A QUOTE) -->
 <!-- FLOATING TOAST NOTIFICATION -->
 <div x-show="cartToastOpen" x-cloak x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-8" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-4 rounded-lg shadow-2xl border border-saltora-terracotta/40 flex items-center gap-3">
     <div class="w-8 h-8 rounded-full bg-saltora-terracotta text-white flex items-center justify-center shrink-0">
@@ -162,3 +164,4 @@
         </div>
     </div>
 </div>
+--}}

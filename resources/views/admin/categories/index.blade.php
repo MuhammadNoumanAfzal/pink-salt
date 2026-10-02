@@ -70,13 +70,15 @@
                     </div>
                 </a>
 
-                <!-- 5. Orders -->
+                {{--
+                <!-- 5. Orders (COMMENTED OUT) -->
                 <a href="{{ route('admin.dashboard') }}?tab=quotes" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span>Orders</span>
                     </div>
                 </a>
+                --}}
 
                 <!-- 6. Messages -->
                 <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
