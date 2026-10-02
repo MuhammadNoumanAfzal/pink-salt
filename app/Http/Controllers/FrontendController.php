@@ -13,7 +13,7 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        $products = Product::where('is_active', true)->with(['categoryRef', 'subcategoryRef'])->take(8)->get();
+        $products = Product::where('is_active', true)->with(['categoryRef', 'subcategoryRef'])->take(6)->get();
         $latestPosts = Post::published()->latest()->take(3)->get();
         return view('welcome', compact('products', 'latestPosts'));
     }
