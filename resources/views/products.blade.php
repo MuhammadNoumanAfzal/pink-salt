@@ -146,30 +146,39 @@
         </div>
     </div>
 
-    <!-- E-COMMERCE PRODUCTS CATALOG SECTION WITH SIDEBAR FILTERS -->
-    <section class="py-16 md:py-24 px-6 md:px-12 bg-saltora-bg" x-data="{
+    <!-- E-COMMERCE PRODUCTS CATALOG    <section class="py-16 md:py-24 px-6 md:px-12 bg-saltora-bg" x-data="{
         selectedCategory: '',
         selectedSubcategory: '',
+        selectedGrain: '',
         searchQuery: '',
         sortBy: 'latest',
         resetFilters() {
             this.selectedCategory = '';
             this.selectedSubcategory = '';
+            this.selectedGrain = '';
             this.searchQuery = '';
             this.sortBy = 'latest';
         },
-        matchesProduct(pCatId, pSubId, pName, pDesc, pCategory) {
+        matchesProduct(pCatId, pSubId, pName, pDesc, pCategory, pGrain, pPackaging) {
             if (this.selectedCategory && String(pCatId) !== String(this.selectedCategory) && String(pCategory).toLowerCase() !== String(this.selectedCategory).toLowerCase()) {
                 return false;
             }
             if (this.selectedSubcategory && String(pSubId) !== String(this.selectedSubcategory)) {
                 return false;
             }
+            if (this.selectedGrain) {
+                const g = this.selectedGrain.toLowerCase();
+                const grainText = String(pGrain || '').toLowerCase();
+                const nameText = String(pName || '').toLowerCase();
+                if (!grainText.includes(g) && !nameText.includes(g)) return false;
+            }
             if (this.searchQuery) {
                 const q = this.searchQuery.toLowerCase();
                 const matchName = String(pName).toLowerCase().includes(q);
                 const matchDesc = String(pDesc).toLowerCase().includes(q);
-                if (!matchName && !matchDesc) return false;
+                const matchGrain = String(pGrain || '').toLowerCase().includes(q);
+                const matchPack = String(pPackaging || '').toLowerCase().includes(q);
+                if (!matchName && !matchDesc && !matchGrain && !matchPack) return false;
             }
             return true;
         }
@@ -183,7 +192,7 @@
                     Explore Our Product Line
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
-                    Every grade is sourced, cleaned, and sorted under stringent export standards to guarantee color consistency and purity.
+                    From food-grade fine & coarse salt in zip pouches, PET jars, and 25kg PP bags to hand-crafted salt lamps and 1-ton bulk jumbo export bags.
                 </p>
             </div>
 
@@ -199,7 +208,7 @@
                             </svg>
                             <span>Filter Catalog</span>
                         </h3>
-                        <button @click="resetFilters()" x-show="selectedCategory || selectedSubcategory || searchQuery" x-cloak class="text-[11px] text-saltora-terracotta hover:underline font-bold uppercase tracking-wider cursor-pointer">
+                        <button @click="resetFilters()" x-show="selectedCategory || selectedSubcategory || selectedGrain || searchQuery" x-cloak class="text-[11px] text-saltora-terracotta hover:underline font-bold uppercase tracking-wider cursor-pointer">
                             Reset All
                         </button>
                     </div>
@@ -208,10 +217,42 @@
                     <div class="space-y-2">
                         <label class="block text-[11px] font-bold tracking-wider uppercase text-saltora-text">Search Products</label>
                         <div class="relative">
-                            <input type="text" x-model="searchQuery" placeholder="Search salt grade or grain..." class="w-full bg-[#FAF7F2] border border-saltora-border px-3.5 py-2 pl-9 rounded-xs text-xs focus:outline-none focus:border-saltora-terracotta">
+                            <input type="text" x-model="searchQuery" placeholder="Search salt, pouch, lamp, 25kg..." class="w-full bg-[#FAF7F2] border border-saltora-border px-3.5 py-2 pl-9 rounded-xs text-xs focus:outline-none focus:border-saltora-terracotta">
                             <svg class="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
+                        </div>
+                    </div>
+
+                    <!-- Grain Size / Mesh Filter Quick Pills -->
+                    <div class="space-y-2 pt-2 border-t border-saltora-border/60">
+                        <label class="block text-[11px] font-bold tracking-wider uppercase text-saltora-text">Salt Grain / Spec</label>
+                        <div class="flex flex-wrap gap-1.5 text-[11px]">
+                            <button @click="selectedGrain = selectedGrain === 'Fine' ? '' : 'Fine'" 
+                                :class="selectedGrain === 'Fine' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
+                                Fine (0.3-0.8mm)
+                            </button>
+                            <button @click="selectedGrain = selectedGrain === 'Medium' ? '' : 'Medium'" 
+                                :class="selectedGrain === 'Medium' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
+                                Medium (0.8-2mm)
+                            </button>
+                            <button @click="selectedGrain = selectedGrain === 'Coarse' ? '' : 'Coarse'" 
+                                :class="selectedGrain === 'Coarse' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
+                                Coarse (2-5mm)
+                            </button>
+                            <button @click="selectedGrain = selectedGrain === 'Crystal' ? '' : 'Crystal'" 
+                                :class="selectedGrain === 'Crystal' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
+                                Crystal (5-8mm)
+                            </button>
+                            <button @click="selectedGrain = selectedGrain === 'Lamp' ? '' : 'Lamp'" 
+                                :class="selectedGrain === 'Lamp' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
+                                Salt Lamps
+                            </button>
                         </div>
                     </div>
 
@@ -253,7 +294,7 @@
                     <!-- B2B Quick Note -->
                     <div class="bg-[#FAF7F2] p-4 rounded-xs border border-saltora-border space-y-2 text-[11px] text-saltora-muted mt-4">
                         <span class="font-bold uppercase tracking-wider text-saltora-terracotta block">B2B Direct Supply</span>
-                        <p class="leading-relaxed">All categories are available for bulk OEM private labeling and metric ton container shipments.</p>
+                        <p class="leading-relaxed">All products support custom export packaging: pouches (200g-1kg), food-grade PP bags (2kg-25kg), 1-ton jumbo bags, or private-label master cartons.</p>
                     </div>
                 </aside>
 
@@ -261,7 +302,7 @@
                 <div class="lg:col-span-9 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         @forelse($products as $product)
-                        <div x-show="matchesProduct('{{ $product->category_id }}', '{{ $product->subcategory_id }}', '{{ addslashes($product->name) }}', '{{ addslashes($product->description) }}', '{{ addslashes($product->category) }}')" 
+                        <div x-show="matchesProduct('{{ $product->category_id }}', '{{ $product->subcategory_id }}', '{{ addslashes($product->name) }}', '{{ addslashes($product->description) }}', '{{ addslashes($product->category) }}', '{{ addslashes($product->grain_size ?? $product->mesh_size ?? '') }}', '{{ addslashes($product->packaging_type ?? $product->packaging ?? '') }}')" 
                              x-transition:enter="transition ease-out duration-300"
                              x-transition:enter-start="opacity-0 transform scale-95"
                              x-transition:enter-end="opacity-100 transform scale-100"
@@ -278,20 +319,41 @@
                                          category: '{{ addslashes($product->category) }}',
                                          catName: '{{ addslashes($product->categoryRef->name ?? $product->category) }}',
                                          subCatName: '{{ addslashes($product->subcategoryRef->name ?? '') }}',
-                                         tags: ['{{ addslashes(strtoupper($product->categoryRef->name ?? $product->category)) }}', '{{ addslashes(strtoupper($product->subcategoryRef->name ?? "RETAIL & BULK")) }}'], 
+                                         tags: ['{{ addslashes(strtoupper($product->categoryRef->name ?? $product->category)) }}', '{{ addslashes(strtoupper($product->packaging_type ?? $product->packaging ?? "EXPORT GRADE")) }}'], 
                                          desc: '{{ addslashes($product->description) }}', 
-                                         specs: {grade: '{{ addslashes($product->categoryRef->name ?? "Natural Rock Salt") }}', grain: '{{ addslashes($product->grain_size ?? "Standard") }}', purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', origin: 'Salt Range, Pakistan'}
+                                         price: '{{ $product->formatted_price }}',
+                                         moq: '{{ addslashes($product->moq ?? "Contact Export Desk") }}',
+                                         packaging: '{{ addslashes($product->packaging_type ?? $product->packaging ?? "Export Standard") }}',
+                                         package_weight: '{{ addslashes($product->package_weight ?? "Standard Size") }}',
+                                         specs: {
+                                             grade: '{{ addslashes($product->grade ?? "Food Grade ISO-22000") }}', 
+                                             grain: '{{ addslashes($product->grain_size ?? $product->mesh_size ?? "Standard") }}', 
+                                             purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', 
+                                             origin: '{{ addslashes($product->origin ?? "Khewra Salt Range, Pakistan") }}',
+                                             packaging: '{{ addslashes($product->packaging_type ?? $product->packaging ?? "Standard PP/Pouch") }}',
+                                             weight: '{{ addslashes($product->package_weight ?? "N/A") }}'
+                                         }
                                      })">
                                     <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" onError="this.onerror=null;this.src='/product1.jpg';">
                                     
                                     <!-- Dark Overlay Gradient on Hover -->
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
-                                    <!-- Top Left Quality Badge -->
-                                    <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
+                                    <!-- Top Left Packaging / Weight Badge -->
+                                    <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none flex flex-col gap-1">
+                                        @if($product->package_weight)
+                                        <span class="bg-slate-900/90 backdrop-blur-md text-white text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-sm shadow-xs flex items-center gap-1">
+                                            <i class="fa-solid fa-weight-hanging text-[8px] text-[#e07a5f]"></i>
+                                            {{ $product->package_weight }}
+                                        </span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Top Right Purity Badge -->
+                                    <div class="absolute top-2.5 right-2.5 z-10 pointer-events-none">
                                         <span class="bg-white/90 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-xs border border-saltora-terracotta/20 flex items-center gap-1">
                                             <i class="fa-solid fa-sparkles text-[8px]"></i>
-                                            98.5%+ NaCl
+                                            {{ $product->purity ?? '98.5%+' }}
                                         </span>
                                     </div>
 
@@ -306,18 +368,22 @@
 
                                 <!-- Product Category & Subcategory Tag Pills -->
                                 <div class="flex flex-wrap items-center gap-1.5">
-                                    <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">
+                                    <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2 py-0.5 rounded-full uppercase bg-saltora-blush/60">
                                         {{ $product->categoryRef->name ?? $product->category }}
                                     </span>
-                                    @if($product->subcategoryRef)
-                                    <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2.5 py-0.5 rounded-full uppercase bg-stone-50">
-                                        {{ $product->subcategoryRef->name }}
+                                    @if($product->grain_size && !str_contains($product->grain_size, 'Not Applicable'))
+                                    <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">
+                                        {{ $product->grain_size }}
+                                    </span>
+                                    @elseif($product->packaging_type)
+                                    <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">
+                                        {{ $product->packaging_type }}
                                     </span>
                                     @endif
                                 </div>
 
                                 <!-- Product Title -->
-                                <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug">
+                                <h3 class="font-serif text-lg text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1">
                                     {{ $product->name }}
                                 </h3>
 
@@ -325,11 +391,30 @@
                                 <p class="text-xs text-saltora-muted leading-relaxed font-normal line-clamp-2">
                                     {{ $product->description }}
                                 </p>
+
+                                <!-- Price & MOQ Row -->
+                                <div class="pt-2 flex items-baseline justify-between border-t border-slate-100">
+                                    <div>
+                                        @if($product->price && $product->price > 0)
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-base font-bold text-slate-900">${{ number_format($product->price, 2) }}</span>
+                                            <span class="text-[10px] text-slate-500 font-semibold">/ {{ ltrim($product->price_unit ?? 'kg', '/') }}</span>
+                                        </div>
+                                        @else
+                                        <span class="text-[11px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
+                                        @endif
+                                    </div>
+                                    @if($product->moq)
+                                    <div class="text-[10px] text-slate-400 font-medium truncate max-w-[130px]">
+                                        MOQ: {{ $product->moq }}
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
 
                             <!-- Side-by-Side Action Buttons -->
-                            <div class="pt-3.5 border-t border-saltora-border/60 mt-4 flex items-center gap-2">
-                                <button @click="addToCart('{{ addslashes($product->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
+                            <div class="pt-3 border-t border-saltora-border/60 mt-3 flex items-center gap-2">
+                                <button @click="addToCart('{{ addslashes($product->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
                                     <svg class="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                                     </svg>
@@ -341,10 +426,21 @@
                                     category: '{{ addslashes($product->category) }}',
                                     catName: '{{ addslashes($product->categoryRef->name ?? $product->category) }}',
                                     subCatName: '{{ addslashes($product->subcategoryRef->name ?? '') }}',
-                                    tags: ['{{ addslashes(strtoupper($product->categoryRef->name ?? $product->category)) }}', '{{ addslashes(strtoupper($product->subcategoryRef->name ?? "RETAIL & BULK")) }}'], 
+                                    tags: ['{{ addslashes(strtoupper($product->categoryRef->name ?? $product->category)) }}', '{{ addslashes(strtoupper($product->packaging_type ?? $product->packaging ?? "EXPORT GRADE")) }}'], 
                                     desc: '{{ addslashes($product->description) }}', 
-                                    specs: {grade: '{{ addslashes($product->categoryRef->name ?? "Natural Rock Salt") }}', grain: '{{ addslashes($product->grain_size ?? "Standard") }}', purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', origin: 'Salt Range, Pakistan'}
-                                })" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
+                                    price: '{{ $product->formatted_price }}',
+                                    moq: '{{ addslashes($product->moq ?? "Contact Export Desk") }}',
+                                    packaging: '{{ addslashes($product->packaging_type ?? $product->packaging ?? "Export Standard") }}',
+                                    package_weight: '{{ addslashes($product->package_weight ?? "Standard Size") }}',
+                                    specs: {
+                                        grade: '{{ addslashes($product->grade ?? "Food Grade ISO-22000") }}', 
+                                        grain: '{{ addslashes($product->grain_size ?? $product->mesh_size ?? "Standard") }}', 
+                                        purity: '{{ addslashes($product->purity ?? "98.5%+ NaCl") }}', 
+                                        origin: '{{ addslashes($product->origin ?? "Khewra Salt Range, Pakistan") }}',
+                                        packaging: '{{ addslashes($product->packaging_type ?? $product->packaging ?? "Standard PP/Pouch") }}',
+                                        weight: '{{ addslashes($product->package_weight ?? "N/A") }}'
+                                    }
+                                })" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
                                     <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -365,6 +461,7 @@
                             </a>
                         </div>
                         @endforelse
+                    </div>
                     </div>
 
             <!-- Fine print note -->
@@ -580,23 +677,48 @@
                         </div>
 
                         <div class="space-y-4">
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase">SPECIFICATION SHEET</span>
-                            <h3 class="font-serif text-3xl text-saltora-text font-normal" x-text="selectedProduct.name"></h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase">TECHNICAL SPECIFICATION</span>
+                                <span class="text-[10px] font-bold text-slate-500 bg-stone-100 px-2 py-0.5 rounded-xs" x-text="selectedProduct.category"></span>
+                            </div>
+                            
+                            <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal" x-text="selectedProduct.name"></h3>
+                            
+                            <!-- Price & MOQ Box -->
+                            <div class="p-3 bg-stone-50 border border-saltora-border rounded-xs flex items-center justify-between">
+                                <div>
+                                    <span class="text-[9px] uppercase font-bold text-stone-500 block">Export Price</span>
+                                    <span class="text-lg font-bold text-saltora-text" x-text="selectedProduct.price"></span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[9px] uppercase font-bold text-stone-500 block">Minimum Order (MOQ)</span>
+                                    <span class="text-xs font-bold text-saltora-terracotta" x-text="selectedProduct.moq"></span>
+                                </div>
+                            </div>
+
                             <p class="text-xs text-saltora-muted font-light leading-relaxed" x-text="selectedProduct.desc"></p>
 
                             <!-- Specs Table -->
-                            <div class="border-t border-b border-saltora-border/70 py-3 space-y-2 text-xs">
+                            <div class="border-t border-b border-saltora-border/70 py-2.5 space-y-1.5 text-xs">
                                 <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Grade Spec:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grade"></span>
+                                    <span class="text-saltora-muted font-light">Grain / Mesh Size:</span>
+                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grain"></span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Grain Size:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grain"></span>
+                                    <span class="text-saltora-muted font-light">Packaging Format:</span>
+                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.packaging"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-saltora-muted font-light">Unit Weight / Capacity:</span>
+                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.package_weight"></span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-saltora-muted font-light">Chemical Purity:</span>
                                     <span class="font-semibold text-saltora-terracotta" x-text="selectedProduct.specs.purity"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-saltora-muted font-light">Grade Standard:</span>
+                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grade"></span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-saltora-muted font-light">Source Origin:</span>
@@ -609,9 +731,9 @@
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                                     </svg>
-                                    <span>ADD TO SHOPPING CART</span>
+                                    <span>ADD TO QUOTE REQUEST</span>
                                 </button>
-                                <a href="/contact" class="w-full border border-saltora-text/30 hover:border-saltora-text text-saltora-text py-3 text-center text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer">
+                                <a href="/contact" class="w-full border border-saltora-text/30 hover:border-saltora-text text-saltora-text py-2.5 text-center text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer">
                                     SEND CUSTOM INQUIRY
                                 </a>
                             </div>

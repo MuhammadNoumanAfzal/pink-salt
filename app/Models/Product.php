@@ -18,8 +18,16 @@ class Product extends Model
         'badge',
         'grade',
         'mesh_size',
+        'grain_size',
         'purity',
         'packaging',
+        'packaging_type',
+        'package_weight',
+        'price',
+        'price_unit',
+        'product_type',
+        'moq',
+        'origin',
         'image_url',
         'short_desc',
         'full_desc',
@@ -30,7 +38,22 @@ class Product extends Model
     protected $casts = [
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
+        'price' => 'decimal:2',
     ];
+
+    public function getDescriptionAttribute()
+    {
+        return $this->short_desc ?? $this->full_desc ?? '';
+    }
+
+    public function getFormattedPriceAttribute()
+    {
+        if ($this->price && $this->price > 0) {
+            $unit = $this->price_unit ? ' / ' . ltrim($this->price_unit, '/') : '';
+            return '$' . number_format($this->price, 2) . $unit;
+        }
+        return 'Custom Quote / Inquire';
+    }
 
     public function categoryRef()
     {

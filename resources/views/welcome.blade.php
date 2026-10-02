@@ -317,18 +317,19 @@
                         <!-- Product Category & Subcategory Tag Pills -->
                         <div class="flex flex-wrap items-center gap-1.5">
                             @if($prod->categoryRef)
-                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">{{ $prod->categoryRef->name }}</span>
+                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2 py-0.5 rounded-full uppercase bg-saltora-blush/60">{{ $prod->categoryRef->name }}</span>
                             @endif
-                            @if($prod->subcategoryRef)
-                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2.5 py-0.5 rounded-full uppercase bg-stone-50">{{ $prod->subcategoryRef->name }}</span>
-                            @endif
-                            @if(!$prod->categoryRef && !$prod->subcategoryRef)
-                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2.5 py-0.5 rounded-full uppercase bg-saltora-blush/60">HIMALAYAN PINK SALT</span>
+                            @if($prod->grain_size && !str_contains($prod->grain_size, 'Not Applicable'))
+                                <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->grain_size }}</span>
+                            @elseif($prod->packaging_type)
+                                <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->packaging_type }}</span>
+                            @elseif($prod->subcategoryRef)
+                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-0.5 rounded-full uppercase bg-stone-50">{{ $prod->subcategoryRef->name }}</span>
                             @endif
                         </div>
 
                         <!-- Product Title -->
-                        <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug">
+                        <h3 class="font-serif text-lg text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1">
                             {{ $prod->name }}
                         </h3>
 
@@ -336,17 +337,36 @@
                         <p class="text-xs text-saltora-muted leading-relaxed font-normal line-clamp-2">
                             {{ $prod->short_desc ?? 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — ideal for gourmet food and bulk export.' }}
                         </p>
+
+                        <!-- Price & MOQ Row -->
+                        <div class="pt-2 flex items-baseline justify-between border-t border-slate-100">
+                            <div>
+                                @if($prod->price && $prod->price > 0)
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-base font-bold text-slate-900">${{ number_format($prod->price, 2) }}</span>
+                                    <span class="text-[10px] text-slate-500 font-semibold">/ {{ ltrim($prod->price_unit ?? 'kg', '/') }}</span>
+                                </div>
+                                @else
+                                <span class="text-[11px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
+                                @endif
+                            </div>
+                            @if($prod->moq)
+                            <div class="text-[10px] text-slate-400 font-medium truncate max-w-[130px]">
+                                MOQ: {{ $prod->moq }}
+                            </div>
+                            @endif
+                        </div>
                     </div>
 
                     <!-- Side-by-Side Compact Action Buttons -->
-                    <div class="pt-3.5 border-t border-saltora-border/60 mt-4 flex items-center gap-2">
-                        <button @click="addToCart('{{ addslashes($prod->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
+                    <div class="pt-3 border-t border-saltora-border/60 mt-3 flex items-center gap-2">
+                        <button @click="addToCart('{{ addslashes($prod->name) }}')" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-md group/btn relative overflow-hidden">
                             <svg class="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
                             </svg>
                             <span class="truncate">ADD TO CART</span>
                         </button>
-                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2.5 px-3 text-[11px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
+                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->packaging_type ?? $prod->packaging ?? 'EXPORT GRADE') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->grain_size ?? $prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: '{{ addslashes($prod->origin ?? 'Salt Range, Pakistan') }}'}})" class="flex-1 border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush-light text-saltora-text py-2 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-md group/btn">
                             <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>

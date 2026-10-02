@@ -26,11 +26,12 @@ class AdminDashboardController extends Controller
             'published_blogs' => $posts->where('is_published', true)->count(),
         ];
 
-        $products = Product::latest()->get();
+        $categories = \App\Models\Category::with('allSubcategories')->where('is_active', true)->get();
+        $products = Product::with(['categoryRef', 'subcategoryRef'])->latest()->get();
         $quotes = QuoteRequest::latest()->get();
         $inquiries = ContactSubmission::latest()->get();
 
-        return view('admin.dashboard', compact('stats', 'products', 'quotes', 'inquiries', 'posts'));
+        return view('admin.dashboard', compact('stats', 'products', 'quotes', 'inquiries', 'posts', 'categories'));
     }
 
     public function productsIndex()
@@ -63,8 +64,16 @@ class AdminDashboardController extends Controller
             'badge' => 'nullable|string|max:100',
             'grade' => 'nullable|string|max:100',
             'mesh_size' => 'nullable|string|max:100',
+            'grain_size' => 'nullable|string|max:100',
             'purity' => 'nullable|string|max:100',
             'packaging' => 'nullable|string|max:255',
+            'packaging_type' => 'nullable|string|max:100',
+            'package_weight' => 'nullable|string|max:100',
+            'price' => 'nullable|numeric|min:0',
+            'price_unit' => 'nullable|string|max:100',
+            'product_type' => 'nullable|string|max:100',
+            'moq' => 'nullable|string|max:100',
+            'origin' => 'nullable|string|max:255',
             'short_desc' => 'required|string',
             'full_desc' => 'nullable|string',
             'image_url' => 'nullable|string',
@@ -92,6 +101,13 @@ class AdminDashboardController extends Controller
             if ($catModel) $catName = $catModel->name;
         }
 
+        $packagingSummary = $validated['packaging'] ?? null;
+        if (empty($packagingSummary) && (!empty($validated['packaging_type']) || !empty($validated['package_weight']))) {
+            $packagingSummary = trim(($validated['package_weight'] ?? '') . ' ' . ($validated['packaging_type'] ?? ''));
+        }
+
+        $grainSize = $validated['grain_size'] ?? $validated['mesh_size'] ?? null;
+
         $product = Product::create([
             'name' => $validated['name'],
             'slug' => \Str::slug($validated['name']),
@@ -99,10 +115,18 @@ class AdminDashboardController extends Controller
             'subcategory_id' => $validated['subcategory_id'] ?? null,
             'category' => $catName ?? 'Edible Pink Salt',
             'badge' => $validated['badge'] ?? null,
-            'grade' => $validated['grade'] ?? null,
-            'mesh_size' => $validated['mesh_size'] ?? null,
-            'purity' => $validated['purity'] ?? null,
-            'packaging' => $validated['packaging'] ?? null,
+            'grade' => $validated['grade'] ?? 'Food Grade ISO-22000',
+            'mesh_size' => $grainSize,
+            'grain_size' => $grainSize,
+            'purity' => $validated['purity'] ?? '98.5%+ NaCl',
+            'packaging' => $packagingSummary,
+            'packaging_type' => $validated['packaging_type'] ?? null,
+            'package_weight' => $validated['package_weight'] ?? null,
+            'price' => $validated['price'] ?? null,
+            'price_unit' => $validated['price_unit'] ?? 'per kg',
+            'product_type' => $validated['product_type'] ?? 'pure_salt',
+            'moq' => $validated['moq'] ?? null,
+            'origin' => $validated['origin'] ?? 'Khewra Salt Range, Pakistan',
             'short_desc' => $validated['short_desc'],
             'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
             'image_url' => $imageUrl,
@@ -129,8 +153,16 @@ class AdminDashboardController extends Controller
             'badge' => 'nullable|string|max:100',
             'grade' => 'nullable|string|max:100',
             'mesh_size' => 'nullable|string|max:100',
+            'grain_size' => 'nullable|string|max:100',
             'purity' => 'nullable|string|max:100',
             'packaging' => 'nullable|string|max:255',
+            'packaging_type' => 'nullable|string|max:100',
+            'package_weight' => 'nullable|string|max:100',
+            'price' => 'nullable|numeric|min:0',
+            'price_unit' => 'nullable|string|max:100',
+            'product_type' => 'nullable|string|max:100',
+            'moq' => 'nullable|string|max:100',
+            'origin' => 'nullable|string|max:255',
             'short_desc' => 'required|string',
             'full_desc' => 'nullable|string',
             'image_url' => 'nullable|string',
@@ -160,6 +192,13 @@ class AdminDashboardController extends Controller
             if ($catModel) $catName = $catModel->name;
         }
 
+        $packagingSummary = $validated['packaging'] ?? null;
+        if (empty($packagingSummary) && (!empty($validated['packaging_type']) || !empty($validated['package_weight']))) {
+            $packagingSummary = trim(($validated['package_weight'] ?? '') . ' ' . ($validated['packaging_type'] ?? ''));
+        }
+
+        $grainSize = $validated['grain_size'] ?? $validated['mesh_size'] ?? $product->grain_size;
+
         $product->update([
             'name' => $validated['name'],
             'slug' => \Str::slug($validated['name']),
@@ -167,10 +206,18 @@ class AdminDashboardController extends Controller
             'subcategory_id' => $validated['subcategory_id'] ?? null,
             'category' => $catName,
             'badge' => $validated['badge'] ?? null,
-            'grade' => $validated['grade'] ?? null,
-            'mesh_size' => $validated['mesh_size'] ?? null,
-            'purity' => $validated['purity'] ?? null,
-            'packaging' => $validated['packaging'] ?? null,
+            'grade' => $validated['grade'] ?? $product->grade,
+            'mesh_size' => $grainSize,
+            'grain_size' => $grainSize,
+            'purity' => $validated['purity'] ?? $product->purity,
+            'packaging' => $packagingSummary ?? $product->packaging,
+            'packaging_type' => $validated['packaging_type'] ?? $product->packaging_type,
+            'package_weight' => $validated['package_weight'] ?? $product->package_weight,
+            'price' => $validated['price'] ?? $product->price,
+            'price_unit' => $validated['price_unit'] ?? $product->price_unit,
+            'product_type' => $validated['product_type'] ?? $product->product_type,
+            'moq' => $validated['moq'] ?? $product->moq,
+            'origin' => $validated['origin'] ?? $product->origin,
             'short_desc' => $validated['short_desc'],
             'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
             'image_url' => $imageUrl,
