@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Post;
 use App\Models\ContactSubmission;
 use App\Models\QuoteRequest;
 use Illuminate\Support\Str;
@@ -13,7 +14,8 @@ class FrontendController extends Controller
     public function home()
     {
         $products = Product::where('is_active', true)->with(['categoryRef', 'subcategoryRef'])->take(8)->get();
-        return view('welcome', compact('products'));
+        $latestPosts = Post::published()->latest()->take(3)->get();
+        return view('welcome', compact('products', 'latestPosts'));
     }
 
     public function about()
