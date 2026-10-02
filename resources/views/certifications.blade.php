@@ -109,30 +109,23 @@
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group cursor-pointer">
+            <a href="/" class="flex items-center gap-3 group cursor-pointer" title="SALTORA Home">
                 <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
-                <div class="flex flex-col">
-                    <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
-                    <span class="text-[9px] uppercase tracking-widest text-saltora-terracotta -mt-1 font-semibold">Salt Range Exporter</span>
-                </div>
+                <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center space-x-8 text-xs font-semibold tracking-widest text-saltora-text uppercase">
-                <a href="/about" class="hover:text-saltora-terracotta transition-colors cursor-pointer py-1">ABOUT</a>
-                <a href="/products" class="hover:text-saltora-terracotta transition-colors cursor-pointer py-1">PRODUCTS</a>
+            <nav class="hidden lg:flex items-center space-x-9 text-xs font-semibold tracking-widest text-saltora-text uppercase">
+                <a href="/about" class="hover:text-saltora-terracotta transition-colors cursor-pointer">ABOUT</a>
+                <a href="/products" class="hover:text-saltora-terracotta transition-colors cursor-pointer">PRODUCTS</a>
                 <a href="/certifications" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer">CERTIFICATIONS</a>
-                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer py-1">EXPORT & LOGISTICS</a>
-                <a href="/blog" class="hover:text-saltora-terracotta transition-colors cursor-pointer py-1">BLOG</a>
-                <a href="/contact" class="hover:text-saltora-terracotta transition-colors cursor-pointer py-1">CONTACT</a>
+                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer">EXPORT & LOGISTICS</a>
+                <a href="/blog" class="hover:text-saltora-terracotta transition-colors cursor-pointer">BLOG</a>
+                <a href="/contact" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CONTACT</a>
             </nav>
 
             <!-- Header Action Button & Quote CTA -->
             <div class="hidden sm:flex items-center gap-3">
-                <a href="https://wa.me/923180735748?text=Hello%20Saltora%20Team%2C%20I%20am%20inquiring%20about%20your%20compliance%20certificates%20and%20COA." target="_blank" class="text-stone-700 hover:text-emerald-700 p-2.5 transition-colors text-sm flex items-center gap-1.5" title="WhatsApp Direct Export Desk">
-                    <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
-                    <span class="text-[11px] font-bold tracking-wider hidden xl:inline">WHATSAPP</span>
-                </a>
                 <a href="/contact" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
                     <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
                     <span>REQUEST A QUOTE</span>

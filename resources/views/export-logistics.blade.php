@@ -3,29 +3,111 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Export & Logistics — SALTORA | Professional Salt Buying Process</title>
     
-    <!-- Meta SEO -->
-    <meta name="description" content="SALTORA's transparent 7-step export and shipping process for Himalayan pink salt: FOB terms, documentation, custom clearance, and international bulk delivery.">
-    <meta name="keywords" content="Export Pink Salt Pakistan, FOB Salt Exporter, Salt Range Shipping, B2B Salt Logistics, Saltora Export Documentation">
+    <!-- Comprehensive Technical & On-Page SEO -->
+    <title>Himalayan Pink Salt Export & Logistics | Global Shipping from Pakistan — SALTORA</title>
+    <meta name="description" content="SALTORA's international shipping, FOB/CIF terms, and container logistics for Himalayan pink salt. Serving 20+ global ports via Port Qasim & Karachi Port with full documentation and batch traceability.">
+    <meta name="keywords" content="Himalayan Salt Export Pakistan, FOB Karachi Port salt shipping, CIF pink salt delivery, Port Qasim salt exporter, 20ft container salt weight, bulk salt ocean freight, pink salt export documentation, Maersk salt shipping">
+    <meta name="author" content="SALTORA Export Logistics Division">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="{{ url()->current() }}">
+    
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SALTORA Himalayan Pink Salt">
+    <meta property="og:title" content="Himalayan Pink Salt Export & Logistics | Global Shipping from Pakistan — SALTORA">
+    <meta property="og:description" content="Transparent 7-step export workflow, FOB/CIF Incoterms, container payload specifications, and global transit times from Karachi Port & Port Qasim.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ url('/export nd logisyt her.jpg') }}">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Himalayan Pink Salt Export & Logistics | SALTORA Pakistan">
+    <meta name="twitter:description" content="Transparent ocean container logistics, port transit times, and documentation for global Himalayan pink salt buyers.">
+    <meta name="twitter:image" content="{{ url('/export nd logisyt her.jpg') }}">
     
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="shortcut icon" type="image/png" href="/logo.png">
     
-    <!-- FontAwesome CDN -->
+    <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Vite Assets (Tailwind CSS + Alpine JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Schema.org JSON-LD Structured Data for Export Logistics Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "{{ url()->current() }}#webpage",
+          "url": "{{ url()->current() }}",
+          "name": "Himalayan Pink Salt Export & Logistics | Global Shipping from Pakistan — SALTORA",
+          "description": "SALTORA's international shipping, FOB/CIF terms, and container logistics for Himalayan pink salt. Serving 20+ global ports via Port Qasim & Karachi Port with full documentation and batch traceability.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "{{ url('/') }}#website",
+            "url": "{{ url('/') }}",
+            "name": "SALTORA Himalayan Pink Salt Exporter"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ url('/') }}"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Export & Logistics",
+                "item": "{{ url()->current() }}"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "{{ url()->current() }}#service",
+          "name": "Himalayan Pink Salt Ocean Freight & Export Logistics",
+          "provider": {
+            "@type": "Organization",
+            "name": "SALTORA Himalayan Pink Salt Exporter",
+            "url": "{{ url('/') }}"
+          },
+          "serviceType": "International Maritime Bulk & Containerized Freight Logistics",
+          "areaServed": ["United States", "European Union", "United Kingdom", "United Arab Emirates", "Saudi Arabia", "Canada", "Australia", "Japan", "South Korea"],
+          "description": "Complete FOB, CFR, and CIF ocean container delivery of food-grade, retail, and bulk industrial Himalayan pink salt from Port Qasim / Karachi Port to major international sea hubs."
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-saltora-bg text-saltora-text font-sans antialiased selection:bg-saltora-terracotta selection:text-white" x-data="shopManager()">
+<body class="bg-saltora-bg text-saltora-text font-sans antialiased selection:bg-saltora-terracotta selection:text-white" 
+      x-data="{
+          mobileMenuOpen: false,
+          portModalOpen: false,
+          selectedPort: null,
+          openPortModal(port) {
+              this.selectedPort = port;
+              this.portModalOpen = true;
+          },
+          closePortModal() {
+              this.portModalOpen = false;
+          }
+      }">
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group cursor-pointer">
+            <a href="/" class="flex items-center gap-3 group cursor-pointer" title="SALTORA Home">
                 <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
                 <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
@@ -42,16 +124,6 @@
 
             <!-- Header Action Button & Quote CTA -->
             <div class="hidden sm:flex items-center gap-3">
-                {{--
-                <!-- SHOPPING CART COMMENTED OUT -->
-                <button @click="openCartSidebar()" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
-                    <svg class="w-4 h-4 text-[#e07a5f] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                    </svg>
-                    <span>SHOPPING CART</span>
-                    <span x-show="cartCount > 0" x-text="cartCount" class="bg-[#e07a5f] text-white text-[10px] min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center font-bold shadow-xs" x-cloak></span>
-                </button>
-                --}}
                 <a href="/contact" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
                     <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
                     <span>REQUEST A QUOTE</span>
@@ -59,7 +131,7 @@
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer" aria-label="Toggle Navigation Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -73,17 +145,8 @@
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
             <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">EXPORT & LOGISTICS</a>
+            <a @click="mobileMenuOpen = false" href="/blog" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">BLOG</a>
             <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CONTACT</a>
-            {{--
-            <!-- SHOPPING CART COMMENTED OUT -->
-            <button @click="mobileMenuOpen = false; openCartSidebar()" class="flex items-center justify-center gap-2.5 w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                </svg>
-                <span>SHOPPING CART</span>
-                <span x-show="cartCount > 0" x-text="'(' + cartCount + ')'" x-cloak></span>
-            </button>
-            --}}
             <a href="/contact" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-4 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
                 <i class="fa-solid fa-file-invoice text-amber-200 text-sm"></i>
                 <span>REQUEST A QUOTE</span>
@@ -92,44 +155,59 @@
     </header>
 
     <!-- HERO SECTION (DARK SHIPPING PORT BACKGROUND OVERLAY) -->
-    <section class="relative bg-saltora-dark text-white py-24 md:py-36 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
-        <!-- Backdrop Image (`export nd logisyt her.jpg`) - Brighter & Warm -->
-        <img src="/export nd logisyt her.jpg" alt="Shipping Container Port Crane Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35 pointer-events-none"></div>
+    <section class="relative bg-saltora-dark text-white py-20 md:py-32 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+        <!-- Backdrop Image (`/export nd logisyt her.jpg`) -->
+        <img src="/export nd logisyt her.jpg" alt="Shipping Container Port Crane Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-10">
             <div class="space-y-6 max-w-3xl animate-hero-left">
                 <!-- Category Sub-tag -->
-                <div class="flex items-center gap-3 text-xs font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-8 h-px bg-saltora-terracotta"></span>
-                    <span>EXPORT & LOGISTICS</span>
+                <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
+                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse"></span>
+                    <span>GLOBAL OCEAN FREIGHT & CONTAINER LOGISTICS</span>
                 </div>
 
                 <!-- Headline -->
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-white font-normal leading-[1.08]">
+                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08]">
                     A clear, professional buying process
                 </h1>
 
                 <!-- Paragraph -->
-                <p class="text-stone-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-                    From first inquiry to delivery at your destination port — Saltora keeps every step documented, transparent and on schedule.
+                <p class="text-stone-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                    From initial inquiry and specification alignment to customs clearance, container stuffing, and maritime delivery at your destination port — Saltora keeps every shipment documented, transparent, and on schedule.
                 </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#shippingDirectory" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 rounded-xs">
+                        <span>VIEW PORTS & TRANSIT TIMES</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    </a>
+                    <a href="/contact" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-xs flex items-center gap-2 rounded-xs">
+                        <i class="fa-solid fa-calculator text-saltora-terracotta"></i>
+                        <span>CALCULATE FREIGHT QUOTE</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Hero Stats Badge Right -->
-            <div class="animate-hero-right shrink-0">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-sm space-y-3 max-w-xs shadow-2xl">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-saltora-terracotta/20 border border-saltora-terracotta flex items-center justify-center text-saltora-terracotta">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V9a2 2 0 00-2-2h-2"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="block text-2xl font-serif font-bold text-white">GLOBAL PORTS</span>
-                            <span class="text-[10px] text-stone-300 uppercase tracking-wider font-medium">FOB Karachi & Port Qasim</span>
-                        </div>
-                    </div>
+            <!-- Hero Stats Badges Right -->
+            <div class="animate-hero-right shrink-0 grid grid-cols-2 gap-3.5 max-w-md w-full">
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
+                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">20+ Ports</div>
+                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Worldwide Direct Routes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
+                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">2 Loading Hubs</div>
+                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Karachi Port & Port Qasim</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
+                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">50 / 50 FOB</div>
+                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Transparent Payment Terms</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
+                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">FCL & Bulk</div>
+                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">20ft, 40ft & Jumbo Totes</div>
                 </div>
             </div>
         </div>
@@ -142,239 +220,476 @@
                 <span class="flex items-center gap-2">✦ FOB TERMS: 50% ADVANCE & 50% ON B/L PRESENTATION</span>
                 <span class="flex items-center gap-2">✦ SEAMLESS CUSTOMS CLEARANCE DOCUMENTATION</span>
                 <span class="flex items-center gap-2">✦ BULK & CONTAINERIZED SHIPPING TO GLOBAL PORTS</span>
-                <span class="flex items-center gap-2">✦ FULL BATCH TRACEABILITY GUARANTEED</span>
+                <span class="flex items-center gap-2">✦ DIRECT DEPARTURES: PORT QASIM & KARACHI PORT</span>
+                <span class="flex items-center gap-2">✦ MAERSK, MSC, CMA CGM, HAPAG-LLOYD CARRIER PARTNERS</span>
             </div>
             <div class="flex items-center gap-10 shrink-0">
                 <span class="flex items-center gap-2">✦ FOB TERMS: 50% ADVANCE & 50% ON B/L PRESENTATION</span>
                 <span class="flex items-center gap-2">✦ SEAMLESS CUSTOMS CLEARANCE DOCUMENTATION</span>
                 <span class="flex items-center gap-2">✦ BULK & CONTAINERIZED SHIPPING TO GLOBAL PORTS</span>
-                <span class="flex items-center gap-2">✦ FULL BATCH TRACEABILITY GUARANTEED</span>
-            </div>
-            <div class="flex items-center gap-10 shrink-0">
-                <span class="flex items-center gap-2">✦ FOB TERMS: 50% ADVANCE & 50% ON B/L PRESENTATION</span>
-                <span class="flex items-center gap-2">✦ SEAMLESS CUSTOMS CLEARANCE DOCUMENTATION</span>
-                <span class="flex items-center gap-2">✦ BULK & CONTAINERIZED SHIPPING TO GLOBAL PORTS</span>
-                <span class="flex items-center gap-2">✦ FULL BATCH TRACEABILITY GUARANTEED</span>
+                <span class="flex items-center gap-2">✦ DIRECT DEPARTURES: PORT QASIM & KARACHI PORT</span>
+                <span class="flex items-center gap-2">✦ MAERSK, MSC, CMA CGM, HAPAG-LLOYD CARRIER PARTNERS</span>
             </div>
         </div>
     </div>
 
-    <!-- INCOTERMS TERRACOTTA BANNER -->
-    <section class="max-w-7xl mx-auto px-6 pt-12 reveal-on-scroll reveal-scale">
-        <div class="bg-saltora-terracotta text-white p-6 sm:p-8 rounded-sm shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div class="space-y-1 max-w-3xl">
-                <span class="text-[10px] font-bold tracking-widest text-amber-200 uppercase block">INCOTERMS</span>
-                <h3 class="font-serif text-2xl font-normal text-white">FOB — Free On Board</h3>
-                <p class="text-xs text-stone-100 font-light leading-relaxed">
-                    Payment terms: <strong class="font-semibold text-white">50% advance & 50% upon presentation of the Bill of Lading</strong>. Presented exactly as Saltora's standard export terms — other arrangements can be discussed during quotation.
-                </p>
+    <!-- INCOTERMS SELECTION & PAYMENT TERMS SECTION -->
+    <section class="max-w-7xl mx-auto px-6 py-12" x-data="{ activeTerm: 'fob' }">
+        <div class="bg-white border border-saltora-border p-6 sm:p-8 rounded-sm shadow-sm space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-5">
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">COMMERCIAL INCOTERMS</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal">Standard Trading Terms & Payment Framework</h3>
+                </div>
+                
+                <!-- Term Switcher Tabs -->
+                <div class="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xs">
+                    <button @click="activeTerm = 'fob'" :class="activeTerm === 'fob' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                        FOB (Recommended)
+                    </button>
+                    <button @click="activeTerm = 'cfr'" :class="activeTerm === 'cfr' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                        CFR (Cost & Freight)
+                    </button>
+                    <button @click="activeTerm = 'cif'" :class="activeTerm === 'cif' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                        CIF (With Insurance)
+                    </button>
+                </div>
             </div>
 
-            <div class="shrink-0">
-                <a href="/contact" class="border border-white hover:bg-white hover:text-saltora-terracotta text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 cursor-pointer group">
-                    <span>START AN INQUIRY</span>
-                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
-                </a>
+            <!-- FOB Detail -->
+            <div x-show="activeTerm === 'fob'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-2">
+                    <h4 class="font-serif text-xl font-bold text-saltora-text">FOB — Free On Board (Karachi Port / Port Qasim)</h4>
+                    <p class="text-xs text-saltora-muted leading-relaxed font-light">
+                        Under our standard FOB terms, Saltora manages manufacturing, inland freight from the Salt Range, customs clearance, terminal handling charges (THC), and loads the sealed containers on board your nominated shipping vessel.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                        <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
+                            <strong>Payment:</strong> 50% Advance T/T & 50% against original Bill of Lading (B/L) copy
+                        </span>
+                        <span class="bg-stone-50 text-stone-700 px-2.5 py-1 rounded-xs border border-stone-200">
+                            <strong>Port of Loading:</strong> PKBQM / PKQAS
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                    <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
+                    <div class="text-sm font-bold text-saltora-text">Importers with Existing Forwarding Contracts</div>
+                    <a href="/contact?incoterm=FOB#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
+                        Request FOB Pricing
+                    </a>
+                </div>
+            </div>
+
+            <!-- CFR Detail -->
+            <div x-show="activeTerm === 'cfr'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-2">
+                    <h4 class="font-serif text-xl font-bold text-saltora-text">CFR — Cost & Freight (Delivered to Destination Port)</h4>
+                    <p class="text-xs text-saltora-muted leading-relaxed font-light">
+                        Saltora books and prepays the international ocean freight with top shipping carriers (Maersk, MSC, CMA CGM) directly to your designated seaport. The buyer handles destination customs clearance and port duties upon cargo arrival.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                        <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
+                            <strong>Payment:</strong> 50% Advance T/T & 50% upon presentation of Ocean B/L copy
+                        </span>
+                        <span class="bg-stone-50 text-stone-700 px-2.5 py-1 rounded-xs border border-stone-200">
+                            <strong>Freight:</strong> Pre-negotiated competitive carrier rates
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                    <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
+                    <div class="text-sm font-bold text-saltora-text">Buyers Wanting Freight Handled End-to-End</div>
+                    <a href="/contact?incoterm=CFR#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
+                        Request CFR Pricing
+                    </a>
+                </div>
+            </div>
+
+            <!-- CIF Detail -->
+            <div x-show="activeTerm === 'cif'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-2">
+                    <h4 class="font-serif text-xl font-bold text-saltora-text">CIF — Cost, Insurance & Freight</h4>
+                    <p class="text-xs text-saltora-muted leading-relaxed font-light">
+                        Full comprehensive shipping solution including ocean freight and all-risk marine cargo insurance (covering 110% of CIF value under Institute Cargo Clauses A). Maximum peace of mind for institutional food manufacturers and supermarket distributors.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                        <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
+                            <strong>Insurance:</strong> 110% All-Risk Marine Coverage included
+                        </span>
+                        <span class="bg-stone-50 text-stone-700 px-2.5 py-1 rounded-xs border border-stone-200">
+                            <strong>L/C at Sight:</strong> Supported for high-tonnage contracts
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                    <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
+                    <div class="text-sm font-bold text-saltora-text">Turnkey Commercial Protection & Letters of Credit</div>
+                    <a href="/contact?incoterm=CIF#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
+                        Request CIF Pricing
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEVEN STEPS FROM INQUIRY TO DELIVERY SECTION -->
+    <!-- NEW INTERACTIVE GLOBAL DESTINATION PORTS & TRANSIT TIMES DIRECTORY -->
+    <section id="shippingDirectory" class="py-16 md:py-24 px-6 md:px-12 bg-white border-t border-saltora-border/70"
+             x-data="{
+                 activeRegion: 'all',
+                 searchPort: '',
+                 
+                 // Global Ports Database
+                 ports: [
+                     // Europe & UK
+                     { name: 'Port of Rotterdam', country: 'Netherlands', region: 'europe', transit: '18 - 22 Days', lines: 'Maersk, MSC, CMA CGM', freq: 'Weekly Direct', code: 'NLRTM', popular: true },
+                     { name: 'Port of Hamburg', country: 'Germany', region: 'europe', transit: '20 - 24 Days', lines: 'Hapag-Lloyd, MSC', freq: 'Weekly', code: 'DEHAM', popular: true },
+                     { name: 'Port of Antwerp', country: 'Belgium', region: 'europe', transit: '19 - 23 Days', lines: 'CMA CGM, MSC', freq: 'Weekly', code: 'BEANR', popular: false },
+                     { name: 'Port of Felixstowe / Southampton', country: 'United Kingdom', region: 'europe', transit: '21 - 25 Days', lines: 'Maersk, ONE, MSC', freq: 'Weekly Direct', code: 'GBFXT', popular: true },
+                     { name: 'Port of Valencia / Barcelona', country: 'Spain', region: 'europe', transit: '16 - 20 Days', lines: 'MSC, CMA CGM', freq: 'Weekly Direct', code: 'ESVLC', popular: false },
+                     { name: 'Port of Genoa', country: 'Italy', region: 'europe', transit: '15 - 19 Days', lines: 'Hapag-Lloyd, MSC', freq: 'Weekly Direct', code: 'ITGOA', popular: false },
+                     
+                     // North America
+                     { name: 'Port of Long Beach / Los Angeles', country: 'United States (West Coast)', region: 'north-america', transit: '28 - 34 Days', lines: 'ONE, Maersk, Evergreen', freq: 'Weekly', code: 'USLGB', popular: true },
+                     { name: 'Port of New York & New Jersey', country: 'United States (East Coast)', region: 'north-america', transit: '24 - 28 Days', lines: 'MSC, Maersk, CMA CGM', freq: 'Weekly Direct', code: 'USNYC', popular: true },
+                     { name: 'Port of Houston', country: 'United States (Gulf Coast)', region: 'north-america', transit: '26 - 30 Days', lines: 'CMA CGM, Hapag-Lloyd', freq: 'Weekly', code: 'USHOU', popular: true },
+                     { name: 'Port of Savannah', country: 'United States (Southeast)', region: 'north-america', transit: '25 - 29 Days', lines: 'MSC, Maersk', freq: 'Weekly', code: 'USSAV', popular: false },
+                     { name: 'Port of Vancouver / Montreal', country: 'Canada', region: 'north-america', transit: '30 - 35 Days', lines: 'Hapag-Lloyd, ONE', freq: 'Bi-Weekly', code: 'CAVAN', popular: false },
+                     
+                     // Middle East & GCC
+                     { name: 'Port of Jebel Ali (Dubai)', country: 'United Arab Emirates', region: 'middle-east', transit: '3 - 5 Days', lines: 'Direct Feeder, Maersk, MSC', freq: '2x Weekly Direct', code: 'AEJEA', popular: true },
+                     { name: 'King Abdulaziz Port (Dammam)', country: 'Saudi Arabia', region: 'middle-east', transit: '5 - 7 Days', lines: 'Direct Feeder, MSC', freq: 'Weekly Direct', code: 'SADMM', popular: true },
+                     { name: 'Jeddah Islamic Port', country: 'Saudi Arabia (Red Sea)', region: 'middle-east', transit: '7 - 10 Days', lines: 'Hapag-Lloyd, CMA CGM', freq: 'Weekly Direct', code: 'SAJED', popular: false },
+                     { name: 'Hamad Port', country: 'Qatar', region: 'middle-east', transit: '4 - 6 Days', lines: 'Milaha, Direct Feeder', freq: 'Weekly Direct', code: 'QAHMD', popular: false },
+                     
+                     // Asia & Far East
+                     { name: 'Port of Singapore', country: 'Singapore (Asia Hub)', region: 'asia', transit: '8 - 11 Days', lines: 'ONE, Maersk, PIL', freq: 'Multiple Direct Sailings', code: 'SGSIN', popular: true },
+                     { name: 'Port Klang', country: 'Malaysia', region: 'asia', transit: '9 - 12 Days', lines: 'CMA CGM, Evergreen', freq: 'Weekly Direct', code: 'MYPKG', popular: false },
+                     { name: 'Port of Busan', country: 'South Korea', region: 'asia', transit: '14 - 18 Days', lines: 'HMM, ONE, Maersk', freq: 'Weekly', code: 'KRPUS', popular: false },
+                     { name: 'Tokyo / Yokohama Port', country: 'Japan', region: 'asia', transit: '16 - 20 Days', lines: 'ONE, NYK', freq: 'Weekly', code: 'JPTYO', popular: false },
+                     
+                     // Australia & Oceania
+                     { name: 'Port of Melbourne', country: 'Australia', region: 'oceania', transit: '20 - 24 Days', lines: 'MSC, Maersk', freq: 'Weekly', code: 'AUMEL', popular: true },
+                     { name: 'Port of Sydney (Botany)', country: 'Australia', region: 'oceania', transit: '22 - 26 Days', lines: 'CMA CGM, MSC', freq: 'Weekly', code: 'AUSYD', popular: false }
+                 ],
+
+                 get filteredPorts() {
+                     return this.ports.filter(p => {
+                         if (this.activeRegion !== 'all' && p.region !== this.activeRegion) return false;
+                         if (this.searchPort.trim() !== '') {
+                             const q = this.searchPort.trim().toLowerCase();
+                             return (p.name + ' ' + p.country + ' ' + p.code + ' ' + p.lines).toLowerCase().includes(q);
+                         }
+                         return true;
+                     });
+                 }
+             }">
+
+        <div class="max-w-7xl mx-auto space-y-10">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
+                <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">OCEAN CARRIER SCHEDULES</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                    Destination Ports & Transit Times
+                </h2>
+                <p class="text-saltora-muted text-sm sm:text-base font-light">
+                    Direct weekly vessel departures from Port Qasim and Karachi Port to all major global maritime container terminals.
+                </p>
+            </div>
+
+            <!-- Region Filter Tabs & Port Search -->
+            <div class="bg-saltora-bg p-4 sm:p-5 border border-saltora-border rounded-sm shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0">
+                    <button @click="activeRegion = 'all'" :class="activeRegion === 'all' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        All Ports (21)
+                    </button>
+                    <button @click="activeRegion = 'europe'" :class="activeRegion === 'europe' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        Europe & UK
+                    </button>
+                    <button @click="activeRegion = 'north-america'" :class="activeRegion === 'north-america' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        North America
+                    </button>
+                    <button @click="activeRegion = 'middle-east'" :class="activeRegion === 'middle-east' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        Middle East / GCC
+                    </button>
+                    <button @click="activeRegion = 'asia'" :class="activeRegion === 'asia' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        Asia & Far East
+                    </button>
+                    <button @click="activeRegion = 'oceania'" :class="activeRegion === 'oceania' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
+                        Australia / NZ
+                    </button>
+                </div>
+
+                <div class="relative min-w-[240px]">
+                    <input type="text" x-model="searchPort" placeholder="Search port, country, UN/LOCODE..." class="w-full bg-white border border-saltora-border px-3.5 py-2 pl-9 pr-7 rounded-xs text-xs focus:outline-none focus:border-saltora-terracotta">
+                    <svg class="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <button x-show="searchPort" @click="searchPort = ''" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs cursor-pointer">&times;</button>
+                </div>
+            </div>
+
+            <!-- Ports Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="p in filteredPorts" :key="p.code">
+                    <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between hover:border-saltora-terracotta/60 hover:shadow-md transition-all group">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono font-bold bg-stone-200/80 text-stone-800 px-2 py-0.5 rounded-xs" x-text="p.code"></span>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full" x-text="p.freq"></span>
+                            </div>
+
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-saltora-text group-hover:text-saltora-terracotta transition-colors" x-text="p.name"></h3>
+                                <span class="text-xs font-semibold text-stone-600" x-text="p.country"></span>
+                            </div>
+
+                            <div class="bg-white p-3 rounded-xs border border-stone-200 space-y-1.5 text-xs">
+                                <div class="flex justify-between">
+                                    <span class="text-stone-500">Transit Time:</span>
+                                    <span class="font-bold text-saltora-terracotta" x-text="p.transit"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-stone-500">Shipping Lines:</span>
+                                    <span class="font-semibold text-stone-700 text-right truncate max-w-[150px]" x-text="p.lines"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-stone-200/80 mt-4 flex items-center justify-between">
+                            <span class="text-[11px] text-stone-500 font-medium">Port Qasim Loading</span>
+                            <a :href="'/contact?port=' + encodeURIComponent(p.name + ' (' + p.country + ')') + '#contactForm'" class="text-xs font-bold text-saltora-terracotta hover:underline flex items-center gap-1">
+                                <span>Get Port Quote</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="filteredPorts.length === 0" x-cloak class="bg-white p-12 text-center rounded-sm border border-saltora-border space-y-3">
+                <i class="fa-solid fa-anchor text-3xl text-saltora-terracotta"></i>
+                <h4 class="font-serif text-xl font-bold text-saltora-text">No Ports Found</h4>
+                <p class="text-xs text-saltora-muted max-w-md mx-auto">We ship to over 80+ ports worldwide through transshipment feeder connections. Contact our logistics desk with your target port.</p>
+                <a href="/contact" class="inline-block bg-saltora-terracotta text-white px-6 py-2 text-xs font-bold uppercase rounded-xs">Inquire Custom Destination</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEVEN STEPS FROM INQUIRY TO DELIVERY (VERTICAL INTERACTIVE TIMELINE) -->
     <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
         
         <!-- Header -->
-        <div class="space-y-3 reveal-on-scroll reveal-from-top">
-            <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">HOW BUYING WORKS</span>
+        <div class="space-y-3 reveal-on-scroll reveal-from-top text-center max-w-3xl mx-auto">
+            <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">EXPORT TIMELINE & WORKFLOW</span>
             <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
-                Seven steps from inquiry to delivery
+                Seven steps from inquiry to port arrival
             </h2>
+            <p class="text-saltora-muted text-sm sm:text-base font-light">
+                Transparent milestones with complete documentation handoffs at each phase.
+            </p>
         </div>
 
         <!-- 7 Process Steps Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-saltora-border/80">
             
             <!-- Step 01 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-1">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">01</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-1">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">01</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Send Inquiry</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Share your product, quantity and destination through the quote form or email.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Send Target Inquiry</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Share your required grain mesh size, packaging format, tonnage, and destination port through our quote form or direct WhatsApp.</p>
                 </div>
             </div>
 
             <!-- Step 02 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-2">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">02</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-2">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">02</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Discuss Product & Specifications</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">We align on grade, grain size, packaging and any private-label requirements.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Specification & Sample Approval</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">We align on chemical purity, particle grading, packaging artwork, and dispatch courier sample test kits to your facility.</p>
                 </div>
             </div>
 
             <!-- Step 03 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-3">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">03</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-3">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">03</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Receive Quotation</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">You receive a clear, written quotation with specifications and terms.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Formal Proforma & Contract</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">You receive a binding commercial proforma invoice detailing unit prices, FOB/CIF terms, production schedule, and bank routing details.</p>
                 </div>
             </div>
 
             <!-- Step 04 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-4">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">04</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-4">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">04</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Confirm Order</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Order is confirmed against the agreed proforma and production is scheduled.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Production & Sieve Calibration</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Pure rock salt is extracted, optical sorted, rotary sieved, and hermetically packaged in food-grade moisture barrier sacks or private pouches.</p>
                 </div>
             </div>
 
             <!-- Step 05 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-5">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">05</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-5">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">05</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Production / Preparation</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Your salt is processed, graded and packed to the confirmed specification.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Batch Testing & Pre-Shipment Audit</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Laboratory analysis verifies purity and heavy metals. Third-party inspectors (SGS, Intertek, or PCSIR) verify weights and sample integrity.</p>
                 </div>
             </div>
 
             <!-- Step 06 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-from-bottom stagger-6">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">06</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-6">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">06</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Documentation & Shipment</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Export documentation is prepared and the shipment is dispatched from Pakistan.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Container Stuffing & Vessel Loading</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed">Containers are lined with desiccant protection and floor paper, loaded with cargo, high-security bolt sealed, and hoisted onto ocean vessels.</p>
                 </div>
             </div>
 
             <!-- Step 07 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 md:col-span-2 cursor-pointer group hover:bg-saltora-card/40 transition-colors px-2 reveal-on-scroll reveal-scale">
-                <span class="font-serif text-2xl text-saltora-muted/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-normal shrink-0">07</span>
+            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 md:col-span-2 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-scale">
+                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">07</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Delivery</h3>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed max-w-xl">Cargo moves to your destination port with documentation cleared for smooth clearance.</p>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Document Presentation & Port Arrival</h3>
+                    <p class="text-xs text-saltora-muted font-light leading-relaxed max-w-xl">Original B/L, Commercial Invoice, Packing List, Certificate of Origin, and COA are transferred. Cargo clears smoothly at your destination terminal.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- DOCUMENTATION & PACKED FOR THE JOURNEY (DARK SECTION) -->
+    <!-- EXPORT DOCUMENTATION VAULT & PACKAGING SHOWCASE (DARK SECTION) -->
     <section class="bg-[#181513] text-white py-20 md:py-28 px-6 md:px-12 border-t border-stone-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <!-- Left Column: Documentation (5 cols) -->
+            <!-- Left Column: Complete Documentation Checklist (5 cols) -->
             <div class="lg:col-span-5 space-y-6 reveal-on-scroll reveal-from-left">
                 <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
-                    DOCUMENTATION
+                    COMPREHENSIVE TRADE VAULT
                 </div>
 
                 <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
-                    Paperwork handled professionally
+                    Every export document handled with precision
                 </h2>
 
                 <p class="text-stone-400 text-xs sm:text-sm font-light leading-relaxed">
-                    Export documentation is prepared and shared with buyers so customs clearance at the destination port stays smooth.
+                    Customs clearance delays cost money. Saltora prepares, authenticates, and dispatches full export documentation packets so your cargo clears destination port authorities seamlessly.
                 </p>
 
-                <!-- Document Checklist with SVG Document Icons -->
-                <div class="space-y-3 pt-2">
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Commercial Invoice</span>
+                <!-- Document Checklist -->
+                <div class="space-y-2.5 pt-2">
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-file-invoice text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Commercial Invoice & Certified Packing List</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">Standard</span>
                     </div>
 
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Packing List</span>
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-ship text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Clean On-Board Ocean Bill of Lading (B/L)</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">Ocean Carrier</span>
                     </div>
 
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Bill of Lading</span>
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-landmark text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Certificate of Origin (LCCI / Federal Chamber)</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">Chamber</span>
                     </div>
 
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Certificate of Origin</span>
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-flask-vial text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Batch Certificate of Analysis (COA - Lab Tested)</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">PCSIR / Lab</span>
                     </div>
 
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Quality / Lab Reports (on request)</span>
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Halal & Kosher Export Compliance Certificates</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">Certified</span>
                     </div>
 
-                    <div class="py-2.5 border-b border-stone-800/80 flex items-center gap-3 group cursor-pointer">
-                        <svg class="w-4 h-4 text-saltora-terracotta shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                        <span class="text-xs font-medium text-stone-200 group-hover:translate-x-1 group-hover:text-amber-100 transition-all duration-300">Export Documentation Support</span>
+                    <div class="py-2.5 border-b border-stone-800/80 flex items-center justify-between group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation text-saltora-terracotta text-sm"></i>
+                            <span class="text-xs font-medium text-stone-200 group-hover:text-amber-200 transition-colors">Phytosanitary & Fumigation Certificate</span>
+                        </div>
+                        <span class="text-[10px] text-stone-500 uppercase font-mono">On Request</span>
                     </div>
+                </div>
+
+                <div class="pt-2">
+                    <a href="/contact" class="inline-flex items-center gap-2 text-xs font-bold text-amber-200 hover:text-white uppercase tracking-wider transition-colors">
+                        <span>Request Sample Export Document Dossier</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Right Column: Shipment Formats 4 Photo Cards (7 cols) -->
+            <!-- Right Column: Shipment Packaging Formats Showcase (7 cols) -->
             <div class="lg:col-span-7 space-y-6 reveal-on-scroll reveal-from-right">
                 <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
-                    SHIPMENT FORMATS
+                    CARGO PROTECTION STANDARDS
                 </div>
 
                 <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
-                    Packed for the journey
+                    Engineered for maritime transit
                 </h2>
 
                 <p class="text-stone-400 text-xs sm:text-sm font-light leading-relaxed">
-                    Bulk, food-grade, retail and private-label packing are prepared to the confirmed specification before dispatch.
+                    Ocean voyages require total moisture isolation and structural palletization. Every export container is equipped with desiccant poles and polyethylene barriers.
                 </p>
 
                 <!-- 4 Photo Cards (2x2 Grid) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     
-                    <!-- Photo 1: Bulk Bags -->
-                    <div class="relative group rounded-sm overflow-hidden h-48 border border-stone-800 bg-stone-900 cursor-pointer">
-                        <img src="/bulk.jpg" alt="Bulk Bags Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="font-serif text-sm font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Bulk Bags</span>
+                    <!-- Photo 1: 1-Ton Jumbo FIBC Big Bags -->
+                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                        <img src="/packaging-fibc.jpg" alt="1-Ton Jumbo FIBC Big Bags in Port Warehouse" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-[9px] font-bold text-saltora-terracotta uppercase tracking-wider block">Heavy Industry</span>
+                            <span class="font-serif text-base font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">1-Ton Jumbo FIBC Big Bags</span>
                         </div>
                     </div>
 
-                    <!-- Photo 2: Food-Grade Bags -->
-                    <div class="relative group rounded-sm overflow-hidden h-48 border border-stone-800 bg-stone-900 cursor-pointer">
-                        <img src="/abt2.jpg" alt="Food-Grade Bags Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="font-serif text-sm font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Food-Grade Bags</span>
+                    <!-- Photo 2: 25kg Food-Grade Bags -->
+                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                        <img src="/packaging-pp-bags.jpg" alt="25kg Food-Grade Polypropylene Export Sacks" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-[9px] font-bold text-saltora-terracotta uppercase tracking-wider block">Food Manufacturing</span>
+                            <span class="font-serif text-base font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">25kg Food-Grade PP Bags</span>
                         </div>
                     </div>
 
-                    <!-- Photo 3: Retail Packaging -->
-                    <div class="relative group rounded-sm overflow-hidden h-48 border border-stone-800 bg-stone-900 cursor-pointer">
-                        <img src="/bag1.jpg" alt="Retail Packaging Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="font-serif text-sm font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Retail Packaging</span>
+                    <!-- Photo 3: Stand-Up Pouches -->
+                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                        <img src="/packaging-pouches.jpg" alt="Retail Stand-Up Zipper Pouches" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-[9px] font-bold text-saltora-terracotta uppercase tracking-wider block">Retail Supermarket</span>
+                            <span class="font-serif text-base font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Stand-Up Zipper Pouches</span>
                         </div>
                     </div>
 
-                    <!-- Photo 4: Custom / Private Label -->
-                    <div class="relative group rounded-sm overflow-hidden h-48 border border-stone-800 bg-stone-900 cursor-pointer">
-                        <img src="/bag2.jpg" alt="Custom / Private Label Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="font-serif text-sm font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Custom / Private Label</span>
+                    <!-- Photo 4: Jars & Ceramic Grinders -->
+                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                        <img src="/packaging-grinders.jpg" alt="Custom Jars & Ceramic Grinder Bottles" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-[9px] font-bold text-saltora-terracotta uppercase tracking-wider block">Gourmet Private Label</span>
+                            <span class="font-serif text-base font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-amber-200 inline-block">Jars & Ceramic Grinders</span>
                         </div>
                     </div>
 
@@ -384,22 +699,104 @@
         </div>
     </section>
 
-    <!-- READY WHEN YOU ARE CTA BANNER -->
-    <section class="max-w-7xl mx-auto px-6 py-16 reveal-on-scroll reveal-scale">
-        <div class="bg-[#F5EAE6] p-8 sm:p-12 rounded-sm border border-saltora-terracotta/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
-            <div class="space-y-2 max-w-2xl">
-                <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">READY WHEN YOU ARE</span>
-                <h3 class="font-serif text-3xl sm:text-4xl text-saltora-text font-normal">
-                    Send your specifications — receive a professional quotation
-                </h3>
+    <!-- NEW SECTION: LOGISTICS & CUSTOMS FAQ ACCORDION -->
+    <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
+        <div class="max-w-4xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3 reveal-on-scroll reveal-from-top">
+                <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">SHIPPING & CLEARANCE FAQ</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                    Frequently Asked Logistics Questions
+                </h2>
+                <p class="text-saltora-muted text-sm sm:text-base font-light">
+                    Clear answers regarding freight timelines, container stuffing, payment terms, and port customs procedures.
+                </p>
             </div>
 
-            <div class="shrink-0">
-                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-8 py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center gap-2 group cursor-pointer">
-                    <span>REQUEST A QUOTE</span>
-                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
+            <!-- FAQ Accordion List -->
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
+                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span>How does the standard 50% advance and 50% against B/L payment work?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 1" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                        Upon contract signing, the buyer transfers a 50% deposit via Telegraphic Transfer (T/T) to initiate crushing, grading, and packaging. Once goods are loaded into ocean containers and the vessel departs Karachi/Port Qasim, the official carrier Bill of Lading (B/L) is issued. We furnish a high-resolution verified copy of the on-board B/L and customs documents. The remaining 50% balance is released against this proof, after which original negotiable documents are surrendered or telex-released.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
+                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span>What is the maximum payload capacity of a 20ft container?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 2" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                        For <strong>Palletized 20ft FCL</strong>, maximum capacity is 20 standard pallets (approx. 20.0 to 24.0 Metric Tons net). For <strong>Floor Loaded (Unpalletized) 20ft FCL</strong>, cargo can be loaded up to 26.0 to 28.0 Metric Tons, subject to destination port road weight regulations. Floor loading achieves the lowest ocean freight cost per kilogram.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
+                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span>What steps are taken to prevent humidity and moisture damage during sea transit?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 3" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                        Salt is naturally hygroscopic. Every 25kg export sack features an airtight polyethylene inner liner. During container stuffing, container floors are lined with moisture-barrier corrugated cardboard, and industrial calcium chloride desiccant hanging poles (Dry-Bag standards) are installed inside the container to absorb ambient maritime condensation.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
+                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span>Can you quote CIF directly to our regional seaport?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 4" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                        Yes. While FOB Karachi is our standard benchmark, our logistics department regularly books direct vessel space with Maersk, MSC, Hapag-Lloyd, and CMA CGM. We can provide all-inclusive CIF pricing covering ocean freight and marine cargo insurance right to your destination port of discharge.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
+                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span>Are wood pallets compliant with ISPM-15 international phytosanitary standards?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 5" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                        All wooden pallets used for international shipments are heat-treated (HT) and stamped in strict compliance with ISPM-15 international plant health standards. An official Fumigation / Phytosanitary Certificate is provided with shipping documents to ensure zero customs quarantine friction.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HIGH CONVERTING CLOSING CTA BANNER -->
+    <section class="py-16 md:py-20 px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <div class="space-y-3 max-w-2xl">
+                <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">OCEAN FREIGHT DESK</span>
+                <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                    Ready to schedule your salt container shipment?
+                </h3>
+                <p class="text-stone-300 text-xs sm:text-sm font-light leading-relaxed">
+                    Send your target destination port and volume — Saltora will calculate exact container payload, sailing schedules, and proforma freight pricing.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3.5 shrink-0">
+                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+                    <i class="fa-solid fa-calculator text-amber-200"></i>
+                    <span>CALCULATE FREIGHT QUOTE</span>
+                </a>
+                <a href="https://wa.me/923180735748?text=Hello%20Saltora%20Logistics%2C%20I%20would%20like%20to%20check%20container%20shipping%20rates." target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WHATSAPP LOGISTICS</span>
                 </a>
             </div>
         </div>
@@ -407,7 +804,6 @@
 
     <!-- FOOTER SECTION -->
     <x-footer />
-    {{-- <x-cart-drawer /> --}}
 
 </body>
 </html>
