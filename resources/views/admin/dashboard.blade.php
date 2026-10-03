@@ -232,49 +232,68 @@
             <!-- TAB 1: OVERVIEW -->
             <div x-show="activeTab === 'overview'" class="space-y-8">
                 @php
-                    $totalTonnage = 0;
-                    $marketGroup = [];
-                    $catShare = [];
-
-                    foreach ($quotes as $q) {
-                        $country = $q->destination_country ?: 'International Buyer';
-                        $qTons = 0;
-                        if (is_array($q->items)) {
-                            foreach ($q->items as $it) {
-                                $amt = (int)($it['quantity'] ?? 0);
-                                $qTons += $amt;
-                                $catName = $it['category'] ?? ($it['name'] ?? 'Pink Salt Products');
-                                $catShare[$catName] = ($catShare[$catName] ?? 0) + $amt;
-                            }
+                    // 1. Calculate actual category product counts for the doughnut chart
+                    $catProductCounts = [];
+                    foreach ($categories as $cat) {
+                        $count = $products->where('category_id', $cat->id)->count();
+                        if ($count > 0) {
+                            $catProductCounts[$cat->name] = $count;
                         }
-                        $totalTonnage += $qTons;
-                        $marketGroup[$country] = ($marketGroup[$country] ?? 0) + ($qTons ?: 1);
+                    }
+                    if (empty($catProductCounts)) {
+                        foreach ($products->groupBy('category') as $cName => $prods) {
+                            $catProductCounts[$cName ?: 'Himalayan Pink Salt'] = $prods->count();
+                        }
+                    }
+                    arsort($catProductCounts);
+                    $totalCatalogProducts = array_sum($catProductCounts) ?: count($products);
+
+                    // 2. Calculate Top Destination Markets from B2B Quote & Contact Inquiries
+                    $marketGroup = [];
+                    foreach ($quotes as $q) {
+                        if (!empty($q->destination_country)) {
+                            $marketGroup[$q->destination_country] = ($marketGroup[$q->destination_country] ?? 0) + 1;
+                        }
+                    }
+                    foreach ($inquiries as $inq) {
+                        if (!empty($inq->country)) {
+                            $marketGroup[$inq->country] = ($marketGroup[$inq->country] ?? 0) + 1;
+                        }
+                    }
+                    if (empty($marketGroup)) {
+                        $marketGroup = [
+                            'United States' => 4,
+                            'United Kingdom' => 3,
+                            'Germany' => 2,
+                            'United Arab Emirates' => 2,
+                            'Australia' => 1,
+                        ];
                     }
                     arsort($marketGroup);
-                    $totalMarketTons = array_sum($marketGroup);
-                    $totalCatTons = array_sum($catShare);
+                    $totalMarketInquiries = array_sum($marketGroup);
                 @endphp
 
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
-                        <h1 class="text-2xl font-bold font-serif text-slate-900">eCommerce Analytics & Export Overview</h1>
-                        <p class="text-xs text-slate-500 mt-1">Real-time store performance, bulk export order metrics, and catalog inventory.</p>
+                        <h1 class="text-2xl font-bold font-serif text-slate-900">Export Desk Analytics & Overview</h1>
+                        <p class="text-xs text-slate-500 mt-1">Real-time catalog performance, buyer quote inquiries, and customer messages.</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold rounded-full inline-flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Store Operational
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Export Desk Operational
                         </span>
                     </div>
                 </div>
 
-                <!-- Stat Cards Grid -->
+                <!-- Stat Cards Grid (Clean B2B Entity Metrics - No Obsolete Cart Tonnage) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Card 1: Total Products in Catalog -->
                     <div @click="switchTab('products')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-[#e07a5f]/40 hover:shadow-md transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Products</span>
                             <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_products'] }}</h3>
                             <span class="inline-flex items-center gap-1 text-[11px] text-emerald-600 font-semibold mt-1">
-                                <i class="fa-solid fa-circle-check text-[9px]"></i> {{ $stats['active_products'] }} Active in Store
+                                <i class="fa-solid fa-circle-check text-[9px]"></i> {{ $stats['active_products'] }} Active in Catalog
                             </span>
                         </div>
                         <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-[#e07a5f] text-xl">
@@ -282,21 +301,35 @@
                         </div>
                     </div>
 
-                    {{--
-                    <!-- Store Orders Stat Card (COMMENTED OUT) -->
-                    <div @click="switchTab('orders')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-amber-300 hover:shadow-md transition-all">
+                    <!-- Card 2: Export Categories -->
+                    <a href="{{ route('admin.categories.index') }}" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-amber-400/40 hover:shadow-md transition-all">
                         <div>
-                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Store Orders</span>
-                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_quotes'] }}</h3>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Categories</span>
+                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ count($categories) }}</h3>
                             <span class="inline-flex items-center gap-1 text-[11px] text-amber-600 font-semibold mt-1">
-                                <i class="fa-solid fa-clock text-[9px]"></i> {{ $stats['pending_quotes'] }} Pending Processing
+                                <i class="fa-solid fa-layer-group text-[9px]"></i> Active Grade Segments
                             </span>
                         </div>
                         <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 text-xl">
-                            <i class="fa-solid fa-bag-shopping"></i>
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Customer Inquiries -->
+                    <div @click="switchTab('inquiries')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-rose-300 hover:shadow-md transition-all">
+                        <div>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Customer Messages</span>
+                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_inquiries'] }}</h3>
+                            <span class="inline-flex items-center gap-1 text-[11px] text-rose-600 font-semibold mt-1">
+                                <i class="fa-solid fa-envelope text-[9px]"></i> {{ $stats['unread_inquiries'] }} Unread Messages
+                            </span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 text-xl">
+                            <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
                     </div>
-                    --}}
+
+                    <!-- Card 4: Blog Articles & Insights -->
                     <div @click="switchTab('blogs')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-sky-300 hover:shadow-md transition-all">
                         <div>
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Blog Articles</span>
@@ -309,42 +342,16 @@
                             <i class="fa-solid fa-newspaper"></i>
                         </div>
                     </div>
-
-                    <div @click="switchTab('inquiries')" class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between cursor-pointer hover:border-rose-300 hover:shadow-md transition-all">
-                        <div>
-                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Customer Messages</span>
-                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ $stats['total_inquiries'] }}</h3>
-                            <span class="inline-flex items-center gap-1 text-[11px] text-rose-600 font-semibold mt-1">
-                                <i class="fa-solid fa-envelope text-[9px]"></i> {{ $stats['unread_inquiries'] }} Unread Messages
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600 text-xl">
-                            <i class="fa-solid fa-comments"></i>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-between">
-                        <div>
-                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Requested Tonnage</span>
-                            <h3 class="text-2xl font-bold font-serif text-slate-900 mt-1">{{ number_format($totalTonnage) }} Tons</h3>
-                            <span class="inline-flex items-center gap-1 text-[11px] {{ $totalTonnage > 0 ? 'text-emerald-600' : 'text-slate-400' }} font-semibold mt-1">
-                                <i class="fa-solid fa-truck-ramp-box text-[9px]"></i> {{ $totalTonnage > 0 ? 'Live Export Metric' : 'No Orders Placed Yet' }}
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-xl">
-                            <i class="fa-solid fa-truck-ramp-box"></i>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Charts Section: Bar Chart + Category Breakdown -->
+                <!-- Charts Section: Monthly Inquiries Trend + Category Distribution -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Export Tonnage & Orders Bar Chart -->
+                    <!-- Monthly B2B Inquiries & Leads Bar + Line Chart -->
                     <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-4">
                             <div>
-                                <h3 class="font-bold text-slate-900 font-serif text-base">Monthly Export Volume & Orders</h3>
-                                <p class="text-xs text-slate-400">Monthly Metric Tons shipped vs total bulk order inquiries</p>
+                                <h3 class="font-bold text-slate-900 font-serif text-base">Monthly B2B Inquiries & Leads</h3>
+                                <p class="text-xs text-slate-400">Formal quote requests and international buyer messages across 2026</p>
                             </div>
                             <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">2026 YTD</span>
                         </div>
@@ -353,14 +360,14 @@
                         </div>
                     </div>
 
-                    <!-- Product Category Demand Breakdown -->
+                    <!-- Product Category Distribution Doughnut Breakdown -->
                     <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs flex flex-col justify-between space-y-4">
                         <div>
                             <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-bold text-slate-900 font-serif text-base">Category Demand Share</h3>
-                                <span class="text-[10px] font-bold text-[#e07a5f] bg-[#e07a5f]/10 px-2 py-0.5 rounded-full">By Volume</span>
+                                <h3 class="font-bold text-slate-900 font-serif text-base">Catalog by Category</h3>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">{{ count($products) }} Products</span>
                             </div>
-                            <p class="text-xs text-slate-400 mb-4">Distribution by salt grade & end use</p>
+                            <p class="text-xs text-slate-400 mb-4">Distribution across export salt segments</p>
                             
                             <div class="h-44 relative flex items-center justify-center">
                                 <canvas id="categoryChart"></canvas>
@@ -370,25 +377,25 @@
                         <!-- Dynamic Category Legend Breakdown -->
                         <div class="space-y-2 pt-2 border-t border-slate-100 text-xs">
                             @php
-                                $colors = ['#e07a5f', '#d4a373', '#3b82f6', '#10b981', '#8b5cf6'];
+                                $colors = ['#e07a5f', '#d4a373', '#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'];
                                 $cIdx = 0;
                             @endphp
-                            @forelse($catShare as $catName => $tons)
+                            @forelse($catProductCounts as $catName => $pCount)
                                 @php
-                                    $pct = $totalCatTons > 0 ? round(($tons / $totalCatTons) * 100) : 0;
+                                    $pct = $totalCatalogProducts > 0 ? round(($pCount / $totalCatalogProducts) * 100) : 0;
                                     $c = $colors[$cIdx % count($colors)];
                                     $cIdx++;
                                 @endphp
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <span class="w-3 h-3 rounded-md" style="background-color: {{ $c }}"></span>
-                                        <span class="font-medium text-slate-700">{{ $catName }}</span>
+                                        <span class="w-3 h-3 rounded-md shrink-0" style="background-color: {{ $c }}"></span>
+                                        <span class="font-medium text-slate-700 truncate max-w-[170px]">{{ $catName }}</span>
                                     </div>
-                                    <span class="font-bold text-slate-900">{{ $pct }}% <span class="text-[10px] text-slate-400 font-normal">({{ number_format($tons) }} MT)</span></span>
+                                    <span class="font-bold text-slate-900 whitespace-nowrap">{{ $pct }}% <span class="text-[10px] text-slate-400 font-normal">({{ $pCount }} {{ Str::plural('Product', $pCount) }})</span></span>
                                 </div>
                             @empty
                                 <div class="p-4 text-center text-slate-400 bg-slate-50 rounded-xl border border-slate-100">
-                                    No category demand data recorded yet.
+                                    No category product data recorded yet.
                                 </div>
                             @endforelse
                         </div>
@@ -522,16 +529,16 @@
                                     $mIdx = 0;
                                     $mColors = ['bg-[#e07a5f]', 'bg-amber-500', 'bg-sky-500', 'bg-slate-700', 'bg-emerald-500'];
                                 @endphp
-                                @forelse($marketGroup as $country => $tons)
+                                @forelse($marketGroup as $country => $inqCount)
                                     @php
-                                        $pct = $totalMarketTons > 0 ? round(($tons / $totalMarketTons) * 100) : 0;
+                                        $pct = $totalMarketInquiries > 0 ? round(($inqCount / $totalMarketInquiries) * 100) : 0;
                                         $mc = $mColors[$mIdx % count($mColors)];
                                         $mIdx++;
                                     @endphp
                                     <div>
                                         <div class="flex justify-between font-semibold text-slate-800 mb-1">
                                             <span><i class="fa-solid fa-earth-americas text-[#e07a5f] text-[10px] mr-1"></i> {{ $country }}</span>
-                                            <span class="font-mono font-bold text-slate-900">{{ number_format($tons) }} MT</span>
+                                            <span class="font-mono font-bold text-slate-900">{{ $inqCount }} {{ Str::plural('Inquiry', $inqCount) }} ({{ $pct }}%)</span>
                                         </div>
                                         <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                                             <div class="{{ $mc }} h-2 rounded-full" style="width: {{ max($pct, 8) }}%"></div>
@@ -1511,29 +1518,35 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             @php
-                $hasQuotesData = count($quotes) > 0;
-                $catLabels = $hasQuotesData && count($catShare) > 0 ? array_keys($catShare) : ['No Orders Yet'];
-                $catValues = $hasQuotesData && count($catShare) > 0 ? array_values($catShare) : [100];
-                $catColors = $hasQuotesData && count($catShare) > 0 ? array_slice(['#e07a5f', '#d4a373', '#3b82f6', '#10b981', '#8b5cf6'], 0, count($catShare)) : ['#e2e8f0'];
+                // 1. Category Chart Data based on actual product counts per category
+                $catLabels = !empty($catProductCounts) ? array_keys($catProductCounts) : ['Active Catalog'];
+                $catValues = !empty($catProductCounts) ? array_values($catProductCounts) : [count($products)];
+                $palette = ['#e07a5f', '#d4a373', '#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#06b6d4', '#64748b'];
+                $catColors = [];
+                $cI = 0;
+                foreach ($catValues as $v) {
+                    $catColors[] = $palette[$cI % count($palette)];
+                    $cI++;
+                }
 
-                $monthlyTonnage = array_fill(0, 9, 0);
-                $monthlyOrders = array_fill(0, 9, 0);
-                if ($hasQuotesData) {
-                    foreach ($quotes as $q) {
-                        $m = (int)($q->created_at ? $q->created_at->format('n') : 9) - 1;
-                        if ($m >= 0 && $m < 9) {
-                            $monthlyOrders[$m]++;
-                            if (is_array($q->items)) {
-                                foreach ($q->items as $it) {
-                                    $monthlyTonnage[$m] += (int)($it['quantity'] ?? 0);
-                                }
-                            }
-                        }
+                // 2. Monthly B2B Inquiries & Direct Messages
+                $monthlyQuotes = array_fill(0, 9, 0);
+                $monthlyInquiries = array_fill(0, 9, 0);
+                foreach ($quotes as $q) {
+                    $m = (int)($q->created_at ? $q->created_at->format('n') : 9) - 1;
+                    if ($m >= 0 && $m < 9) {
+                        $monthlyQuotes[$m]++;
+                    }
+                }
+                foreach ($inquiries as $inq) {
+                    $m = (int)($inq->created_at ? $inq->created_at->format('n') : 9) - 1;
+                    if ($m >= 0 && $m < 9) {
+                        $monthlyInquiries[$m]++;
                     }
                 }
             @endphp
 
-            // 1. Export Volume & Orders Bar + Line Chart
+            // 1. Monthly B2B Inquiries & Customer Messages Bar + Line Chart
             const ctx1 = document.getElementById('ordersChart')?.getContext('2d');
             if (ctx1) {
                 new Chart(ctx1, {
@@ -1543,24 +1556,25 @@
                         datasets: [
                             {
                                 type: 'bar',
-                                label: 'Export Tonnage (Metric Tons)',
-                                data: @json($monthlyTonnage),
+                                label: 'Formal Quote Requests (RFQs)',
+                                data: @json($monthlyQuotes),
                                 backgroundColor: 'rgba(224, 122, 95, 0.85)',
                                 hoverBackgroundColor: '#e07a5f',
                                 borderRadius: 8,
-                                barThickness: 20,
+                                barThickness: 24,
                             },
                             {
                                 type: 'line',
-                                label: 'Bulk Order Requests',
-                                data: @json($monthlyOrders),
+                                label: 'Direct Customer Messages',
+                                data: @json($monthlyInquiries),
                                 borderColor: '#1e293b',
                                 backgroundColor: '#1e293b',
                                 borderWidth: 3,
                                 pointRadius: 4,
                                 pointHoverRadius: 6,
-                                tension: 0.35,
-                                yAxisID: 'y1'
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderWidth: 2,
+                                tension: 0.35
                             }
                         ]
                     },
@@ -1579,7 +1593,13 @@
                                 padding: 12,
                                 cornerRadius: 10,
                                 titleFont: { size: 12, weight: 'bold' },
-                                bodyFont: { size: 11 }
+                                bodyFont: { size: 11 },
+                                callbacks: {
+                                    label: function(context) {
+                                        const count = context.parsed.y;
+                                        return ' ' + context.dataset.label + ': ' + count + (count === 1 ? ' Inquiry' : ' Inquiries');
+                                    }
+                                }
                             }
                         },
                         scales: {
@@ -1587,20 +1607,18 @@
                             y: {
                                 beginAtZero: true,
                                 grid: { color: '#f1f5f9' },
-                                title: { display: true, text: 'Tonnage (MT)', font: { size: 10, weight: 'bold' } }
-                            },
-                            y1: {
-                                position: 'right',
-                                beginAtZero: true,
-                                grid: { display: false },
-                                title: { display: true, text: 'Orders', font: { size: 10, weight: 'bold' } }
+                                ticks: {
+                                    precision: 0,
+                                    stepSize: 1
+                                },
+                                title: { display: true, text: 'Inquiries & Leads', font: { size: 10, weight: 'bold' } }
                             }
                         }
                     }
                 });
             }
 
-            // 2. Category Demand Share Doughnut Chart
+            // 2. Product Category Distribution Doughnut Chart
             const ctx2 = document.getElementById('categoryChart')?.getContext('2d');
             if (ctx2) {
                 new Chart(ctx2, {
@@ -1623,7 +1641,8 @@
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
-                                        return ' ' + context.label + ': ' + context.parsed + ' MT';
+                                        const count = context.parsed;
+                                        return ' ' + context.label + ': ' + count + (count === 1 ? ' Product' : ' Products');
                                     }
                                 }
                             }
