@@ -387,7 +387,14 @@
                     <div class="space-y-3.5">
                         <!-- 16:9 Aspect Ratio Image -->
                         <div class="relative aspect-video w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img" @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->grain_size ?? $prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})">
-                            <img src="{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
+                            @if($prod->image_url)
+                            <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
+                            @else
+                            <div class="w-full h-full bg-gradient-to-br from-stone-100 via-amber-50/40 to-stone-200 flex flex-col items-center justify-center text-stone-400 gap-1.5 p-4 text-center">
+                                <i class="fa-solid fa-cube text-3xl text-stone-300 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-[9px] uppercase font-bold tracking-widest text-stone-400">SALTORA Spec</span>
+                            </div>
+                            @endif
                             
                             <!-- Dark Overlay Gradient on Hover -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>

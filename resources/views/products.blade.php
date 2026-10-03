@@ -50,7 +50,7 @@
                 'category_slug' => $p->categoryRef->slug ?? \Illuminate\Support\Str::slug($p->category ?? 'salt'),
                 'subcategory_name' => $p->subcategoryRef->name ?? '',
                 'subcategory_slug' => $p->subcategoryRef->slug ?? '',
-                'image_url' => $p->image_url ?? '/product1.jpg',
+                'image_url' => $p->image_url ?? '',
                 'description' => $p->description ?? '',
                 'short_desc' => $p->short_desc ?? $p->description ?? '',
                 'price' => (float)($p->price ?? 0),
@@ -60,9 +60,9 @@
                 'grain_size' => $p->grain_size ?? $p->mesh_size ?? 'Standard',
                 'packaging_type' => $p->packaging_type ?? $p->packaging ?? 'Export Standard',
                 'package_weight' => $p->package_weight ?? 'Standard Size',
-                'grade' => $p->grade ?? 'Food Grade ISO-22000',
-                'purity' => $p->purity ?? '98.5%+ NaCl',
-                'origin' => $p->origin ?? 'Khewra Salt Range, Pakistan',
+                'grade' => $p->grade ?? '',
+                'purity' => $p->purity ?? '',
+                'origin' => $p->origin ?? '',
             ];
         });
 
@@ -74,7 +74,7 @@
                 'item' => [
                     '@type' => 'Product',
                     'name' => $sp->name,
-                    'image' => url($sp->image_url ?? '/product1.jpg'),
+                    'image' => $sp->image_url ? url($sp->image_url) : url('/logo.png'),
                     'description' => $sp->description,
                     'category' => $sp->categoryRef->name ?? $sp->category ?? 'Himalayan Pink Salt',
                     'offers' => [
@@ -386,9 +386,9 @@
                         </span>
                     </template>
                     <template x-if="selectedSubcategory">
-                        <span class="inline-flex items-center gap-1 bg-stone-100 border border-stone-300 text-stone-800 text-[11px] px-2.5 py-0.5 rounded-full">
-                            <span>Subcategory</span>
-                            <button @click="selectedSubcategory = ''" class="hover:text-red-600 text-stone-400 font-bold ml-1 cursor-pointer">&times;</button>
+                        <span class="inline-flex items-center gap-1 bg-amber-100/80 border border-amber-300 text-amber-900 text-[11px] px-2.5 py-0.5 rounded-full font-semibold">
+                            <span>Subcategory: <strong x-text="products.find(p => String(p.subcategory_id) === String(selectedSubcategory))?.subcategory_name || selectedSubcategory"></strong></span>
+                            <button @click="selectedSubcategory = ''" class="hover:text-red-600 text-amber-700 font-bold ml-1 cursor-pointer">&times;</button>
                         </span>
                     </template>
                     <template x-if="selectedGrain">
@@ -447,6 +447,29 @@
                 </div>
             </div>
 
+            <!-- Subcategory Quick Filter Pills Bar -->
+            <div class="bg-white p-3.5 border border-saltora-border rounded-sm flex items-center gap-2 overflow-x-auto no-scrollbar shadow-2xs">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-stone-500 whitespace-nowrap shrink-0 flex items-center gap-1.5 pr-1 border-r border-stone-200">
+                    <i class="fa-solid fa-layer-group text-saltora-terracotta text-xs"></i> Subcategory Filter:
+                </span>
+                <button @click="selectedSubcategory = ''" 
+                    :class="selectedSubcategory === '' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200'"
+                    class="px-3 py-1 text-xs rounded-full whitespace-nowrap transition-all cursor-pointer shrink-0">
+                    All
+                </button>
+                @foreach($categories as $cat)
+                    @foreach($cat->subcategories as $sub)
+                    <button @click="selectedSubcategory = selectedSubcategory === '{{ $sub->id }}' ? '' : '{{ $sub->id }}'; if(selectedSubcategory) selectedCategory = '{{ $cat->id }}'"
+                        x-show="!selectedCategory || selectedCategory === '{{ $cat->id }}'"
+                        :class="selectedSubcategory === '{{ $sub->id }}' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200'"
+                        class="px-3 py-1 text-xs rounded-full whitespace-nowrap transition-all cursor-pointer shrink-0 flex items-center gap-1.5">
+                        <span>{{ $sub->name }}</span>
+                        <span class="text-[9px] opacity-75 font-semibold">({{ $sub->products_count }})</span>
+                    </button>
+                    @endforeach
+                @endforeach
+            </div>
+
             <!-- MAIN CATALOG LAYOUT: LEFT SIDEBAR (3 cols) + RIGHT PRODUCTS (9 cols) -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
@@ -484,7 +507,7 @@
                                 :class="selectedCategory === '' ? 'bg-saltora-terracotta text-white font-bold' : 'text-saltora-text hover:bg-stone-100'"
                                 class="w-full text-left px-3 py-2 rounded-xs transition-colors flex items-center justify-between cursor-pointer">
                                 <span>All Categories</span>
-                                <span class="text-[10px] px-2 py-0.5 rounded-full" :class="selectedCategory === '' ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-600'">{{ count($products) }}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded-full" :class="selectedCategory === '' ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-600'">{{ count($categories) }}</span>
                             </button>
 
                             @foreach($categories as $cat)
@@ -585,7 +608,15 @@
                                     <!-- Image Container (16:9 ratio) -->
                                     <div class="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-saltora-card cursor-pointer group/img"
                                          @click="openQuickView(product)">
-                                        <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108" onError="this.onerror=null;this.src='/product1.jpg';">
+                                        <template x-if="product.image_url">
+                                            <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
+                                        </template>
+                                        <template x-if="!product.image_url">
+                                            <div class="w-full h-full bg-gradient-to-br from-stone-100 via-amber-50/40 to-stone-200 flex flex-col items-center justify-center text-stone-400 gap-1.5 p-4 text-center">
+                                                <i class="fa-solid fa-cube text-3xl text-stone-300 group-hover:scale-110 transition-transform"></i>
+                                                <span class="text-[9px] uppercase font-bold tracking-widest text-stone-400">SALTORA Spec</span>
+                                            </div>
+                                        </template>
                                         
                                         <!-- Dark Gradient Overlay -->
                                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -601,12 +632,14 @@
                                         </div>
 
                                         <!-- Top Right Purity Badge -->
-                                        <div class="absolute top-2.5 right-2.5 z-10 pointer-events-none">
-                                            <span class="bg-white/90 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-xs border border-saltora-terracotta/20 flex items-center gap-1">
-                                                <i class="fa-solid fa-certificate text-[8px]"></i>
-                                                <span x-text="product.purity || '98.5%+'"></span>
-                                            </span>
-                                        </div>
+                                        <template x-if="product.purity">
+                                            <div class="absolute top-2.5 right-2.5 z-10 pointer-events-none">
+                                                <span class="bg-white/90 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-xs border border-saltora-terracotta/20 flex items-center gap-1">
+                                                    <i class="fa-solid fa-certificate text-[8px]"></i>
+                                                    <span x-text="product.purity"></span>
+                                                </span>
+                                            </div>
+                                        </template>
 
                                         <!-- Center Hover Quick View Pill -->
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
@@ -620,6 +653,12 @@
                                     <!-- Product Tags -->
                                     <div class="flex flex-wrap items-center gap-1.5">
                                         <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2 py-0.5 rounded-full uppercase bg-saltora-blush/60 truncate max-w-[130px]" x-text="product.category_name"></span>
+                                        <template x-if="product.subcategory_name">
+                                            <span class="text-[9px] font-bold tracking-wider text-amber-900 border border-amber-300 px-2 py-0.5 rounded-full uppercase bg-amber-50 truncate max-w-[140px] flex items-center gap-1">
+                                                <i class="fa-solid fa-angle-right text-[8px] text-[#e07a5f]"></i>
+                                                <span x-text="product.subcategory_name"></span>
+                                            </span>
+                                        </template>
                                         <template x-if="product.grain_size && !product.grain_size.includes('Not Applicable')">
                                             <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50 truncate max-w-[130px]" x-text="product.grain_size"></span>
                                         </template>
@@ -672,10 +711,23 @@
                         <template x-for="product in filteredProducts" :key="product.id">
                             <div class="bg-white border border-saltora-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-saltora-terracotta/60 hover:shadow-md transition-all">
                                 <div class="flex items-center gap-4">
-                                    <img :src="product.image_url" :alt="product.name" class="w-16 h-16 rounded-md object-cover bg-stone-100 shrink-0 border border-stone-200" onError="this.onerror=null;this.src='/product1.jpg';">
+                                    <template x-if="product.image_url">
+                                        <img :src="product.image_url" :alt="product.name" class="w-16 h-16 rounded-md object-cover bg-stone-100 shrink-0 border border-stone-200">
+                                    </template>
+                                    <template x-if="!product.image_url">
+                                        <div class="w-16 h-16 rounded-md bg-stone-100 border border-dashed border-stone-300 shrink-0 flex items-center justify-center text-stone-400">
+                                            <i class="fa-solid fa-cube text-base text-stone-300"></i>
+                                        </div>
+                                    </template>
                                     <div class="space-y-1">
                                         <div class="flex items-center gap-2">
                                             <span class="text-[9px] font-bold text-saltora-terracotta uppercase bg-saltora-blush/70 px-2 py-0.5 rounded-full" x-text="product.category_name"></span>
+                                            <template x-if="product.subcategory_name">
+                                                <span class="text-[9px] font-bold text-amber-900 uppercase bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                                    <i class="fa-solid fa-angle-right text-[7px] text-[#e07a5f]"></i>
+                                                    <span x-text="product.subcategory_name"></span>
+                                                </span>
+                                            </template>
                                             <span class="text-[9px] text-stone-500 font-semibold" x-text="product.grain_size"></span>
                                         </div>
                                         <h4 class="font-serif text-base font-bold text-saltora-text hover:text-saltora-terracotta transition-colors cursor-pointer" @click="openQuickView(product)" x-text="product.name"></h4>
@@ -763,9 +815,27 @@
                         <div class="space-y-2">
                             <label class="text-xs font-bold uppercase text-stone-700">Category</label>
                             <select x-model="selectedCategory" @change="selectedSubcategory = ''" class="w-full bg-[#FAF7F2] border border-saltora-border px-3 py-2 rounded-xs text-xs">
-                                <option value="">All Categories ({{ count($products) }})</option>
+                                <option value="">All Categories ({{ count($categories) }})</option>
                                 @foreach($categories as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name }} ({{ $cat->products_count }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Mobile Subcategories -->
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold uppercase text-stone-700">Subcategory</label>
+                                <button x-show="selectedSubcategory" @click="selectedSubcategory = ''" class="text-[10px] text-saltora-terracotta hover:underline font-semibold cursor-pointer">Clear</button>
+                            </div>
+                            <select x-model="selectedSubcategory" class="w-full bg-[#FAF7F2] border border-saltora-border px-3 py-2 rounded-xs text-xs font-medium">
+                                <option value="">All Subcategories</option>
+                                @foreach($categories as $cat)
+                                    <optgroup label="{{ $cat->name }}">
+                                        @foreach($cat->subcategories as $sub)
+                                        <option value="{{ $sub->id }}">{{ $sub->name }} ({{ $sub->products_count }})</option>
+                                        @endforeach
+                                    </optgroup>
                                 @endforeach
                             </select>
                         </div>
@@ -1127,15 +1197,33 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <!-- Product Modal Photo -->
                         <div class="aspect-4/3 rounded-sm overflow-hidden bg-saltora-card border border-saltora-border relative">
-                            <img :src="selectedProduct.image_url" :alt="selectedProduct.name" class="w-full h-full object-cover">
-                            <div class="absolute top-2.5 left-2.5 bg-black/80 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider" x-text="selectedProduct.packaging_type"></div>
+                            <template x-if="selectedProduct.image_url">
+                                <img :src="selectedProduct.image_url" :alt="selectedProduct.name" class="w-full h-full object-cover">
+                            </template>
+                            <template x-if="!selectedProduct.image_url">
+                                <div class="w-full h-full bg-gradient-to-br from-stone-100 via-amber-50/30 to-stone-200 flex flex-col items-center justify-center text-stone-400 gap-2 p-6 text-center">
+                                    <i class="fa-solid fa-cube text-4xl text-stone-300"></i>
+                                    <span class="text-xs uppercase font-bold tracking-wider text-stone-500">Pure Himalayan Salt</span>
+                                </div>
+                            </template>
+                            <template x-if="selectedProduct.packaging_type">
+                                <div class="absolute top-2.5 left-2.5 bg-black/80 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider" x-text="selectedProduct.packaging_type"></div>
+                            </template>
                         </div>
 
                         <!-- Product Modal Information -->
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
                                 <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase">TECHNICAL SPECIFICATION</span>
-                                <span class="text-[10px] font-bold text-stone-600 bg-stone-100 px-2 py-0.5 rounded-xs" x-text="selectedProduct.category_name"></span>
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="text-[10px] font-bold text-stone-600 bg-stone-100 px-2 py-0.5 rounded-xs" x-text="selectedProduct.category_name"></span>
+                                    <template x-if="selectedProduct.subcategory_name">
+                                        <span class="text-[10px] font-bold text-[#e07a5f] bg-[#e07a5f]/10 border border-[#e07a5f]/30 px-2 py-0.5 rounded-xs flex items-center gap-1">
+                                            <i class="fa-solid fa-angle-right text-[8px]"></i>
+                                            <span x-text="selectedProduct.subcategory_name"></span>
+                                        </span>
+                                    </template>
+                                </div>
                             </div>
                             
                             <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal leading-snug" x-text="selectedProduct.name"></h3>
@@ -1157,6 +1245,16 @@
                             <!-- Specs Table -->
                             <div class="border-t border-b border-saltora-border/70 py-2.5 space-y-1.5 text-xs">
                                 <div class="flex justify-between">
+                                    <span class="text-saltora-muted font-light">Category:</span>
+                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.category_name"></span>
+                                </div>
+                                <template x-if="selectedProduct.subcategory_name">
+                                    <div class="flex justify-between">
+                                        <span class="text-saltora-muted font-light">Subcategory:</span>
+                                        <span class="font-semibold text-saltora-text" x-text="selectedProduct.subcategory_name"></span>
+                                    </div>
+                                </template>
+                                <div class="flex justify-between">
                                     <span class="text-saltora-muted font-light">Grain / Mesh Size:</span>
                                     <span class="font-semibold text-saltora-text" x-text="selectedProduct.grain_size"></span>
                                 </div>
@@ -1168,18 +1266,18 @@
                                     <span class="text-saltora-muted font-light">Unit Capacity / Weight:</span>
                                     <span class="font-semibold text-saltora-text" x-text="selectedProduct.package_weight"></span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Chemical Purity:</span>
-                                    <span class="font-semibold text-saltora-terracotta" x-text="selectedProduct.purity"></span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Grade Standard:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.grade"></span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Source Origin:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.origin"></span>
-                                </div>
+                                <template x-if="selectedProduct.purity">
+                                    <div class="flex justify-between">
+                                        <span class="text-saltora-muted font-light">Chemical Purity:</span>
+                                        <span class="font-semibold text-saltora-terracotta" x-text="selectedProduct.purity"></span>
+                                    </div>
+                                </template>
+                                <template x-if="selectedProduct.grade">
+                                    <div class="flex justify-between">
+                                        <span class="text-saltora-muted font-light">Grade Standard:</span>
+                                        <span class="font-semibold text-saltora-text" x-text="selectedProduct.grade"></span>
+                                    </div>
+                                </template>
                             </div>
 
                             <!-- CTAs -->

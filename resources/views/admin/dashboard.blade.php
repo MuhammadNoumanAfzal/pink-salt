@@ -592,10 +592,9 @@
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="py-3.5 px-4 min-w-[200px]">Product Info</th>
-                                    <th class="py-3.5 px-4 min-w-[130px]">Category & Grade</th>
+                                    <th class="py-3.5 px-4 min-w-[140px]">Category & Grade</th>
                                     <th class="py-3.5 px-4 min-w-[120px]">Price & Unit</th>
-                                    <th class="py-3.5 px-4 min-w-[150px]">Grain & Packaging</th>
-                                    <th class="py-3.5 px-4 text-center min-w-[90px]">Status</th>
+                                    <th class="py-3.5 px-6 text-center min-w-[120px] whitespace-nowrap">Status</th>
                                     <th class="py-3.5 px-4 text-right whitespace-nowrap sticky right-0 bg-slate-50 z-20 shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.08)] min-w-[190px]">Actions</th>
                                 </tr>
                             </thead>
@@ -604,7 +603,13 @@
                                 <tr class="hover:bg-slate-50/70 transition-colors group" x-show="matchProduct('{{ addslashes($prod->name) }}', '{{ addslashes($prod->categoryRef->name ?? $prod->category) }}', {{ $prod->is_active ? 'true' : 'false' }}, '{{ addslashes($prod->short_desc ?? '') }}')">
                                     <td class="py-3 px-4">
                                         <div class="flex items-center gap-3">
-                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" onError="this.onerror=null;this.src='/product1.jpg';">
+                                            @if($prod->image_url)
+                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
+                                            @else
+                                            <div class="w-11 h-11 rounded-xl bg-slate-100 border border-dashed border-slate-300 shrink-0 flex items-center justify-center text-slate-400" title="No photo uploaded">
+                                                <i class="fa-solid fa-cube text-slate-300 text-sm"></i>
+                                            </div>
+                                            @endif
                                             <div class="min-w-0">
                                                 <div class="flex items-center gap-1.5 flex-wrap">
                                                     <h4 class="font-bold text-slate-900 text-xs truncate max-w-[180px]">{{ $prod->name }}</h4>
@@ -618,6 +623,11 @@
                                     </td>
                                     <td class="py-3 px-4">
                                         <span class="font-bold text-slate-800 text-xs block whitespace-nowrap">{{ $prod->categoryRef->name ?? $prod->category }}</span>
+                                        @if($prod->subcategoryRef)
+                                        <span class="text-[#e07a5f] font-semibold text-[10px] block truncate max-w-[170px]" title="{{ $prod->subcategoryRef->name }}">
+                                            <i class="fa-solid fa-angle-right text-[8px] mr-1"></i>{{ $prod->subcategoryRef->name }}
+                                        </span>
+                                        @endif
                                         <span class="text-slate-400 text-[10px] block truncate max-w-[130px]">{{ $prod->grade ?? 'Food Grade' }}</span>
                                     </td>
                                     <td class="py-3 px-4 whitespace-nowrap">
@@ -631,21 +641,12 @@
                                         <span class="text-slate-400 text-[9px] block">MOQ: {{ $prod->moq }}</span>
                                         @endif
                                     </td>
-                                    <td class="py-3 px-4">
-                                        <span class="font-semibold text-slate-700 text-[11px] block whitespace-nowrap">{{ $prod->grain_size ?? $prod->mesh_size ?? 'Natural Grain' }}</span>
-                                        <span class="text-slate-500 text-[10px] block whitespace-nowrap">
-                                            {{ $prod->packaging_type ?? $prod->packaging ?? 'Export Packaging' }}
-                                            @if($prod->package_weight)
-                                            • <strong class="text-slate-700">{{ $prod->package_weight }}</strong>
-                                            @endif
-                                        </span>
-                                    </td>
-                                    <td class="py-3 px-4 text-center whitespace-nowrap">
+                                    <td class="py-3 px-6 text-center whitespace-nowrap">
                                         <button type="button" @click="toggleStatus({{ $prod->id }})" 
-                                            class="px-2.5 py-1 rounded-full text-[10px] font-bold border transition-all inline-flex items-center gap-1.5 cursor-pointer {{ $prod->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}"
+                                            class="px-3 py-1 rounded-full text-[11px] font-bold border transition-all inline-flex items-center gap-1.5 cursor-pointer shrink-0 {{ $prod->is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' }}"
                                             title="Click to toggle status">
                                             <span class="w-1.5 h-1.5 rounded-full {{ $prod->is_active ? 'bg-emerald-600' : 'bg-rose-600' }}"></span>
-                                            {{ $prod->is_active ? 'Active' : 'Disabled' }}
+                                            <span>{{ $prod->is_active ? 'Active' : 'Disabled' }}</span>
                                         </button>
                                     </td>
                                     <td class="py-3 px-4 text-right whitespace-nowrap sticky right-0 bg-white group-hover:bg-slate-50 z-10 shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.08)]">
@@ -953,17 +954,27 @@
 
             <form @submit.prevent="saveProductWithFile($event)" class="space-y-4 text-xs overflow-y-auto custom-modal-scroll py-4 pr-2 flex-1">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
+                    <div class="sm:col-span-2">
                         <label class="block text-slate-700 font-semibold mb-1">Product Name *</label>
-                        <input type="text" x-model="productForm.name" name="name" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                        <input type="text" x-model="productForm.name" name="name" required placeholder="e.g. Gourmet Himalayan Pink Salt Fine Grain" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
                     </div>
 
+                    <!-- Category * (Compulsory) -->
                     <div>
                         <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                        <select x-model="productForm.category" name="category" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                        <select x-model="productForm.category_id" id="dashModalCatSelect" name="category_id" required @change="handleCatChange($event.target.value)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                            <option value="">Select Category *</option>
                             @foreach($categories as $c)
-                            <option value="{{ $c->name }}">{{ $c->name }}</option>
+                            <option value="{{ $c->id }}">{{ $c->name }}</option>
                             @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Subcategory * (Compulsory) -->
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-1">Subcategory *</label>
+                        <select x-model="productForm.subcategory_id" id="dashModalSubcatSelect" name="subcategory_id" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                            <option value="">Select Category First...</option>
                         </select>
                     </div>
 
@@ -975,48 +986,99 @@
                         </div>
                     </div>
 
+                    <!-- Price Unit with Runtime Custom Option -->
                     <div>
-                        <label class="block text-slate-700 font-semibold mb-1">Price Unit</label>
-                        <select x-model="productForm.price_unit" name="price_unit" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            <option value="per kg">per kg</option>
-                            <option value="per piece">per piece (pcs)</option>
-                            <option value="per 25kg bag">per 25kg bag</option>
-                            <option value="per metric ton">per metric ton</option>
-                            <option value="per pouch">per zip pouch</option>
-                            <option value="per jar">per jar</option>
-                            <option value="per bottle">per grinder bottle</option>
-                            <option value="per set">per lamp set</option>
-                            <option value="per slab">per cooking slab / tile</option>
-                        </select>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-slate-700 font-semibold">Price Unit</label>
+                            <button type="button" @click="customPriceUnit = !customPriceUnit" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                <span x-show="!customPriceUnit">+ Add Custom Unit</span>
+                                <span x-show="customPriceUnit">&larr; Choose Preset</span>
+                            </button>
+                        </div>
+                        <div x-show="!customPriceUnit">
+                            <select x-model="productForm.price_unit" @change="if($event.target.value === '__custom__') { customPriceUnit = true; productForm.price_unit = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                <option value="">Select or leave blank</option>
+                                <option value="per kg">per kg</option>
+                                <option value="per piece">per piece (pcs)</option>
+                                <option value="per 25kg bag">per 25kg bag</option>
+                                <option value="per 50kg bag">per 50kg bag</option>
+                                <option value="per metric ton">per metric ton (MT)</option>
+                                <option value="per pouch">per zip pouch</option>
+                                <option value="per jar">per jar</option>
+                                <option value="per bottle">per grinder bottle</option>
+                                <option value="per set">per lamp set</option>
+                                <option value="per slab">per cooking slab / tile</option>
+                                <option value="per carton">per carton / box</option>
+                                <option value="per pallet">per pallet</option>
+                                <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Unit...</option>
+                            </select>
+                        </div>
+                        <div x-show="customPriceUnit" x-cloak>
+                            <input type="text" x-model="productForm.price_unit" placeholder="Type custom unit (e.g. per drum, per 10kg bucket)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                        </div>
+                        <input type="hidden" name="price_unit" :value="productForm.price_unit">
                     </div>
 
+                    <!-- Salt Grain / Mesh Size with Runtime Custom Option -->
                     <div>
-                        <label class="block text-slate-700 font-semibold mb-1">Salt Grain / Mesh Size</label>
-                        <select x-model="productForm.grain_size" name="grain_size" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            <option value="Fine Salt (0.3 - 0.8 mm)">Fine Salt (0.3 - 0.8 mm)</option>
-                            <option value="Medium Salt (0.8 - 2 mm)">Medium Salt (0.8 - 2 mm)</option>
-                            <option value="Coarse Salt (2 - 5 mm)">Coarse Salt (2 - 5 mm)</option>
-                            <option value="Crystal Salt (5 - 8 mm)">Crystal Salt (5 - 8 mm)</option>
-                            <option value="Natural Rock Lump Salt">Natural Rock Lump Salt</option>
-                            <option value="Not Applicable (Crafted Lamp / Tile)">Not Applicable (Crafted Lamp / Tile / Lick)</option>
-                        </select>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-slate-700 font-semibold">Salt Grain / Mesh Size</label>
+                            <button type="button" @click="customGrainSize = !customGrainSize" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                <span x-show="!customGrainSize">+ Add Custom Mesh</span>
+                                <span x-show="customGrainSize">&larr; Choose Preset</span>
+                            </button>
+                        </div>
+                        <div x-show="!customGrainSize">
+                            <select x-model="productForm.grain_size" @change="if($event.target.value === '__custom__') { customGrainSize = true; productForm.grain_size = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                <option value="">Select or leave blank</option>
+                                <option value="Fine Salt (0.3 - 0.8 mm)">Fine Salt (0.3 - 0.8 mm)</option>
+                                <option value="Extra Fine (0.1 - 0.3 mm)">Extra Fine (0.1 - 0.3 mm)</option>
+                                <option value="Medium Salt (0.8 - 2 mm)">Medium Salt (0.8 - 2 mm)</option>
+                                <option value="Coarse Salt (2 - 5 mm)">Coarse Salt (2 - 5 mm)</option>
+                                <option value="Crystal Salt (5 - 8 mm)">Crystal Salt (5 - 8 mm)</option>
+                                <option value="Natural Rock Lump Salt">Natural Rock Lump Salt</option>
+                                <option value="Not Applicable (Crafted Lamp / Tile)">Not Applicable (Crafted Lamp / Tile / Lick)</option>
+                                <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Mesh Size...</option>
+                            </select>
+                        </div>
+                        <div x-show="customGrainSize" x-cloak>
+                            <input type="text" x-model="productForm.grain_size" placeholder="Type custom mesh (e.g. 20-40 Mesh, 1.2 - 2.5 mm)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                        </div>
+                        <input type="hidden" name="grain_size" :value="productForm.grain_size">
                     </div>
 
+                    <!-- Packaging Type with Runtime Custom Option -->
                     <div>
-                        <label class="block text-slate-700 font-semibold mb-1">Packaging Type</label>
-                        <select x-model="productForm.packaging_type" name="packaging_type" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            <option value="Zip Pouch">Zip Pouch (200g - 1kg)</option>
-                            <option value="PET Jar">PET Jar (200g - 500g)</option>
-                            <option value="Glass Jar">Glass Jar (250g - 500g)</option>
-                            <option value="Grinder Bottle">Grinder Bottle (Ceramic Core)</option>
-                            <option value="Shaker Bottle">Shaker Bottle</option>
-                            <option value="Food Grade PP Bag">Food-Grade PP Bag (2kg - 25kg)</option>
-                            <option value="1-Ton Jumbo Bag (FIBC)">1-Ton Jumbo Bag (FIBC Big Bag)</option>
-                            <option value="Single Piece / Wooden Base">Single Piece / Wooden Base (Salt Lamp)</option>
-                            <option value="Metal Wire Basket">Metal Wire Basket (Basket Lamp)</option>
-                            <option value="Salt Lamp Set">Salt Lamp Set</option>
-                            <option value="Carton Box / Pallet">Carton Box / Palletized Slabs</option>
-                        </select>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-slate-700 font-semibold">Packaging Type</label>
+                            <button type="button" @click="customPackagingType = !customPackagingType" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                <span x-show="!customPackagingType">+ Add Custom Packaging</span>
+                                <span x-show="customPackagingType">&larr; Choose Preset</span>
+                            </button>
+                        </div>
+                        <div x-show="!customPackagingType">
+                            <select x-model="productForm.packaging_type" @change="if($event.target.value === '__custom__') { customPackagingType = true; productForm.packaging_type = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                <option value="">Select or leave blank</option>
+                                <option value="Zip Pouch">Zip Pouch (200g - 1kg)</option>
+                                <option value="PET Jar">PET Jar (200g - 500g)</option>
+                                <option value="Glass Jar">Glass Jar (250g - 500g)</option>
+                                <option value="Grinder Bottle">Grinder Bottle (Ceramic Core)</option>
+                                <option value="Shaker Bottle">Shaker Bottle</option>
+                                <option value="Food Grade PP Bag">Food-Grade PP Bag (2kg - 25kg)</option>
+                                <option value="50kg Heavy-Duty Export Bag">50kg Heavy-Duty Export Bag</option>
+                                <option value="1-Ton Jumbo Bag (FIBC)">1-Ton Jumbo Bag (FIBC Big Bag)</option>
+                                <option value="Single Piece / Wooden Base">Single Piece / Wooden Base (Salt Lamp)</option>
+                                <option value="Metal Wire Basket">Metal Wire Basket (Basket Lamp)</option>
+                                <option value="Animal Salt Lick with Hanging Rope">Animal Salt Lick with Hanging Rope</option>
+                                <option value="Salt Lamp Set">Salt Lamp Set</option>
+                                <option value="Carton Box / Pallet">Carton Box / Palletized Slabs</option>
+                                <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Packaging...</option>
+                            </select>
+                        </div>
+                        <div x-show="customPackagingType" x-cloak>
+                            <input type="text" x-model="productForm.packaging_type" placeholder="Type custom packaging (e.g. 500g Kraft Pouch, Tin Can)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                        </div>
+                        <input type="hidden" name="packaging_type" :value="productForm.packaging_type">
                     </div>
 
                     <div>
@@ -1054,7 +1116,7 @@
                             </div>
                             <div>
                                 <span class="text-[10px] text-slate-500 font-semibold uppercase block mb-1">Option 2: Image URL Path</span>
-                                <input type="text" x-model="productForm.image_url" name="image_url" placeholder="/product1.jpg" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
+                                <input type="text" x-model="productForm.image_url" name="image_url" placeholder="e.g. /product1.jpg (Optional)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
                             </div>
                         </div>
                     </div>
@@ -1103,7 +1165,15 @@
 
             <div class="space-y-4 text-xs overflow-y-auto custom-modal-scroll py-4 pr-2 flex-1">
                 <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
-                    <img :src="selectedViewProduct?.image_url" :alt="selectedViewProduct?.name" class="w-24 h-24 object-cover rounded-xl border border-slate-200 shadow-xs bg-white">
+                    <template x-if="selectedViewProduct?.image_url">
+                        <img :src="selectedViewProduct.image_url" :alt="selectedViewProduct?.name" class="w-24 h-24 object-cover rounded-xl border border-slate-200 shadow-xs bg-white">
+                    </template>
+                    <template x-if="!selectedViewProduct?.image_url">
+                        <div class="w-24 h-24 rounded-xl border border-dashed border-slate-300 bg-slate-100 shrink-0 flex flex-col items-center justify-center text-slate-400 gap-1">
+                            <i class="fa-solid fa-cube text-2xl text-slate-300"></i>
+                            <span class="text-[9px] font-semibold text-slate-400">No Image</span>
+                        </div>
+                    </template>
                     <div class="space-y-1">
                         <h4 class="text-base font-bold text-slate-900" x-text="selectedViewProduct?.name"></h4>
                         <p class="text-slate-600 italic" x-text="selectedViewProduct?.short_desc"></p>
@@ -1152,11 +1222,11 @@
                     </div>
                     <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                         <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Purity Grade</span>
-                        <span class="font-bold text-slate-800 text-xs" x-text="selectedViewProduct?.purity || '98.5% NaCl'"></span>
+                        <span class="font-bold text-slate-800 text-xs" x-text="selectedViewProduct?.purity || '—'"></span>
                     </div>
                     <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 col-span-2">
                         <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Quality Standard</span>
-                        <span class="font-bold text-slate-800 text-xs" x-text="selectedViewProduct?.grade || 'Food Grade ISO-22000 / CXS 150:1985 / Halal / Kosher'"></span>
+                        <span class="font-bold text-slate-800 text-xs" x-text="selectedViewProduct?.grade || '—'"></span>
                     </div>
                 </div>
 
@@ -1866,11 +1936,52 @@
                 selectedQuote: null,
                 selectedInquiry: null,
                 selectedViewProduct: null,
-                productForm: { id: null, name: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true },
+                customPriceUnit: false,
+                customGrainSize: false,
+                customPackagingType: false,
+                categoriesMap: {
+                    @foreach($categories as $c)
+                    '{{ $c->id }}': [
+                        @foreach($c->allSubcategories as $sub)
+                        { id: '{{ $sub->id }}', name: '{{ addslashes($sub->name) }}' },
+                        @endforeach
+                    ],
+                    @endforeach
+                },
+                populateSubcategories(catId, selectedSubId = '') {
+                    const subSelect = document.getElementById('dashModalSubcatSelect');
+                    if (!subSelect) return;
+                    subSelect.innerHTML = '<option value="">' + (catId ? 'Select Subcategory *' : 'Select Category First...') + '</option>';
+                    if (!catId || !this.categoriesMap[catId]) {
+                        this.productForm.subcategory_id = '';
+                        return;
+                    }
+                    this.categoriesMap[catId].forEach(sub => {
+                        const opt = document.createElement('option');
+                        opt.value = sub.id;
+                        opt.textContent = sub.name;
+                        if (selectedSubId && String(sub.id) === String(selectedSubId)) {
+                            opt.selected = true;
+                        }
+                        subSelect.appendChild(opt);
+                    });
+                    this.productForm.subcategory_id = selectedSubId ? String(selectedSubId) : (subSelect.value || '');
+                },
+                handleCatChange(catId) {
+                    this.productForm.category_id = catId;
+                    this.populateSubcategories(catId, '');
+                },
+                productForm: { id: null, name: '', category_id: '', subcategory_id: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true },
                 openCreateProductModal() {
                     this.isEditMode = false;
-                    this.productForm = { id: null, name: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true };
+                    this.customPriceUnit = false;
+                    this.customGrainSize = false;
+                    this.customPackagingType = false;
+                    this.productForm = { id: null, name: '', category_id: '', subcategory_id: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true };
                     this.showProductModal = true;
+                    this.$nextTick(() => {
+                        this.populateSubcategories('', '');
+                    });
                 },
                 viewProductDetails(prod) {
                     this.selectedViewProduct = prod;
@@ -1878,8 +1989,27 @@
                 },
                 editProduct(prod) {
                     this.isEditMode = true;
-                    this.productForm = { ...prod };
+                    const catId = prod.category_id || (prod.category_ref ? prod.category_ref.id : (prod.categoryRef ? prod.categoryRef.id : ''));
+                    const subId = prod.subcategory_id || (prod.subcategory_ref ? prod.subcategory_ref.id : (prod.subcategoryRef ? prod.subcategoryRef.id : ''));
+                    this.productForm = {
+                        ...prod,
+                        category_id: catId ? String(catId) : '',
+                        subcategory_id: subId ? String(subId) : '',
+                        category: prod.categoryRef ? prod.categoryRef.name : (prod.category || '')
+                    };
+                    const standardUnits = ['', 'per kg', 'per piece', 'per 25kg bag', 'per 50kg bag', 'per metric ton', 'per pouch', 'per jar', 'per bottle', 'per set', 'per slab', 'per carton', 'per pallet'];
+                    this.customPriceUnit = !!prod.price_unit && !standardUnits.includes(prod.price_unit);
+
+                    const standardGrains = ['', 'Fine Salt (0.3 - 0.8 mm)', 'Extra Fine (0.1 - 0.3 mm)', 'Medium Salt (0.8 - 2 mm)', 'Coarse Salt (2 - 5 mm)', 'Crystal Salt (5 - 8 mm)', 'Natural Rock Lump Salt', 'Not Applicable (Crafted Lamp / Tile)'];
+                    this.customGrainSize = !!prod.grain_size && !standardGrains.includes(prod.grain_size);
+
+                    const standardPackaging = ['', 'Zip Pouch', 'PET Jar', 'Glass Jar', 'Grinder Bottle', 'Shaker Bottle', 'Food Grade PP Bag', '50kg Heavy-Duty Export Bag', '1-Ton Jumbo Bag (FIBC)', 'Single Piece / Wooden Base', 'Metal Wire Basket', 'Animal Salt Lick with Hanging Rope', 'Salt Lamp Set', 'Carton Box / Pallet'];
+                    this.customPackagingType = !!prod.packaging_type && !standardPackaging.includes(prod.packaging_type);
+
                     this.showProductModal = true;
+                    this.$nextTick(() => {
+                        this.populateSubcategories(this.productForm.category_id, this.productForm.subcategory_id);
+                    });
                 },
                 async saveProductWithFile(event) {
                     const url = this.isEditMode ? `/admin/products/${this.productForm.id}` : '/admin/products';
