@@ -157,57 +157,38 @@
     <!-- HERO SECTION (DARK SHIPPING PORT BACKGROUND OVERLAY) -->
     <section class="relative bg-saltora-dark text-white py-20 md:py-32 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/export nd logisyt her.jpg`) -->
-        <img src="/export nd logisyt her.jpg" alt="Shipping Container Port Crane Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40 pointer-events-none"></div>
+        <img src="/export nd logisyt her.jpg" alt="Shipping Container Port Crane Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
+        <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+        <div class="relative z-10 max-w-7xl mx-auto">
             <div class="space-y-6 max-w-3xl animate-hero-left">
-                <!-- Category Sub-tag -->
-                <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse"></span>
+                <!-- Category Sub-tag (High Contrast Pill) -->
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     <span>GLOBAL OCEAN FREIGHT & CONTAINER LOGISTICS</span>
                 </div>
 
-                <!-- Headline -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08]">
+                <!-- Headline with Drop Shadow for Maximum Legibility -->
+                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
                     A clear, professional buying process
                 </h1>
 
-                <!-- Paragraph -->
-                <p class="text-stone-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                <!-- Paragraph with Solid Bright Text -->
+                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     From initial inquiry and specification alignment to customs clearance, container stuffing, and maritime delivery at your destination port — Saltora keeps every shipment documented, transparent, and on schedule.
                 </p>
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#shippingDirectory" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 rounded-xs">
-                        <span>VIEW PORTS & TRANSIT TIMES</span>
+                    <a href="#incoterms" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
+                        <span>VIEW INCOTERMS & WORKFLOW</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-xs flex items-center gap-2 rounded-xs">
-                        <i class="fa-solid fa-calculator text-saltora-terracotta"></i>
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                        <i class="fa-solid fa-calculator text-amber-300"></i>
                         <span>CALCULATE FREIGHT QUOTE</span>
                     </a>
-                </div>
-            </div>
-
-            <!-- Hero Stats Badges Right -->
-            <div class="animate-hero-right shrink-0 grid grid-cols-2 gap-3.5 max-w-md w-full">
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">20+ Ports</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Worldwide Direct Routes</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">2 Loading Hubs</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Karachi Port & Port Qasim</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">50 / 50 FOB</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Transparent Payment Terms</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">FCL & Bulk</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">20ft, 40ft & Jumbo Totes</div>
                 </div>
             </div>
         </div>
@@ -234,7 +215,7 @@
     </div>
 
     <!-- INCOTERMS SELECTION & PAYMENT TERMS SECTION -->
-    <section class="max-w-7xl mx-auto px-6 py-12" x-data="{ activeTerm: 'fob' }">
+    <section id="incoterms" class="max-w-7xl mx-auto px-6 py-12" x-data="{ activeTerm: 'fob' }">
         <div class="bg-white border border-saltora-border p-6 sm:p-8 rounded-sm shadow-sm space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-5">
                 <div>
@@ -333,148 +314,7 @@
         </div>
     </section>
 
-    <!-- NEW INTERACTIVE GLOBAL DESTINATION PORTS & TRANSIT TIMES DIRECTORY -->
-    <section id="shippingDirectory" class="py-16 md:py-24 px-6 md:px-12 bg-white border-t border-saltora-border/70"
-             x-data="{
-                 activeRegion: 'all',
-                 searchPort: '',
-                 
-                 // Global Ports Database
-                 ports: [
-                     // Europe & UK
-                     { name: 'Port of Rotterdam', country: 'Netherlands', region: 'europe', transit: '18 - 22 Days', lines: 'Maersk, MSC, CMA CGM', freq: 'Weekly Direct', code: 'NLRTM', popular: true },
-                     { name: 'Port of Hamburg', country: 'Germany', region: 'europe', transit: '20 - 24 Days', lines: 'Hapag-Lloyd, MSC', freq: 'Weekly', code: 'DEHAM', popular: true },
-                     { name: 'Port of Antwerp', country: 'Belgium', region: 'europe', transit: '19 - 23 Days', lines: 'CMA CGM, MSC', freq: 'Weekly', code: 'BEANR', popular: false },
-                     { name: 'Port of Felixstowe / Southampton', country: 'United Kingdom', region: 'europe', transit: '21 - 25 Days', lines: 'Maersk, ONE, MSC', freq: 'Weekly Direct', code: 'GBFXT', popular: true },
-                     { name: 'Port of Valencia / Barcelona', country: 'Spain', region: 'europe', transit: '16 - 20 Days', lines: 'MSC, CMA CGM', freq: 'Weekly Direct', code: 'ESVLC', popular: false },
-                     { name: 'Port of Genoa', country: 'Italy', region: 'europe', transit: '15 - 19 Days', lines: 'Hapag-Lloyd, MSC', freq: 'Weekly Direct', code: 'ITGOA', popular: false },
-                     
-                     // North America
-                     { name: 'Port of Long Beach / Los Angeles', country: 'United States (West Coast)', region: 'north-america', transit: '28 - 34 Days', lines: 'ONE, Maersk, Evergreen', freq: 'Weekly', code: 'USLGB', popular: true },
-                     { name: 'Port of New York & New Jersey', country: 'United States (East Coast)', region: 'north-america', transit: '24 - 28 Days', lines: 'MSC, Maersk, CMA CGM', freq: 'Weekly Direct', code: 'USNYC', popular: true },
-                     { name: 'Port of Houston', country: 'United States (Gulf Coast)', region: 'north-america', transit: '26 - 30 Days', lines: 'CMA CGM, Hapag-Lloyd', freq: 'Weekly', code: 'USHOU', popular: true },
-                     { name: 'Port of Savannah', country: 'United States (Southeast)', region: 'north-america', transit: '25 - 29 Days', lines: 'MSC, Maersk', freq: 'Weekly', code: 'USSAV', popular: false },
-                     { name: 'Port of Vancouver / Montreal', country: 'Canada', region: 'north-america', transit: '30 - 35 Days', lines: 'Hapag-Lloyd, ONE', freq: 'Bi-Weekly', code: 'CAVAN', popular: false },
-                     
-                     // Middle East & GCC
-                     { name: 'Port of Jebel Ali (Dubai)', country: 'United Arab Emirates', region: 'middle-east', transit: '3 - 5 Days', lines: 'Direct Feeder, Maersk, MSC', freq: '2x Weekly Direct', code: 'AEJEA', popular: true },
-                     { name: 'King Abdulaziz Port (Dammam)', country: 'Saudi Arabia', region: 'middle-east', transit: '5 - 7 Days', lines: 'Direct Feeder, MSC', freq: 'Weekly Direct', code: 'SADMM', popular: true },
-                     { name: 'Jeddah Islamic Port', country: 'Saudi Arabia (Red Sea)', region: 'middle-east', transit: '7 - 10 Days', lines: 'Hapag-Lloyd, CMA CGM', freq: 'Weekly Direct', code: 'SAJED', popular: false },
-                     { name: 'Hamad Port', country: 'Qatar', region: 'middle-east', transit: '4 - 6 Days', lines: 'Milaha, Direct Feeder', freq: 'Weekly Direct', code: 'QAHMD', popular: false },
-                     
-                     // Asia & Far East
-                     { name: 'Port of Singapore', country: 'Singapore (Asia Hub)', region: 'asia', transit: '8 - 11 Days', lines: 'ONE, Maersk, PIL', freq: 'Multiple Direct Sailings', code: 'SGSIN', popular: true },
-                     { name: 'Port Klang', country: 'Malaysia', region: 'asia', transit: '9 - 12 Days', lines: 'CMA CGM, Evergreen', freq: 'Weekly Direct', code: 'MYPKG', popular: false },
-                     { name: 'Port of Busan', country: 'South Korea', region: 'asia', transit: '14 - 18 Days', lines: 'HMM, ONE, Maersk', freq: 'Weekly', code: 'KRPUS', popular: false },
-                     { name: 'Tokyo / Yokohama Port', country: 'Japan', region: 'asia', transit: '16 - 20 Days', lines: 'ONE, NYK', freq: 'Weekly', code: 'JPTYO', popular: false },
-                     
-                     // Australia & Oceania
-                     { name: 'Port of Melbourne', country: 'Australia', region: 'oceania', transit: '20 - 24 Days', lines: 'MSC, Maersk', freq: 'Weekly', code: 'AUMEL', popular: true },
-                     { name: 'Port of Sydney (Botany)', country: 'Australia', region: 'oceania', transit: '22 - 26 Days', lines: 'CMA CGM, MSC', freq: 'Weekly', code: 'AUSYD', popular: false }
-                 ],
 
-                 get filteredPorts() {
-                     return this.ports.filter(p => {
-                         if (this.activeRegion !== 'all' && p.region !== this.activeRegion) return false;
-                         if (this.searchPort.trim() !== '') {
-                             const q = this.searchPort.trim().toLowerCase();
-                             return (p.name + ' ' + p.country + ' ' + p.code + ' ' + p.lines).toLowerCase().includes(q);
-                         }
-                         return true;
-                     });
-                 }
-             }">
-
-        <div class="max-w-7xl mx-auto space-y-10">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
-                <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">OCEAN CARRIER SCHEDULES</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
-                    Destination Ports & Transit Times
-                </h2>
-                <p class="text-saltora-muted text-sm sm:text-base font-light">
-                    Direct weekly vessel departures from Port Qasim and Karachi Port to all major global maritime container terminals.
-                </p>
-            </div>
-
-            <!-- Region Filter Tabs & Port Search -->
-            <div class="bg-saltora-bg p-4 sm:p-5 border border-saltora-border rounded-sm shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0">
-                    <button @click="activeRegion = 'all'" :class="activeRegion === 'all' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        All Ports (21)
-                    </button>
-                    <button @click="activeRegion = 'europe'" :class="activeRegion === 'europe' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        Europe & UK
-                    </button>
-                    <button @click="activeRegion = 'north-america'" :class="activeRegion === 'north-america' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        North America
-                    </button>
-                    <button @click="activeRegion = 'middle-east'" :class="activeRegion === 'middle-east' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        Middle East / GCC
-                    </button>
-                    <button @click="activeRegion = 'asia'" :class="activeRegion === 'asia' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        Asia & Far East
-                    </button>
-                    <button @click="activeRegion = 'oceania'" :class="activeRegion === 'oceania' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200'" class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer">
-                        Australia / NZ
-                    </button>
-                </div>
-
-                <div class="relative min-w-[240px]">
-                    <input type="text" x-model="searchPort" placeholder="Search port, country, UN/LOCODE..." class="w-full bg-white border border-saltora-border px-3.5 py-2 pl-9 pr-7 rounded-xs text-xs focus:outline-none focus:border-saltora-terracotta">
-                    <svg class="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    <button x-show="searchPort" @click="searchPort = ''" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs cursor-pointer">&times;</button>
-                </div>
-            </div>
-
-            <!-- Ports Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <template x-for="p in filteredPorts" :key="p.code">
-                    <div class="bg-saltora-bg border border-saltora-border p-5 rounded-sm flex flex-col justify-between hover:border-saltora-terracotta/60 hover:shadow-md transition-all group">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-mono font-bold bg-stone-200/80 text-stone-800 px-2 py-0.5 rounded-xs" x-text="p.code"></span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full" x-text="p.freq"></span>
-                            </div>
-
-                            <div>
-                                <h3 class="font-serif text-xl font-bold text-saltora-text group-hover:text-saltora-terracotta transition-colors" x-text="p.name"></h3>
-                                <span class="text-xs font-semibold text-stone-600" x-text="p.country"></span>
-                            </div>
-
-                            <div class="bg-white p-3 rounded-xs border border-stone-200 space-y-1.5 text-xs">
-                                <div class="flex justify-between">
-                                    <span class="text-stone-500">Transit Time:</span>
-                                    <span class="font-bold text-saltora-terracotta" x-text="p.transit"></span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-stone-500">Shipping Lines:</span>
-                                    <span class="font-semibold text-stone-700 text-right truncate max-w-[150px]" x-text="p.lines"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pt-4 border-t border-stone-200/80 mt-4 flex items-center justify-between">
-                            <span class="text-[11px] text-stone-500 font-medium">Port Qasim Loading</span>
-                            <a :href="'/contact?port=' + encodeURIComponent(p.name + ' (' + p.country + ')') + '#contactForm'" class="text-xs font-bold text-saltora-terracotta hover:underline flex items-center gap-1">
-                                <span>Get Port Quote</span>
-                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
-                </template>
-            </div>
-
-            <!-- Empty State -->
-            <div x-show="filteredPorts.length === 0" x-cloak class="bg-white p-12 text-center rounded-sm border border-saltora-border space-y-3">
-                <i class="fa-solid fa-anchor text-3xl text-saltora-terracotta"></i>
-                <h4 class="font-serif text-xl font-bold text-saltora-text">No Ports Found</h4>
-                <p class="text-xs text-saltora-muted max-w-md mx-auto">We ship to over 80+ ports worldwide through transshipment feeder connections. Contact our logistics desk with your target port.</p>
-                <a href="/contact" class="inline-block bg-saltora-terracotta text-white px-6 py-2 text-xs font-bold uppercase rounded-xs">Inquire Custom Destination</a>
-            </div>
-
-        </div>
-    </section>
 
     <!-- SEVEN STEPS FROM INQUIRY TO DELIVERY (VERTICAL INTERACTIVE TIMELINE) -->
     <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto space-y-12">

@@ -146,8 +146,9 @@
     <!-- 2. ABOUT HERO SECTION (LUXURIOUS EDITORIAL ENTRANCE) -->
     <section class="relative bg-[#161311] text-white py-24 md:py-32 px-6 md:px-12 overflow-hidden border-b border-stone-800">
         <!-- Backdrop Image (`aboutero.jpg`) with Warm Mineral Gradient -->
-        <img src="/aboutero.jpg" alt="Khewra Himalayan Salt Mountains" class="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-110 pointer-events-none scale-105 transition-transform duration-1000">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#161311]/95 via-[#161311]/80 to-[#161311]/50 pointer-events-none"></div>
+        <img src="/aboutero.jpg" alt="Khewra Himalayan Salt Mountains" class="absolute inset-0 w-full h-full object-cover opacity-75 filter brightness-105 contrast-105 pointer-events-none scale-105 transition-transform duration-1000">
+        <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#161311]/85 via-[#161311]/60 to-[#161311]/20 pointer-events-none"></div>
 
         <!-- Ambient Warm Glow Orbs -->
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#e07a5f]/20 rounded-full blur-[140px] pointer-events-none"></div>
@@ -156,25 +157,25 @@
         <div class="relative z-10 max-w-7xl mx-auto space-y-8">
             <!-- Badges -->
             <div class="flex flex-wrap items-center gap-3 animate-hero-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-900/90 border border-stone-700/80 text-[11px] font-bold tracking-widest text-[#e07a5f] uppercase">
-                    <span class="w-2 h-2 rounded-full bg-[#e07a5f] animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-amber-400/40 text-[11px] font-bold tracking-widest text-amber-300 uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     <span>PROVENANCE & INDUSTRIAL EXCELLENCE</span>
                 </div>
                 <span class="text-xs text-stone-400 font-medium hidden sm:inline">•</span>
-                <span class="text-xs text-amber-200 font-medium flex items-center gap-1.5">
-                    <i class="fa-solid fa-mountain text-[#e07a5f] text-xs"></i>
+                <span class="text-xs text-amber-300 font-semibold flex items-center gap-1.5 drop-shadow-xs">
+                    <i class="fa-solid fa-mountain text-amber-400 text-xs"></i>
                     Salt Range, Punjab, Pakistan
                 </span>
             </div>
 
-            <!-- Headline -->
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-white font-normal leading-[1.08] max-w-4xl animate-hero-left">
+            <!-- Headline with Drop Shadow for Maximum Legibility -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-white font-normal leading-[1.08] max-w-4xl animate-hero-left drop-shadow-md">
                 Built at the source.<br>
-                <span class="italic text-amber-200 font-normal">Engineered for global trade.</span>
+                <span class="italic text-amber-300 font-normal">Engineered for global trade.</span>
             </h1>
 
-            <!-- Lead Paragraph -->
-            <p class="text-stone-200 text-base sm:text-lg leading-relaxed max-w-3xl font-light animate-hero-right drop-shadow-sm">
+            <!-- Lead Paragraph with Solid Bright Text -->
+            <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed max-w-3xl font-normal animate-hero-right drop-shadow-sm">
                 SALTORA connects Pakistan’s 250-million-year-old Khewra Salt Range directly with multinational food manufacturers, retail spice packers, and commercial importers across 40+ countries. We eliminate middlemen through origin-controlled concessions, optical sorting, and transparent FOB/CIF shipping.
             </p>
 
@@ -184,7 +185,7 @@
                     <i class="fa-solid fa-file-contract text-amber-200 text-xs"></i>
                     <span>REQUEST EXPORT SPECIFICATIONS</span>
                 </a>
-                <a href="#facility" class="border border-white/30 hover:border-white text-white hover:text-amber-200 px-7 py-3.5 text-xs font-bold tracking-widest uppercase transition-colors rounded-xs flex items-center gap-2">
+                <a href="#facility" class="bg-black/40 hover:bg-black/70 border border-white/40 hover:border-white text-white hover:text-amber-200 px-7 py-3.5 text-xs font-bold tracking-widest uppercase transition-all rounded-xs flex items-center gap-2 shadow-md">
                     <span>TOUR PROCESSING FACILITY</span>
                     <i class="fa-solid fa-arrow-down text-xs"></i>
                 </a>

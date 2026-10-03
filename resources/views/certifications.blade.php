@@ -159,57 +159,38 @@
     <!-- CERTIFICATIONS HERO SECTION -->
     <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/cert-hero.jpg`) -->
-        <img src="/cert-hero.jpg" alt="Certified Food Safety Testing Laboratory Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40 pointer-events-none"></div>
+        <img src="/cert-hero.jpg" alt="Certified Food Safety Testing Laboratory Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
+        <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+        <div class="relative z-10 max-w-7xl mx-auto">
             <div class="space-y-6 max-w-3xl animate-hero-left">
-                <!-- Category Sub-tag -->
-                <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse"></span>
+                <!-- Category Sub-tag (High Contrast Pill) -->
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     <span>GLOBAL AUDIT & FOOD SAFETY ACCREDITATIONS</span>
                 </div>
 
-                <!-- Headline -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08]">
+                <!-- Headline with Drop Shadow for Maximum Legibility -->
+                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
                     Recognised standards, verifiable quality
                 </h1>
 
-                <!-- Paragraph -->
-                <p class="text-stone-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                <!-- Paragraph with Solid Bright Text -->
+                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     SALTORA operates under strict international food safety, religious dietary, and export frameworks. Every production run is backed by independent laboratory Certificate of Analysis (COA) reports, providing global importers with absolute chemical and microbiological certainty.
                 </p>
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#complianceHub" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 rounded-xs">
+                    <a href="#complianceHub" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
                         <span>EXPLORE CERTIFICATIONS</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-xs flex items-center gap-2 rounded-xs">
-                        <i class="fa-solid fa-file-shield text-saltora-terracotta"></i>
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                        <i class="fa-solid fa-file-shield text-amber-300"></i>
                         <span>REQUEST COA & AUDIT DOSSIER</span>
                     </a>
-                </div>
-            </div>
-
-            <!-- Hero Stats Badges Right -->
-            <div class="animate-hero-right shrink-0 grid grid-cols-2 gap-3.5 max-w-md w-full">
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">ISO 22000</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">FSMS Food Safety Certified</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">100% Halal</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Dietary Compliance</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">Codex CXS</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">150:1985 Pure Standard</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">Zero Pb/As</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Heavy Metal Free Tested</div>
                 </div>
             </div>
         </div>

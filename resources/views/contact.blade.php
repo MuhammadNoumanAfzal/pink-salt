@@ -19,6 +19,22 @@
     
     <!-- Vite Assets (Tailwind CSS + Alpine JS) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Custom Animations & Styles -->
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
 </head>
 <body class="bg-saltora-bg text-saltora-text font-sans antialiased selection:bg-saltora-terracotta selection:text-white" x-data="shopManager()">
 
@@ -26,7 +42,7 @@
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group cursor-pointer">
+            <a href="/" class="flex items-center gap-3 group cursor-pointer" title="SALTORA Home">
                 <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
                 <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
@@ -43,16 +59,6 @@
 
             <!-- Header Action Button & Quote CTA -->
             <div class="hidden sm:flex items-center gap-3">
-                {{--
-                <!-- SHOPPING CART COMMENTED OUT -->
-                <button @click="openCartSidebar()" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
-                    <svg class="w-4 h-4 text-[#e07a5f] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                    </svg>
-                    <span>SHOPPING CART</span>
-                    <span x-show="cartCount > 0" x-text="cartCount" class="bg-[#e07a5f] text-white text-[10px] min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center font-bold shadow-xs" x-cloak></span>
-                </button>
-                --}}
                 <a href="#contactForm" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
                     <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
                     <span>REQUEST A QUOTE</span>
@@ -60,7 +66,7 @@
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer" aria-label="Toggle menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -74,17 +80,8 @@
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
             <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
+            <a @click="mobileMenuOpen = false" href="/blog" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">BLOG</a>
             <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">CONTACT</a>
-            {{--
-            <!-- SHOPPING CART COMMENTED OUT -->
-            <button @click="mobileMenuOpen = false; openCartSidebar()" class="flex items-center justify-center gap-2.5 w-full mt-4 bg-saltora-terracotta text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/>
-                </svg>
-                <span>SHOPPING CART</span>
-                <span x-show="cartCount > 0" x-text="'(' + cartCount + ')'" x-cloak></span>
-            </button>
-            --}}
             <a href="#contactForm" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-4 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
                 <i class="fa-solid fa-file-invoice text-amber-200 text-sm"></i>
                 <span>REQUEST A QUOTE</span>
@@ -92,42 +89,75 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative bg-saltora-dark text-white py-24 md:py-32 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
-        <!-- Backdrop Image - Brighter & Warm -->
-        <img src="/heroimg.jpg" alt="Salt Crystals Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35 pointer-events-none"></div>
+    <!-- CONTACT HERO SECTION -->
+    <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border" style="padding-top: 6rem; padding-bottom: 6rem;">
+        <!-- New Generated Ambient Background Image (`/contact-hero.jpg`) -->
+        <img src="/contact-hero.jpg" alt="SALTORA Executive B2B Salt Export Desk and Maritime Port Logistics" class="absolute inset-0 w-full h-full object-cover opacity-80 filter contrast-105 brightness-100 pointer-events-none scale-105 transition-transform duration-1000">
+        
+        <!-- Multi-stop Dark Gradient Overlay (Balanced for high text visibility) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div class="space-y-6 max-w-3xl animate-hero-left">
-                <div class="flex items-center gap-3 text-xs font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-8 h-px bg-saltora-terracotta"></span>
-                    <span>CONTACT & INQUIRIES</span>
-                </div>
+        <!-- Ambient Glow Elements -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-saltora-terracotta/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-32 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-80 h-80 bg-saltora-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-white font-normal leading-[1.08]">
-                    Start your salt inquiry
-                </h1>
+        <div class="max-w-4xl mx-auto text-center space-y-7 relative z-10 animate-fade-in-up mt-3 sm:mt-6">
+            <!-- Refined Top Pill / Kicker (High Contrast) -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-black/60 border border-white/25 backdrop-blur-md rounded-full text-xs font-semibold tracking-wider text-stone-100 uppercase shadow-xl">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                </span>
+                <span class="text-amber-300 font-bold">DIRECT EXPORT DESK</span>
+                <span class="text-white/50">&bull;</span>
+                <span class="text-[11px] text-stone-200">&lt; 24-HOUR FORMAL RESPONSE SLA</span>
+            </div>
+            
+            <!-- Headline with Drop Shadow for Maximum Legibility -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-6.5xl font-serif text-white leading-[1.1] max-w-3xl mx-auto font-normal tracking-tight drop-shadow-md">
+                Start Your Salt Inquiry, <br class="hidden sm:inline">
+                <span class="italic font-normal text-amber-300">
+                    Connect With Our Global Desk
+                </span>
+            </h1>
 
-                <p class="text-stone-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-                    Direct export desk for international importers, wholesalers and private-label buyers. Receive a clear, written quotation for your target specifications.
-                </p>
+            <!-- Subtitle with Solid Bright Text -->
+            <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
+                Direct export desk for international importers, industrial processors, and private-label brand owners. Receive verified specification sheets, factory-gate pricing, and FOB/CIF delivery quotations.
+            </p>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                <a href="#contactForm" class="w-full sm:w-auto px-8 py-3.5 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all shadow-xl hover:shadow-saltora-terracotta/40 flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer">
+                    <i class="fa-solid fa-file-pen text-amber-200"></i>
+                    <span>REQUEST FORMAL QUOTE</span>
+                    <i class="fa-solid fa-arrow-down text-[11px]"></i>
+                </a>
+
+                <a href="https://wa.me/923180735748?text=Hello%20Saltora%20Export%20Desk%2C%20I%20am%20interested%20in%20Himalayan%20Pink%20Salt%20wholesale%20quotation." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-3.5 bg-black/50 hover:bg-black/75 text-white border border-white/30 hover:border-emerald-400 text-xs font-bold uppercase tracking-widest rounded-xl backdrop-blur-md transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-md">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+                    <span>WHATSAPP TRADE DESK</span>
+                </a>
             </div>
 
-            <!-- Hero Stats Badge Right -->
-            <div class="animate-hero-right shrink-0">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-sm space-y-3 max-w-xs shadow-2xl">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-saltora-terracotta/20 border border-saltora-terracotta flex items-center justify-center text-saltora-terracotta">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="block text-2xl font-serif font-bold text-white">&lt; 24 HOURS</span>
-                            <span class="text-[10px] text-stone-300 uppercase tracking-wider font-medium">Export Desk Response Time</span>
-                        </div>
-                    </div>
+            <!-- Sleek Trust Strip (Clean high-contrast inline typography) -->
+            <div class="pt-6 border-t border-white/20 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-3xl mx-auto">
+                <div class="flex items-center gap-2.5 text-stone-100 text-xs font-semibold drop-shadow-xs">
+                    <i class="fa-solid fa-clock text-amber-400 text-sm shrink-0"></i>
+                    <span>&lt; 24h Formal Response</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-stone-100 text-xs font-semibold drop-shadow-xs">
+                    <i class="fa-solid fa-vial-circle-check text-amber-400 text-sm shrink-0"></i>
+                    <span>Free Certified Lab Samples</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-stone-100 text-xs font-semibold drop-shadow-xs">
+                    <i class="fa-solid fa-ship text-amber-400 text-sm shrink-0"></i>
+                    <span>FOB Karachi / CIF World</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-stone-100 text-xs font-semibold drop-shadow-xs">
+                    <i class="fa-solid fa-certificate text-amber-400 text-sm shrink-0"></i>
+                    <span>ISO 22000 & Halal Certified</span>
                 </div>
             </div>
         </div>

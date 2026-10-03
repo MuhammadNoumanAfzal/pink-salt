@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Alpine Global Store for Product Quick View, Cart Slide-Over Sidebar & Order Checkout
 Alpine.data('shopManager', () => ({
+    mobileMenuOpen: false,
     quickViewModalOpen: false,
     selectedProduct: null,
     cartSidebarOpen: false,

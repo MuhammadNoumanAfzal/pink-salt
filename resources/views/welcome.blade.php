@@ -201,7 +201,7 @@
                     <img src="/heroimg.jpg" alt="Premium Himalayan Pink Salt Crystals mined in Pakistan" class="w-full h-[360px] sm:h-[420px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
 
                     <!-- Gradient Overlay on Image Bottom -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none"></div>
 
                     <!-- Badge Top Left: CERTIFIED QUALITY -->
                     <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/70 shadow-lg z-20 max-w-[180px]">

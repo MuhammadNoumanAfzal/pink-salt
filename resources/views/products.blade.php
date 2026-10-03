@@ -201,57 +201,38 @@
     <!-- PRODUCTS HERO SECTION -->
     <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/products-hero.jpg`) -->
-        <img src="/products-hero.jpg" alt="Pure Himalayan Pink Salt Range Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40 pointer-events-none"></div>
+        <img src="/products-hero.jpg" alt="Pure Himalayan Pink Salt Range Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
+        <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+        <div class="relative z-10 max-w-7xl mx-auto">
             <div class="space-y-6 max-w-3xl animate-hero-left">
-                <!-- Category Sub-tag -->
-                <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
-                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse"></span>
+                <!-- Category Sub-tag (High Contrast Pill) -->
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     <span>PAKISTAN KHEWRA SALT RANGE — B2B DIRECT EXPORT</span>
                 </div>
 
-                <!-- Headline -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08]">
+                <!-- Headline with Drop Shadow for Maximum Legibility -->
+                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
                     The Saltora Export Catalog
                 </h1>
 
-                <!-- Paragraph -->
-                <p class="text-stone-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                <!-- Paragraph with Solid Bright Text -->
+                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     Direct Khewra mine-sourced Himalayan pink salt for international importers, food manufacturers, retail brands, and industrial processors. Calibrated from 0.2mm ultra-fine to 8mm crystal rock, packed in private-label pouches, 25kg PP bags, or 1-ton bulk jumbo bags.
                 </p>
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#catalogSection" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 rounded-xs">
+                    <a href="#catalogSection" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
                         <span>EXPLORE PRODUCTS</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-xs flex items-center gap-2 rounded-xs">
-                        <i class="fa-solid fa-file-contract text-saltora-terracotta"></i>
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                        <i class="fa-solid fa-file-contract text-amber-300"></i>
                         <span>REQUEST CUSTOM QUOTE</span>
                     </a>
-                </div>
-            </div>
-
-            <!-- Hero Stats Badges Right -->
-            <div class="animate-hero-right shrink-0 grid grid-cols-2 gap-3.5 max-w-md w-full">
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">98.5%+</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Pure NaCl (Lab Tested)</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">0.2 - 8mm</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Calibrated Grains</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">100% OEM</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">Private Label Ready</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4.5 rounded-sm space-y-1 shadow-xl">
-                    <div class="text-2xl sm:text-3xl font-serif font-bold text-white">20ft / 40ft</div>
-                    <div class="text-[10px] text-stone-300 uppercase tracking-wider font-semibold">FCL Container Loads</div>
                 </div>
             </div>
         </div>
@@ -386,25 +367,7 @@
                 </p>
             </div>
 
-            <!-- HORIZONTAL QUICK CATEGORY TABS SCROLLER -->
-            <div class="bg-white p-2.5 rounded-sm border border-saltora-border shadow-xs overflow-x-auto no-scrollbar">
-                <div class="flex items-center gap-2 min-w-max">
-                    <button @click="selectedCategory = ''; selectedSubcategory = ''"
-                            :class="selectedCategory === '' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-4 py-2 rounded-xs text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2 cursor-pointer">
-                        <span>All Products</span>
-                        <span class="text-[10px] px-1.5 py-0.5 rounded-full" :class="selectedCategory === '' ? 'bg-white/25 text-white' : 'bg-stone-200 text-stone-600'">{{ count($products) }}</span>
-                    </button>
-                    @foreach($categories as $cat)
-                    <button @click="selectedCategory = selectedCategory === '{{ $cat->id }}' ? '' : '{{ $cat->id }}'; selectedSubcategory = ''"
-                            :class="selectedCategory === '{{ $cat->id }}' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-4 py-2 rounded-xs text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2 cursor-pointer">
-                        <span>{{ $cat->name }}</span>
-                        <span class="text-[10px] px-1.5 py-0.5 rounded-full" :class="selectedCategory === '{{ $cat->id }}' ? 'bg-white/25 text-white' : 'bg-stone-200 text-stone-600'">{{ $cat->products_count }}</span>
-                    </button>
-                    @endforeach
-                </div>
-            </div>
+
 
             <!-- TOP CONTROLS & ACTIVE FILTERS BAR -->
             <div class="bg-white p-4 border border-saltora-border rounded-sm shadow-xs flex flex-wrap items-center justify-between gap-4">
@@ -882,113 +845,7 @@
 
     </section>
 
-    <!-- NEW SECTION: GRAIN MESH CALIBRATION & PARTICLE SIZE MATRIX -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-white border-t border-saltora-border/70">
-        <div class="max-w-7xl mx-auto space-y-12">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
-                <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TECHNICAL SPECIFICATIONS</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
-                    Grain Mesh Calibration Guide
-                </h2>
-                <p class="text-saltora-muted text-sm sm:text-base font-light">
-                    Every commercial grain grade is calibrated using rotary vibrating sieves to guarantee consistent dissolution rates, grind performance, and bulk density.
-                </p>
-            </div>
 
-            <!-- Interactive Calibration Matrix Table -->
-            <div class="overflow-x-auto border border-saltora-border rounded-sm shadow-xs bg-white">
-                <table class="w-full text-left border-collapse text-xs">
-                    <thead>
-                        <tr class="bg-[#FAF7F2] text-saltora-text uppercase tracking-wider text-[11px] border-b border-saltora-border font-bold">
-                            <th class="p-4 sm:p-5">Commercial Grade</th>
-                            <th class="p-4 sm:p-5">Particle Diameter</th>
-                            <th class="p-4 sm:p-5">US Sieve Mesh</th>
-                            <th class="p-4 sm:p-5">Primary Commercial Applications</th>
-                            <th class="p-4 sm:p-5">Standard Packaging Formats</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-saltora-border/60 text-stone-700">
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#f4a261]"></span>
-                                <span>Extra Fine / Flour Salt</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">0.15 - 0.35 mm</td>
-                            <td class="p-4 sm:p-5">40 - 80 Mesh</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Snack food coating, dry seasoning rubs, popcorn, baking mixes, butter seasoning.</td>
-                            <td class="p-4 sm:p-5">25kg Poly Bags, 500g Pouches</td>
-                        </tr>
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#e76f51]"></span>
-                                <span>Table Fine Pink Salt</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">0.30 - 0.80 mm</td>
-                            <td class="p-4 sm:p-5">20 - 40 Mesh</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Everyday table shakers, retail pouches, restaurant tabletop seasoning, food service.</td>
-                            <td class="p-4 sm:p-5">250g-1kg Pouches, PET Shakers, 25kg Bags</td>
-                        </tr>
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#d97706]"></span>
-                                <span>Medium Gourmet Granules</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">0.80 - 2.00 mm</td>
-                            <td class="p-4 sm:p-5">10 - 20 Mesh</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Meat curing, slow-dissolve culinary, seasoning blends, spa bath salts, body scrubs.</td>
-                            <td class="p-4 sm:p-5">400g PET Jars, 25kg Bags, 1-Ton Jumbo</td>
-                        </tr>
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#b45309]"></span>
-                                <span>Coarse Mill / Grinder Salt</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">2.00 - 5.00 mm</td>
-                            <td class="p-4 sm:p-5">4 - 10 Mesh</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Ceramic & acrylic spice grinders, steak crusting, fish brining, pickling, gourmet gift jars.</td>
-                            <td class="p-4 sm:p-5">Glass Jars, Grinder Bottles, 25kg PP Bags</td>
-                        </tr>
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#78350f]"></span>
-                                <span>Jewel Crystals & Chunks</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">5.00 - 8.00 mm</td>
-                            <td class="p-4 sm:p-5">2.5 - 4 Mesh</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Sole brine therapy, luxury spa presentation, decorative crystal pots, slow dissolving baths.</td>
-                            <td class="p-4 sm:p-5">1kg Bags, 25kg PP Bags, 1-Ton Jumbo</td>
-                        </tr>
-                        <tr class="hover:bg-saltora-blush/30 transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-saltora-text flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-stone-700"></span>
-                                <span>Natural Rock Salt Lumps</span>
-                            </td>
-                            <td class="p-4 sm:p-5 font-semibold text-saltora-terracotta">50 - 250 mm</td>
-                            <td class="p-4 sm:p-5">Raw Mine Boulder</td>
-                            <td class="p-4 sm:p-5 text-stone-600">Artisanal lamp carving, salt room cave construction, livestock lick rocks on rope.</td>
-                            <td class="p-4 sm:p-5">Crated Pallets, 1-Ton Bulk Jumbo FIBC</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Callout Note -->
-            <div class="bg-[#FAF7F2] p-6 rounded-sm border border-saltora-border flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-microscope text-2xl text-saltora-terracotta"></i>
-                    <p class="text-xs text-saltora-muted leading-relaxed font-light">
-                        <strong class="text-saltora-text font-bold">Custom Sieving Available:</strong> Need a tighter tolerance mesh (e.g. 1.2 - 2.5 mm)? We configure dedicated sieve decks for container-volume contracts.
-                    </p>
-                </div>
-                <a href="/contact" class="shrink-0 text-xs font-bold text-saltora-terracotta hover:text-saltora-terracotta-dark uppercase tracking-wider flex items-center gap-1.5">
-                    <span>REQUEST BESPOKE MESH</span>
-                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </a>
-            </div>
-
-        </div>
-    </section>
 
     <!-- PACKAGING & PRIVATE LABEL OEM SOLUTIONS SECTION -->
     <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">

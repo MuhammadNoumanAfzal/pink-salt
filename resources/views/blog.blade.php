@@ -49,7 +49,7 @@
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group cursor-pointer">
+            <a href="/" class="flex items-center gap-3 group cursor-pointer" title="SALTORA Home">
                 <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
                 <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
@@ -60,91 +60,95 @@
                 <a href="/products" class="hover:text-saltora-terracotta transition-colors cursor-pointer">PRODUCTS</a>
                 <a href="/certifications" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CERTIFICATIONS</a>
                 <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer">EXPORT & LOGISTICS</a>
-                <a href="/blog" class="text-saltora-terracotta font-bold transition-colors cursor-pointer border-b-2 border-saltora-terracotta pb-0.5">BLOG</a>
+                <a href="/blog" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer">BLOG</a>
                 <a href="/contact" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CONTACT</a>
             </nav>
 
-            <!-- Header Action Button -->
+            <!-- Header Action Button & Quote CTA -->
             <div class="hidden sm:flex items-center gap-3">
                 <a href="/contact" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
-                    <i class="fa-solid fa-paper-plane text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
-                    <span>REQUEST EXPORT QUOTE</span>
+                    <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
+                    <span>REQUEST A QUOTE</span>
                 </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer">
-                <i class="fa-solid" :class="mobileMenuOpen ? 'fa-xmark text-xl' : 'fa-bars text-xl'"></i>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
             </button>
         </div>
 
         <!-- Mobile Drawer -->
         <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
-            <a href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
-            <a href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
-            <a href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
-            <a href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
-            <a href="/blog" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">BLOG</a>
-            <a href="/contact" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CONTACT</a>
+            <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
+            <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
+            <a @click="mobileMenuOpen = false" href="/certifications" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CERTIFICATIONS</a>
+            <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
+            <a @click="mobileMenuOpen = false" href="/blog" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">BLOG</a>
+            <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CONTACT</a>
+            <a href="/contact" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-4 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
+                <i class="fa-solid fa-file-invoice text-amber-200 text-sm"></i>
+                <span>REQUEST A QUOTE</span>
+            </a>
         </div>
     </header>
 
     <!-- BLOG HERO SECTION -->
-    <section class="relative bg-[#111820] text-white pt-20 md:pt-28 pb-28 md:pb-36 px-6 overflow-hidden border-b border-white/10">
-        <!-- Ambient Background Image -->
-        <img src="/aboutero.jpg" onerror="this.onerror=null; this.src='/heroimg.jpg';" alt="Saltora Himalayan Pink Salt Editorial Background" class="absolute inset-0 w-full h-full object-cover opacity-20 filter contrast-125 brightness-90 pointer-events-none scale-105 transition-transform duration-1000">
+    <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border" style="padding-top: 6rem; padding-bottom: 6rem;">
+        <!-- New Generated Ambient Background Image (`/blog-hero.jpg`) -->
+        <img src="/blog-hero.jpg" alt="Saltora Himalayan Pink Salt Editorial & Trade Intelligence" class="absolute inset-0 w-full h-full object-cover opacity-80 filter contrast-105 brightness-100 pointer-events-none scale-105 transition-transform duration-1000">
         
-        <!-- Multi-stop Dark Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0f171e]/95 via-[#141d24]/90 to-[#0e141a]/98 pointer-events-none"></div>
+        <!-- Multi-stop Dark Gradient Overlay (Balanced for high text visibility) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75 pointer-events-none"></div>
 
         <!-- Ambient Glow Elements -->
-        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-[#e07a5f]/15 rounded-full blur-[130px] pointer-events-none"></div>
-        <div class="absolute top-1/3 -left-32 w-80 h-80 bg-[#f4a261]/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-10 -right-32 w-80 h-80 bg-[#e07a5f]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-saltora-terracotta/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-32 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-80 h-80 bg-saltora-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <!-- Subtle Dot Pattern Overlay -->
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px); background-size: 24px 24px;"></div>
-
-        <div class="max-w-5xl mx-auto text-center space-y-7 relative z-10 animate-fade-in-up">
-            <!-- Refined Top Pill / Kicker -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/15 backdrop-blur-md rounded-full text-xs font-semibold tracking-wider text-stone-200 uppercase shadow-lg">
+        <div class="max-w-4xl mx-auto text-center space-y-7 relative z-10 animate-fade-in-up mt-3 sm:mt-6">
+            <!-- Refined Top Pill / Kicker (High Contrast) -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-black/60 border border-white/25 backdrop-blur-md rounded-full text-xs font-semibold tracking-wider text-stone-100 uppercase shadow-xl">
                 <span class="flex h-2 w-2 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e07a5f] opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#e07a5f]"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
                 </span>
-                <span class="text-[#f4a261] font-bold">SALTORA INTELLIGENCE</span>
-                <span class="text-white/40">&bull;</span>
-                <span class="text-[11px] text-stone-300">B2B EXPORT DESK & MARKET RESEARCH</span>
+                <span class="text-amber-300 font-bold">SALTORA INTELLIGENCE</span>
+                <span class="text-white/50">&bull;</span>
+                <span class="text-[11px] text-stone-200">B2B EXPORT DESK & MARKET RESEARCH</span>
             </div>
             
-            <!-- Headline -->
-            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.12] max-w-4xl mx-auto font-normal tracking-tight">
+            <!-- Headline with Drop Shadow for Maximum Legibility -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-6.5xl font-serif text-white leading-[1.1] max-w-3xl mx-auto font-normal tracking-tight drop-shadow-md">
                 Himalayan Pink Salt Trade, <br class="hidden sm:inline">
-                <span class="italic font-normal bg-gradient-to-r from-[#f4a261] via-[#e07a5f] to-[#e76f51] bg-clip-text text-transparent">
+                <span class="italic font-normal text-amber-300">
                     Logistics & Market Trends
                 </span>
             </h1>
 
-            <!-- Subtitle -->
-            <p class="text-stone-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                Stay informed with verified analysis, mining standards, bulk container shipping protocols, ISO certifications, and GCC market demands direct from SALTORA's export desk.
+            <!-- Subtitle with Solid Bright Text -->
+            <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
+                Stay informed with verified trade analysis, mine origin insights, ocean freight protocols, ISO standards, and international buyer guidelines direct from SALTORA's export desk.
             </p>
 
             <!-- Search Bar Form with Glassmorphism & Micro-interactions -->
             <form action="{{ route('blog') }}" method="GET" class="max-w-2xl mx-auto pt-2">
-                <div class="relative flex items-center bg-white/10 hover:bg-white/[0.13] backdrop-blur-xl border border-white/20 hover:border-white/35 focus-within:border-[#e07a5f] focus-within:ring-2 focus-within:ring-[#e07a5f]/30 rounded-2xl p-1.5 shadow-2xl transition-all duration-300">
-                    <div class="pl-4 pr-2 text-stone-400 text-base pointer-events-none">
+                <div class="relative flex items-center bg-stone-900/90 hover:bg-stone-900 backdrop-blur-xl border border-white/30 hover:border-amber-400/70 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/30 rounded-2xl p-1.5 shadow-2xl transition-all duration-300">
+                    <div class="pl-4 pr-2 text-stone-300 text-base pointer-events-none">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search articles, guides, FOB shipping terms, certifications..." class="w-full py-3.5 px-2 bg-transparent text-xs sm:text-sm text-white placeholder-stone-400 focus:outline-none">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search articles, mining guides, FOB shipping terms, COA standards..." class="w-full py-3.5 px-2 bg-transparent text-xs sm:text-sm text-white placeholder-stone-300 focus:outline-none">
                     
                     @if(request('search'))
-                    <a href="{{ route('blog') }}" class="px-3 text-xs text-stone-400 hover:text-white transition-colors" title="Clear Search">
+                    <a href="{{ route('blog') }}" class="px-3 text-xs text-stone-300 hover:text-white transition-colors" title="Clear Search">
                         <i class="fa-solid fa-xmark"></i>
                     </a>
                     @endif
 
-                    <button type="submit" class="px-6 sm:px-8 py-3 bg-[#e07a5f] hover:bg-[#d46a4f] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer shadow-lg hover:shadow-[#e07a5f]/30 active:scale-95 shrink-0 flex items-center gap-2">
+                    <button type="submit" class="px-6 sm:px-8 py-3 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer shadow-lg hover:shadow-saltora-terracotta/30 active:scale-95 shrink-0 flex items-center gap-2">
                         <span>Search</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
@@ -153,55 +157,15 @@
 
             <!-- Trending Quick Tags -->
             <div class="flex items-center justify-center gap-2 flex-wrap text-xs pt-1">
-                <span class="text-stone-400 text-[11px] font-medium flex items-center gap-1.5 mr-1">
-                    <i class="fa-solid fa-arrow-trend-up text-[#e07a5f] text-xs"></i>
+                <span class="text-stone-200 text-xs font-semibold flex items-center gap-1.5 mr-1">
+                    <i class="fa-solid fa-arrow-trend-up text-amber-300 text-xs"></i>
                     <span>Trending:</span>
                 </span>
-                <a href="{{ route('blog', ['search' => 'FCL Shipping']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">FCL Shipping</a>
-                <a href="{{ route('blog', ['search' => 'Khewra Mine']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Khewra Mine</a>
-                <a href="{{ route('blog', ['search' => 'ISO 22000']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">ISO 22000</a>
-                <a href="{{ route('blog', ['search' => 'Private Label']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Private Label</a>
-                <a href="{{ route('blog', ['search' => 'Bulk Salt']) }}" class="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#e07a5f]/40 rounded-full text-stone-300 hover:text-white transition-all text-[11px] cursor-pointer">Bulk Salt</a>
-            </div>
-
-            <!-- Key Trade Desk Metrics Strip -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto pt-6 border-t border-white/10 text-left">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
-                        <i class="fa-solid fa-ship text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-white leading-tight">50+ Ports</div>
-                        <div class="text-[10px] text-stone-400">Global Shipping Routes</div>
-                    </div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
-                        <i class="fa-solid fa-mountain text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-white leading-tight">100% Khewra</div>
-                        <div class="text-[10px] text-stone-400">Authentic Mine Origin</div>
-                    </div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
-                        <i class="fa-solid fa-certificate text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-white leading-tight">ISO & Halal</div>
-                        <div class="text-[10px] text-stone-400">Export Certified Lab Data</div>
-                    </div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-[#e07a5f]/15 border border-[#e07a5f]/30 flex items-center justify-center text-[#e07a5f] shrink-0">
-                        <i class="fa-solid fa-newspaper text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-bold text-white leading-tight">Bi-Weekly</div>
-                        <div class="text-[10px] text-stone-400">Market & Price Insights</div>
-                    </div>
-                </div>
+                <a href="{{ route('blog', ['search' => 'FCL Shipping']) }}" class="px-3 py-1 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-amber-400/50 rounded-full text-stone-200 hover:text-white transition-all text-[11px] cursor-pointer shadow-sm">FCL Shipping</a>
+                <a href="{{ route('blog', ['search' => 'Khewra Mine']) }}" class="px-3 py-1 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-amber-400/50 rounded-full text-stone-200 hover:text-white transition-all text-[11px] cursor-pointer shadow-sm">Khewra Mine</a>
+                <a href="{{ route('blog', ['search' => 'ISO 22000']) }}" class="px-3 py-1 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-amber-400/50 rounded-full text-stone-200 hover:text-white transition-all text-[11px] cursor-pointer shadow-sm">ISO 22000</a>
+                <a href="{{ route('blog', ['search' => 'Private Label']) }}" class="px-3 py-1 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-amber-400/50 rounded-full text-stone-200 hover:text-white transition-all text-[11px] cursor-pointer shadow-sm">Private Label</a>
+                <a href="{{ route('blog', ['search' => 'Bulk Salt']) }}" class="px-3 py-1 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-amber-400/50 rounded-full text-stone-200 hover:text-white transition-all text-[11px] cursor-pointer shadow-sm">Bulk Salt</a>
             </div>
         </div>
     </section>
