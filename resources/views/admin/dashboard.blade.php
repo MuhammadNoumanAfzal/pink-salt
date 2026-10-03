@@ -22,6 +22,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
+        [x-cloak] { display: none !important; }
+
         /* CKEditor Custom Styling */
         .ck-editor__editable_inline {
             min-height: 220px !important;
@@ -558,7 +560,7 @@
             </div>
 
             <!-- TAB 2: PRODUCT CATALOG -->
-            <div x-show="activeTab === 'products'" class="space-y-6">
+            <div x-show="activeTab === 'products'" x-cloak class="space-y-6">
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h2 class="text-xl font-bold font-serif text-slate-900">Product Catalog</h2>
@@ -779,7 +781,7 @@
             --}}
 
             <!-- TAB 4: CUSTOMER MESSAGES -->
-            <div x-show="activeTab === 'inquiries'" class="space-y-6">
+            <div x-show="activeTab === 'inquiries'" x-cloak class="space-y-6">
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h2 class="text-xl font-bold font-serif text-slate-900">Customer Messages</h2>
@@ -857,7 +859,7 @@
             </div>
 
             <!-- TAB 5: BLOGS & INSIGHTS -->
-            <div x-show="activeTab === 'blogs'" class="space-y-6">
+            <div x-show="activeTab === 'blogs'" x-cloak class="space-y-6">
                 <div class="flex items-center justify-between gap-4 flex-wrap">
                     <div>
                         <h2 class="text-xl font-bold font-serif text-slate-900">Blog Articles & Export Insights</h2>

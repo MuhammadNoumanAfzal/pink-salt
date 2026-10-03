@@ -17,6 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 <body class="h-full w-full overflow-hidden flex items-center justify-center p-4 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
     

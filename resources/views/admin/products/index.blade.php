@@ -18,6 +18,9 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="adminProductsPage()">
 
