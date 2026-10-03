@@ -65,7 +65,9 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        $products = Product::where('is_active', true)->select('id', 'name', 'category', 'category_id')->get();
+        $categories = \App\Models\Category::where('is_active', true)->select('id', 'name')->get();
+        return view('contact', compact('products', 'categories'));
     }
 
     public function submitContact(Request $request)
@@ -75,16 +77,54 @@ class FrontendController extends Controller
             'company' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:100',
-            'category' => 'nullable|string|max:255',
-            'quantity_port' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'product' => 'nullable|string|max:255',
+            'quantity' => 'nullable|string|max:255',
+            'packaging' => 'nullable|string|max:255',
+            'private_label' => 'nullable|string|max:255',
+            'destination_port' => 'nullable|string|max:255',
+            'delivery_timeline' => 'nullable|string|max:255',
+            'subject' => 'nullable|string|max:255',
             'message' => 'nullable|string',
         ]);
 
-        $submission = ContactSubmission::create($validated);
+        $subject = $validated['subject'] ?? null;
+        if (empty($subject) && !empty($validated['product'])) {
+            $subject = 'Inquiry for ' . $validated['product'];
+        }
+
+        $specsDetails = [];
+        if (!empty($validated['product'])) $specsDetails[] = "Product: " . $validated['product'];
+        if (!empty($validated['quantity'])) $specsDetails[] = "Quantity: " . $validated['quantity'];
+        if (!empty($validated['packaging'])) $specsDetails[] = "Packaging Requirement: " . $validated['packaging'];
+        if (!empty($validated['private_label'])) $specsDetails[] = "Private Label & Branding: " . $validated['private_label'];
+        if (!empty($validated['destination_port'])) $specsDetails[] = "Destination Port: " . $validated['destination_port'];
+        if (!empty($validated['country'])) $specsDetails[] = "Country: " . $validated['country'];
+        $specsDetails[] = "Delivery Timeline Acknowledged: Unpredictable due to Iran-USA war";
+
+        $fullMessage = trim($validated['message'] ?? '');
+        $combinedMessage = (!empty($specsDetails) ? "--- SPECIFICATIONS & INQUIRY DETAILS ---\n" . implode("\n", $specsDetails) . "\n----------------------------------------\n\n" : "") . $fullMessage;
+
+        $submission = ContactSubmission::create([
+            'name' => $validated['name'],
+            'company' => $validated['company'] ?? null,
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'subject' => $subject ?? 'B2B Export Inquiry',
+            'country' => $validated['country'] ?? null,
+            'product' => $validated['product'] ?? null,
+            'quantity' => $validated['quantity'] ?? null,
+            'packaging' => $validated['packaging'] ?? null,
+            'private_label' => $validated['private_label'] ?? null,
+            'destination_port' => $validated['destination_port'] ?? null,
+            'delivery_timeline' => $validated['delivery_timeline'] ?? 'Unpredictable due to Iran-USA war',
+            'message' => $combinedMessage,
+            'status' => 'new',
+        ]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Thank you ' . e($submission->name) . '! Your inquiry has been submitted. The Saltora export desk will respond within 24 hours.',
+            'message' => 'Thank you ' . e($submission->name) . '! Your specification inquiry has been registered. The Saltora export desk will review your details and respond with a formal quote within 24 hours.',
             'id' => $submission->id
         ]);
     }

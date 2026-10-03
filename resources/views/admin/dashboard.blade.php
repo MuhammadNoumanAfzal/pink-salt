@@ -262,15 +262,6 @@
                             $marketGroup[$inq->country] = ($marketGroup[$inq->country] ?? 0) + 1;
                         }
                     }
-                    if (empty($marketGroup)) {
-                        $marketGroup = [
-                            'United States' => 4,
-                            'United Kingdom' => 3,
-                            'Germany' => 2,
-                            'United Arab Emirates' => 2,
-                            'Australia' => 1,
-                        ];
-                    }
                     arsort($marketGroup);
                     $totalMarketInquiries = array_sum($marketGroup);
                 @endphp
@@ -1315,16 +1306,45 @@
                                 <span class="font-semibold text-slate-800" x-text="selectedInquiry?.phone"></span>
                             </div>
                         </template>
-                        <template x-if="selectedInquiry?.category">
+                        <template x-if="selectedInquiry?.country">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Interested Category:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.category"></span>
+                                <span class="text-slate-400 block text-[10px]">Destination Country:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.country"></span>
                             </div>
                         </template>
-                        <template x-if="selectedInquiry?.quantity_port">
+                        <template x-if="selectedInquiry?.destination_port">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Target Quantity / Port:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.quantity_port"></span>
+                                <span class="text-slate-400 block text-[10px]">Destination Port:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.destination_port"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.product || selectedInquiry?.category">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Product Required:</span>
+                                <span class="font-bold text-[#e07a5f]" x-text="selectedInquiry?.product || selectedInquiry?.category"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.quantity || selectedInquiry?.quantity_port">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Quantity Required:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.quantity || selectedInquiry?.quantity_port"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.packaging">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Packaging Requirement:</span>
+                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.packaging"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.private_label">
+                            <div class="sm:col-span-2 bg-amber-50/60 p-2 rounded-lg border border-amber-200/60">
+                                <span class="text-amber-800 font-bold block text-[10px] uppercase">Private Label & Branding:</span>
+                                <span class="font-semibold text-amber-900" x-text="selectedInquiry?.private_label"></span>
+                            </div>
+                        </template>
+                        <template x-if="selectedInquiry?.delivery_timeline">
+                            <div class="sm:col-span-2 text-[10px] text-slate-500 italic">
+                                <span>Shipping Timeline Status: </span><span class="font-semibold text-slate-700" x-text="selectedInquiry?.delivery_timeline"></span>
                             </div>
                         </template>
                     </div>

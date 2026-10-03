@@ -254,51 +254,153 @@
 
             <!-- Right 7 Cols: Inquiry Form -->
             <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-sm border border-saltora-border shadow-sm reveal-on-scroll reveal-from-right">
+                <div class="mb-6 space-y-1">
+                    <span class="text-[10px] font-bold tracking-mega text-saltora-terracotta uppercase">REQUEST FORMAL EXPORT QUOTE</span>
+                    <h3 class="font-serif text-2xl text-saltora-text font-normal">Direct B2B Trade & Proforma Inquiry</h3>
+                    <p class="text-xs text-saltora-muted font-light">Fill out the trade form below with your full volume and product specifications.</p>
+                </div>
+
                 <form id="contactForm" class="space-y-6">
                     @csrf
+
+                    <!-- 2-Column Responsive Grid matching Client Template -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- FULL NAME * -->
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Full Name *</label>
-                            <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">FULL NAME *</label>
+                            <input type="text" name="name" required placeholder="Your full name" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
+                        <!-- COMPANY NAME * -->
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Company Name</label>
-                            <input type="text" name="company" placeholder="e.g. Global Foods Trading" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">COMPANY NAME *</label>
+                            <input type="text" name="company" required placeholder="Your company" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
-                    </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- BUSINESS EMAIL * -->
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Business Email *</label>
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">BUSINESS EMAIL *</label>
                             <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
+                        <!-- COUNTRY * -->
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Phone / WhatsApp</label>
-                            <input type="tel" name="phone" placeholder="+1 234 567 8900" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Subject / Product</label>
-                            <input type="text" name="subject" value="{{ request('product') ? 'Quote Request: ' . request('product') : (request('subject') ?? '') }}" placeholder="e.g. Fine Pink Salt FCL Quote" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">COUNTRY *</label>
+                            <input type="text" name="country" required placeholder="Destination country" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
 
+                        <!-- PHONE / WHATSAPP -->
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Destination Country</label>
-                            <input type="text" name="country" placeholder="e.g. United States / Germany" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PHONE / WHATSAPP</label>
+                            <input type="tel" name="phone" placeholder="+00 000 000 000" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
                         </div>
-                    </div>
 
-                    <div class="space-y-2">
-                        <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">Message / Specifications *</label>
-                        <textarea name="message" required rows="4" placeholder="Detail your required grain size, packaging format, private label branding or special specifications..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm"></textarea>
+                        <!-- PRODUCT REQUIRED * -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PRODUCT REQUIRED *</label>
+                            <select name="product" id="productSelect" required class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
+                                <option value="">Select a product</option>
+                                @if(isset($categories) && count($categories) > 0)
+                                    @foreach($categories as $category)
+                                        <optgroup label="{{ $category->name }}">
+                                            @foreach($products->where('category_id', $category->id) as $prod)
+                                                <option value="{{ $prod->name }}">{{ $prod->name }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
+                                    <optgroup label="Other / Consolidated Export">
+                                        <option value="Mixed 20ft Container (Assorted Products)">Mixed 20ft Container (Assorted Products)</option>
+                                        <option value="Custom Mesh Specification / Bulk Rock Salt">Custom Mesh Specification / Bulk Rock Salt</option>
+                                    </optgroup>
+                                @else
+                                    <option value="Fine Pink Salt (0.3 - 0.8 mm)">Fine Pink Salt (0.3 - 0.8 mm)</option>
+                                    <option value="Coarse Grinder Pink Salt (2 - 5 mm)">Coarse Grinder Pink Salt (2 - 5 mm)</option>
+                                    <option value="Natural Carved Pink Salt Lamp">Natural Carved Pink Salt Lamp</option>
+                                    <option value="Himalayan Animal Lick Salt with Rope">Himalayan Animal Lick Salt with Rope</option>
+                                    <option value="Himalayan Pink Cooking Salt Tile">Himalayan Pink Cooking Salt Tile</option>
+                                    <option value="1-Ton Bulk FIBC Jumbo Bag Salt">1-Ton Bulk FIBC Jumbo Bag Salt</option>
+                                @endif
+                            </select>
+                        </div>
+
+                        <!-- QUANTITY REQUIRED * -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">QUANTITY REQUIRED *</label>
+                            <input type="text" name="quantity" required placeholder="e.g. 1 x 20ft container / 25 MT" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        </div>
+
+                        <!-- PACKAGING REQUIREMENT -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PACKAGING REQUIREMENT</label>
+                            <select name="packaging" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
+                                <option value="">Select packaging</option>
+                                <option value="Private Label / Custom OEM Packaging (Pouches / Jars / Cartons)">Private Label / Custom OEM Packaging (Pouches / Jars / Cartons)</option>
+                                <option value="Stand-Up Zipper Pouches with Window (200g - 1kg)">Stand-Up Zipper Pouches with Window (200g - 1kg)</option>
+                                <option value="25kg Food-Grade Polypropylene (PP) Bags with PE Liner">25kg Food-Grade Polypropylene (PP) Bags with PE Liner</option>
+                                <option value="50kg Heavy-Duty Polypropylene Export Bags">50kg Heavy-Duty Polypropylene Export Bags</option>
+                                <option value="1-Ton Bulk FIBC Big Bags with Discharge Spout">1-Ton Bulk FIBC Big Bags with Discharge Spout</option>
+                                <option value="Gourmet Glass Jars & Ceramic Grinder Bottles">Gourmet Glass Jars & Ceramic Grinder Bottles</option>
+                                <option value="Animal Salt Lick Blocks with Hanging Rope">Animal Salt Lick Blocks with Hanging Rope</option>
+                                <option value="Salt Cooking Tiles & Bricks (Export Boxed)">Salt Cooking Tiles & Bricks (Export Boxed)</option>
+                                <option value="Plain Neutral Export Packaging (Unbranded)">Plain Neutral Export Packaging (Unbranded)</option>
+                                <option value="Custom Packaging Specification">Custom Packaging Specification</option>
+                            </select>
+                        </div>
+
+                        <!-- PRIVATE LABEL & OEM BRANDING OPTION (MANDATORY PROMINENT OPTION) -->
+                        <div class="sm:col-span-2 bg-[#FAF7F2] p-4.5 rounded-sm border border-saltora-border space-y-2.5">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                                <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase flex items-center gap-1.5">
+                                    <i class="fa-solid fa-stamp text-[#e07a5f]"></i>
+                                    <span>PRIVATE LABEL & PACKAGING OPTION *</span>
+                                </label>
+                                <span class="text-[10px] text-emerald-800 font-bold uppercase bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-xs inline-block">
+                                    <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> OEM Private Label Available
+                                </span>
+                            </div>
+                            <select name="private_label" required class="w-full bg-white border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 rounded-sm cursor-pointer">
+                                <option value="Yes — Full Private Label / Custom OEM Packaging (My Brand Logo & Artwork)">Yes — Full Private Label / Custom OEM Packaging (My Brand Logo & Artwork)</option>
+                                <option value="No — Standard Saltora Brand Packaging">No — Standard Saltora Brand Packaging</option>
+                                <option value="Plain Neutral Export Packaging (White-label unbranded packaging)">Plain Neutral Export Packaging (White-label unbranded packaging)</option>
+                                <option value="Need Consultation on Private Label Dielines & Barcodes First">Need Consultation on Private Label Dielines & Barcodes First</option>
+                            </select>
+                            <p class="text-[11px] text-stone-500 font-light leading-relaxed">
+                                We print rotogravure pouches, retail jars, barcodes, and export master cartons to your exact brand artwork and regulatory guidelines.
+                            </p>
+                        </div>
+
+                        <!-- DESTINATION PORT -->
+                        <div class="sm:col-span-2 space-y-2">
+                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">DESTINATION PORT</label>
+                            <input type="text" name="destination_port" placeholder="e.g. Jebel Ali, Rotterdam, New York" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        </div>
+
+                        <!-- TIME DELIVERY NOTICE: IRAN-USA WAR GEOPOLITICAL ADVISORY -->
+                        <div class="sm:col-span-2 bg-amber-500/10 border-l-4 border-amber-600 p-4 rounded-xs text-xs space-y-1 shadow-xs">
+                            <div class="flex items-center gap-2 font-bold text-amber-900 uppercase text-[11px] tracking-wider">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
+                                <span>Maritime Shipping & Delivery Schedule Advisory</span>
+                            </div>
+                            <p class="text-amber-950 font-normal leading-relaxed text-[11px]">
+                                <strong>Time Delivery:</strong> Delivery timelines are currently unpredictable due to the Iran-USA war and regional maritime shipping volatility across Middle Eastern & Red Sea ocean corridors. Vessel departure schedules, transit times, and ocean freight rates are quoted and confirmed per booking upon proforma agreement.
+                            </p>
+                            <input type="hidden" name="delivery_timeline" value="Unpredictable due to Iran-USA war">
+                        </div>
+
+                        <!-- MESSAGE / SPECIFICATIONS WITH EXPLICIT USER INSTRUCTION -->
+                        <div class="sm:col-span-2 space-y-2">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                                <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">MESSAGE / DETAILED SPECIFICATIONS *</label>
+                                <span class="text-[11px] font-bold text-[#e07a5f] bg-[#FAF7F2] border border-[#e07a5f]/30 px-2.5 py-0.5 rounded-xs">
+                                    <i class="fa-solid fa-circle-exclamation mr-1 text-[#e07a5f]"></i> In your enquiry give complete details with specifications
+                                </span>
+                            </div>
+                            <textarea name="message" required rows="5" placeholder="In your enquiry, please give complete details with specifications — target grain mesh size (e.g. Fine 0.3-0.8mm, Coarse 2-5mm, Rock Lumps), chemical purity grade (98.5%+ NaCl), packaging format, private-label needs, destination port, target timeline..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm leading-relaxed"></textarea>
+                        </div>
                     </div>
 
                     <button type="submit" id="submitContactBtn" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 cursor-pointer group">
-                        <span>SUBMIT INQUIRY</span>
+                        <span>SUBMIT SPECIFICATION INQUIRY</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
@@ -310,7 +412,7 @@
                         e.preventDefault();
                         const btn = document.getElementById('submitContactBtn');
                         btn.disabled = true;
-                        btn.innerHTML = '<span>SENDING INQUIRY...</span>';
+                        btn.innerHTML = '<span>TRANSMITTING INQUIRY...</span>';
 
                         try {
                             const response = await fetch('/contact', {
@@ -326,7 +428,7 @@
                             if (data.success) {
                                 window.Swal.fire({
                                     icon: 'success',
-                                    title: 'Inquiry Received!',
+                                    title: 'Inquiry Registered!',
                                     text: data.message,
                                     background: '#1c1917',
                                     color: '#f5f5f4',
@@ -336,8 +438,8 @@
                             } else {
                                 window.Swal.fire({
                                     icon: 'error',
-                                    title: 'Error',
-                                    text: data.message || 'Validation error.',
+                                    title: 'Validation Notice',
+                                    text: data.message || 'Please check your submitted fields.',
                                     background: '#1c1917',
                                     color: '#f5f5f4'
                                 });
@@ -346,23 +448,35 @@
                             window.Swal.fire({
                                 icon: 'error',
                                 title: 'Network Error',
-                                text: 'Failed to send inquiry.',
+                                text: 'Failed to submit inquiry. Please retry or contact us directly via WhatsApp.',
                                 background: '#1c1917',
                                 color: '#f5f5f4'
                             });
                         } finally {
                             btn.disabled = false;
-                            btn.innerHTML = '<span>SUBMIT INQUIRY</span>';
+                            btn.innerHTML = '<span>SUBMIT SPECIFICATION INQUIRY</span>';
                         }
                     });
 
-                    // Pre-fill subject if ?product= parameter exists in URL
+                    // Pre-fill Product Required if ?product= parameter exists in URL
                     const urlParams = new URLSearchParams(window.location.search);
                     const productParam = urlParams.get('product');
                     if (productParam) {
-                        const subjInput = document.querySelector('input[name="subject"]');
-                        if (subjInput && !subjInput.value) {
-                            subjInput.value = 'Quote Request: ' + productParam;
+                        const productSelect = document.getElementById('productSelect');
+                        if (productSelect) {
+                            let optionFound = false;
+                            for (let i = 0; i < productSelect.options.length; i++) {
+                                if (productSelect.options[i].text.toLowerCase().includes(productParam.toLowerCase()) ||
+                                    productSelect.options[i].value.toLowerCase().includes(productParam.toLowerCase())) {
+                                    productSelect.selectedIndex = i;
+                                    optionFound = true;
+                                    break;
+                                }
+                            }
+                            if (!optionFound) {
+                                const newOpt = new Option(productParam, productParam, true, true);
+                                productSelect.add(newOpt);
+                            }
                         }
                     }
                 </script>
