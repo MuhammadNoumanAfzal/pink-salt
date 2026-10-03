@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-50 text-slate-800">
+<html lang="en" class="h-full overflow-hidden bg-saltora-bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Portal Login - SALTORA Exporter</title>
+    <title>Admin Sign In — SALTORA Exporter</title>
     <link rel="icon" type="image/png" href="/logo.png">
     
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome & SweetAlert2 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,85 +18,173 @@
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="h-full flex items-center justify-center p-4 font-sans antialiased bg-slate-100/80 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-50/50 via-slate-100 to-stone-200">
+<body class="h-full w-full overflow-hidden flex items-center justify-center p-4 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
     
-    <div class="w-full max-w-md">
-        <!-- Logo Header -->
-        <div class="text-center mb-8">
-            <a href="/" class="inline-flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#e07a5f] to-[#d4a373] p-0.5 shadow-lg shadow-[#e07a5f]/20 group-hover:scale-105 transition-transform duration-300">
-                    <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-                        <img src="/logo.png" alt="SALTORA Logo" class="w-7 h-7 object-contain">
+    <!-- Clean, Warm Ambient Background (Like before, but cleaner & refined) -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <!-- Soft multi-stop warm radial glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_#F4E8E5_0%,_#F8F5EF_55%,_#EFE9DF_100%)]"></div>
+        
+        <!-- Subtle mineral glow accents -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-[#964B42]/5 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 right-10 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Login Container (Centered, fits 100vh with NO scrollbar) -->
+    <div class="w-full max-w-[420px] relative z-10 flex flex-col items-center">
+        
+        <!-- Brand Logo Header -->
+        <div class="mb-5 text-center">
+            <a href="/" class="inline-flex items-center gap-3 group cursor-pointer" title="Return to SALTORA Public Site">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-saltora-terracotta to-amber-600 p-0.5 shadow-md shadow-saltora-terracotta/20 group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
+                        <img src="/logo.png" alt="SALTORA Logo" class="w-full h-full object-contain">
                     </div>
                 </div>
                 <div class="text-left">
-                    <span class="block font-serif text-2xl font-bold tracking-wider text-slate-900">SALTORA</span>
-                    <span class="block text-[10px] tracking-[0.25em] text-[#e07a5f] uppercase font-bold">Store Admin Panel</span>
+                    <span class="block font-serif text-2xl font-bold tracking-wider text-stone-900 leading-none">SALTORA</span>
+                    <span class="block text-[10px] tracking-[0.22em] text-saltora-terracotta uppercase font-bold mt-1">Store Admin Panel</span>
                 </div>
             </a>
         </div>
 
-        <!-- Login Card -->
-        <div class="bg-white border border-slate-200/80 rounded-2xl p-8 shadow-2xl shadow-slate-200/60 relative overflow-hidden">
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#e07a5f]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Clean Luxury White Card -->
+        <div class="w-full bg-white/95 backdrop-blur-md border border-stone-200/90 rounded-2xl p-6 sm:p-7 shadow-xl shadow-stone-900/5 relative overflow-hidden">
             
-            <div class="mb-6 text-center">
-                <h1 class="text-xl font-bold font-serif text-slate-900">Admin Sign In</h1>
-                <p class="text-xs text-slate-500 mt-1">Access product catalog, store orders, & customer inquiries.</p>
+            <div class="mb-5 text-center">
+                <h1 class="text-xl font-serif font-bold text-stone-900 tracking-tight">Admin Sign In</h1>
+                <p class="text-xs text-stone-500 mt-1">Access product catalog, store orders, & customer inquiries.</p>
             </div>
 
-            <form id="adminLoginForm" class="space-y-5">
+            <!-- Form -->
+            <form id="adminLoginForm" class="space-y-4">
                 @csrf
+                
+                <!-- Email -->
                 <div>
-                    <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Email Address</label>
+                    <label for="email" class="block text-xs font-semibold text-stone-700 mb-1.5 uppercase tracking-wider">Email Address</label>
                     <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                            <i class="fa-solid fa-envelope text-sm"></i>
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
+                            <i class="fa-solid fa-envelope text-xs"></i>
                         </div>
-                        <input type="email" id="email" name="email" required placeholder="admin@saltora.com" 
-                            class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f] focus:ring-2 focus:ring-[#e07a5f]/20 transition-all">
+                        <input type="email" id="email" name="email" required value="admin@saltora.com" placeholder="admin@saltora.com" 
+                            class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all">
                     </div>
                 </div>
 
+                <!-- Password -->
                 <div>
-                    <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Password</label>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label for="password" class="block text-xs font-semibold text-stone-700 uppercase tracking-wider">Password</label>
+                        <button type="button" onclick="togglePasswordVisibility()" class="text-[11px] text-saltora-terracotta hover:underline font-medium focus:outline-none flex items-center gap-1 cursor-pointer">
+                            <i id="eyeIcon" class="fa-solid fa-eye text-[10px]"></i>
+                            <span id="eyeText">Show</span>
+                        </button>
+                    </div>
                     <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                            <i class="fa-solid fa-lock text-sm"></i>
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
+                            <i class="fa-solid fa-lock text-xs"></i>
                         </div>
-                        <input type="password" id="password" name="password" required placeholder="••••••••" 
-                            class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f] focus:ring-2 focus:ring-[#e07a5f]/20 transition-all">
+                        <input type="password" id="password" name="password" required value="password123" placeholder="••••••••••••" 
+                            class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all tracking-wider">
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between text-xs text-slate-500">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="remember" class="w-4 h-4 rounded bg-slate-100 border-slate-300 text-[#e07a5f] focus:ring-[#e07a5f]">
-                        <span>Remember session</span>
+                <!-- Remember & Public Site Link -->
+                <div class="flex items-center justify-between text-xs text-stone-500 pt-0.5">
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" name="remember" checked class="w-4 h-4 rounded border-stone-300 text-saltora-terracotta focus:ring-saltora-terracotta/30 accent-saltora-terracotta cursor-pointer">
+                        <span class="text-xs text-stone-600">Remember session</span>
                     </label>
-                    <a href="/" class="text-[#e07a5f] hover:underline font-medium">Main Store Front &rarr;</a>
+                    <a href="/" class="text-saltora-terracotta hover:underline font-medium flex items-center gap-1">
+                        <span>Main Store Front</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
                 </div>
 
-                <button type="submit" id="loginBtn" class="w-full py-3.5 px-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-xl shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-right-to-bracket"></i>
+                <!-- Submit Button -->
+                <button type="submit" id="loginBtn" class="w-full py-3 px-4 bg-stone-900 hover:bg-black active:scale-[0.99] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer mt-1">
+                    <i class="fa-solid fa-right-to-bracket text-xs text-amber-300"></i>
                     <span>Log In to Store Console</span>
                 </button>
             </form>
 
-            <div class="mt-6 pt-5 border-t border-slate-100 text-center">
-                <p class="text-xs text-slate-500">Demo Admin Credentials: <span class="text-slate-800 font-mono font-semibold">admin@saltora.com</span> / <span class="text-slate-800 font-mono font-semibold">password123</span></p>
+            <!-- 1-Click Demo Credentials Quick-Fill -->
+            <div class="mt-4 pt-3.5 border-t border-stone-100 text-center">
+                <button type="button" onclick="fillDemoCredentials()" class="w-full px-3 py-2 bg-stone-50 hover:bg-stone-100/80 border border-stone-200/80 rounded-xl text-xs text-stone-600 hover:text-stone-900 transition-all flex items-center justify-between cursor-pointer group shadow-2xs" title="Click to auto-fill credentials">
+                    <div class="flex items-center gap-2 text-left truncate">
+                        <i class="fa-solid fa-key text-saltora-terracotta text-xs shrink-0"></i>
+                        <span class="font-mono text-[11px] font-semibold text-stone-800">admin@saltora.com</span>
+                        <span class="text-stone-300">&bull;</span>
+                        <span class="font-mono text-[11px] text-stone-600">password123</span>
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-saltora-terracotta group-hover:underline shrink-0 ml-2">Auto-Fill &rarr;</span>
+                </button>
             </div>
+        </div>
+
+        <!-- Subtle Security Note -->
+        <div class="mt-3.5 text-center text-[11px] text-stone-400 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-stone-400 text-[10px]"></i>
+            <span>Encrypted Admin Console &bull; SALTORA Exporter</span>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            const eyeText = document.getElementById('eyeText');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+                eyeText.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+                eyeText.textContent = 'Show';
+            }
+        }
+
+        function fillDemoCredentials() {
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+
+            emailInput.value = 'admin@saltora.com';
+            passwordInput.value = 'password123';
+
+            emailInput.classList.add('ring-2', 'ring-saltora-terracotta');
+            passwordInput.classList.add('ring-2', 'ring-saltora-terracotta');
+
+            setTimeout(() => {
+                emailInput.classList.remove('ring-2', 'ring-saltora-terracotta');
+                passwordInput.classList.remove('ring-2', 'ring-saltora-terracotta');
+            }, 600);
+
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Demo credentials loaded!',
+                showConfirmButton: false,
+                timer: 1200,
+                background: '#ffffff',
+                color: '#1c1917',
+                iconColor: '#964B42'
+            });
+        }
+
         document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('loginBtn');
             const originalText = btn.innerHTML;
             
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-amber-300"></i> <span>Authenticating...</span>';
 
             const formData = new FormData(this);
 
@@ -116,14 +204,14 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Authenticated!',
-                        text: data.message,
-                        timer: 1500,
+                        text: data.message || 'Access granted.',
+                        timer: 1300,
                         showConfirmButton: false,
                         background: '#ffffff',
-                        color: '#1e293b',
-                        iconColor: '#e07a5f'
+                        color: '#1c1917',
+                        iconColor: '#964B42'
                     }).then(() => {
-                        window.location.href = data.redirect;
+                        window.location.href = data.redirect || '/admin/dashboard';
                     });
                 } else {
                     Swal.fire({
@@ -131,8 +219,8 @@
                         title: 'Access Denied',
                         text: data.message || 'Invalid credentials provided.',
                         background: '#ffffff',
-                        color: '#1e293b',
-                        confirmButtonColor: '#e07a5f'
+                        color: '#1c1917',
+                        confirmButtonColor: '#964B42'
                     });
                     btn.disabled = false;
                     btn.innerHTML = originalText;
@@ -143,8 +231,8 @@
                     title: 'System Error',
                     text: 'Unable to process login request right now.',
                     background: '#ffffff',
-                    color: '#1e293b',
-                    confirmButtonColor: '#e07a5f'
+                    color: '#1c1917',
+                    confirmButtonColor: '#964B42'
                 });
                 btn.disabled = false;
                 btn.innerHTML = originalText;
