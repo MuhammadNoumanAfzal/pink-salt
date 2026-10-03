@@ -12,7 +12,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount(['allSubcategories', 'products'])->latest()->get();
+        $categories = Category::with('allSubcategories')->withCount(['allSubcategories', 'products'])->latest()->get();
         return view('admin.categories.index', compact('categories'));
     }
 

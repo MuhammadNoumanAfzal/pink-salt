@@ -266,6 +266,127 @@
         </main>
     </div>
 
+    <!-- DEDICATED LUXURY VIEW SUBCATEGORY MODAL -->
+    <div x-show="viewModalOpen" @click.self="viewModalOpen = false" 
+        x-cloak
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto cursor-pointer"
+        x-transition:enter="ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0">
+        
+        <div class="bg-white border border-slate-200/90 rounded-3xl max-w-lg w-full shadow-2xl relative overflow-hidden flex flex-col my-auto cursor-default transform transition-all"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+            x-transition:leave-end="opacity-0 translate-y-4 scale-95">
+            
+            <!-- Subcategory Header Banner with Saltora Brand Accents -->
+            <div class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-[#1e293b] p-6 text-white shrink-0 overflow-hidden">
+                <!-- Warm Glow Accent -->
+                <div class="absolute -right-8 -top-8 w-40 h-40 bg-[#e07a5f]/25 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Top Header Bar with Badges & Close Button -->
+                <div class="flex items-center justify-between relative z-10 mb-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-white/10 backdrop-blur-md text-amber-300 border border-white/20 shadow-xs">
+                        <i class="fa-solid fa-tags text-[9px]"></i>
+                        <span>Export Sub-Grade</span>
+                    </span>
+                    
+                    <button type="button" @click="viewModalOpen = false" 
+                        class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm"
+                        title="Close">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Bottom Banner Title & Badges -->
+                <div class="relative z-10 space-y-2">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold inline-flex items-center gap-1.5 backdrop-blur-md border shadow-xs"
+                            :class="selectedSubcategory?.is_active ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40' : 'bg-slate-500/20 text-slate-300 border-slate-400/40'">
+                            <span class="w-1.5 h-1.5 rounded-full" :class="selectedSubcategory?.is_active ? 'bg-emerald-400 animate-pulse' : 'bg-slate-400'"></span>
+                            <span x-text="selectedSubcategory?.is_active ? 'Active in Store' : 'Inactive / Draft'"></span>
+                        </span>
+                        
+                        <template x-if="selectedSubcategory?.slug">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium text-white/80 bg-white/10 backdrop-blur-md border border-white/15">
+                                /<span x-text="selectedSubcategory?.slug"></span>
+                            </span>
+                        </template>
+                    </div>
+
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white drop-shadow-md leading-tight" x-text="selectedSubcategory?.name"></h2>
+                </div>
+            </div>
+
+            <!-- Content Body Area -->
+            <div class="p-6 space-y-5 overflow-y-auto max-h-[calc(85vh-14rem)] custom-modal-scroll">
+                
+                <!-- Parent Category Callout -->
+                <div class="p-3.5 bg-orange-50/70 border border-orange-200/80 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-[#e07a5f] block">Parent Export Category</span>
+                        <span class="text-sm font-bold text-slate-900 mt-0.5 block" x-text="selectedSubcategory?.category?.name || 'Primary Catalog'"></span>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-orange-100 border border-orange-200 text-[#e07a5f] flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                </div>
+
+                <!-- Description Section -->
+                <div class="space-y-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info text-[#e07a5f]"></i>
+                        <span>Subcategory Description</span>
+                    </span>
+                    <div class="bg-stone-50 border border-stone-200/80 rounded-2xl p-4 text-xs text-slate-700 leading-relaxed shadow-2xs">
+                        <p x-text="selectedSubcategory?.description || 'No detailed specifications provided for this subcategory.'"></p>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Card -->
+                <div class="bg-gradient-to-br from-sky-50/70 to-blue-50/40 border border-sky-200/70 rounded-2xl p-4 flex items-center justify-between shadow-2xs">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-sky-800/80 block">Associated Catalog Products</span>
+                        <div class="flex items-baseline gap-1.5 mt-1">
+                            <span class="text-2xl font-bold font-serif text-sky-950" x-text="selectedSubcategory?.products_count || 0"></span>
+                            <span class="text-[11px] font-medium text-sky-700">active items</span>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-sky-100/80 border border-sky-200 text-sky-700 flex items-center justify-center text-base shrink-0">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="bg-slate-50/90 px-6 py-4 border-t border-slate-100 flex items-center justify-between gap-3 shrink-0">
+                <a :href="'/products?category=' + (selectedSubcategory?.category?.slug || '')" target="_blank" 
+                    class="text-xs font-semibold text-slate-600 hover:text-[#e07a5f] inline-flex items-center gap-1.5 transition-colors cursor-pointer">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    <span>Browse Parent Category</span>
+                </a>
+
+                <div class="flex items-center gap-2">
+                    <button type="button" @click="viewModalOpen = false" 
+                        class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold text-xs rounded-xl transition-all cursor-pointer">
+                        Close
+                    </button>
+                    <button type="button" @click="viewModalOpen = false; openEditModal(selectedSubcategory)" 
+                        class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-pen-to-square text-[11px]"></i>
+                        <span>Edit Subcategory</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL FOR ADD / EDIT SUBCATEGORY -->
     <div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -331,6 +452,8 @@
                 statusFilter: 'all',
                 selectedCategoryFilter: '',
                 modalOpen: false,
+                viewModalOpen: false,
+                selectedSubcategory: null,
                 isEdit: false,
                 editId: null,
                 form: {
@@ -350,39 +473,8 @@
                     return name.includes(q) || slug.includes(q);
                 },
                 viewSubcategory(sub) {
-                    const statusHtml = sub.is_active 
-                        ? '<span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">Active</span>' 
-                        : '<span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-bold">Inactive</span>';
-
-                    const parentCatName = sub.category ? sub.category.name : 'Unassigned';
-
-                    Swal.fire({
-                        title: `<strong>${sub.name}</strong>`,
-                        html: `
-                            <div class="text-left space-y-3 mt-2 text-xs font-sans">
-                                <div class="bg-[#e07a5f]/10 p-3 rounded-xl border border-[#e07a5f]/20 flex items-center justify-between">
-                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Parent Category:</span>
-                                    <span class="font-bold text-[#e07a5f] text-xs">${parentCatName}</span>
-                                </div>
-                                <div class="flex items-center justify-between pt-1">
-                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Status:</span>
-                                    ${statusHtml}
-                                </div>
-                                <div>
-                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px] block mb-1">Description:</span>
-                                    <p class="text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 leading-relaxed">${sub.description || 'No description provided.'}</p>
-                                </div>
-                                <div class="bg-sky-50 p-3 rounded-xl border border-sky-200/60 text-center">
-                                    <span class="block text-[10px] text-sky-700 font-bold uppercase tracking-wider">Associated Products</span>
-                                    <span class="text-lg font-bold text-sky-900">${sub.products_count || 0}</span>
-                                </div>
-                            </div>
-                        `,
-                        showCloseButton: true,
-                        showConfirmButton: false,
-                        width: '400px',
-                        padding: '1.25rem'
-                    });
+                    this.selectedSubcategory = sub;
+                    this.viewModalOpen = true;
                 },
                 openAddModal() {
                     this.isEdit = false;

@@ -262,6 +262,153 @@
         </main>
     </div>
 
+    <!-- DEDICATED LUXURY VIEW CATEGORY MODAL -->
+    <div x-show="viewModalOpen" @click.self="viewModalOpen = false" 
+        x-cloak
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto cursor-pointer"
+        x-transition:enter="ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0">
+        
+        <div class="bg-white border border-slate-200/90 rounded-3xl max-w-lg w-full shadow-2xl relative overflow-hidden flex flex-col my-auto cursor-default transform transition-all"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+            x-transition:leave-end="opacity-0 translate-y-4 scale-95">
+            
+            <!-- Category Image Header Banner -->
+            <div class="relative h-56 w-full bg-slate-900 overflow-hidden shrink-0">
+                <img :src="selectedCategory?.image_url || '/product1.jpg'" 
+                    :alt="selectedCategory?.name" 
+                    class="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
+                    onError="this.onerror=null;this.src='/product1.jpg';">
+                
+                <!-- Elegant Multi-Stop Dark Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/50 to-black/30"></div>
+                
+                <!-- Top Header Bar with Badges & Close Button -->
+                <div class="absolute top-4 inset-x-4 flex items-center justify-between z-10">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-xs">
+                        <i class="fa-solid fa-gem text-amber-300 text-[9px]"></i>
+                        <span>Saltora Catalog Segment</span>
+                    </span>
+                    
+                    <button type="button" @click="viewModalOpen = false" 
+                        class="w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all cursor-pointer border border-white/20 backdrop-blur-sm"
+                        title="Close">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Bottom Banner Text Info -->
+                <div class="absolute bottom-4 inset-x-5 z-10 space-y-1.5">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold inline-flex items-center gap-1.5 backdrop-blur-md border shadow-xs"
+                            :class="selectedCategory?.is_active ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40' : 'bg-slate-500/20 text-slate-300 border-slate-400/40'">
+                            <span class="w-1.5 h-1.5 rounded-full" :class="selectedCategory?.is_active ? 'bg-emerald-400 animate-pulse' : 'bg-slate-400'"></span>
+                            <span x-text="selectedCategory?.is_active ? 'Active in Store' : 'Inactive / Draft'"></span>
+                        </span>
+                        
+                        <template x-if="selectedCategory?.slug">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium text-white/80 bg-white/10 backdrop-blur-md border border-white/15">
+                                /<span x-text="selectedCategory?.slug"></span>
+                            </span>
+                        </template>
+                    </div>
+
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white drop-shadow-md leading-tight" x-text="selectedCategory?.name"></h2>
+                </div>
+            </div>
+
+            <!-- Content Body Area -->
+            <div class="p-6 space-y-5 overflow-y-auto max-h-[calc(85vh-14rem)] custom-modal-scroll">
+                
+                <!-- Description Section -->
+                <div class="space-y-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info text-[#e07a5f]"></i>
+                        <span>Segment Description</span>
+                    </span>
+                    <div class="bg-stone-50 border border-stone-200/80 rounded-2xl p-4 text-xs text-slate-700 leading-relaxed shadow-2xs">
+                        <p x-text="selectedCategory?.description || 'No detailed description provided for this product category.'"></p>
+                    </div>
+                </div>
+
+                <!-- 2-Card Metrics Grid -->
+                <div class="grid grid-cols-2 gap-3.5">
+                    <!-- Subcategories Card -->
+                    <div class="bg-gradient-to-br from-amber-50/70 to-orange-50/40 border border-amber-200/70 rounded-2xl p-4 flex items-center justify-between shadow-2xs">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800/80 block">Subcategories</span>
+                            <div class="flex items-baseline gap-1.5 mt-1">
+                                <span class="text-2xl font-bold font-serif text-amber-950" x-text="selectedCategory?.all_subcategories_count || (selectedCategory?.all_subcategories ? selectedCategory.all_subcategories.length : 0)"></span>
+                                <span class="text-[11px] font-medium text-amber-700">types</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-100/80 border border-amber-200 text-amber-700 flex items-center justify-center text-base shrink-0">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                    </div>
+
+                    <!-- Products Card -->
+                    <div class="bg-gradient-to-br from-sky-50/70 to-blue-50/40 border border-sky-200/70 rounded-2xl p-4 flex items-center justify-between shadow-2xs">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-800/80 block">Assigned Products</span>
+                            <div class="flex items-baseline gap-1.5 mt-1">
+                                <span class="text-2xl font-bold font-serif text-sky-950" x-text="selectedCategory?.products_count || 0"></span>
+                                <span class="text-[11px] font-medium text-sky-700">active</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-100/80 border border-sky-200 text-sky-700 flex items-center justify-center text-base shrink-0">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attached Subcategories Pill List -->
+                <template x-if="selectedCategory?.all_subcategories && selectedCategory.all_subcategories.length > 0">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Export Grade Sub-types</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <template x-for="sub in selectedCategory.all_subcategories" :key="sub.id">
+                                <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200/70 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition-colors inline-flex items-center gap-1.5">
+                                    <i class="fa-solid fa-tag text-[9px] text-[#e07a5f]"></i>
+                                    <span x-text="sub.name"></span>
+                                </span>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="bg-slate-50/90 px-6 py-4 border-t border-slate-100 flex items-center justify-between gap-3 shrink-0">
+                <a :href="'/products?category=' + (selectedCategory?.slug || '')" target="_blank" 
+                    class="text-xs font-semibold text-slate-600 hover:text-[#e07a5f] inline-flex items-center gap-1.5 transition-colors cursor-pointer">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    <span>View in Storefront</span>
+                </a>
+
+                <div class="flex items-center gap-2">
+                    <button type="button" @click="viewModalOpen = false" 
+                        class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold text-xs rounded-xl transition-all cursor-pointer">
+                        Close
+                    </button>
+                    <button type="button" @click="viewModalOpen = false; openEditModal(selectedCategory)" 
+                        class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-pen-to-square text-[11px]"></i>
+                        <span>Edit Category</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL FOR ADD / EDIT CATEGORY -->
     <div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -322,6 +469,8 @@
                 searchQuery: '',
                 statusFilter: 'all',
                 modalOpen: false,
+                viewModalOpen: false,
+                selectedCategory: null,
                 isEdit: false,
                 editId: null,
                 form: {
@@ -344,42 +493,8 @@
                     return (name + ' ' + (desc || '')).toLowerCase().includes(q);
                 },
                 viewCategory(cat) {
-                    const statusHtml = cat.is_active 
-                        ? '<span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">Active</span>' 
-                        : '<span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-bold">Inactive</span>';
-
-                    Swal.fire({
-                        title: `<strong>${cat.name}</strong>`,
-                        html: `
-                            <div class="text-left space-y-3 mt-2 text-xs font-sans">
-                                <div class="aspect-video w-full overflow-hidden rounded-xl bg-slate-100 border border-slate-200">
-                                    <img src="${cat.image_url || '/product1.jpg'}" class="w-full h-44 object-cover">
-                                </div>
-                                <div class="flex items-center justify-between pt-1">
-                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Status:</span>
-                                    ${statusHtml}
-                                </div>
-                                <div>
-                                    <span class="font-bold text-slate-500 uppercase tracking-wider text-[10px] block mb-1">Description:</span>
-                                    <p class="text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200/60 leading-relaxed">${cat.description || 'No description provided.'}</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2 pt-1">
-                                    <div class="bg-amber-50 p-2.5 rounded-lg border border-amber-200/60 text-center">
-                                        <span class="block text-[10px] text-amber-700 font-bold uppercase tracking-wider">Subcategories</span>
-                                        <span class="text-base font-bold text-amber-900">${cat.all_subcategories_count || 0}</span>
-                                    </div>
-                                    <div class="bg-sky-50 p-2.5 rounded-lg border border-sky-200/60 text-center">
-                                        <span class="block text-[10px] text-sky-700 font-bold uppercase tracking-wider">Products</span>
-                                        <span class="text-base font-bold text-sky-900">${cat.products_count || 0}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `,
-                        showCloseButton: true,
-                        showConfirmButton: false,
-                        width: '420px',
-                        padding: '1.25rem'
-                    });
+                    this.selectedCategory = cat;
+                    this.viewModalOpen = true;
                 },
                 openAddModal() {
                     this.isEdit = false;
