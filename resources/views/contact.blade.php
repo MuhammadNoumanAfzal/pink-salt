@@ -229,15 +229,21 @@
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-4 group cursor-pointer">
-                        <div class="w-10 h-10 rounded-full bg-saltora-blush flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-colors duration-300 shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                            </svg>
-                        </div>
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block">OFFICIAL WEBSITE</span>
-                            <a href="http://www.saltora.net" target="_blank" class="font-semibold text-saltora-text text-sm group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta inline-block">www.saltora.net</a>
+                    <div class="pt-2 border-t border-saltora-border/60">
+                        <span class="text-[10px] font-bold tracking-widest text-saltora-muted uppercase block mb-2.5">OFFICIAL CHANNELS</span>
+                        <div class="flex items-center gap-2.5">
+                            <a href="https://www.facebook.com/profile.php?id=61593551723253" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-saltora-blush flex items-center justify-center text-saltora-terracotta hover:bg-[#1877F2] hover:text-white transition-all shadow-xs" title="Facebook">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/saltora13?utm_source=qr&igsh=MXVjNTkyN2RpeWNzbw%3D%3D" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-saltora-blush flex items-center justify-center text-saltora-terracotta hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:text-white transition-all shadow-xs" title="Instagram">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="https://x.com/Saltoraexporter" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-saltora-blush flex items-center justify-center text-saltora-terracotta hover:bg-black hover:text-white transition-all shadow-xs" title="X (Twitter)">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                            <a href="https://www.tiktok.com/@saltora0?_r=1&_t=ZS-98vMsaJ1iHB" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-saltora-blush flex items-center justify-center text-saltora-terracotta hover:bg-black hover:text-white transition-all shadow-xs" title="TikTok">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .59.043.87.127V9.4a6.33 6.33 0 0 0-.87-.06A6.34 6.34 0 0 0 3.14 15.7 6.34 6.34 0 0 0 9.48 22a6.33 6.33 0 0 0 6.34-6.33V9.21a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.64z"/></svg>
+                            </a>
                         </div>
                     </div>
 
@@ -253,52 +259,52 @@
             </div>
 
             <!-- Right 7 Cols: Inquiry Form -->
-            <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-sm border border-saltora-border shadow-sm reveal-on-scroll reveal-from-right">
+            <div class="lg:col-span-7 bg-white p-6 sm:p-8 md:p-10 rounded-2xl border border-stone-200/90 shadow-sm reveal-on-scroll reveal-from-right">
                 <div class="mb-6 space-y-1">
-                    <span class="text-[10px] font-bold tracking-mega text-saltora-terracotta uppercase">REQUEST FORMAL EXPORT QUOTE</span>
-                    <h3 class="font-serif text-2xl text-saltora-text font-normal">Direct B2B Trade & Proforma Inquiry</h3>
-                    <p class="text-xs text-saltora-muted font-light">Fill out the trade form below with your full volume and product specifications.</p>
+                    <span class="text-[10px] font-bold tracking-mega text-saltora-terracotta uppercase">B2B EXPORT INQUIRY</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl text-stone-900 font-semibold">Request A Proforma Quote</h3>
+                    <p class="text-xs sm:text-sm text-stone-500 font-light">Provide your order details and specifications below.</p>
                 </div>
 
-                <form id="contactForm" class="space-y-6">
+                <form id="contactForm" class="space-y-5">
                     @csrf
 
-                    <!-- 2-Column Responsive Grid matching Client Template -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- 2-Column Responsive Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <!-- FULL NAME * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">FULL NAME *</label>
-                            <input type="text" name="name" required placeholder="Your full name" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">FULL NAME *</label>
+                            <input type="text" name="name" required placeholder="Your full name" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- COMPANY NAME * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">COMPANY NAME *</label>
-                            <input type="text" name="company" required placeholder="Your company" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">COMPANY NAME *</label>
+                            <input type="text" name="company" required placeholder="Your company name" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- BUSINESS EMAIL * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">BUSINESS EMAIL *</label>
-                            <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">BUSINESS EMAIL *</label>
+                            <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- COUNTRY * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">COUNTRY *</label>
-                            <input type="text" name="country" required placeholder="Destination country" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">DESTINATION COUNTRY *</label>
+                            <input type="text" name="country" required placeholder="Country of destination" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- PHONE / WHATSAPP -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PHONE / WHATSAPP</label>
-                            <input type="tel" name="phone" placeholder="+00 000 000 000" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">PHONE / WHATSAPP</label>
+                            <input type="tel" name="phone" placeholder="+00 000 000 000" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- PRODUCT REQUIRED * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PRODUCT REQUIRED *</label>
-                            <select name="product" id="productSelect" required class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">PRODUCT REQUIRED *</label>
+                            <select name="product" id="productSelect" required class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl cursor-pointer">
                                 <option value="">Select a product</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
@@ -324,86 +330,80 @@
                         </div>
 
                         <!-- QUANTITY REQUIRED * -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">QUANTITY REQUIRED *</label>
-                            <input type="text" name="quantity" required placeholder="e.g. 1 x 20ft container / 25 MT" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">QUANTITY REQUIRED *</label>
+                            <input type="text" name="quantity" required placeholder="e.g. 1 x 20ft Container / 25 MT" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
                         <!-- PACKAGING REQUIREMENT -->
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">PACKAGING REQUIREMENT</label>
-                            <select name="packaging" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm cursor-pointer">
+                        <div class="space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">PACKAGING REQUIREMENT</label>
+                            <select name="packaging" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl cursor-pointer">
                                 <option value="">Select packaging</option>
-                                <option value="Private Label / Custom OEM Packaging (Pouches / Jars / Cartons)">Private Label / Custom OEM Packaging (Pouches / Jars / Cartons)</option>
-                                <option value="Stand-Up Zipper Pouches with Window (200g - 1kg)">Stand-Up Zipper Pouches with Window (200g - 1kg)</option>
-                                <option value="25kg Food-Grade Polypropylene (PP) Bags with PE Liner">25kg Food-Grade Polypropylene (PP) Bags with PE Liner</option>
-                                <option value="50kg Heavy-Duty Polypropylene Export Bags">50kg Heavy-Duty Polypropylene Export Bags</option>
-                                <option value="1-Ton Bulk FIBC Big Bags with Discharge Spout">1-Ton Bulk FIBC Big Bags with Discharge Spout</option>
-                                <option value="Gourmet Glass Jars & Ceramic Grinder Bottles">Gourmet Glass Jars & Ceramic Grinder Bottles</option>
-                                <option value="Animal Salt Lick Blocks with Hanging Rope">Animal Salt Lick Blocks with Hanging Rope</option>
-                                <option value="Salt Cooking Tiles & Bricks (Export Boxed)">Salt Cooking Tiles & Bricks (Export Boxed)</option>
-                                <option value="Plain Neutral Export Packaging (Unbranded)">Plain Neutral Export Packaging (Unbranded)</option>
-                                <option value="Custom Packaging Specification">Custom Packaging Specification</option>
+                                <option value="Private Label / Custom OEM Packaging (Pouches / Jars / Cartons)">Private Label / OEM Packaging</option>
+                                <option value="Stand-Up Zipper Pouches with Window (200g - 1kg)">Stand-Up Zipper Pouches (200g - 1kg)</option>
+                                <option value="25kg Food-Grade Polypropylene (PP) Bags with PE Liner">25kg PP Bags with PE Liner</option>
+                                <option value="50kg Heavy-Duty Polypropylene Export Bags">50kg Heavy-Duty Export Bags</option>
+                                <option value="1-Ton Bulk FIBC Big Bags with Discharge Spout">1-Ton FIBC Jumbo Big Bags</option>
+                                <option value="Gourmet Glass Jars & Ceramic Grinder Bottles">Glass Jars & Grinder Bottles</option>
+                                <option value="Animal Salt Lick Blocks with Hanging Rope">Animal Salt Licks with Rope</option>
+                                <option value="Salt Cooking Tiles & Bricks (Export Boxed)">Salt Cooking Tiles & Bricks</option>
+                                <option value="Plain Neutral Export Packaging (Unbranded)">Plain Unbranded Packaging</option>
+                                <option value="Custom Packaging Specification">Custom Specification</option>
                             </select>
                         </div>
 
-                        <!-- PRIVATE LABEL & OEM BRANDING OPTION (MANDATORY PROMINENT OPTION) -->
-                        <div class="sm:col-span-2 bg-[#FAF7F2] p-4.5 rounded-sm border border-saltora-border space-y-2.5">
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                                <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase flex items-center gap-1.5">
-                                    <i class="fa-solid fa-stamp text-[#e07a5f]"></i>
+                        <!-- PRIVATE LABEL & OEM BRANDING OPTION -->
+                        <div class="sm:col-span-2 bg-[#FAF7F2] p-4 rounded-xl border border-stone-200/90 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase flex items-center gap-1.5">
+                                    <i class="fa-solid fa-stamp text-saltora-terracotta"></i>
                                     <span>PRIVATE LABEL & PACKAGING OPTION *</span>
                                 </label>
-                                <span class="text-[10px] text-emerald-800 font-bold uppercase bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-xs inline-block">
-                                    <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> OEM Private Label Available
+                                <span class="text-[10px] text-emerald-800 font-bold uppercase bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i> OEM Available
                                 </span>
                             </div>
-                            <select name="private_label" required class="w-full bg-white border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 rounded-sm cursor-pointer">
-                                <option value="Yes — Full Private Label / Custom OEM Packaging (My Brand Logo & Artwork)">Yes — Full Private Label / Custom OEM Packaging (My Brand Logo & Artwork)</option>
-                                <option value="No — Standard Saltora Brand Packaging">No — Standard Saltora Brand Packaging</option>
-                                <option value="Plain Neutral Export Packaging (White-label unbranded packaging)">Plain Neutral Export Packaging (White-label unbranded packaging)</option>
-                                <option value="Need Consultation on Private Label Dielines & Barcodes First">Need Consultation on Private Label Dielines & Barcodes First</option>
+                            <select name="private_label" required class="w-full bg-white border border-stone-200 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 rounded-xl cursor-pointer">
+                                <option value="Yes — Full Private Label / Custom OEM Packaging (My Brand Logo & Artwork)">Yes — Custom Private Label / OEM Packaging</option>
+                                <option value="No — Standard Saltora Brand Packaging">No — Standard Saltora Packaging</option>
+                                <option value="Plain Neutral Export Packaging (White-label unbranded packaging)">Plain Unbranded Export Packaging</option>
+                                <option value="Need Consultation on Private Label Dielines & Barcodes First">Need Packaging Consultation First</option>
                             </select>
-                            <p class="text-[11px] text-stone-500 font-light leading-relaxed">
-                                We print rotogravure pouches, retail jars, barcodes, and export master cartons to your exact brand artwork and regulatory guidelines.
+                            <p class="text-[11px] text-stone-500 font-light">
+                                Custom pouches, retail jars, barcodes, and master cartons printed to your exact specifications.
                             </p>
                         </div>
 
                         <!-- DESTINATION PORT -->
-                        <div class="sm:col-span-2 space-y-2">
-                            <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">DESTINATION PORT</label>
-                            <input type="text" name="destination_port" placeholder="e.g. Jebel Ali, Rotterdam, New York" class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm">
+                        <div class="sm:col-span-2 space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">DESTINATION PORT</label>
+                            <input type="text" name="destination_port" placeholder="e.g. Jebel Ali, Rotterdam, New York, Hamburg" class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl">
                         </div>
 
-                        <!-- TIME DELIVERY NOTICE: IRAN-USA WAR GEOPOLITICAL ADVISORY -->
-                        <div class="sm:col-span-2 bg-amber-500/10 border-l-4 border-amber-600 p-4 rounded-xs text-xs space-y-1 shadow-xs">
-                            <div class="flex items-center gap-2 font-bold text-amber-900 uppercase text-[11px] tracking-wider">
-                                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
-                                <span>Maritime Shipping & Delivery Schedule Advisory</span>
+                        <!-- TIME DELIVERY NOTICE -->
+                        <div class="sm:col-span-2 bg-amber-50/90 border border-amber-200/90 p-4 rounded-xl flex items-start gap-3 text-xs shadow-2xs">
+                            <i class="fa-solid fa-ship text-amber-700 text-sm mt-0.5 shrink-0"></i>
+                            <div class="space-y-0.5">
+                                <span class="text-[11px] font-bold text-amber-900 uppercase tracking-wider block">Maritime Shipping & Schedule Advisory</span>
+                                <p class="text-[11px] text-amber-950 font-normal leading-relaxed">
+                                    <strong>Delivery Timelines:</strong> Ocean freight rates and transit routes are quoted and confirmed per booking upon proforma agreement.
+                                </p>
                             </div>
-                            <p class="text-amber-950 font-normal leading-relaxed text-[11px]">
-                                <strong>Time Delivery:</strong> Delivery timelines are currently unpredictable due to the Iran-USA war and regional maritime shipping volatility across Middle Eastern & Red Sea ocean corridors. Vessel departure schedules, transit times, and ocean freight rates are quoted and confirmed per booking upon proforma agreement.
-                            </p>
                             <input type="hidden" name="delivery_timeline" value="Unpredictable due to Iran-USA war">
                         </div>
 
-                        <!-- MESSAGE / SPECIFICATIONS WITH EXPLICIT USER INSTRUCTION -->
-                        <div class="sm:col-span-2 space-y-2">
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                                <label class="block text-xs font-bold tracking-wider text-saltora-text uppercase">MESSAGE / DETAILED SPECIFICATIONS *</label>
-                                <span class="text-[11px] font-bold text-[#e07a5f] bg-[#FAF7F2] border border-[#e07a5f]/30 px-2.5 py-0.5 rounded-xs">
-                                    <i class="fa-solid fa-circle-exclamation mr-1 text-[#e07a5f]"></i> In your enquiry give complete details with specifications
-                                </span>
-                            </div>
-                            <textarea name="message" required rows="5" placeholder="In your enquiry, please give complete details with specifications — target grain mesh size (e.g. Fine 0.3-0.8mm, Coarse 2-5mm, Rock Lumps), chemical purity grade (98.5%+ NaCl), packaging format, private-label needs, destination port, target timeline..." class="w-full bg-saltora-bg border border-saltora-border px-4 py-3 text-xs focus:outline-none focus:border-saltora-terracotta focus:ring-1 focus:ring-saltora-terracotta/40 transition-all duration-300 rounded-sm leading-relaxed"></textarea>
+                        <!-- MESSAGE / SPECIFICATIONS -->
+                        <div class="sm:col-span-2 space-y-1.5">
+                            <label class="block text-[11px] font-bold tracking-wider text-stone-700 uppercase">DETAILED SPECIFICATIONS & MESSAGE *</label>
+                            <textarea name="message" required rows="4" placeholder="Specify your required grain mesh size, chemical purity grade, packaging format, and any custom requirements..." class="w-full bg-[#FAF7F2] border border-stone-200/90 px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 focus:bg-white transition-all rounded-xl leading-relaxed"></textarea>
+                            <p class="text-[11px] text-stone-400 font-light">Please include target specifications to expedite your proforma quotation.</p>
                         </div>
                     </div>
 
-                    <button type="submit" id="submitContactBtn" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 cursor-pointer group">
-                        <span>SUBMIT SPECIFICATION INQUIRY</span>
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
+                    <button type="submit" id="submitContactBtn" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3.5 px-6 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer group">
+                        <span>REQUEST FORMAL PROFORMA QUOTE</span>
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
                     </button>
                 </form>
 
