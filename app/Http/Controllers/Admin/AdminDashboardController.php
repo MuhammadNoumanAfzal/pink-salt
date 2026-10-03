@@ -74,7 +74,7 @@ class AdminDashboardController extends Controller
             'product_type' => 'nullable|string|max:100',
             'moq' => 'nullable|string|max:100',
             'origin' => 'nullable|string|max:255',
-            'short_desc' => 'required|string',
+            'short_desc' => 'nullable|string',
             'full_desc' => 'nullable|string',
             'image_url' => 'nullable|string',
             'image_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
@@ -82,7 +82,7 @@ class AdminDashboardController extends Controller
             'is_active' => 'nullable',
         ]);
 
-        $imageUrl = $validated['image_url'] ?? '/product1.jpg';
+        $imageUrl = $validated['image_url'] ?? null;
 
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
@@ -122,13 +122,13 @@ class AdminDashboardController extends Controller
             'packaging' => $packagingSummary,
             'packaging_type' => $validated['packaging_type'] ?? null,
             'package_weight' => $validated['package_weight'] ?? null,
-            'price' => $validated['price'] ?? null,
-            'price_unit' => $validated['price_unit'] ?? 'per kg',
+            'price' => !empty($validated['price']) ? $validated['price'] : null,
+            'price_unit' => !empty($validated['price']) ? ($validated['price_unit'] ?? null) : null,
             'product_type' => $validated['product_type'] ?? 'pure_salt',
             'moq' => $validated['moq'] ?? null,
             'origin' => $validated['origin'] ?? 'Khewra Salt Range, Pakistan',
-            'short_desc' => $validated['short_desc'],
-            'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
+            'short_desc' => $validated['short_desc'] ?? null,
+            'full_desc' => $validated['full_desc'] ?? $validated['short_desc'] ?? null,
             'image_url' => $imageUrl,
             'is_featured' => $request->has('is_featured') || $request->input('is_featured') == '1',
             'is_active' => $request->has('is_active') || $request->input('is_active') == '1',
@@ -163,7 +163,7 @@ class AdminDashboardController extends Controller
             'product_type' => 'nullable|string|max:100',
             'moq' => 'nullable|string|max:100',
             'origin' => 'nullable|string|max:255',
-            'short_desc' => 'required|string',
+            'short_desc' => 'nullable|string',
             'full_desc' => 'nullable|string',
             'image_url' => 'nullable|string',
             'image_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
@@ -182,7 +182,7 @@ class AdminDashboardController extends Controller
             }
             $file->move($destinationPath, $filename);
             $imageUrl = '/uploads/products/' . $filename;
-        } elseif (!empty($validated['image_url'])) {
+        } elseif (array_key_exists('image_url', $validated)) {
             $imageUrl = $validated['image_url'];
         }
 
@@ -213,13 +213,13 @@ class AdminDashboardController extends Controller
             'packaging' => $packagingSummary ?? $product->packaging,
             'packaging_type' => $validated['packaging_type'] ?? $product->packaging_type,
             'package_weight' => $validated['package_weight'] ?? $product->package_weight,
-            'price' => $validated['price'] ?? $product->price,
-            'price_unit' => $validated['price_unit'] ?? $product->price_unit,
+            'price' => !empty($validated['price']) ? $validated['price'] : null,
+            'price_unit' => !empty($validated['price']) ? ($validated['price_unit'] ?? null) : null,
             'product_type' => $validated['product_type'] ?? $product->product_type,
             'moq' => $validated['moq'] ?? $product->moq,
             'origin' => $validated['origin'] ?? $product->origin,
-            'short_desc' => $validated['short_desc'],
-            'full_desc' => $validated['full_desc'] ?? $validated['short_desc'],
+            'short_desc' => $validated['short_desc'] ?? null,
+            'full_desc' => $validated['full_desc'] ?? $validated['short_desc'] ?? null,
             'image_url' => $imageUrl,
             'is_featured' => $request->has('is_featured') || $request->input('is_featured') == '1',
             'is_active' => $request->has('is_active') || $request->input('is_active') == '1',

@@ -26,7 +26,7 @@ class AdminCategoryController extends Controller
             'is_active' => 'nullable',
         ]);
 
-        $imageUrl = $validated['image_url'] ?? '/product1.jpg';
+        $imageUrl = $validated['image_url'] ?? null;
 
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
@@ -77,7 +77,7 @@ class AdminCategoryController extends Controller
             }
             $file->move($destinationPath, $filename);
             $imageUrl = '/uploads/categories/' . $filename;
-        } elseif (!empty($validated['image_url'])) {
+        } elseif (array_key_exists('image_url', $validated)) {
             $imageUrl = $validated['image_url'];
         }
 

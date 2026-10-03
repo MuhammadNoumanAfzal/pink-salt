@@ -359,8 +359,9 @@
                     </div>
 
                     <div>
-                        <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                        <select x-model="productForm.category" name="category" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                        <label class="block text-slate-700 font-semibold mb-1">Category (Optional)</label>
+                        <select x-model="productForm.category" name="category" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                            <option value="">Select Category (Optional)...</option>
                             @foreach($categories as $c)
                             <option value="{{ $c->name }}">{{ $c->name }}</option>
                             @endforeach
@@ -460,8 +461,8 @@
                     </div>
 
                     <div class="sm:col-span-2">
-                        <label class="block text-slate-700 font-semibold mb-1">Short Description *</label>
-                        <textarea x-model="productForm.short_desc" name="short_desc" required rows="2" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                        <label class="block text-slate-700 font-semibold mb-1">Short Description (Optional)</label>
+                        <textarea x-model="productForm.short_desc" name="short_desc" rows="2" placeholder="Brief summary (Optional)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
                     </div>
 
                     <div class="sm:col-span-2">
@@ -501,10 +502,10 @@
                 showProductModal: false,
                 isEditMode: false,
                 selectedViewProduct: null,
-                productForm: { id: null, name: '', category: 'Edible Pink Salt', price: null, price_unit: 'per kg', grain_size: 'Fine Salt (0.3 - 0.8 mm)', packaging_type: 'Zip Pouch', package_weight: '500g', moq: '500 Units', mesh_size: '', purity: '98.8% NaCl', grade: 'Food Grade ISO-22000', packaging: '500g Stand-up Pouch', image_url: '/product1.jpg', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true },
+                productForm: { id: null, name: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true },
                 openCreateProductModal() {
                     this.isEditMode = false;
-                    this.productForm = { id: null, name: '', category: 'Edible Pink Salt', price: 1.45, price_unit: 'per pouch', grain_size: 'Fine Salt (0.3 - 0.8 mm)', packaging_type: 'Zip Pouch', package_weight: '500g', moq: '1,000 Pouches', mesh_size: '0.3-0.8 mm', purity: '99.1% NaCl', grade: 'Food Grade ISO-22000 / CXS 150:1985 / Halal / Kosher', packaging: '500g Stand-up Zip Pouch', image_url: '/product1.jpg', short_desc: '', full_desc: '', badge: 'Top Seller', is_featured: true, is_active: true };
+                    this.productForm = { id: null, name: '', category: '', price: null, price_unit: '', grain_size: '', packaging_type: '', package_weight: '', moq: '', mesh_size: '', purity: '', grade: '', packaging: '', image_url: '', short_desc: '', full_desc: '', badge: '', is_featured: false, is_active: true };
                     this.showProductModal = true;
                 },
                 viewProductDetails(prod) {

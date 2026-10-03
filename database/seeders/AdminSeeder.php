@@ -13,11 +13,23 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        // Primary Real Admin Account
+        User::updateOrCreate(
+            ['email' => 'saltora1329@gmail.com'],
+            [
+                'name' => 'Saltora Master Admin',
+                'password' => Hash::make('Saltora@Admin2026#'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // Secondary fallback Admin Account
         User::updateOrCreate(
             ['email' => 'admin@saltora.com'],
             [
                 'name' => 'Saltora Admin Desk',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('Saltora@Admin2026#'),
+                'email_verified_at' => now(),
             ]
         );
     }

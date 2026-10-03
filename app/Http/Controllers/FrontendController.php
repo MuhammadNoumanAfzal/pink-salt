@@ -40,7 +40,17 @@ class FrontendController extends Controller
             ->with(['categoryRef', 'subcategoryRef'])
             ->get();
 
-        return view('products', compact('products', 'categories'));
+        $grainSpecs = $products->pluck('grain_size')
+            ->filter()
+            ->unique()
+            ->values();
+
+        $packagingFormats = $products->pluck('packaging_type')
+            ->filter()
+            ->unique()
+            ->values();
+
+        return view('products', compact('products', 'categories', 'grainSpecs', 'packagingFormats'));
     }
 
     public function certifications()

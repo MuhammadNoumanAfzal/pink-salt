@@ -70,7 +70,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                             <i class="fa-solid fa-envelope text-xs"></i>
                         </div>
-                        <input type="email" id="email" name="email" required value="admin@saltora.com" placeholder="admin@saltora.com" 
+                        <input type="email" id="email" name="email" required value="saltora1329@gmail.com" placeholder="saltora1329@gmail.com" 
                             class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                             <i class="fa-solid fa-lock text-xs"></i>
                         </div>
-                        <input type="password" id="password" name="password" required value="password123" placeholder="••••••••••••" 
+                        <input type="password" id="password" name="password" required value="Saltora@Admin2026#" placeholder="••••••••••••" 
                             class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all tracking-wider">
                     </div>
                 </div>
@@ -117,9 +117,9 @@
                 <button type="button" onclick="fillDemoCredentials()" class="w-full px-3 py-2 bg-stone-50 hover:bg-stone-100/80 border border-stone-200/80 rounded-xl text-xs text-stone-600 hover:text-stone-900 transition-all flex items-center justify-between cursor-pointer group shadow-2xs" title="Click to auto-fill credentials">
                     <div class="flex items-center gap-2 text-left truncate">
                         <i class="fa-solid fa-key text-saltora-terracotta text-xs shrink-0"></i>
-                        <span class="font-mono text-[11px] font-semibold text-stone-800">admin@saltora.com</span>
+                        <span class="font-mono text-[11px] font-semibold text-stone-800">saltora1329@gmail.com</span>
                         <span class="text-stone-300">&bull;</span>
-                        <span class="font-mono text-[11px] text-stone-600">password123</span>
+                        <span class="font-mono text-[11px] text-stone-600">Saltora@Admin2026#</span>
                     </div>
                     <span class="text-[10px] uppercase font-bold text-saltora-terracotta group-hover:underline shrink-0 ml-2">Auto-Fill &rarr;</span>
                 </button>
@@ -157,8 +157,8 @@
             const emailInput = document.getElementById('email');
             const passwordInput = document.getElementById('password');
 
-            emailInput.value = 'admin@saltora.com';
-            passwordInput.value = 'password123';
+            emailInput.value = 'saltora1329@gmail.com';
+            passwordInput.value = 'Saltora@Admin2026#';
 
             emailInput.classList.add('ring-2', 'ring-saltora-terracotta');
             passwordInput.classList.add('ring-2', 'ring-saltora-terracotta');
@@ -172,7 +172,7 @@
                 toast: true,
                 position: 'top-end',
                 icon: 'success',
-                title: 'Demo credentials loaded!',
+                title: 'Admin credentials loaded!',
                 showConfirmButton: false,
                 timer: 1200,
                 background: '#ffffff',

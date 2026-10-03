@@ -511,80 +511,43 @@
                         </div>
                     </div>
 
-                    <!-- Grain Size / Mesh Filter Quick Pills -->
+                    <!-- Grain Size / Mesh Filter Dynamic Quick Pills -->
+                    @if(isset($grainSpecs) && count($grainSpecs) > 0)
                     <div class="space-y-2 pt-3 border-t border-saltora-border/60">
                         <div class="flex items-center justify-between">
                             <label class="block text-[11px] font-bold tracking-wider uppercase text-saltora-text">Salt Grain Spec</label>
                             <button x-show="selectedGrain" @click="selectedGrain = ''" class="text-[10px] text-saltora-terracotta hover:underline cursor-pointer">Clear</button>
                         </div>
                         <div class="flex flex-wrap gap-1.5 text-[11px]">
-                            <button @click="selectedGrain = selectedGrain === 'Fine' ? '' : 'Fine'" 
-                                :class="selectedGrain === 'Fine' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                            @foreach($grainSpecs as $spec)
+                            <button @click="selectedGrain = selectedGrain === '{{ addslashes($spec) }}' ? '' : '{{ addslashes($spec) }}'" 
+                                :class="selectedGrain === '{{ addslashes($spec) }}' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                                 class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Fine (0.3-0.8mm)
+                                {{ $spec }}
                             </button>
-                            <button @click="selectedGrain = selectedGrain === 'Medium' ? '' : 'Medium'" 
-                                :class="selectedGrain === 'Medium' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Medium (0.8-2mm)
-                            </button>
-                            <button @click="selectedGrain = selectedGrain === 'Coarse' ? '' : 'Coarse'" 
-                                :class="selectedGrain === 'Coarse' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Coarse (2-5mm)
-                            </button>
-                            <button @click="selectedGrain = selectedGrain === 'Crystal' ? '' : 'Crystal'" 
-                                :class="selectedGrain === 'Crystal' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Crystal (5-8mm)
-                            </button>
-                            <button @click="selectedGrain = selectedGrain === 'Lump' ? '' : 'Lump'" 
-                                :class="selectedGrain === 'Lump' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Raw Rock / Lumps
-                            </button>
-                            <button @click="selectedGrain = selectedGrain === 'Lamp' ? '' : 'Lamp'" 
-                                :class="selectedGrain === 'Lamp' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Handcrafted Lamps
-                            </button>
+                            @endforeach
                         </div>
                     </div>
+                    @endif
 
-                    <!-- Packaging Format Filter -->
+                    <!-- Packaging Format Dynamic Filter -->
+                    @if(isset($packagingFormats) && count($packagingFormats) > 0)
                     <div class="space-y-2 pt-3 border-t border-saltora-border/60">
                         <div class="flex items-center justify-between">
                             <label class="block text-[11px] font-bold tracking-wider uppercase text-saltora-text">Packaging Format</label>
                             <button x-show="selectedPackaging" @click="selectedPackaging = ''" class="text-[10px] text-saltora-terracotta hover:underline cursor-pointer">Clear</button>
                         </div>
                         <div class="flex flex-wrap gap-1.5 text-[11px]">
-                            <button @click="selectedPackaging = selectedPackaging === 'Pouch' ? '' : 'Pouch'"
-                                :class="selectedPackaging === 'Pouch' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                            @foreach($packagingFormats as $pkg)
+                            <button @click="selectedPackaging = selectedPackaging === '{{ addslashes($pkg) }}' ? '' : '{{ addslashes($pkg) }}'"
+                                :class="selectedPackaging === '{{ addslashes($pkg) }}' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                                 class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Stand-up Pouches
+                                {{ $pkg }}
                             </button>
-                            <button @click="selectedPackaging = selectedPackaging === 'Jar' ? '' : 'Jar'"
-                                :class="selectedPackaging === 'Jar' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                PET / Glass Jars
-                            </button>
-                            <button @click="selectedPackaging = selectedPackaging === 'Grinder' ? '' : 'Grinder'"
-                                :class="selectedPackaging === 'Grinder' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                Grinder Bottles
-                            </button>
-                            <button @click="selectedPackaging = selectedPackaging === 'PP Bag' ? '' : 'PP Bag'"
-                                :class="selectedPackaging === 'PP Bag' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                25kg PP Export Bags
-                            </button>
-                            <button @click="selectedPackaging = selectedPackaging === 'Jumbo' ? '' : 'Jumbo'"
-                                :class="selectedPackaging === 'Jumbo' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                                class="px-2.5 py-1 rounded-xs transition-colors cursor-pointer">
-                                1-Ton Jumbo FIBC
-                            </button>
+                            @endforeach
                         </div>
                     </div>
+                    @endif
 
                     <!-- B2B Direct Assistance Card -->
                     <div class="bg-[#FAF7F2] p-4 rounded-xs border border-saltora-border space-y-2.5 text-xs text-saltora-muted mt-4">
@@ -808,26 +771,28 @@
                         </div>
 
                         <!-- Mobile Grain Spec -->
+                        @if(isset($grainSpecs) && count($grainSpecs) > 0)
                         <div class="space-y-2">
                             <label class="text-xs font-bold uppercase text-stone-700">Grain Spec</label>
                             <div class="grid grid-cols-2 gap-1.5 text-xs">
-                                <button @click="selectedGrain = selectedGrain === 'Fine' ? '' : 'Fine'" :class="selectedGrain === 'Fine' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">Fine (0.3-0.8mm)</button>
-                                <button @click="selectedGrain = selectedGrain === 'Medium' ? '' : 'Medium'" :class="selectedGrain === 'Medium' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">Medium (0.8-2mm)</button>
-                                <button @click="selectedGrain = selectedGrain === 'Coarse' ? '' : 'Coarse'" :class="selectedGrain === 'Coarse' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">Coarse (2-5mm)</button>
-                                <button @click="selectedGrain = selectedGrain === 'Crystal' ? '' : 'Crystal'" :class="selectedGrain === 'Crystal' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">Crystal (5-8mm)</button>
+                                @foreach($grainSpecs as $spec)
+                                <button @click="selectedGrain = selectedGrain === '{{ addslashes($spec) }}' ? '' : '{{ addslashes($spec) }}'" :class="selectedGrain === '{{ addslashes($spec) }}' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left truncate">{{ $spec }}</button>
+                                @endforeach
                             </div>
                         </div>
+                        @endif
 
                         <!-- Mobile Packaging -->
+                        @if(isset($packagingFormats) && count($packagingFormats) > 0)
                         <div class="space-y-2">
                             <label class="text-xs font-bold uppercase text-stone-700">Packaging</label>
                             <div class="grid grid-cols-2 gap-1.5 text-xs">
-                                <button @click="selectedPackaging = selectedPackaging === 'Pouch' ? '' : 'Pouch'" :class="selectedPackaging === 'Pouch' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">Stand-up Pouch</button>
-                                <button @click="selectedPackaging = selectedPackaging === 'Jar' ? '' : 'Jar'" :class="selectedPackaging === 'Jar' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">PET / Glass Jar</button>
-                                <button @click="selectedPackaging = selectedPackaging === 'PP Bag' ? '' : 'PP Bag'" :class="selectedPackaging === 'PP Bag' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">25kg PP Bag</button>
-                                <button @click="selectedPackaging = selectedPackaging === 'Jumbo' ? '' : 'Jumbo'" :class="selectedPackaging === 'Jumbo' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left">1-Ton Jumbo</button>
+                                @foreach($packagingFormats as $pkg)
+                                <button @click="selectedPackaging = selectedPackaging === '{{ addslashes($pkg) }}' ? '' : '{{ addslashes($pkg) }}'" :class="selectedPackaging === '{{ addslashes($pkg) }}' ? 'bg-saltora-terracotta text-white font-bold' : 'bg-stone-100 text-stone-700'" class="p-2 rounded-xs text-left truncate">{{ $pkg }}</button>
+                                @endforeach
                             </div>
                         </div>
+                        @endif
                     </div>
 
                     <!-- Bottom Buttons -->

@@ -73,9 +73,9 @@
                             </div>
 
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                                <select name="category_id" id="category_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                    <option value="">Select Category...</option>
+                                <label class="block text-slate-700 font-semibold mb-1">Category (Optional)</label>
+                                <select name="category_id" id="category_id_select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    <option value="">Select Category (Optional)...</option>
                                     @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}" data-subcategories="{{ json_encode($cat->allSubcategories) }}">{{ $cat->name }}</option>
                                     @endforeach
@@ -117,8 +117,9 @@
                             </div>
 
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Price Unit *</label>
+                                <label class="block text-slate-700 font-semibold mb-1">Price Unit (Optional)</label>
                                 <select name="price_unit" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    <option value="">Select Price Unit (Optional)...</option>
                                     <option value="per kg">per kg</option>
                                     <option value="per piece">per piece (pcs)</option>
                                     <option value="per 25kg bag">per 25kg bag</option>
@@ -210,8 +211,8 @@
                                     <input type="file" name="image_file" accept="image/*" class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-white hover:file:bg-slate-800 cursor-pointer">
                                 </div>
                                 <div>
-                                    <label class="block text-slate-800 font-semibold mb-1">Option 2: Image URL / Path</label>
-                                    <input type="text" name="image_url" placeholder="/product1.jpg" value="/product1.jpg" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
+                                    <label class="block text-slate-800 font-semibold mb-1">Option 2: Image URL / Path (Optional)</label>
+                                    <input type="text" name="image_url" placeholder="/product1.jpg (Optional)" value="" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
                                 </div>
                             </div>
                         </div>
@@ -224,8 +225,8 @@
                         </h3>
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Short Description *</label>
-                                <textarea name="short_desc" required rows="2" placeholder="Brief summary shown on catalog cards and price lists..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                                <label class="block text-slate-700 font-semibold mb-1">Short Description (Optional)</label>
+                                <textarea name="short_desc" rows="2" placeholder="Brief summary shown on catalog cards and price lists (Optional)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
                             </div>
 
                             <div>

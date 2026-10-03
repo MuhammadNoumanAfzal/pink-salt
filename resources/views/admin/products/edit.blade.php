@@ -74,9 +74,9 @@
                             </div>
 
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                                <select name="category_id" id="category_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                    <option value="">Select Category...</option>
+                                <label class="block text-slate-700 font-semibold mb-1">Category (Optional)</label>
+                                <select name="category_id" id="category_id_select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    <option value="">Select Category (Optional)...</option>
                                     @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}" {{ $product->category_id == $cat->id ? 'selected' : '' }} data-subcategories="{{ json_encode($cat->allSubcategories) }}">{{ $cat->name }}</option>
                                     @endforeach
@@ -122,8 +122,9 @@
                             </div>
 
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Price Unit *</label>
+                                <label class="block text-slate-700 font-semibold mb-1">Price Unit (Optional)</label>
                                 <select name="price_unit" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    <option value="">None / Custom Quote</option>
                                     @php $pu = $product->price_unit ?? 'per kg'; @endphp
                                     <option value="per kg" {{ $pu == 'per kg' ? 'selected' : '' }}>per kg</option>
                                     <option value="per piece" {{ $pu == 'per piece' ? 'selected' : '' }}>per piece (pcs)</option>
@@ -238,8 +239,8 @@
                         </h3>
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Short Description *</label>
-                                <textarea name="short_desc" required rows="2" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">{{ $product->short_desc }}</textarea>
+                                <label class="block text-slate-700 font-semibold mb-1">Short Description (Optional)</label>
+                                <textarea name="short_desc" rows="2" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">{{ $product->short_desc }}</textarea>
                             </div>
 
                             <div>

@@ -438,8 +438,8 @@
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Category Image URL or Upload</label>
-                                <input type="text" x-model="form.image_url" placeholder="http://example.com/image.jpg" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-[#e07a5f] mb-2">
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Category Image (Optional)</label>
+                                <input type="text" x-model="form.image_url" placeholder="http://example.com/image.jpg (Optional)" class="w-full px-3.5 py-2 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-[#e07a5f] mb-2">
                                 <input type="file" @change="handleFileUpload($event)" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#e07a5f]/10 file:text-[#e07a5f] hover:file:bg-[#e07a5f]/20 cursor-pointer">
                             </div>
 
@@ -476,7 +476,7 @@
                 form: {
                     name: '',
                     description: '',
-                    image_url: '/product1.jpg',
+                    image_url: '',
                     image_file: null,
                     is_active: true
                 },
@@ -499,7 +499,7 @@
                 openAddModal() {
                     this.isEdit = false;
                     this.editId = null;
-                    this.form = { name: '', description: '', image_url: '/product1.jpg', image_file: null, is_active: true };
+                    this.form = { name: '', description: '', image_url: '', image_file: null, is_active: true };
                     this.modalOpen = true;
                 },
                 openEditModal(cat) {
@@ -508,7 +508,7 @@
                     this.form = {
                         name: cat.name,
                         description: cat.description || '',
-                        image_url: cat.image_url || '/product1.jpg',
+                        image_url: cat.image_url || '',
                         image_file: null,
                         is_active: Boolean(cat.is_active)
                     };
