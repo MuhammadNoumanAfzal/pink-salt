@@ -213,10 +213,171 @@
 
         <!-- TOP HEADER BAR -->
         <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs">
-            <div class="flex items-center gap-4">
-                <div class="relative w-64 sm:w-80">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input type="text" x-model="globalSearch" placeholder="Search products, orders, customers..." class="w-full bg-slate-100/70 border border-slate-200/80 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+            <div class="flex items-center gap-4 relative" @click.outside="showSearchDropdown = false">
+                <div class="relative w-72 sm:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                    <input type="text" 
+                           x-model="globalSearch" 
+                           @focus="if(globalSearch.trim()) showSearchDropdown = true"
+                           @input="showSearchDropdown = globalSearch.trim().length > 0"
+                           @keydown.escape="showSearchDropdown = false; globalSearch = ''"
+                           @keydown.enter.prevent="executeGlobalSearch()"
+                           placeholder="Search products, categories, messages, blogs..." 
+                           class="w-full bg-slate-100/70 border border-slate-200/80 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f] focus:ring-2 focus:ring-[#e07a5f]/20 transition-all">
+                    
+                    <!-- Clear (X) Button -->
+                    <button type="button" 
+                            x-show="globalSearch" 
+                            @click="globalSearch = ''; showSearchDropdown = false" 
+                            class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full cursor-pointer transition-colors"
+                            title="Clear search">
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                    </button>
+
+                    <!-- Global Search Results Dropdown Popover -->
+                    <div x-show="showSearchDropdown && globalSearch.trim().length > 0" 
+                         x-transition:enter="transition ease-out duration-150"
+                         x-transition:enter-start="opacity-0 translate-y-1"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-100"
+                         x-transition:leave-start="opacity-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 translate-y-1"
+                         x-cloak
+                         class="absolute left-0 top-full mt-2 w-[340px] sm:w-[460px] md:w-[520px] bg-white border border-slate-200/90 rounded-2xl shadow-2xl z-50 overflow-hidden text-xs">
+                        
+                        <!-- Dropdown Header -->
+                        <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+                            <span>Admin Search Results</span>
+                            <span x-text="searchResults.total + (searchResults.total === 1 ? ' result' : ' results')" class="px-2 py-0.5 bg-slate-200 text-slate-700 rounded-full font-bold text-[10px]"></span>
+                        </div>
+
+                        <!-- Scrollable Results Container -->
+                        <div class="max-h-[380px] overflow-y-auto divide-y divide-slate-100 p-2">
+                            
+                            <!-- SECTION 1: PRODUCTS -->
+                            <template x-if="searchResults.products.length > 0">
+                                <div class="py-1.5">
+                                    <div class="px-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-boxes-stacked text-[#e07a5f]"></i>
+                                        <span>Products (<span x-text="searchResults.products.length"></span>)</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <template x-for="p in searchResults.products" :key="'p-' + p.id">
+                                            <div @click="openProductFromSearch(p)" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-orange-50/70 transition-colors cursor-pointer group">
+                                                <div class="flex items-center gap-3 min-w-0">
+                                                    <img :src="p.image" :alt="p.name" class="w-8 h-8 rounded-lg object-cover bg-slate-100 shrink-0 border border-slate-200">
+                                                    <div class="min-w-0">
+                                                        <div class="font-bold text-slate-800 truncate group-hover:text-[#e07a5f] text-xs" x-text="p.name"></div>
+                                                        <div class="text-[10px] text-slate-400 flex items-center gap-2">
+                                                            <span x-text="p.category"></span>
+                                                            <span class="text-slate-300">&bull;</span>
+                                                            <span class="font-semibold text-slate-600" x-text="p.price"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-1 text-[11px] font-semibold text-slate-400 group-hover:text-[#e07a5f] shrink-0">
+                                                    <span>View</span>
+                                                    <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- SECTION 2: CATEGORIES & SUBCATEGORIES -->
+                            <template x-if="searchResults.categories.length > 0">
+                                <div class="py-1.5">
+                                    <div class="px-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-layer-group text-amber-500"></i>
+                                        <span>Categories (<span x-text="searchResults.categories.length"></span>)</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <template x-for="c in searchResults.categories" :key="'c-' + c.id">
+                                            <a :href="c.url" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-amber-50/70 transition-colors cursor-pointer group block">
+                                                <div class="min-w-0">
+                                                    <div class="font-bold text-slate-800 group-hover:text-amber-700 text-xs" x-text="c.name"></div>
+                                                    <div class="text-[10px] text-slate-400 truncate max-w-sm" x-text="c.subcategories.length ? c.subcategories.join(', ') : 'Category'"></div>
+                                                </div>
+                                                <span class="text-[10px] text-amber-600 font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">Manage &rarr;</span>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- SECTION 3: CUSTOMER MESSAGES -->
+                            <template x-if="searchResults.inquiries.length > 0">
+                                <div class="py-1.5">
+                                    <div class="px-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-envelope-open-text text-rose-500"></i>
+                                        <span>Customer Messages (<span x-text="searchResults.inquiries.length"></span>)</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <template x-for="inq in searchResults.inquiries" :key="'inq-' + inq.id">
+                                            <div @click="openInquiryFromSearch(inq)" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-rose-50/70 transition-colors cursor-pointer group">
+                                                <div class="min-w-0">
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="font-bold text-slate-800 text-xs group-hover:text-rose-600 truncate" x-text="inq.name"></span>
+                                                        <span class="px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded text-[9px] uppercase font-bold" x-text="inq.status"></span>
+                                                    </div>
+                                                    <div class="text-[10px] text-slate-500 truncate" x-text="inq.subject"></div>
+                                                </div>
+                                                <span class="text-[10px] text-rose-600 font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">Read &rarr;</span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- SECTION 4: BLOG ARTICLES -->
+                            <template x-if="searchResults.posts.length > 0">
+                                <div class="py-1.5">
+                                    <div class="px-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                                        <i class="fa-solid fa-newspaper text-sky-500"></i>
+                                        <span>Blog Articles (<span x-text="searchResults.posts.length"></span>)</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <template x-for="post in searchResults.posts" :key="'post-' + post.id">
+                                            <div @click="openBlogFromSearch(post)" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-sky-50/70 transition-colors cursor-pointer group">
+                                                <div class="min-w-0">
+                                                    <div class="font-bold text-slate-800 group-hover:text-sky-600 text-xs truncate" x-text="post.title"></div>
+                                                    <div class="text-[10px] text-slate-400">
+                                                        <span x-text="post.category"></span> &bull; <span x-text="post.status"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="text-[10px] text-sky-600 font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">Edit &rarr;</span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- NO RESULTS STATE -->
+                            <template x-if="searchResults.total === 0">
+                                <div class="py-8 px-4 text-center">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-2 text-sm">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <div class="font-bold text-slate-800 text-xs">No matching items found</div>
+                                    <p class="text-[11px] text-slate-400 mt-1 max-w-xs mx-auto">
+                                        No matches for "<span class="text-slate-700 font-semibold" x-text="globalSearch"></span>". Try searching for a product name, category, customer name, or article title.
+                                    </p>
+                                </div>
+                            </template>
+
+                        </div>
+
+                        <!-- Dropdown Footer -->
+                        <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+                            <span class="flex items-center gap-1">
+                                <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[9px] shadow-2xs">ESC</kbd> to close
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[9px] shadow-2xs">ENTER</kbd> to jump to tab
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -339,12 +500,12 @@
 
                 <!-- Charts Section: Monthly Inquiries Trend + Category Distribution -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Monthly B2B Inquiries & Leads Bar + Line Chart -->
+                    <!-- Monthly Platform Activity Bar + Line Chart -->
                     <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-4">
                             <div>
-                                <h3 class="font-bold text-slate-900 font-serif text-base">Monthly B2B Inquiries & Leads</h3>
-                                <p class="text-xs text-slate-400">Formal quote requests and international buyer messages across 2026</p>
+                                <h3 class="font-bold text-slate-900 font-serif text-base">Monthly Activity & Growth</h3>
+                                <p class="text-xs text-slate-400">Customer messages, blog articles, and catalog expansion across 2026</p>
                             </div>
                             <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">2026 YTD</span>
                         </div>
@@ -1730,50 +1891,78 @@
                     $cI++;
                 }
 
-                // 2. Monthly B2B Inquiries & Direct Messages
-                $monthlyQuotes = array_fill(0, 9, 0);
-                $monthlyInquiries = array_fill(0, 9, 0);
-                foreach ($quotes as $q) {
-                    $m = (int)($q->created_at ? $q->created_at->format('n') : 9) - 1;
-                    if ($m >= 0 && $m < 9) {
-                        $monthlyQuotes[$m]++;
+                // 2. Monthly Dynamic Module Counts (12 Months Jan - Dec)
+                $monthlyInquiries = array_fill(0, 12, 0);
+                $monthlyBlogs = array_fill(0, 12, 0);
+                $monthlyProducts = array_fill(0, 12, 0);
+
+                foreach ($inquiries as $inq) {
+                    if ($inq->created_at) {
+                        $m = (int)$inq->created_at->format('n') - 1;
+                        if ($m >= 0 && $m < 12) {
+                            $monthlyInquiries[$m]++;
+                        }
                     }
                 }
-                foreach ($inquiries as $inq) {
-                    $m = (int)($inq->created_at ? $inq->created_at->format('n') : 9) - 1;
-                    if ($m >= 0 && $m < 9) {
-                        $monthlyInquiries[$m]++;
+
+                foreach ($posts as $post) {
+                    if ($post->created_at) {
+                        $m = (int)$post->created_at->format('n') - 1;
+                        if ($m >= 0 && $m < 12) {
+                            $monthlyBlogs[$m]++;
+                        }
+                    }
+                }
+
+                foreach ($products as $prod) {
+                    if ($prod->created_at) {
+                        $m = (int)$prod->created_at->format('n') - 1;
+                        if ($m >= 0 && $m < 12) {
+                            $monthlyProducts[$m]++;
+                        }
                     }
                 }
             @endphp
 
-            // 1. Monthly B2B Inquiries & Customer Messages Bar + Line Chart
+            // 1. Monthly Activity & Module Growth Chart
             const ctx1 = document.getElementById('ordersChart')?.getContext('2d');
             if (ctx1) {
                 new Chart(ctx1, {
                     type: 'bar',
                     data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                         datasets: [
                             {
                                 type: 'bar',
-                                label: 'Formal Quote Requests (RFQs)',
-                                data: @json($monthlyQuotes),
+                                label: 'Customer Messages',
+                                data: @json($monthlyInquiries),
                                 backgroundColor: 'rgba(224, 122, 95, 0.85)',
                                 hoverBackgroundColor: '#e07a5f',
-                                borderRadius: 8,
-                                barThickness: 24,
+                                borderRadius: 6,
+                                barPercentage: 0.6,
+                                categoryPercentage: 0.8,
+                            },
+                            {
+                                type: 'bar',
+                                label: 'Blog Articles',
+                                data: @json($monthlyBlogs),
+                                backgroundColor: 'rgba(14, 165, 233, 0.85)',
+                                hoverBackgroundColor: '#0284c7',
+                                borderRadius: 6,
+                                barPercentage: 0.6,
+                                categoryPercentage: 0.8,
                             },
                             {
                                 type: 'line',
-                                label: 'Direct Customer Messages',
-                                data: @json($monthlyInquiries),
+                                label: 'Catalog Products Added',
+                                data: @json($monthlyProducts),
                                 borderColor: '#1e293b',
                                 backgroundColor: '#1e293b',
-                                borderWidth: 3,
+                                borderWidth: 2.5,
                                 pointRadius: 4,
                                 pointHoverRadius: 6,
                                 pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#1e293b',
                                 pointBorderWidth: 2,
                                 tension: 0.35
                             }
@@ -1798,7 +1987,7 @@
                                 callbacks: {
                                     label: function(context) {
                                         const count = context.parsed.y;
-                                        return ' ' + context.dataset.label + ': ' + count + (count === 1 ? ' Inquiry' : ' Inquiries');
+                                        return ' ' + context.dataset.label + ': ' + count;
                                     }
                                 }
                             }
@@ -1812,7 +2001,7 @@
                                     precision: 0,
                                     stepSize: 1
                                 },
-                                title: { display: true, text: 'Inquiries & Leads', font: { size: 10, weight: 'bold' } }
+                                title: { display: true, text: 'Monthly Volume', font: { size: 10, weight: 'bold' } }
                             }
                         }
                     }
@@ -1872,6 +2061,56 @@
             }
         });
 
+        @php
+            $searchProducts = $products->map(function($p) {
+                return [
+                    'id' => $p->id,
+                    'name' => $p->name,
+                    'category' => $p->categoryRef->name ?? $p->category,
+                    'badge' => $p->badge,
+                    'price' => $p->price ? '$' . number_format($p->price, 2) : 'Custom Quote',
+                    'image' => $p->image_url ?: '/bulk.jpg',
+                    'short_desc' => $p->short_desc ?? '',
+                    'raw' => $p->toArray(),
+                ];
+            })->values();
+
+            $searchCategories = $categories->map(function($c) {
+                return [
+                    'id' => $c->id,
+                    'name' => $c->name,
+                    'subcategories' => $c->allSubcategories ? $c->allSubcategories->pluck('name')->toArray() : [],
+                    'url' => route('admin.categories.index'),
+                ];
+            })->values();
+
+            $searchInquiries = $inquiries->map(function($i) {
+                return [
+                    'id' => $i->id,
+                    'name' => $i->name,
+                    'company' => $i->company,
+                    'email' => $i->email,
+                    'subject' => $i->subject ?? 'Customer Message',
+                    'status' => $i->status,
+                    'country' => $i->country ?? 'International',
+                    'raw' => $i->toArray(),
+                ];
+            })->values();
+
+            $searchPosts = $posts->map(function($post) {
+                return [
+                    'id' => $post->id,
+                    'title' => $post->title,
+                    'category' => $post->category,
+                    'author' => $post->author,
+                    'status' => $post->is_published ? 'Published' : 'Draft',
+                    'edit_url' => route('admin.blogs.edit', $post->id),
+                    'view_url' => route('blog.detail', $post->slug),
+                    'raw' => $post->toArray(),
+                ];
+            })->values();
+        @endphp
+
         function adminDashboard() {
             const params = new URLSearchParams(window.location.search);
             let initialTab = params.get('tab') || 'overview';
@@ -1891,6 +2130,91 @@
                     window.history.pushState({}, '', url);
                 },
                 globalSearch: '',
+                showSearchDropdown: false,
+                allProducts: @json($searchProducts),
+                allCategories: @json($searchCategories),
+                allInquiries: @json($searchInquiries),
+                allPosts: @json($searchPosts),
+
+                get searchResults() {
+                    const q = (this.globalSearch || '').toLowerCase().trim();
+                    if (!q) return { products: [], categories: [], inquiries: [], posts: [], total: 0 };
+
+                    const products = this.allProducts.filter(p => 
+                        (p.name && p.name.toLowerCase().includes(q)) || 
+                        (p.category && p.category.toLowerCase().includes(q)) ||
+                        (p.badge && p.badge.toLowerCase().includes(q)) ||
+                        (p.short_desc && p.short_desc.toLowerCase().includes(q))
+                    ).slice(0, 5);
+
+                    const categories = this.allCategories.filter(c => 
+                        (c.name && c.name.toLowerCase().includes(q)) || 
+                        (c.subcategories && c.subcategories.some(s => s.toLowerCase().includes(q)))
+                    ).slice(0, 4);
+
+                    const inquiries = this.allInquiries.filter(i => 
+                        (i.name && i.name.toLowerCase().includes(q)) || 
+                        (i.email && i.email.toLowerCase().includes(q)) || 
+                        (i.company && i.company.toLowerCase().includes(q)) ||
+                        (i.subject && i.subject.toLowerCase().includes(q)) ||
+                        (i.country && i.country.toLowerCase().includes(q))
+                    ).slice(0, 4);
+
+                    const posts = this.allPosts.filter(p => 
+                        (p.title && p.title.toLowerCase().includes(q)) || 
+                        (p.category && p.category.toLowerCase().includes(q)) ||
+                        (p.author && p.author.toLowerCase().includes(q))
+                    ).slice(0, 4);
+
+                    const total = products.length + categories.length + inquiries.length + posts.length;
+                    return { products, categories, inquiries, posts, total };
+                },
+
+                openProductFromSearch(p) {
+                    this.showSearchDropdown = false;
+                    this.switchTab('products');
+                    this.prodSearchQuery = p.name;
+                    if (p.raw) {
+                        this.viewProductDetails(p.raw);
+                    }
+                },
+
+                openInquiryFromSearch(inq) {
+                    this.showSearchDropdown = false;
+                    this.switchTab('inquiries');
+                    this.inquirySearchQuery = inq.name;
+                    if (inq.raw) {
+                        this.viewInquiry(inq.raw);
+                    }
+                },
+
+                openBlogFromSearch(post) {
+                    this.showSearchDropdown = false;
+                    if (post.edit_url) {
+                        window.location.href = post.edit_url;
+                    } else {
+                        this.switchTab('blogs');
+                        this.blogSearchQuery = post.title;
+                    }
+                },
+
+                executeGlobalSearch() {
+                    const results = this.searchResults;
+                    if (results.products.length > 0) {
+                        this.switchTab('products');
+                        this.prodSearchQuery = this.globalSearch;
+                    } else if (results.inquiries.length > 0) {
+                        this.switchTab('inquiries');
+                        this.inquirySearchQuery = this.globalSearch;
+                    } else if (results.posts.length > 0) {
+                        this.switchTab('blogs');
+                        this.blogSearchQuery = this.globalSearch;
+                    } else if (results.categories.length > 0) {
+                        window.location.href = '{{ route('admin.categories.index') }}';
+                    }
+                    this.showSearchDropdown = false;
+                },
+
                 prodSearchQuery: '',
                 prodStatusFilter: 'all',
                 prodCategoryFilter: 'all',
@@ -2346,5 +2670,6 @@
             };
         }
     </script>
+    @include('admin.partials.logout-script')
 </body>
 </html>

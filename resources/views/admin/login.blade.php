@@ -55,8 +55,8 @@
         <div class="w-full bg-white/95 backdrop-blur-md border border-stone-200/90 rounded-2xl p-6 sm:p-7 shadow-xl shadow-stone-900/5 relative overflow-hidden">
             
             <div class="mb-5 text-center">
-                <h1 class="text-xl font-serif font-bold text-stone-900 tracking-tight">Admin Sign In</h1>
-                <p class="text-xs text-stone-500 mt-1">Access product catalog, store orders, & customer inquiries.</p>
+                <h1 class="text-xl font-serif font-bold text-stone-900 tracking-tight">Sign in to your account</h1>
+                <p class="text-xs text-stone-500 mt-1">Enter your admin email and password to continue.</p>
             </div>
 
             <!-- Form -->
@@ -70,7 +70,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                             <i class="fa-solid fa-envelope text-xs"></i>
                         </div>
-                        <input type="email" id="email" name="email" required value="saltora1329@gmail.com" placeholder="saltora1329@gmail.com" 
+                        <input type="email" id="email" name="email" required autocomplete="username" autofocus placeholder="you@example.com" 
                             class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                             <i class="fa-solid fa-lock text-xs"></i>
                         </div>
-                        <input type="password" id="password" name="password" required value="Saltora@Admin2026#" placeholder="••••••••••••" 
+                        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter your password" 
                             class="w-full bg-stone-50/80 border border-stone-300 rounded-xl pl-9 pr-3.5 py-2.5 text-xs sm:text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-saltora-terracotta focus:ring-2 focus:ring-saltora-terracotta/20 transition-all tracking-wider">
                     </div>
                 </div>
@@ -96,40 +96,27 @@
                 <!-- Remember & Public Site Link -->
                 <div class="flex items-center justify-between text-xs text-stone-500 pt-0.5">
                     <label class="flex items-center gap-2 cursor-pointer select-none">
-                        <input type="checkbox" name="remember" checked class="w-4 h-4 rounded border-stone-300 text-saltora-terracotta focus:ring-saltora-terracotta/30 accent-saltora-terracotta cursor-pointer">
-                        <span class="text-xs text-stone-600">Remember session</span>
+                        <input type="checkbox" name="remember" class="w-4 h-4 rounded border-stone-300 text-saltora-terracotta focus:ring-saltora-terracotta/30 accent-saltora-terracotta cursor-pointer">
+                        <span class="text-xs text-stone-600">Remember me</span>
                     </label>
                     <a href="/" class="text-saltora-terracotta hover:underline font-medium flex items-center gap-1">
-                        <span>Main Store Front</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                        <span>Back to website</span>
                     </a>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" id="loginBtn" class="w-full py-3 px-4 bg-stone-900 hover:bg-black active:scale-[0.99] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer mt-1">
                     <i class="fa-solid fa-right-to-bracket text-xs text-amber-300"></i>
-                    <span>Log In to Store Console</span>
+                    <span>Sign In</span>
                 </button>
             </form>
-
-            <!-- 1-Click Demo Credentials Quick-Fill -->
-            <div class="mt-4 pt-3.5 border-t border-stone-100 text-center">
-                <button type="button" onclick="fillDemoCredentials()" class="w-full px-3 py-2 bg-stone-50 hover:bg-stone-100/80 border border-stone-200/80 rounded-xl text-xs text-stone-600 hover:text-stone-900 transition-all flex items-center justify-between cursor-pointer group shadow-2xs" title="Click to auto-fill credentials">
-                    <div class="flex items-center gap-2 text-left truncate">
-                        <i class="fa-solid fa-key text-saltora-terracotta text-xs shrink-0"></i>
-                        <span class="font-mono text-[11px] font-semibold text-stone-800">saltora1329@gmail.com</span>
-                        <span class="text-stone-300">&bull;</span>
-                        <span class="font-mono text-[11px] text-stone-600">Saltora@Admin2026#</span>
-                    </div>
-                    <span class="text-[10px] uppercase font-bold text-saltora-terracotta group-hover:underline shrink-0 ml-2">Auto-Fill &rarr;</span>
-                </button>
-            </div>
         </div>
 
         <!-- Subtle Security Note -->
         <div class="mt-3.5 text-center text-[11px] text-stone-400 flex items-center justify-center gap-1.5">
             <i class="fa-solid fa-shield-halved text-stone-400 text-[10px]"></i>
-            <span>Encrypted Admin Console &bull; SALTORA Exporter</span>
+            <span>Secure admin access &bull; SALTORA</span>
         </div>
     </div>
 
@@ -153,41 +140,13 @@
             }
         }
 
-        function fillDemoCredentials() {
-            const emailInput = document.getElementById('email');
-            const passwordInput = document.getElementById('password');
-
-            emailInput.value = 'saltora1329@gmail.com';
-            passwordInput.value = 'Saltora@Admin2026#';
-
-            emailInput.classList.add('ring-2', 'ring-saltora-terracotta');
-            passwordInput.classList.add('ring-2', 'ring-saltora-terracotta');
-
-            setTimeout(() => {
-                emailInput.classList.remove('ring-2', 'ring-saltora-terracotta');
-                passwordInput.classList.remove('ring-2', 'ring-saltora-terracotta');
-            }, 600);
-
-            Swal.fire({
-                toast: true,
-                position: 'top-end',
-                icon: 'success',
-                title: 'Admin credentials loaded!',
-                showConfirmButton: false,
-                timer: 1200,
-                background: '#ffffff',
-                color: '#1c1917',
-                iconColor: '#964B42'
-            });
-        }
-
         document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('loginBtn');
             const originalText = btn.innerHTML;
             
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-amber-300"></i> <span>Authenticating...</span>';
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-amber-300"></i> <span>Signing in...</span>';
 
             const formData = new FormData(this);
 
@@ -206,8 +165,8 @@
                 if (data.success) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Authenticated!',
-                        text: data.message || 'Access granted.',
+                        title: 'Welcome back',
+                        text: 'Signed in successfully. Redirecting...',
                         timer: 1300,
                         showConfirmButton: false,
                         background: '#ffffff',
@@ -219,8 +178,8 @@
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Access Denied',
-                        text: data.message || 'Invalid credentials provided.',
+                        title: 'Sign in failed',
+                        text: data.message || 'Incorrect email or password. Please try again.',
                         background: '#ffffff',
                         color: '#1c1917',
                         confirmButtonColor: '#964B42'
@@ -231,8 +190,8 @@
             } catch (error) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'System Error',
-                    text: 'Unable to process login request right now.',
+                    title: 'Something went wrong',
+                    text: 'We couldn\'t sign you in right now. Please try again.',
                     background: '#ffffff',
                     color: '#1c1917',
                     confirmButtonColor: '#964B42'

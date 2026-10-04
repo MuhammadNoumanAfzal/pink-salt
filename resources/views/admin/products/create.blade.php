@@ -621,5 +621,6 @@
             }
         });
     </script>
+    @include('admin.partials.logout-script')
 </body>
 </html>

@@ -83,11 +83,19 @@
                 </a>
                 --}}
 
-                <!-- 6. Messages -->
+                <!-- 6. Customer Messages -->
                 <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-envelope text-sm"></i>
-                        <span>Messages</span>
+                        <i class="fa-solid fa-envelope-open-text text-sm"></i>
+                        <span>Customer Messages</span>
+                    </div>
+                </a>
+
+                <!-- 7. Blogs & Insights -->
+                <a href="{{ route('admin.dashboard') }}?tab=blogs" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-newspaper text-sm"></i>
+                        <span>Blogs & Insights</span>
                     </div>
                 </a>
 
@@ -596,5 +604,6 @@
             }
         }
     </script>
+    @include('admin.partials.logout-script')
 </body>
 </html>
