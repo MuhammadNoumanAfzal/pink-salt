@@ -248,7 +248,6 @@ class FrontendController extends Controller
     public function blogDetail($slug)
     {
         $post = \App\Models\Post::published()->where('slug', $slug)->firstOrFail();
-        $post->increment('views');
 
         $relatedPosts = \App\Models\Post::published()
             ->where('id', '!=', $post->id)

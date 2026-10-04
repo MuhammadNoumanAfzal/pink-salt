@@ -380,13 +380,29 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 
                 @forelse($products as $index => $prod)
+                @php
+                    $qv = [
+                        'name' => $prod->name,
+                        'category_name' => $prod->categoryRef->name ?? $prod->category ?? 'Export Salt',
+                        'subcategory_name' => $prod->subcategoryRef->name ?? '',
+                        'image_url' => $prod->image_url ? asset($prod->image_url) : '',
+                        'description' => $prod->description ?? '',
+                        'formatted_price' => $prod->formatted_price,
+                        'moq' => $prod->moq ?: null,
+                        'grain_size' => $prod->grain_size ?: ($prod->mesh_size ?: null),
+                        'packaging_type' => $prod->packaging_type ?: ($prod->packaging ?: null),
+                        'package_weight' => $prod->package_weight ?: null,
+                        'grade' => $prod->grade ?: null,
+                        'purity' => $prod->purity ?: null,
+                    ];
+                @endphp
                 <div class="bg-white border border-saltora-border/80 rounded-2xl p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
                     <!-- Top Gradient Accent Hover Line -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                     <div class="space-y-3.5">
                         <!-- 16:9 Aspect Ratio Image -->
-                        <div class="relative aspect-video w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img" @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->subcategoryRef->name ?? 'GRADED') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->grain_size ?? $prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: 'Salt Range, Pakistan'}})">
+                        <div class="relative aspect-video w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img" @click="openQuickView(@js($qv))">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                             @else
@@ -466,7 +482,7 @@
                             <i class="fa-solid fa-file-invoice text-amber-200 text-[10px] transition-transform duration-300 group-hover/btn:translate-x-0.5"></i>
                             <span class="truncate">REQUEST A QUOTE</span>
                         </a>
-                        <button @click="openQuickView({name: '{{ addslashes($prod->name) }}', img: '{{ $prod->image_url ? asset($prod->image_url) : asset('product1.jpg') }}', tags: ['{{ addslashes($prod->categoryRef->name ?? $prod->category ?? 'HIMALAYAN SALT') }}', '{{ addslashes($prod->packaging_type ?? $prod->packaging ?? 'EXPORT GRADE') }}'], desc: '{{ addslashes($prod->full_desc ?? $prod->short_desc ?? '') }}', specs: {grade: '{{ addslashes($prod->grade ?? 'Food Grade Natural') }}', grain: '{{ addslashes($prod->grain_size ?? $prod->mesh_size ?? 'Custom') }}', purity: '{{ addslashes($prod->purity ?? '98.5%+ NaCl') }}', origin: '{{ addslashes($prod->origin ?? 'Salt Range, Pakistan') }}'}})" class="border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush text-saltora-text py-2.5 px-3.5 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-lg group/btn" title="View Specification Sheet">
+                        <button @click="openQuickView(@js($qv))" class="border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush text-saltora-text py-2.5 px-3.5 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-lg group/btn" title="View Specification Sheet">
                             <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -1049,62 +1065,130 @@
     <x-footer />
 
 
-    <!-- PRODUCT QUICK VIEW MODAL (Technical Specification Sheet) -->
+    <!-- PRODUCT QUICK VIEW / SPECIFICATION MODAL (same design as Products page) -->
     <div x-show="quickViewModalOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <!-- Backdrop -->
-            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity" @click="closeQuickView()"></div>
+            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/80 backdrop-blur-xs transition-opacity" @click="closeQuickView()"></div>
 
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-            <!-- Modal Body -->
-            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-saltora-bg rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border border-saltora-border p-6 md:p-8 relative">
-                
-                <!-- Close Button -->
-                <button @click="closeQuickView()" class="absolute top-4 right-4 text-saltora-muted hover:text-saltora-text p-2 cursor-pointer rounded-full hover:bg-slate-100 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Modal Content -->
+            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full border border-stone-200/80 p-4 sm:p-5 relative max-h-[92vh] overflow-y-auto">
+
+                <!-- Close Button (Explicit Top-Right) -->
+                <button @click="closeQuickView()" style="position: absolute; top: 14px; right: 14px; left: auto;" class="w-8 h-8 rounded-full bg-white/95 hover:bg-white text-stone-700 hover:text-stone-950 border border-stone-200 shadow-sm flex items-center justify-center transition-all cursor-pointer z-30" aria-label="Close Modal">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
 
                 <template x-if="selectedProduct">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                        <div class="aspect-4/3 rounded-xl overflow-hidden bg-saltora-card border border-saltora-border shadow-xs">
-                            <img :src="selectedProduct.img" :alt="selectedProduct.name" class="w-full h-full object-cover">
+                    <div class="space-y-4">
+                        <!-- TOP IMAGE -->
+                        <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200/60 shadow-xs shrink-0">
+                            <template x-if="selectedProduct.image_url">
+                                <img :src="selectedProduct.image_url" :alt="selectedProduct.name" class="w-full h-full object-cover">
+                            </template>
+                            <template x-if="!selectedProduct.image_url">
+                                <div class="w-full h-full bg-gradient-to-br from-[#FAF7F2] via-[#F3ECE0] to-[#EAE0D0] flex flex-col items-center justify-center text-stone-400 gap-1.5 p-4 text-center">
+                                    <div class="w-10 h-10 rounded-full bg-white shadow-xs border border-stone-200 flex items-center justify-center text-[#B87A62]">
+                                        <i class="fa-solid fa-cube text-lg"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase font-bold tracking-widest text-stone-500">Pure Himalayan Salt</span>
+                                </div>
+                            </template>
+
+                            <!-- Floating Badges on Image -->
+                            <div class="absolute top-2.5 left-2.5 z-20 flex items-center gap-1.5">
+                                <template x-if="selectedProduct.packaging_type">
+                                    <span class="bg-stone-900/85 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs" x-text="selectedProduct.packaging_type"></span>
+                                </template>
+                                <template x-if="selectedProduct.purity">
+                                    <span class="bg-white/95 backdrop-blur-md text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs border border-emerald-600/20" x-text="selectedProduct.purity"></span>
+                                </template>
+                            </div>
                         </div>
 
-                        <div class="space-y-4">
-                            <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase">TECHNICAL SPECIFICATION</span>
-                            <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal" x-text="selectedProduct.name"></h3>
-                            <p class="text-xs text-saltora-muted font-light leading-relaxed" x-text="selectedProduct.desc"></p>
+                        <!-- CONTENT BELOW -->
+                        <div class="space-y-3.5 px-0.5">
+                            <!-- Category & Tag Row -->
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
+                                    <span x-text="selectedProduct.category_name"></span>
+                                    <template x-if="selectedProduct.subcategory_name">
+                                        <span class="text-stone-300">/</span>
+                                    </template>
+                                    <template x-if="selectedProduct.subcategory_name">
+                                        <span class="text-stone-500 font-normal truncate" x-text="selectedProduct.subcategory_name"></span>
+                                    </template>
+                                </div>
+                                <span class="text-[9px] font-bold tracking-widest text-stone-400 uppercase bg-stone-100 px-2 py-0.5 rounded-sm">Technical Specifications</span>
+                            </div>
 
-                            <!-- Specs Table -->
-                            <div class="border-t border-b border-saltora-border/70 py-3 space-y-2 text-xs">
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Grade Spec:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grade"></span>
+                            <!-- Product Title -->
+                            <h2 class="font-serif text-xl sm:text-2xl text-stone-900 font-semibold leading-snug" x-text="selectedProduct.name"></h2>
+
+                            <!-- Product Description -->
+                            <template x-if="selectedProduct.description">
+                                <p class="text-xs text-stone-600 font-light leading-relaxed line-clamp-2" x-text="selectedProduct.description"></p>
+                            </template>
+
+                            <!-- Price & MOQ Card -->
+                            <div class="p-3 sm:p-3.5 bg-[#FAF7F2] border border-[#EAE3D6] rounded-xl flex items-center justify-between">
+                                <div>
+                                    <span class="text-[9px] uppercase font-bold text-stone-400 block tracking-wider">Export Price</span>
+                                    <span class="text-lg sm:text-xl font-bold text-stone-900" x-text="selectedProduct.formatted_price"></span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Grain Mesh Size:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.grain"></span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">NaCl Purity:</span>
-                                    <span class="font-semibold text-saltora-terracotta" x-text="selectedProduct.specs.purity"></span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-saltora-muted font-light">Origin Source:</span>
-                                    <span class="font-semibold text-saltora-text" x-text="selectedProduct.specs.origin"></span>
+                                <div class="text-right">
+                                    <span class="text-[9px] uppercase font-bold text-stone-400 block tracking-wider">Minimum Order (MOQ)</span>
+                                    <span class="text-xs sm:text-sm font-bold text-saltora-terracotta" x-text="selectedProduct.moq || 'Flexible Bulk Order'"></span>
                                 </div>
                             </div>
 
-                            <div class="pt-2 flex flex-col gap-2.5">
-                                <a :href="'/contact?product=' + encodeURIComponent(selectedProduct.name) + '#contactForm'" class="w-full bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer rounded-xs">
+                            <!-- Specs Metric Grid -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                <template x-if="selectedProduct.grain_size">
+                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
+                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Grain Size</span>
+                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.grain_size"></span>
+                                    </div>
+                                </template>
+                                <template x-if="selectedProduct.packaging_type">
+                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
+                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Packaging</span>
+                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.packaging_type"></span>
+                                    </div>
+                                </template>
+                                <template x-if="selectedProduct.package_weight">
+                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
+                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Unit Weight</span>
+                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.package_weight"></span>
+                                    </div>
+                                </template>
+                                <template x-if="selectedProduct.purity">
+                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
+                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Purity</span>
+                                        <span class="text-xs font-semibold text-emerald-800 mt-0.5 block truncate" x-text="selectedProduct.purity"></span>
+                                    </div>
+                                </template>
+                                <template x-if="selectedProduct.grade">
+                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2 col-span-2 sm:col-span-2">
+                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Grade Standard</span>
+                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.grade"></span>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="pt-1 flex flex-col sm:flex-row gap-2.5">
+                                <a :href="'/contact?product=' + encodeURIComponent(selectedProduct.name) + '#contactForm'" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-4 rounded-xl text-center text-xs font-bold tracking-wider uppercase transition-all shadow-xs hover:shadow flex items-center justify-center gap-2 cursor-pointer">
                                     <i class="fa-solid fa-file-invoice text-amber-200 text-xs"></i>
-                                    <span>REQUEST A QUOTE FOR THIS PRODUCT</span>
+                                    <span>REQUEST FORMAL QUOTE</span>
                                 </a>
-                                <a href="/contact" class="w-full border border-saltora-text/30 hover:border-saltora-text text-saltora-text py-2.5 text-center text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer rounded-xs">
-                                    SEND CUSTOM INQUIRY
+                                <a :href="'https://wa.me/923180735748?text=' + encodeURIComponent('Hi Saltora, I need a quotation for ' + selectedProduct.name)" target="_blank" class="flex-1 border border-emerald-600/40 hover:border-emerald-600 bg-emerald-50/40 hover:bg-emerald-50 text-emerald-800 py-2.5 px-4 rounded-xl text-center text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                    <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                                    <span>INQUIRE VIA WHATSAPP</span>
                                 </a>
                             </div>
                         </div>

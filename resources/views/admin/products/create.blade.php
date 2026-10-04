@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Add New Product - SALTORA Admin</title>
+    <title>Add New Salt Product - SALTORA Admin</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <!-- Fonts & Icons -->
@@ -14,301 +14,500 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex">
+<body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex"
+    x-data="{
+        customPriceUnit: false,
+        priceUnitVal: '',
+        customGrainSize: false,
+        grainSizeVal: 'Fine Salt (0.3 - 0.8 mm)',
+        customPackagingType: false,
+        packagingTypeVal: 'Zip Pouch',
+        hasImage: false,
+        imageSrc: ''
+    }">
 
-    <!-- MAIN CONTENT -->
-    <div class="flex-1 flex flex-col min-w-0">
-        
-        <!-- HEADER -->
-        <header class="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20">
-            <div class="flex items-center gap-3">
-                <a href="{{ route('admin.products.index') }}" class="p-2 text-slate-400 hover:text-slate-800 transition-colors">
-                    <i class="fa-solid fa-arrow-left text-base"></i>
-                </a>
-                <h1 class="font-serif font-bold text-lg text-slate-900">Add New Salt Product</h1>
-            </div>
-            <a href="{{ route('admin.products.index') }}" class="px-4 py-2 border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-all">
-                Cancel & Return
-            </a>
-        </header>
-
-        <main class="p-8 max-w-4xl w-full mx-auto space-y-6">
-            
-            <div class="bg-white border border-slate-200/80 rounded-2xl p-8 shadow-sm">
-                <div class="mb-6 border-b border-slate-100 pb-4">
-                    <h2 class="text-xl font-bold font-serif text-slate-900">Create New Salt Product</h2>
-                    <p class="text-xs text-slate-500">Configure specs for pure export salt, retail packages (pouches/jars), or crafted products (lamps/tiles) with pricing & units.</p>
+    <!-- LEFT SIDEBAR NAVIGATION (PERSISTENT ACROSS ADMIN) -->
+    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
+        <div>
+            <!-- Sidebar Header / Brand -->
+            <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#e07a5f] to-[#d4a373] p-0.5 shadow-md shadow-[#e07a5f]/20">
+                    <div class="w-full h-full bg-white rounded-[9px] flex items-center justify-center">
+                        <img src="/logo.png" alt="SALTORA Logo" class="w-5 h-5 object-contain">
+                    </div>
                 </div>
+                <div>
+                    <span class="font-serif text-lg font-bold tracking-wider text-slate-900 block leading-none">SALTORA</span>
+                    <span class="text-[9px] font-bold text-[#e07a5f] uppercase tracking-widest block mt-0.5">eCommerce Admin</span>
+                </div>
+            </div>
 
-                <form id="createProductForm" class="space-y-6 text-xs" x-data="{ customPriceUnit: false, priceUnitVal: '', customGrainSize: false, grainSizeVal: 'Fine Salt (0.3 - 0.8 mm)', customPackagingType: false, packagingTypeVal: 'Zip Pouch' }">
+            <!-- Navigation Links -->
+            <nav class="p-4 space-y-1 text-xs font-semibold">
+                <!-- 1. Dashboard Overview -->
+                <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <i class="fa-solid fa-chart-pie text-sm"></i>
+                    <span>Dashboard Overview</span>
+                </a>
+
+                <!-- 2. Categories -->
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-sm"></i>
+                        <span>Categories</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded-full font-bold">{{ count($categories) }}</span>
+                </a>
+
+                <!-- 3. Subcategories -->
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-tags text-sm"></i>
+                        <span>Subcategories</span>
+                    </div>
+                </a>
+
+                <!-- 4. Product Catalog (Active) -->
+                <a href="{{ route('admin.dashboard') }}?tab=products" class="w-full flex items-center justify-between px-3 py-2.5 bg-[#e07a5f]/10 text-[#e07a5f] font-bold rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-cubes text-sm"></i>
+                        <span>Product Catalog</span>
+                    </div>
+                    <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] rounded-full font-bold">Create</span>
+                </a>
+
+                <!-- 5. Customer Messages -->
+                <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope-open-text text-sm"></i>
+                        <span>Customer Messages</span>
+                    </div>
+                </a>
+
+                <!-- 6. Blogs & Insights -->
+                <a href="{{ route('admin.dashboard') }}?tab=blogs" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-newspaper text-sm"></i>
+                        <span>Blogs & Insights</span>
+                    </div>
+                </a>
+
+                <div class="pt-4 border-t border-slate-100">
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 transition-all mt-1">
+                        <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
+                        <span>View Live Store</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-auto opacity-60"></i>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="p-4 border-t border-slate-100 bg-slate-50/50">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs">
+                        {{ strtoupper(substr(Auth::user()->name ?? 'Admin', 0, 2)) }}
+                    </div>
+                    <div class="text-xs overflow-hidden">
+                        <span class="font-bold text-slate-900 block truncate">{{ Auth::user()->name ?? 'Store Manager' }}</span>
+                        <span class="text-[10px] text-slate-500 block truncate">{{ Auth::user()->email ?? 'admin@saltora.com' }}</span>
+                    </div>
+                </div>
+                
+                <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-
-                    <!-- 1. GENERAL INFORMATION -->
-                    <div>
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-cube"></i> Basic Product Information
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Product Name *</label>
-                                <input type="text" name="name" required placeholder="e.g. Fine Himalayan Pink Salt or Natural Salt Lamp" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Product Classification / Type</label>
-                                <select name="product_type" id="product_type_select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                    <option value="pure_salt">Pure Edible / Raw Salt (Mesh Grains)</option>
-                                    <option value="packaged_retail">Retail Packaged Salt (Pouches / Jars / Grinders)</option>
-                                    <option value="lamp_craft">Crafted Salt Lamp & Home Decor (Single Product / Set)</option>
-                                    <option value="tile_brick">Salt Cooking Tile / Spa Wall Brick</option>
-                                    <option value="animal_lick">Animal Feed Mineral Lick Salt</option>
-                                    <option value="industrial">Industrial / De-Icing Bulk Salt</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Category *</label>
-                                <select name="category_id" id="category_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
-                                    <option value="">Select Category *</option>
-                                    @foreach($categories as $cat)
-                                    <option value="{{ $cat->id }}" data-subcategories="{{ json_encode($cat->allSubcategories) }}">{{ $cat->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Subcategory *</label>
-                                <select name="subcategory_id" id="subcategory_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
-                                    <option value="">Select Subcategory *</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Badge Tag</label>
-                                <input type="text" name="badge" placeholder="e.g. Best Seller, Top Export, Artisanal" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Country of Origin</label>
-                                <input type="text" name="origin" placeholder="e.g. Khewra Salt Range, Pakistan" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. PRICING & ORDER SPECS -->
-                    <div class="pt-4 border-t border-slate-100">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-tag"></i> Pricing & Minimum Order (MOQ)
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Base Price ($ USD)</label>
-                                <div class="relative">
-                                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                                    <input type="number" step="0.01" min="0" name="price" placeholder="1.45 or 12.50" class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                </div>
-                                <span class="text-[10px] text-slate-400 mt-1 block">Leave blank for custom quote</span>
-                            </div>
-
-                            <!-- Price Unit with Runtime Custom Option -->
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="block text-slate-700 font-semibold">Price Unit (Optional)</label>
-                                    <button type="button" @click="customPriceUnit = !customPriceUnit" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
-                                        <span x-show="!customPriceUnit">+ Add Custom Unit</span>
-                                        <span x-show="customPriceUnit">&larr; Choose Preset</span>
-                                    </button>
-                                </div>
-                                <div x-show="!customPriceUnit">
-                                    <select x-model="priceUnitVal" @change="if($event.target.value === '__custom__') { customPriceUnit = true; priceUnitVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
-                                        <option value="">Select Price Unit (Optional)...</option>
-                                        <option value="per kg">per kg</option>
-                                        <option value="per piece">per piece (pcs)</option>
-                                        <option value="per 25kg bag">per 25kg bag</option>
-                                        <option value="per 50kg bag">per 50kg bag</option>
-                                        <option value="per metric ton">per metric ton (1,000 kg)</option>
-                                        <option value="per pouch">per zip pouch</option>
-                                        <option value="per jar">per jar</option>
-                                        <option value="per bottle">per grinder bottle</option>
-                                        <option value="per set">per lamp set</option>
-                                        <option value="per slab">per cooking slab / tile</option>
-                                        <option value="per carton">per carton / box</option>
-                                        <option value="per pallet">per pallet</option>
-                                        <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Unit...</option>
-                                    </select>
-                                </div>
-                                <div x-show="customPriceUnit" x-cloak>
-                                    <input type="text" x-model="priceUnitVal" placeholder="Type custom price unit (e.g. per drum, per 10kg bucket)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
-                                </div>
-                                <input type="hidden" name="price_unit" :value="priceUnitVal">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Minimum Order Qty (MOQ)</label>
-                                <input type="text" name="moq" placeholder="e.g. 500 Bags, 100 Pcs, 20 MT" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. GRAIN SIZE & PACKAGING (ACCOMMODATING IMAGE 1, 2, 3) -->
-                    <div class="pt-4 border-t border-slate-100">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-boxes-stacked"></i> Grain Size, Packaging & Unit Weight
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Salt Grain / Mesh Size with Runtime Custom Option -->
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="block text-slate-700 font-semibold">Salt Grain / Mesh Size</label>
-                                    <button type="button" @click="customGrainSize = !customGrainSize" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
-                                        <span x-show="!customGrainSize">+ Add Custom Mesh</span>
-                                        <span x-show="customGrainSize">&larr; Choose Preset</span>
-                                    </button>
-                                </div>
-                                <div x-show="!customGrainSize">
-                                    <select x-model="grainSizeVal" @change="if($event.target.value === '__custom__') { customGrainSize = true; grainSizeVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
-                                        <option value="Fine Salt (0.3 - 0.8 mm)">Fine Salt (0.3 - 0.8 mm)</option>
-                                        <option value="Extra Fine (0.1 - 0.3 mm)">Extra Fine (0.1 - 0.3 mm)</option>
-                                        <option value="Medium Salt (0.8 - 2 mm)">Medium Salt (0.8 - 2 mm)</option>
-                                        <option value="Coarse Salt (2 - 5 mm)">Coarse Salt (2 - 5 mm)</option>
-                                        <option value="Crystal Salt (5 - 8 mm)">Crystal Salt (5 - 8 mm)</option>
-                                        <option value="Natural Rock Lump Salt">Natural Rock Lump Salt (Uncrushed)</option>
-                                        <option value="Not Applicable (Crafted Lamp / Tile)">Not Applicable (Crafted Lamp / Tile / Lick)</option>
-                                        <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Mesh Size...</option>
-                                    </select>
-                                </div>
-                                <div x-show="customGrainSize" x-cloak>
-                                    <input type="text" x-model="grainSizeVal" placeholder="Type custom mesh (e.g. 20-40 Mesh, 1.2 - 2.5 mm)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
-                                </div>
-                                <input type="hidden" name="grain_size" :value="grainSizeVal">
-                            </div>
-
-                            <!-- Packaging Type with Runtime Custom Option -->
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="block text-slate-700 font-semibold">Packaging Type</label>
-                                    <button type="button" @click="customPackagingType = !customPackagingType" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
-                                        <span x-show="!customPackagingType">+ Add Custom Packaging</span>
-                                        <span x-show="customPackagingType">&larr; Choose Preset</span>
-                                    </button>
-                                </div>
-                                <div x-show="!customPackagingType">
-                                    <select x-model="packagingTypeVal" @change="if($event.target.value === '__custom__') { customPackagingType = true; packagingTypeVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
-                                        <option value="Zip Pouch">1. Zip Pouch (Stand-Up Resealable)</option>
-                                        <option value="PET Jar">2. PET Jar (Screw Cap)</option>
-                                        <option value="Glass Jar">3. Glass Jar (Flint w/ Metal Lid)</option>
-                                        <option value="Grinder Bottle">4. Grinder Bottle (Ceramic Core Mill)</option>
-                                        <option value="Shaker Bottle">5. Shaker Bottle (Dual Sift Top)</option>
-                                        <option value="Food Grade PP Bag">6. PP Bag (Food Grade Woven with PE Liner)</option>
-                                        <option value="50kg Heavy-Duty Export Bag">7. 50kg Heavy-Duty Export Bag</option>
-                                        <option value="1-Ton Jumbo Bag (FIBC)">8. 1-Ton Jumbo Bag (FIBC Big Bag)</option>
-                                        <option value="Single Piece / Wooden Base">9. Single Piece with Wooden Base (Salt Lamp)</option>
-                                        <option value="Metal Wire Basket">10. Metal Basket + Salt Chunks (Basket Lamp)</option>
-                                        <option value="Animal Salt Lick with Hanging Rope">11. Animal Salt Lick with Hanging Rope</option>
-                                        <option value="Salt Lamp Set">12. Salt Lamp Set (Multi-piece Box)</option>
-                                        <option value="Carton Box / Pallet">13. Carton Box / Palletized Slabs</option>
-                                        <option value="Bulk Loose Vessel">14. Bulk Loose Vessel Container Load</option>
-                                        <option value="__custom__" class="font-bold text-[#e07a5f]">+ Add Custom / Type Packaging...</option>
-                                    </select>
-                                </div>
-                                <div x-show="customPackagingType" x-cloak>
-                                    <input type="text" x-model="packagingTypeVal" placeholder="Type custom packaging (e.g. 500g Kraft Pouch, Tin Can)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
-                                </div>
-                                <input type="hidden" name="packaging_type" :value="packagingTypeVal">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Unit Weight / Capacity</label>
-                                <input type="text" name="package_weight" placeholder="e.g. 500g, 25 kg, 1 Ton, 2-3 kg (Lamp)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                                <span class="text-[10px] text-slate-400 mt-1 block">Pouches: 200g-1kg | Bags: 2kg-25kg | Lamps: 2-3kg, 3-5kg</span>
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Packaging Summary Description</label>
-                                <input type="text" name="packaging" placeholder="e.g. 25kg Food-grade PP bag w/ PE inner liner" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Purity Grade</label>
-                                <input type="text" name="purity" placeholder="e.g. 98.8% NaCl" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Quality Standard / Certifications</label>
-                                <input type="text" name="grade" placeholder="e.g. Food Grade ISO-22000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. PRODUCT MEDIA -->
-                    <div class="pt-4 border-t border-slate-100">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-image"></i> Product Image
-                        </h3>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-3">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-slate-800 font-semibold mb-1">Option 1: Upload from Computer</label>
-                                    <input type="file" name="image_file" accept="image/*" class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-white hover:file:bg-slate-800 cursor-pointer">
-                                </div>
-                                <div>
-                                    <label class="block text-slate-800 font-semibold mb-1">Option 2: Image URL / Path (Optional)</label>
-                                    <input type="text" name="image_url" placeholder="/product1.jpg (Optional)" value="" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:border-[#e07a5f]">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 5. DESCRIPTIONS -->
-                    <div class="pt-4 border-t border-slate-100">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-align-left"></i> Descriptions & Visibility
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Short Description (Optional)</label>
-                                <textarea name="short_desc" rows="2" placeholder="Brief summary shown on catalog cards and price lists (Optional)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-slate-700 font-semibold mb-1">Full Detailed Description</label>
-                                <textarea name="full_desc" rows="3" placeholder="Full product specifications, packaging dimensions, mineral analysis, export pallet loading info..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
-                            </div>
-
-                            <div class="flex items-center gap-6 pt-2">
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" name="is_featured" value="1" checked class="w-4 h-4 rounded border-slate-300 text-[#e07a5f]">
-                                    <span class="text-slate-800 font-semibold">Feature on Homepage Catalog</span>
-                                </label>
-
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" name="is_active" value="1" checked class="w-4 h-4 rounded border-slate-300 text-[#e07a5f]">
-                                    <span class="text-slate-800 font-semibold">Active & Visible in Catalog</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end gap-3 pt-6 border-t border-slate-100 mt-6">
-                        <a href="{{ route('admin.products.index') }}" class="px-5 py-2.5 border border-slate-300 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold">Cancel</a>
-                        <button type="submit" id="saveBtn" class="px-7 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-check text-xs"></i>
-                            <span>Save & Publish Product</span>
-                        </button>
-                    </div>
+                    <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
                 </form>
             </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 flex flex-col min-w-0">
+        
+        <!-- TOP HEADER BAR -->
+        <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs">
+            <div class="flex items-center gap-3">
+                <a href="{{ route('admin.dashboard') }}?tab=products" class="p-2 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all cursor-pointer" title="Back to Catalog">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2 text-[11px] text-slate-400">
+                        <a href="{{ route('admin.dashboard') }}?tab=products" class="hover:text-slate-600">Product Catalog</a>
+                        <span>/</span>
+                        <span class="text-slate-600 font-semibold">New Product</span>
+                    </div>
+                    <h1 class="font-serif font-bold text-base sm:text-lg text-slate-900 leading-tight">Add New Salt Product</h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="{{ route('admin.dashboard') }}?tab=products" class="px-3.5 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl transition-all">
+                    Cancel
+                </a>
+                <button type="button" onclick="document.getElementById('saveBtn').click()" class="px-4 py-2 bg-[#e07a5f] hover:bg-[#d46a4f] text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-check text-xs"></i>
+                    <span>Publish Product</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- FULL-PAGE MAIN CONTENT FORM -->
+        <main class="p-4 sm:p-8 w-full max-w-7xl mx-auto space-y-6">
+            
+            <form id="createProductForm" class="space-y-6 text-xs">
+                @csrf
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    
+                    <!-- LEFT 8 COLUMNS: MAIN SPECIFICATIONS -->
+                    <div class="lg:col-span-8 space-y-6">
+
+                        <!-- 1. GENERAL INFORMATION -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-cube"></i> Basic Product Information
+                                </h3>
+                                <span class="text-[10px] text-slate-400">* Required Fields</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Product Name *</label>
+                                    <input type="text" name="name" required placeholder="e.g. Fine Himalayan Pink Salt, Animal Salt Lick, or Natural Salt Lamp" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-slate-700 font-semibold mb-1">Product Classification / Type</label>
+                                        <select name="product_type" id="product_type_select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                            <option value="pure_salt">Pure Edible / Raw Salt (Mesh Grains)</option>
+                                            <option value="packaged_retail">Retail Packaged Salt (Pouches / Jars / Grinders)</option>
+                                            <option value="lamp_craft">Crafted Salt Lamp & Home Decor (Single Product / Set)</option>
+                                            <option value="tile_brick">Salt Cooking Tile / Spa Wall Brick</option>
+                                            <option value="animal_lick">Animal Feed Mineral Lick Salt</option>
+                                            <option value="industrial">Industrial / De-Icing Bulk Salt</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-slate-700 font-semibold mb-1">Badge Tag</label>
+                                        <input type="text" name="badge" placeholder="e.g. Best Seller, Top Export, Food Grade" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Country / Mine of Origin</label>
+                                    <input type="text" name="origin" value="Khewra Salt Range, Punjab, Pakistan" placeholder="e.g. Khewra Salt Range, Punjab, Pakistan" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. PRICING & ORDER SPECS -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-tag"></i> Pricing & Minimum Order Quantity (MOQ)
+                                </h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Base Price ($ USD)</label>
+                                    <div class="relative">
+                                        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                                        <input type="number" step="0.01" min="0" name="price" placeholder="1.45 or 12.50" class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-8 pr-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 mt-1 block">Leave empty for "Custom Quote"</span>
+                                </div>
+
+                                <!-- Price Unit with Runtime Custom Option -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-slate-700 font-semibold">Price Unit</label>
+                                        <button type="button" @click="customPriceUnit = !customPriceUnit" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                            <span x-show="!customPriceUnit">+ Custom</span>
+                                            <span x-show="customPriceUnit">&larr; Presets</span>
+                                        </button>
+                                    </div>
+                                    <div x-show="!customPriceUnit">
+                                        <select x-model="priceUnitVal" @change="if($event.target.value === '__custom__') { customPriceUnit = true; priceUnitVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                            <option value="">Select Unit (Optional)...</option>
+                                            <option value="per kg">per kg</option>
+                                            <option value="per piece">per piece (pcs)</option>
+                                            <option value="per 25kg bag">per 25kg bag</option>
+                                            <option value="per 50kg bag">per 50kg bag</option>
+                                            <option value="per metric ton">per metric ton (1,000 kg)</option>
+                                            <option value="per pouch">per zip pouch</option>
+                                            <option value="per jar">per jar</option>
+                                            <option value="per bottle">per grinder bottle</option>
+                                            <option value="per set">per lamp set</option>
+                                            <option value="per slab">per cooking slab / tile</option>
+                                            <option value="per carton">per carton / box</option>
+                                            <option value="per pallet">per pallet</option>
+                                            <option value="__custom__" class="font-bold text-[#e07a5f]">+ Custom Unit...</option>
+                                        </select>
+                                    </div>
+                                    <div x-show="customPriceUnit" x-cloak>
+                                        <input type="text" x-model="priceUnitVal" placeholder="e.g. per bucket, per drum" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                                    </div>
+                                    <input type="hidden" name="price_unit" :value="priceUnitVal">
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Minimum Order Qty (MOQ)</label>
+                                    <input type="text" name="moq" placeholder="e.g. 500 Bags, 100 Pcs, 20 MT" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. GRAIN SIZE & PACKAGING -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-boxes-stacked"></i> Grain Size, Packaging & Quality Standard
+                                </h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Salt Grain / Mesh Size -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-slate-700 font-semibold">Salt Grain / Mesh Size</label>
+                                        <button type="button" @click="customGrainSize = !customGrainSize" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                            <span x-show="!customGrainSize">+ Custom</span>
+                                            <span x-show="customGrainSize">&larr; Presets</span>
+                                        </button>
+                                    </div>
+                                    <div x-show="!customGrainSize">
+                                        <select x-model="grainSizeVal" @change="if($event.target.value === '__custom__') { customGrainSize = true; grainSizeVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                            <option value="Fine Salt (0.3 - 0.8 mm)">Fine Salt (0.3 - 0.8 mm)</option>
+                                            <option value="Extra Fine (0.1 - 0.3 mm)">Extra Fine (0.1 - 0.3 mm)</option>
+                                            <option value="Medium Salt (0.8 - 2 mm)">Medium Salt (0.8 - 2 mm)</option>
+                                            <option value="Coarse Salt (2 - 5 mm)">Coarse Salt (2 - 5 mm)</option>
+                                            <option value="Crystal Salt (5 - 8 mm)">Crystal Salt (5 - 8 mm)</option>
+                                            <option value="Natural Rock Lump Salt">Natural Rock Lump Salt (Raw Chunk)</option>
+                                            <option value="Not Applicable (Crafted Lamp / Tile)">Not Applicable (Crafted Lamp / Tile)</option>
+                                            <option value="__custom__" class="font-bold text-[#e07a5f]">+ Custom Mesh...</option>
+                                        </select>
+                                    </div>
+                                    <div x-show="customGrainSize" x-cloak>
+                                        <input type="text" x-model="grainSizeVal" placeholder="Type custom mesh (e.g. 20-40 mesh, 80 mesh)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                                    </div>
+                                    <input type="hidden" name="grain_size" :value="grainSizeVal">
+                                    <input type="hidden" name="mesh_size" :value="grainSizeVal">
+                                </div>
+
+                                <!-- Packaging Type -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label class="block text-slate-700 font-semibold">Packaging Type</label>
+                                        <button type="button" @click="customPackagingType = !customPackagingType" class="text-[10px] text-[#e07a5f] hover:underline font-semibold cursor-pointer">
+                                            <span x-show="!customPackagingType">+ Custom</span>
+                                            <span x-show="customPackagingType">&larr; Presets</span>
+                                        </button>
+                                    </div>
+                                    <div x-show="!customPackagingType">
+                                        <select x-model="packagingTypeVal" @change="if($event.target.value === '__custom__') { customPackagingType = true; packagingTypeVal = ''; }" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer">
+                                            <option value="Zip Pouch">1. Zip Pouch (Stand-Up Resealable)</option>
+                                            <option value="PET Jar">2. PET Jar (Screw Cap)</option>
+                                            <option value="Glass Jar">3. Glass Jar (Flint w/ Metal Lid)</option>
+                                            <option value="Grinder Bottle">4. Grinder Bottle (Ceramic Core Mill)</option>
+                                            <option value="Shaker Bottle">5. Shaker Bottle (Dual Sift Top)</option>
+                                            <option value="Food Grade PP Bag">6. PP Bag (Food Grade Woven with PE Liner)</option>
+                                            <option value="50kg Heavy-Duty Export Bag">7. 50kg Heavy-Duty Export Bag</option>
+                                            <option value="1-Ton Jumbo Bag (FIBC)">8. 1-Ton Jumbo Bag (FIBC Big Bag)</option>
+                                            <option value="Single Piece / Wooden Base">9. Single Piece with Wooden Base (Salt Lamp)</option>
+                                            <option value="Metal Wire Basket">10. Metal Basket + Salt Chunks (Basket Lamp)</option>
+                                            <option value="Animal Salt Lick with Hanging Rope">11. Animal Salt Lick with Hanging Rope</option>
+                                            <option value="Salt Lamp Set">12. Salt Lamp Set (Multi-piece Box)</option>
+                                            <option value="Carton Box / Pallet">13. Carton Box / Palletized Slabs</option>
+                                            <option value="Bulk Loose Vessel">14. Bulk Loose Vessel Container Load</option>
+                                            <option value="__custom__" class="font-bold text-[#e07a5f]">+ Custom Packaging...</option>
+                                        </select>
+                                    </div>
+                                    <div x-show="customPackagingType" x-cloak>
+                                        <input type="text" x-model="packagingTypeVal" placeholder="Type custom packaging (e.g. 500g Kraft Pouch)" class="w-full bg-white border border-[#e07a5f] rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#e07a5f]">
+                                    </div>
+                                    <input type="hidden" name="packaging_type" :value="packagingTypeVal">
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Unit Weight / Capacity</label>
+                                    <input type="text" name="package_weight" placeholder="e.g. 500g, 25 kg, 1 Ton, 2-3 kg (Lamp)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                    <span class="text-[10px] text-slate-400 mt-1 block">Pouches: 200g-1kg | Bags: 25kg | Lamps: 2-3kg, 3-5kg</span>
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Packaging Summary Description</label>
+                                    <input type="text" name="packaging" placeholder="e.g. 25kg Food-grade PP bag w/ PE inner liner" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Purity Grade</label>
+                                    <input type="text" name="purity" value="98.8% NaCl Pure" placeholder="e.g. 98.8% NaCl Pure" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Quality Standard / Certifications</label>
+                                    <input type="text" name="grade" value="Food Grade ISO 22000 / CXS 150:1985 / Halal / Kosher" placeholder="e.g. Food Grade ISO-22000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. DESCRIPTIONS -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-align-left"></i> Product Descriptions
+                                </h3>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Short Description (Catalog Cards)</label>
+                                    <textarea name="short_desc" rows="2" placeholder="Brief summary shown on catalog cards and price lists..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Full Detailed Description (Modal & Export Specs)</label>
+                                    <textarea name="full_desc" rows="4" placeholder="Detailed product specifications, packaging dimensions, mineral assay, pallet loading details..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f]"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT 4 COLUMNS: PHOTO STUDIO, CATEGORY & PUBLISH -->
+                    <div class="lg:col-span-4 space-y-6">
+
+                        <!-- PHOTO STUDIO (ADMIN SIDE SHOW PIC) -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-camera"></i> Product Picture
+                                </h3>
+                                <span class="text-[10px] text-slate-400">Live Preview</span>
+                            </div>
+
+                            <!-- Live Picture Display Container -->
+                            <div class="w-full aspect-square rounded-2xl bg-slate-100 border border-slate-200/80 overflow-hidden relative flex items-center justify-center group shadow-inner">
+                                <img id="product_image_preview" src="" alt="Product Preview" class="w-full h-full object-cover hidden transition-all duration-300" onerror="this.classList.add('hidden'); document.getElementById('product_image_placeholder').classList.remove('hidden');">
+                                
+                                <div id="product_image_placeholder" class="text-center p-6 space-y-2">
+                                    <div class="w-16 h-16 rounded-2xl bg-white shadow-xs border border-slate-200 flex items-center justify-center mx-auto text-slate-400">
+                                        <i class="fa-solid fa-cube text-2xl text-slate-300"></i>
+                                    </div>
+                                    <p class="text-xs font-semibold text-slate-600">No Image Selected</p>
+                                    <p class="text-[10px] text-slate-400">Upload a computer file or enter an image URL below</p>
+                                </div>
+
+                                <button type="button" id="clear_image_btn" class="hidden absolute top-3 right-3 p-2 rounded-xl bg-slate-900/80 hover:bg-rose-600 text-white text-xs transition-all shadow-md cursor-pointer" title="Remove / Clear Photo">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+
+                            <!-- Upload Options -->
+                            <div class="space-y-3 pt-2">
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Option 1: Upload from Computer</label>
+                                    <input type="file" id="image_file_input" name="image_file" accept="image/*" class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-white hover:file:bg-slate-800 cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Option 2: Direct Image URL or Path</label>
+                                    <input type="text" id="image_url_input" name="image_url" placeholder="e.g. /product1.jpg or https://..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 text-xs focus:outline-none focus:bg-white focus:border-[#e07a5f]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CATEGORY & SUBCATEGORY -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-folder-tree"></i> Organization
+                                </h3>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Category *</label>
+                                    <select name="category_id" id="category_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer font-semibold">
+                                        <option value="">Select Category *</option>
+                                        @foreach($categories as $cat)
+                                        <option value="{{ $cat->id }}" data-subcategories="{{ json_encode($cat->allSubcategories) }}">{{ $cat->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-slate-700 font-semibold mb-1">Subcategory *</label>
+                                    <select name="subcategory_id" id="subcategory_id_select" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:bg-white focus:border-[#e07a5f] cursor-pointer font-semibold">
+                                        <option value="">Select Subcategory *</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISIBILITY & PUBLISHING -->
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                                    <i class="fa-solid fa-sliders"></i> Status & Visibility
+                                </h3>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/60 cursor-pointer transition-all">
+                                    <input type="checkbox" name="is_active" value="1" checked class="w-4 h-4 rounded border-slate-300 text-[#e07a5f] focus:ring-[#e07a5f]">
+                                    <div>
+                                        <span class="text-slate-800 font-bold block">Active & Published</span>
+                                        <span class="text-[10px] text-slate-500">Visible to global buyers in the store catalog</span>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/60 cursor-pointer transition-all">
+                                    <input type="checkbox" name="is_featured" value="1" checked class="w-4 h-4 rounded border-slate-300 text-[#e07a5f] focus:ring-[#e07a5f]">
+                                    <div>
+                                        <span class="text-slate-800 font-bold block">Feature on Homepage</span>
+                                        <span class="text-[10px] text-slate-500">Highlight in front-page export spotlight</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-100 space-y-2">
+                                <button type="submit" id="saveBtn" class="w-full py-3 bg-[#e07a5f] hover:bg-[#d46a4f] text-white font-bold rounded-xl shadow-md shadow-[#e07a5f]/20 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                    <span>Save & Publish Product</span>
+                                </button>
+                                <a href="{{ route('admin.dashboard') }}?tab=products" class="w-full py-2.5 border border-slate-300 hover:bg-slate-100 text-slate-600 font-semibold rounded-xl text-center block transition-all">
+                                    Cancel & Return
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
 
         </main>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
+        // Dynamic Subcategories Population
         function populateSubcategories() {
             const catSelect = document.getElementById('category_id_select');
             const subSelect = document.getElementById('subcategory_id_select');
@@ -334,6 +533,54 @@
         document.getElementById('category_id_select').addEventListener('change', populateSubcategories);
         document.addEventListener('DOMContentLoaded', populateSubcategories);
 
+        // Photo Studio Live Preview
+        const previewEl = document.getElementById('product_image_preview');
+        const placeholderEl = document.getElementById('product_image_placeholder');
+        const clearBtn = document.getElementById('clear_image_btn');
+        const fileInput = document.getElementById('image_file_input');
+        const urlInput = document.getElementById('image_url_input');
+
+        function showPreview(src) {
+            if (src && src.trim() !== '') {
+                previewEl.src = src;
+                previewEl.classList.remove('hidden');
+                placeholderEl.classList.add('hidden');
+                clearBtn.classList.remove('hidden');
+            } else {
+                hidePreview();
+            }
+        }
+
+        function hidePreview() {
+            previewEl.src = '';
+            previewEl.classList.add('hidden');
+            placeholderEl.classList.remove('hidden');
+            clearBtn.classList.add('hidden');
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                showPreview(URL.createObjectURL(file));
+            }
+        });
+
+        urlInput.addEventListener('input', function(e) {
+            const val = e.target.value.trim();
+            if (val) {
+                showPreview(val);
+            } else if (!fileInput.files.length) {
+                hidePreview();
+            }
+        });
+
+        clearBtn.addEventListener('click', function() {
+            fileInput.value = '';
+            urlInput.value = '';
+            hidePreview();
+        });
+
+        // Form Submission with SweetAlert2
         document.getElementById('createProductForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('saveBtn');
@@ -354,13 +601,13 @@
                 if (data.success) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Product Created!',
+                        title: 'Product Published!',
                         text: data.message,
                         background: '#ffffff',
                         color: '#1e293b',
                         confirmButtonColor: '#e07a5f'
                     }).then(() => {
-                        window.location.href = "{{ route('admin.products.index') }}";
+                        window.location.href = "{{ route('admin.dashboard') }}?tab=products";
                     });
                 } else {
                     Swal.fire({ icon: 'error', title: 'Error', text: data.message || 'Validation error', background: '#ffffff', color: '#1e293b' });

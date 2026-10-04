@@ -20,6 +20,23 @@ class AdminBlogController extends Controller
     }
 
     /**
+     * Display the create blog article page.
+     */
+    public function create()
+    {
+        return view('admin.blogs.create');
+    }
+
+    /**
+     * Display the edit blog article page.
+     */
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('admin.blogs.edit', compact('post'));
+    }
+
+    /**
      * Store a newly created blog post.
      */
     public function store(Request $request)

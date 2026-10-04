@@ -93,8 +93,6 @@
                 </span>
                 <span class="text-slate-400">&bull;</span>
                 <span class="text-slate-500 font-medium"><i class="fa-regular fa-clock mr-1 text-[#e07a5f]"></i> {{ $post->read_time }}</span>
-                <span class="text-slate-400">&bull;</span>
-                <span class="text-slate-500 font-medium"><i class="fa-regular fa-eye mr-1 text-[#e07a5f]"></i> {{ number_format($post->views) }} Views</span>
             </div>
 
             <!-- Title -->

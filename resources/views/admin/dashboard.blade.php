@@ -221,10 +221,10 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <button @click="openCreateProductModal()" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                <a href="{{ route('admin.products.create') }}" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-plus text-[10px]"></i>
                     <span>Add Product</span>
-                </button>
+                </a>
             </div>
         </header>
 
@@ -440,7 +440,7 @@
                                             </span>
                                         </td>
                                         <td class="p-3.5 px-4 text-right whitespace-nowrap">
-                                            <button @click="viewQuoteDetails({{ json_encode($quote) }})" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Details">
+                                            <button @click="viewQuoteDetails(@js($quote))" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Details">
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
                                         </td>
@@ -498,7 +498,7 @@
                                             </span>
                                         </td>
                                         <td class="p-3.5 px-4 text-right whitespace-nowrap">
-                                            <button @click="viewInquiryDetails({{ json_encode($inq) }})" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Details">
+                                            <button @click="viewInquiry(@js($inq))" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Details">
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
                                         </td>
@@ -557,9 +557,9 @@
                         <h2 class="text-xl font-bold font-serif text-slate-900">Product Catalog</h2>
                         <p class="text-xs text-slate-500">Manage store products, grade specifications, and active status.</p>
                     </div>
-                    <button @click="openCreateProductModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                    <a href="{{ route('admin.products.create') }}" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
                         <i class="fa-solid fa-plus text-[10px]"></i> Add Salt Product
-                    </button>
+                    </a>
                 </div>
 
                 <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
@@ -604,7 +604,7 @@
                                     <td class="py-3 px-4">
                                         <div class="flex items-center gap-3">
                                             @if($prod->image_url)
-                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
+                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" onerror="this.onerror=null; this.src='/bulk.jpg';">
                                             @else
                                             <div class="w-11 h-11 rounded-xl bg-slate-100 border border-dashed border-slate-300 shrink-0 flex items-center justify-center text-slate-400" title="No photo uploaded">
                                                 <i class="fa-solid fa-cube text-slate-300 text-sm"></i>
@@ -655,10 +655,10 @@
                                                 <i class="fa-solid fa-eye text-xs"></i>
                                                 <span>View</span>
                                             </button>
-                                            <button type="button" @click="editProduct({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Edit Product Popup">
+                                            <a href="{{ route('admin.products.edit', $prod->id) }}" class="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Edit Product">
                                                 <i class="fa-solid fa-pen-to-square text-xs"></i>
                                                 <span>Edit</span>
-                                            </button>
+                                            </a>
                                             <button type="button" @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Delete Product">
                                                 <i class="fa-solid fa-trash text-xs"></i>
                                                 <span>Delete</span>
@@ -750,10 +750,10 @@
                                     </td>
                                     <td class="p-4 text-right whitespace-nowrap">
                                         <div class="flex items-center justify-end gap-1.5">
-                                            <button @click="viewQuoteDetails({{ json_encode($quote) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="View Order Details">
+                                            <button @click="viewQuoteDetails(@js($quote))" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="View Order Details">
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
-                                            <button @click="printInvoice({{ json_encode($quote) }})" class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Print Invoice">
+                                            <button @click="printInvoice(@js($quote))" class="p-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Print Invoice">
                                                 <i class="fa-solid fa-print"></i>
                                             </button>
                                             <button @click="deleteQuote({{ $quote->id }}, '{{ $quote->quote_number }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Delete Order">
@@ -832,7 +832,7 @@
                                     </td>
                                     <td class="p-4 text-right whitespace-nowrap">
                                         <div class="flex items-center justify-end gap-1.5">
-                                            <button @click="viewInquiry({{ json_encode($inq) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Read Message">
+                                            <button @click="viewInquiry(@js($inq))" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Read Message">
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
                                             <button @click="deleteInquiry({{ $inq->id }}, '{{ addslashes($inq->name) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg transition-all text-xs font-semibold cursor-pointer" title="Delete Message">
@@ -857,9 +857,9 @@
                         <h2 class="text-xl font-bold font-serif text-slate-900">Blog Articles & Export Insights</h2>
                         <p class="text-xs text-slate-500">Publish guides, industry news, and trade insights for international buyers.</p>
                     </div>
-                    <button @click="openCreateBlogModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                    <a href="{{ route('admin.blogs.create') }}" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
                         <i class="fa-solid fa-plus text-[10px]"></i> Add Blog Article
-                    </button>
+                    </a>
                 </div>
 
                 <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
@@ -886,7 +886,6 @@
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Article Info</th>
                                     <th class="p-4">Category & Author</th>
-                                    <th class="p-4 text-center">Views</th>
                                     <th class="p-4 text-center">Status</th>
                                     <th class="p-4 text-right">Actions</th>
                                 </tr>
@@ -896,7 +895,7 @@
                                 <tr class="hover:bg-slate-50/60 transition-colors" x-show="matchBlog('{{ addslashes($p->title) }}', '{{ addslashes($p->author) }}', '{{ addslashes($p->category) }}', {{ $p->is_published ? 'true' : 'false' }})">
                                     <td class="p-4">
                                         <div class="flex items-center gap-3">
-                                            <img src="{{ $p->image_url }}" alt="{{ $p->title }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
+                                            <img src="{{ $p->image_url }}" alt="{{ $p->title }}" class="w-12 h-12 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" onerror="this.onerror=null; this.src='/blog-hero.jpg';">
                                             <div>
                                                 <h4 class="font-bold text-slate-900 text-sm line-clamp-1">{{ $p->title }}</h4>
                                                 <p class="text-slate-500 text-[11px] line-clamp-1 max-w-xs">{{ $p->excerpt }}</p>
@@ -906,9 +905,6 @@
                                     <td class="p-4 whitespace-nowrap">
                                         <div class="font-semibold text-slate-900">{{ $p->category }}</div>
                                         <div class="text-slate-400 text-[11px]"><i class="fa-solid fa-user text-[9px] mr-1"></i> {{ $p->author }}</div>
-                                    </td>
-                                    <td class="p-4 text-center whitespace-nowrap font-mono font-bold text-slate-700">
-                                        {{ number_format($p->views) }}
                                     </td>
                                     <td class="p-4 text-center whitespace-nowrap">
                                         <button @click="toggleBlogStatus({{ $p->id }})" 
@@ -922,9 +918,9 @@
                                             <a href="{{ route('blog.detail', $p->slug) }}" target="_blank" class="p-2 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="View Article on Live Site">
                                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                             </a>
-                                            <button @click="editBlog({{ json_encode($p) }})" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="Edit Article">
+                                            <a href="{{ route('admin.blogs.edit', $p->id) }}" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-all cursor-pointer inline-flex items-center" title="Edit Article">
                                                 <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
+                                            </a>
                                             <button @click="deleteBlog({{ $p->id }}, '{{ addslashes($p->title) }}')" class="p-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-semibold transition-all cursor-pointer" title="Delete Article">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
@@ -1335,108 +1331,221 @@
     --}}
 
     <!-- VIEW INQUIRY DETAILS MODAL -->
-    <div x-show="showInquiryModal" @click.self="showInquiryModal = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs cursor-pointer" x-cloak>
-        <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h3 class="text-lg font-bold font-serif text-slate-900">Customer Message</h3>
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border"
-                              :class="selectedInquiry?.status === 'replied' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : (selectedInquiry?.status === 'read' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-rose-50 text-rose-700 border-rose-200')"
-                              x-text="selectedInquiry?.status ? selectedInquiry.status.toUpperCase() : 'NEW'">
-                        </span>
+    <div x-show="showInquiryModal" 
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @click.self="showInquiryModal = false" 
+         @keydown.escape.window="showInquiryModal = false"
+         class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/80 backdrop-blur-sm p-4 sm:p-6 flex justify-center items-start sm:items-center" 
+         x-cloak>
+        <div class="bg-white border border-slate-200/90 rounded-2xl max-w-2xl w-full shadow-2xl relative flex flex-col my-auto overflow-hidden" 
+             style="max-height: min(88vh, calc(100vh - 2.5rem));"
+             @click.stop>
+            
+            <!-- Sticky Modal Header -->
+            <div class="px-6 sm:px-8 py-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white sticky top-0 z-20">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-200/60 flex items-center justify-center text-[#e07a5f] shrink-0 shadow-xs">
+                        <i class="fa-solid fa-envelope-open-text text-lg"></i>
                     </div>
-                    <p class="text-xs text-slate-400 mt-0.5" x-text="'Received on ' + (selectedInquiry?.created_at ? new Date(selectedInquiry.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '')"></p>
+                    <div>
+                        <div class="flex items-center gap-2.5 flex-wrap">
+                            <h3 class="font-serif font-bold text-base sm:text-lg text-slate-900 leading-tight">Customer Inquiry Details</h3>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border tracking-wider uppercase"
+                                  :class="selectedInquiry?.status === 'replied' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : (selectedInquiry?.status === 'read' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-amber-50 text-amber-700 border-amber-200')"
+                                  x-text="selectedInquiry?.status ? selectedInquiry.status.toUpperCase() : 'NEW'">
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock text-[10px]"></i>
+                            <span x-text="'Received on ' + (selectedInquiry?.created_at ? new Date(selectedInquiry.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recent')"></span>
+                        </p>
+                    </div>
                 </div>
-                <button @click="showInquiryModal = false" class="text-slate-400 hover:text-slate-800 cursor-pointer p-1.5 rounded-lg hover:bg-slate-100 transition-all"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button @click="showInquiryModal = false" class="text-slate-400 hover:text-slate-800 hover:bg-slate-100 p-2.5 rounded-xl transition-all cursor-pointer" title="Close">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
             </div>
 
-            <div class="space-y-4 text-xs">
-                <!-- Sender Information Card -->
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-[#e07a5f] block"><i class="fa-solid fa-id-card mr-1"></i> Sender Information</span>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
+            <!-- Scrollable Modal Body with Generous Padding -->
+            <div class="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1 min-h-0 text-xs custom-modal-scroll">
+                
+                <!-- 1. Sender / Buyer Information Card -->
+                <div class="bg-slate-50/90 p-5 sm:p-6 rounded-2xl border border-slate-200/80 space-y-4">
+                    <div class="border-b border-slate-200/60 pb-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-[#e07a5f] flex items-center gap-2">
+                            <i class="fa-solid fa-id-card"></i> Contact & Buyer Information
+                        </span>
+                        <span class="text-[10px] text-slate-400 font-medium">Buyer Details</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700">
                         <div>
-                            <span class="text-slate-400 block text-[10px]">Name:</span>
-                            <span class="font-bold text-slate-900 text-sm" x-text="selectedInquiry?.name"></span>
+                            <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Client / Buyer Name</span>
+                            <span class="font-bold text-slate-900 text-sm block mt-0.5" x-text="selectedInquiry?.name"></span>
                         </div>
                         <div>
-                            <span class="text-slate-400 block text-[10px]">Email Address:</span>
-                            <a :href="'mailto:' + selectedInquiry?.email" class="font-semibold text-[#e07a5f] hover:underline cursor-pointer" x-text="selectedInquiry?.email"></a>
+                            <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Email Address</span>
+                            <a :href="'mailto:' + selectedInquiry?.email" class="font-semibold text-[#e07a5f] hover:underline block truncate mt-0.5" x-text="selectedInquiry?.email"></a>
                         </div>
                         <template x-if="selectedInquiry?.company">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Company:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.company"></span>
+                                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Company / Business</span>
+                                <span class="font-semibold text-slate-800 block mt-0.5" x-text="selectedInquiry?.company"></span>
                             </div>
                         </template>
                         <template x-if="selectedInquiry?.phone">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Phone / WhatsApp:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.phone"></span>
+                                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Phone / WhatsApp</span>
+                                <a :href="'https://wa.me/' + (selectedInquiry?.phone ? selectedInquiry.phone.replace(/[^0-9]/g, '') : '')" target="_blank" class="font-semibold text-emerald-600 hover:underline inline-flex items-center gap-1.5 mt-0.5">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                                    <span x-text="selectedInquiry?.phone"></span>
+                                </a>
                             </div>
                         </template>
                         <template x-if="selectedInquiry?.country">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Destination Country:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.country"></span>
+                                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Destination Country</span>
+                                <span class="font-semibold text-slate-800 inline-flex items-center gap-1.5 mt-0.5">
+                                    <i class="fa-solid fa-globe text-[#e07a5f] text-xs"></i>
+                                    <span x-text="selectedInquiry?.country"></span>
+                                </span>
                             </div>
                         </template>
                         <template x-if="selectedInquiry?.destination_port">
                             <div>
-                                <span class="text-slate-400 block text-[10px]">Destination Port:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.destination_port"></span>
-                            </div>
-                        </template>
-                        <template x-if="selectedInquiry?.product || selectedInquiry?.category">
-                            <div>
-                                <span class="text-slate-400 block text-[10px]">Product Required:</span>
-                                <span class="font-bold text-[#e07a5f]" x-text="selectedInquiry?.product || selectedInquiry?.category"></span>
-                            </div>
-                        </template>
-                        <template x-if="selectedInquiry?.quantity || selectedInquiry?.quantity_port">
-                            <div>
-                                <span class="text-slate-400 block text-[10px]">Quantity Required:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.quantity || selectedInquiry?.quantity_port"></span>
-                            </div>
-                        </template>
-                        <template x-if="selectedInquiry?.packaging">
-                            <div>
-                                <span class="text-slate-400 block text-[10px]">Packaging Requirement:</span>
-                                <span class="font-semibold text-slate-800" x-text="selectedInquiry?.packaging"></span>
-                            </div>
-                        </template>
-                        <template x-if="selectedInquiry?.private_label">
-                            <div class="sm:col-span-2 bg-amber-50/60 p-2 rounded-lg border border-amber-200/60">
-                                <span class="text-amber-800 font-bold block text-[10px] uppercase">Private Label & Branding:</span>
-                                <span class="font-semibold text-amber-900" x-text="selectedInquiry?.private_label"></span>
-                            </div>
-                        </template>
-                        <template x-if="selectedInquiry?.delivery_timeline">
-                            <div class="sm:col-span-2 text-[10px] text-slate-500 italic">
-                                <span>Shipping Timeline Status: </span><span class="font-semibold text-slate-700" x-text="selectedInquiry?.delivery_timeline"></span>
+                                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Target Discharge Port</span>
+                                <span class="font-semibold text-slate-800 inline-flex items-center gap-1.5 mt-0.5">
+                                    <i class="fa-solid fa-anchor text-slate-400 text-xs"></i>
+                                    <span x-text="selectedInquiry?.destination_port"></span>
+                                </span>
                             </div>
                         </template>
                     </div>
                 </div>
 
-                <!-- Message Body -->
-                <div class="space-y-1.5">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block"><i class="fa-solid fa-comment-dots mr-1"></i> Inquiry Message Content:</span>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-slate-800 whitespace-pre-line leading-relaxed text-xs font-normal shadow-xs">
-                        <i class="fa-solid fa-quote-left text-[#e07a5f]/30 text-base mr-1.5 block mb-1"></i>
-                        <span x-text="selectedInquiry?.message || 'No message text provided.'"></span>
+                <!-- 2. Export Specifications Card -->
+                <template x-if="selectedInquiry?.product || selectedInquiry?.quantity || selectedInquiry?.packaging || selectedInquiry?.private_label || (parseInquiryMessage(selectedInquiry?.message).specs && parseInquiryMessage(selectedInquiry?.message).specs.length > 0)">
+                    <div class="bg-amber-50/60 p-5 sm:p-6 rounded-2xl border border-amber-200/80 space-y-4">
+                        <div class="border-b border-amber-200/60 pb-3 flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-2">
+                                <i class="fa-solid fa-boxes-stacked text-[#e07a5f]"></i> Export Order Requirements
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                Trade Specs
+                            </span>
+                        </div>
+
+                        <!-- Direct Column Fields -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <template x-if="selectedInquiry?.product">
+                                <div>
+                                    <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Required Product</span>
+                                    <span class="font-bold text-[#e07a5f] text-sm block mt-0.5" x-text="selectedInquiry?.product"></span>
+                                </div>
+                            </template>
+                            <template x-if="selectedInquiry?.quantity">
+                                <div>
+                                    <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Volume / Quantity</span>
+                                    <span class="font-semibold text-slate-800 text-sm block mt-0.5" x-text="selectedInquiry?.quantity"></span>
+                                </div>
+                            </template>
+                            <template x-if="selectedInquiry?.packaging">
+                                <div class="sm:col-span-2">
+                                    <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Packaging Specification</span>
+                                    <span class="font-semibold text-slate-800 text-xs block mt-0.5 bg-white/70 p-2.5 rounded-xl border border-amber-200/50" x-text="selectedInquiry?.packaging"></span>
+                                </div>
+                            </template>
+                            <template x-if="selectedInquiry?.private_label">
+                                <div class="sm:col-span-2 bg-white/90 p-3.5 rounded-xl border border-amber-200">
+                                    <span class="text-[10px] font-bold text-amber-900 uppercase block tracking-wide">Private Label & Custom Branding</span>
+                                    <span class="font-semibold text-slate-800 text-xs block mt-1" x-text="selectedInquiry?.private_label"></span>
+                                </div>
+                            </template>
+                            <template x-if="selectedInquiry?.delivery_timeline">
+                                <div class="sm:col-span-2 text-xs text-slate-600 bg-amber-100/50 p-3 rounded-xl border border-amber-200/50">
+                                    <span class="font-bold text-amber-900">Delivery Timeline Note: </span>
+                                    <span x-text="selectedInquiry?.delivery_timeline"></span>
+                                </div>
+                            </template>
+                        </div>
+
                     </div>
+                </template>
+
+                <!-- 3. Message Content (formatted) -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden">
+                    <div class="px-5 sm:px-6 py-3.5 bg-slate-50 border-b border-slate-200/80 flex items-center gap-2">
+                        <i class="fa-solid fa-comment-dots text-[#e07a5f]"></i>
+                        <h4 class="text-sm font-bold text-slate-900">Message Content</h4>
+                    </div>
+
+                    <div class="p-5 sm:p-6 space-y-5">
+                        <!-- Specifications block -->
+                        <template x-if="parseInquiryMessage(selectedInquiry?.message).specs.length > 0">
+                            <div>
+                                <h5 class="text-[11px] font-extrabold uppercase tracking-wider text-[#e07a5f] mb-3">Specifications &amp; Inquiry Details</h5>
+                                <dl class="divide-y divide-slate-100 border border-slate-100 rounded-xl overflow-hidden">
+                                    <template x-for="item in parseInquiryMessage(selectedInquiry?.message).specs" :key="item.label">
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 px-4 py-2.5 odd:bg-slate-50/60">
+                                            <dt class="text-xs font-bold text-slate-900" x-text="item.label"></dt>
+                                            <dd class="sm:col-span-2 text-xs text-slate-700 leading-relaxed" x-text="item.val || '—'"></dd>
+                                        </div>
+                                    </template>
+                                </dl>
+                            </div>
+                        </template>
+
+                        <!-- Buyer's own note -->
+                        <div>
+                            <h5 class="text-[11px] font-extrabold uppercase tracking-wider text-[#e07a5f] mb-2">Buyer's Note</h5>
+                            <template x-if="parseInquiryMessage(selectedInquiry?.message).buyerNote">
+                                <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line bg-slate-50 border-l-4 border-[#e07a5f] rounded-r-xl px-4 py-3"
+                                   x-text="parseInquiryMessage(selectedInquiry?.message).buyerNote"></p>
+                            </template>
+                            <template x-if="!parseInquiryMessage(selectedInquiry?.message).buyerNote">
+                                <p class="text-xs italic text-slate-400">No additional note was written by the buyer.</p>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sticky Modal Footer -->
+            <div class="px-6 sm:px-8 py-4 border-t border-slate-100 flex items-center justify-between shrink-0 bg-slate-50 sticky bottom-0 z-20 gap-3 flex-wrap">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-bold uppercase text-slate-400 hidden sm:inline">Status:</span>
+                    <select @change="updateInquiryStatus(selectedInquiry?.id, $event.target.value); if(selectedInquiry) selectedInquiry.status = $event.target.value"
+                        class="bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none focus:border-[#e07a5f] cursor-pointer shadow-2xs">
+                        <option value="new" :selected="selectedInquiry?.status === 'new'">Mark: New</option>
+                        <option value="read" :selected="selectedInquiry?.status === 'read'">Mark: Read</option>
+                        <option value="replied" :selected="selectedInquiry?.status === 'replied'">Mark: Replied</option>
+                        <option value="archived" :selected="selectedInquiry?.status === 'archived'">Mark: Archived</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <template x-if="selectedInquiry?.phone">
+                        <a :href="'https://wa.me/' + (selectedInquiry?.phone ? selectedInquiry.phone.replace(/[^0-9]/g, '') : '')" target="_blank" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </template>
+                    <a :href="'mailto:' + selectedInquiry?.email + '?subject=' + encodeURIComponent('RE: ' + (selectedInquiry?.subject || 'SALTORA Himalayan Pink Salt Export Inquiry'))" class="px-4 py-2.5 bg-[#e07a5f] hover:bg-[#d46a4f] text-white font-bold rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer">
+                        <i class="fa-solid fa-reply text-xs"></i>
+                        <span>Reply Email</span>
+                    </a>
+                    <button @click="showInquiryModal = false" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-xl text-xs transition-all cursor-pointer">
+                        Close
+                    </button>
                 </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-slate-100">
-                <a :href="'mailto:' + selectedInquiry?.email" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-sm transition-all">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>Reply via Email</span>
-                </a>
-                <button @click="showInquiryModal = false" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs cursor-pointer">Close</button>
-            </div>
         </div>
     </div>
 
@@ -2209,6 +2318,30 @@
                 viewInquiry(inq) {
                     this.selectedInquiry = inq;
                     this.showInquiryModal = true;
+                },
+                viewInquiryDetails(inq) {
+                    this.viewInquiry(inq);
+                },
+                parseInquiryMessage(msg) {
+                    const result = { specs: [], buyerNote: '' };
+                    if (!msg) return result;
+                    const text = String(msg);
+                    if (!text.includes('--- SPECIFICATIONS')) {
+                        result.buyerNote = text.trim();
+                        return result;
+                    }
+                    const parts = text.split(/-{10,}/);
+                    const specBlock = parts[0] || '';
+                    result.buyerNote = parts.slice(1).join('').trim();
+                    specBlock.split('\n').forEach(line => {
+                        const l = line.trim();
+                        if (!l || l.startsWith('---')) return;
+                        const idx = l.indexOf(':');
+                        if (idx > 0) {
+                            result.specs.push({ label: l.slice(0, idx).trim(), val: l.slice(idx + 1).trim() });
+                        }
+                    });
+                    return result;
                 }
             };
         }

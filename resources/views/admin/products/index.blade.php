@@ -120,9 +120,9 @@
         <header class="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20">
             <h1 class="font-serif font-bold text-lg text-slate-900">Products Sub-Page Management</h1>
             <div class="flex items-center gap-3">
-                <button type="button" @click="openCreateProductModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                <a href="{{ route('admin.products.create') }}" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-plus text-[10px]"></i> Add Salt Product
-                </button>
+                </a>
             </div>
         </header>
 
@@ -181,7 +181,7 @@
                                 <td class="py-3 px-4">
                                     <div class="flex items-center gap-3">
                                         @if($prod->image_url)
-                                        <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0">
+                                        <img src="{{ $prod->image_url }}" alt="{{ $prod->name }}" class="w-11 h-11 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" onerror="this.onerror=null; this.src='/bulk.jpg';">
                                         @else
                                         <div class="w-11 h-11 rounded-xl bg-slate-100 border border-dashed border-slate-300 shrink-0 flex items-center justify-center text-slate-400" title="No photo uploaded">
                                             <i class="fa-solid fa-cube text-slate-300 text-sm"></i>
@@ -232,10 +232,10 @@
                                             <i class="fa-solid fa-eye text-xs"></i>
                                             <span>View</span>
                                         </button>
-                                        <button type="button" @click="editProduct({{ json_encode($prod) }})" class="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Edit Product Popup">
+                                        <a href="{{ route('admin.products.edit', $prod->id) }}" class="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Edit Product">
                                             <i class="fa-solid fa-pen-to-square text-xs"></i>
                                             <span>Edit</span>
-                                        </button>
+                                        </a>
                                         <button type="button" @click="deleteProduct({{ $prod->id }}, '{{ addslashes($prod->name) }}')" class="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs" title="Delete Product">
                                             <i class="fa-solid fa-trash text-xs"></i>
                                             <span>Delete</span>

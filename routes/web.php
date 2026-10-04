@@ -91,6 +91,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Blog Articles Management
     Route::get('/blogs', [\App\Http\Controllers\Admin\AdminBlogController::class, 'index'])->name('admin.blogs.index');
+    Route::get('/blogs/create', [\App\Http\Controllers\Admin\AdminBlogController::class, 'create'])->name('admin.blogs.create');
+    Route::get('/blogs/{id}/edit', [\App\Http\Controllers\Admin\AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
     Route::post('/blogs', [\App\Http\Controllers\Admin\AdminBlogController::class, 'store'])->name('admin.blogs.store');
     Route::put('/blogs/{id}', [\App\Http\Controllers\Admin\AdminBlogController::class, 'update'])->name('admin.blogs.update');
     Route::post('/blogs/{id}/toggle', [\App\Http\Controllers\Admin\AdminBlogController::class, 'toggleStatus'])->name('admin.blogs.toggle');
