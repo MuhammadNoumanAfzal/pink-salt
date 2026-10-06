@@ -658,7 +658,7 @@
                         </div>
                     </button>
                     <div x-show="activeFaq === 5" x-collapse x-cloak class="px-6 pb-6 pt-1 text-xs text-saltora-muted leading-relaxed font-light border-t border-saltora-border/40 bg-saltora-bg/30">
-                        We primarily export under <strong>FOB Karachi Port / Port Qasim</strong> and <strong>CIF (Cost, Insurance & Freight)</strong> to all major international seaports. Standard commercial payment terms are 30% to 50% advance T/T with balance upon presentation of Bill of Lading, or Irrevocable Letter of Credit (L/C at sight) for qualifying volume buyers.
+                        We primarily export under <strong>FOB Karachi Port / Port Qasim</strong> and <strong>CIF (Cost, Insurance & Freight)</strong> to all major international seaports. Standard commercial payment terms are 50% advance deposit via T/T with 50% balance upon presentation of Bill of Lading (B/L), or Irrevocable Letter of Credit (L/C at sight) for qualifying volume buyers.
                     </div>
                 </div>
 
