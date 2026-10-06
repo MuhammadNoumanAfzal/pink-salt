@@ -249,14 +249,11 @@
 
                 </div>
 
-                <div class="bg-saltora-dark text-white p-6 rounded-sm space-y-2.5 border border-saltora-dark-border shadow-md reveal-on-scroll reveal-scale">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">STANDARD EXPORT TERMS</span>
-                        <span class="text-[9px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-xs bg-saltora-terracotta/20 text-saltora-terracotta border border-saltora-terracotta/30">B2B Standard</span>
-                    </div>
+                <div class="bg-saltora-dark text-white p-6 rounded-sm space-y-2 border border-saltora-dark-border shadow-md reveal-on-scroll reveal-scale">
+                    <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">STANDARD EXPORT TERMS</span>
                     <h4 class="font-serif text-lg font-normal text-amber-100">FOB — Free On Board</h4>
                     <p class="text-xs text-stone-300 font-light leading-relaxed">
-                        <strong class="font-semibold text-stone-200">Payment Terms:</strong> 50% advance deposit via T/T &amp; 50% balance upon presentation of Bill of Lading (B/L).
+                        <strong class="font-semibold text-stone-200">Payment Terms:</strong> 50% Advance &amp; 50% on Bill of Lading.
                     </p>
                 </div>
             </div>
