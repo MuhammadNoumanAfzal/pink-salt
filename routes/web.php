@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminSubcategoryController;
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', function () { return view('about'); })->name('about');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
+Route::get('/packing', function () { return view('packing'); })->name('packing');
 Route::get('/certifications', function () { return view('certifications'); })->name('certifications');
 Route::get('/export-logistics', function () { return view('export-logistics'); })->name('export-logistics');
 Route::get('/contact', function () { return view('contact'); })->name('contact');

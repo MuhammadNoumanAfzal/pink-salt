@@ -58,6 +58,7 @@
                 <li><a href="/" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Home</a></li>
                 <li><a href="/about" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> About Saltora</a></li>
                 <li><a href="/products" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Pink Salt Range</a></li>
+                <li><a href="/packing" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Packing Options</a></li>
                 <li><a href="/certifications" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Certifications & ISO</a></li>
                 <li><a href="/export-logistics" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Export & Logistics</a></li>
                 <li><a href="/blog" class="hover:text-amber-300 hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><span class="text-[#e07a5f] text-[10px]">›</span> Blog & Insights</a></li>
