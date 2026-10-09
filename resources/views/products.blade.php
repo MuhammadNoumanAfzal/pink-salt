@@ -576,37 +576,30 @@
                 <div class="lg:col-span-9 space-y-6">
                     
                     <!-- GRID VIEW MODE -->
-                    <div x-show="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div x-show="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                         <template x-for="product in filteredProducts" :key="product.id">
-                            <div class="bg-white border border-[#EAE5DC] rounded-xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-200/50 hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                            <div class="bg-white border border-[#EAE5DC] rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-200/60 hover:border-saltora-terracotta/40 group relative overflow-hidden">
                                 <!-- Top Accent Hover Line -->
-                                <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                                <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
-                                <div class="space-y-3">
-                                    <!-- Image Container (16:10 ratio) -->
-                                    <div class="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#FAF7F2] cursor-pointer group/img"
+                                <div class="space-y-4">
+                                    <!-- Image Container (Taller, Prominent 4:3 Aspect Ratio) -->
+                                    <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs"
                                          @click="openQuickView(product)">
                                         <template x-if="product.image_url">
-                                            <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                                            <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                                         </template>
                                         <template x-if="!product.image_url">
                                             <div class="w-full h-full bg-gradient-to-br from-[#FAF7F2] via-stone-50 to-[#F2ECE1] flex flex-col items-center justify-center text-stone-400 gap-2 p-4 text-center">
-                                                <div class="w-11 h-11 rounded-full bg-white shadow-xs border border-stone-200/80 flex items-center justify-center text-[#B87A62]/70 group-hover:scale-110 transition-transform">
-                                                    <i class="fa-solid fa-cube text-base"></i>
+                                                <div class="w-12 h-12 rounded-full bg-white shadow-xs border border-stone-200/80 flex items-center justify-center text-[#B87A62]/70 group-hover:scale-110 transition-transform">
+                                                    <i class="fa-solid fa-cube text-lg"></i>
                                                 </div>
-                                                <span class="text-[9px] uppercase font-bold tracking-widest text-stone-400">Pure Himalayan Salt</span>
+                                                <span class="text-[10px] uppercase font-bold tracking-widest text-stone-400">Pure Himalayan Salt</span>
                                             </div>
                                         </template>
                                         
                                         <!-- Subtle Overlay on Hover -->
                                         <div class="absolute inset-0 bg-stone-900/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-
-                                        <!-- Optional Top Right Purity Badge -->
-                                        <template x-if="product.purity">
-                                            <div class="absolute top-2.5 right-2.5 z-10 pointer-events-none">
-                                                <span class="bg-white/95 backdrop-blur-xs text-emerald-800 text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full shadow-xs border border-emerald-600/20" x-text="product.purity"></span>
-                                            </div>
-                                        </template>
 
                                         <!-- Center Hover Quick View Pill -->
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
@@ -1171,9 +1164,6 @@
                             <div class="absolute top-2.5 left-2.5 z-20 flex items-center gap-1.5">
                                 <template x-if="selectedProduct.packaging_type">
                                     <span class="bg-stone-900/85 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs" x-text="selectedProduct.packaging_type"></span>
-                                </template>
-                                <template x-if="selectedProduct.purity">
-                                    <span class="bg-white/95 backdrop-blur-md text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs border border-emerald-600/20" x-text="selectedProduct.purity"></span>
                                 </template>
                             </div>
                         </div>

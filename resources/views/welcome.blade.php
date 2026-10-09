@@ -401,8 +401,8 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                     <div class="space-y-3.5">
-                        <!-- 16:9 Aspect Ratio Image -->
-                        <div class="relative aspect-video w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img" @click="openQuickView(@js($qv))">
+                        <!-- 4:3 Aspect Ratio Image (Taller, Prominent) -->
+                        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs" @click="openQuickView(@js($qv))">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                             @else
@@ -414,14 +414,6 @@
                             
                             <!-- Dark Overlay Gradient on Hover -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-
-                            <!-- Top Left Quality Badge -->
-                            <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
-                                <span class="bg-white/95 backdrop-blur-md text-saltora-terracotta text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full shadow-2xs border border-saltora-terracotta/20 flex items-center gap-1">
-                                    <i class="fa-solid fa-sparkles text-[8px]"></i>
-                                    98.5%+ NaCl
-                                </span>
-                            </div>
 
                             <!-- Center Hover Quick View Pill -->
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
@@ -1109,9 +1101,6 @@
                             <div class="absolute top-2.5 left-2.5 z-20 flex items-center gap-1.5">
                                 <template x-if="selectedProduct.packaging_type">
                                     <span class="bg-stone-900/85 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs" x-text="selectedProduct.packaging_type"></span>
-                                </template>
-                                <template x-if="selectedProduct.purity">
-                                    <span class="bg-white/95 backdrop-blur-md text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs border border-emerald-600/20" x-text="selectedProduct.purity"></span>
                                 </template>
                             </div>
                         </div>
