@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,21 +9,282 @@
 }
 
 @layer base {
+  html {
+    font-size: 16px;
+  }
+
   body {
     background-color: #F8F5EF;
-    color: #292524;
+    color: #000000;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 450;
+    line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, .font-heading {
     font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #000000;
+    font-weight: 600;
+  }
+
+  p {
+    color: #111111;
   }
 
   a, button, [role="button"] {
     cursor: pointer;
   }
+}
+
+/* =========================================================================
+   GLOBAL ACCESSIBILITY & HIGH CONTRAST TYPOGRAPHY SYSTEM
+   Transforms all client-side pages, cards, popups, and modals into bold,
+   high-contrast black text with larger, more legible font sizes.
+   ========================================================================= */
+
+/* Eliminate washed-out ultra-thin text across all views */
+.font-light {
+  font-weight: 450 !important;
+}
+
+/* Upgrade small font sizes to comfortable, easily readable dimensions */
+.text-xs {
+  font-size: 0.865rem !important; /* ~13.8px instead of 12px */
+  line-height: 1.5 !important;
+}
+
+/* =========================================================================
+   HEADER & NAVBAR PRECISION REFINEMENT
+   Ensures the sticky header is sleek, proportional, and balanced.
+   Prevents oversized font size, excessive link spread, and collision with logo.
+   ========================================================================= */
+header.sticky {
+  background-color: rgba(248, 245, 239, 0.98) !important;
+}
+
+header.sticky .max-w-7xl {
+  height: 4.25rem !important; /* Sleek 68px header height instead of 80px */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1.25rem !important;
+}
+
+/* Brand Logo */
+header.sticky a[title="SALTORA Home"],
+header.sticky a[href="/"].group {
+  flex-shrink: 0 !important;
+  margin-right: 1.25rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+header.sticky a[title="SALTORA Home"] img,
+header.sticky a[href="/"].group img {
+  height: 2.15rem !important; /* ~34px clean logo mark */
+  width: auto !important;
+}
+
+header.sticky a[title="SALTORA Home"] span,
+header.sticky a[href="/"].group span {
+  font-size: 1.35rem !important; /* ~21.6px clean logo text */
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  color: #000000 !important;
+}
+
+/* Navigation Menu Links */
+header.sticky nav.hidden.lg\:flex {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.25rem !important; /* Sleek 20px gap */
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Disable Tailwind space-x-9 (36px margin) inside header nav */
+header.sticky nav.hidden.lg\:flex > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0 !important;
+}
+
+@media (min-width: 1280px) {
+  header.sticky nav.hidden.lg\:flex {
+    gap: 1.75rem !important; /* 28px gap on XL displays */
+  }
+}
+
+header.sticky nav.hidden.lg\:flex a {
+  font-size: 0.75rem !important; /* 12px crisp, elegant uppercase */
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  color: #111111 !important;
+  white-space: nowrap !important;
+  padding: 0.35rem 0.2rem !important;
+  transition: color 0.15s ease !important;
+}
+
+header.sticky nav.hidden.lg\:flex a:hover {
+  color: #964B42 !important;
+}
+
+/* Header Quote CTA Button */
+header.sticky .hidden.sm\:flex {
+  flex-shrink: 0 !important;
+  margin-left: 1rem !important;
+}
+
+header.sticky a[href="/contact"].bg-saltora-dark,
+header.sticky a[href*="contact"].bg-saltora-dark,
+header.sticky .hidden.sm\:flex a {
+  font-size: 0.72rem !important; /* ~11.5px */
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  padding: 0.5rem 1rem !important;
+  height: 2.35rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  border-radius: 3px !important;
+  white-space: nowrap !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+
+header.sticky a[href="/contact"].bg-saltora-dark span,
+header.sticky a[href*="contact"].bg-saltora-dark span,
+header.sticky .hidden.sm\:flex a span {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+}
+
+header.sticky a[href="/contact"].bg-saltora-dark i,
+header.sticky a[href*="contact"].bg-saltora-dark i,
+header.sticky .hidden.sm\:flex a i {
+  font-size: 0.75rem !important;
+}
+
+/* Mobile Drawer Links */
+header.sticky div[x-show="mobileMenuOpen"] a {
+  font-size: 0.825rem !important;
+  letter-spacing: 0.05em !important;
+  color: #111111 !important;
+}
+
+.text-sm {
+  font-size: 0.975rem !important; /* ~15.6px instead of 14px */
+  line-height: 1.6 !important;
+}
+
+.text-base {
+  font-size: 1.05rem !important; /* ~16.8px */
+  line-height: 1.65 !important;
+}
+
+/* Prevent microscopic text badges/subtitles */
+.text-\[8px\],
+.text-\[9px\],
+.text-\[10px\],
+.text-\[11px\] {
+  font-size: 0.775rem !important; /* ~12.4px */
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+}
+
+.text-\[12px\] {
+  font-size: 0.85rem !important;
+}
+
+.text-\[13px\],
+.text-\[13\.5px\] {
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Turn dull greys into crisp, sharp black and dark charcoal across all pages */
+.text-saltora-muted,
+.text-saltora-muted-light,
+.text-stone-500,
+.text-stone-600,
+.text-gray-500,
+.text-gray-600 {
+  color: #111111 !important;
+  font-weight: 450;
+}
+
+.text-stone-400,
+.text-gray-400 {
+  color: #262220 !important;
+  font-weight: 500;
+}
+
+.text-stone-700,
+.text-stone-800,
+.text-stone-900,
+.text-saltora-text {
+  color: #000000 !important;
+}
+
+/* Modal, Popup & Drawer High-Contrast Specifications */
+[role="dialog"],
+.modal-content,
+[x-show*="Modal"],
+[x-show*="modal"],
+[x-show*="quickView"],
+[x-show*="detail"],
+[x-show*="activeDocModal"],
+[x-show*="Sidebar"],
+[x-show*="Drawer"],
+.swal2-popup {
+  color: #000000 !important;
+}
+
+[role="dialog"] p,
+[x-show*="Modal"] p,
+[x-show*="modal"] p,
+[x-show*="quickView"] p,
+[x-show*="detail"] p,
+[x-show*="activeDocModal"] p {
+  color: #111111 !important;
+  font-size: 0.965rem !important;
+  line-height: 1.6 !important;
+  font-weight: 450 !important;
+}
+
+[role="dialog"] h3,
+[role="dialog"] h4,
+[x-show*="Modal"] h3,
+[x-show*="Modal"] h4,
+[x-show*="modal"] h3,
+[x-show*="modal"] h4 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Preserve bright crisp text on intentionally dark sections */
+.bg-saltora-dark p,
+.bg-black p,
+[class*="bg-[#181513]"] p,
+.bg-stone-900 p {
+  color: #F5F5F4 !important;
+}
+
+.bg-saltora-dark .text-stone-100,
+.bg-saltora-dark .text-stone-200,
+.bg-saltora-dark .text-stone-300,
+.bg-saltora-dark .text-stone-400,
+.bg-black .text-stone-300,
+.bg-black .text-stone-400,
+[class*="bg-[#181513]"] .text-stone-400 {
+  color: #E7E5E4 !important;
 }
 
 /* Custom Scrollbar */

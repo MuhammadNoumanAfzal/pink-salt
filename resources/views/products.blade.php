@@ -149,26 +149,26 @@
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group cursor-pointer" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center space-x-9 text-xs font-semibold tracking-widest text-saltora-text uppercase">
-                <a href="/about" class="hover:text-saltora-terracotta transition-colors cursor-pointer">ABOUT</a>
-                <a href="/products" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer">PRODUCTS</a>
-                <a href="/certifications" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CERTIFICATIONS</a>
-                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer">EXPORT & LOGISTICS</a>
-                <a href="/blog" class="hover:text-saltora-terracotta transition-colors cursor-pointer">BLOG</a>
-                <a href="/contact" class="hover:text-saltora-terracotta transition-colors cursor-pointer">CONTACT</a>
+            <nav class="hidden lg:flex items-center space-x-5 xl:space-x-8 text-[12px] font-semibold tracking-wider text-saltora-text uppercase mx-auto">
+                <a href="/about" class="hover:text-saltora-terracotta transition-colors cursor-pointer whitespace-nowrap">ABOUT</a>
+                <a href="/products" class="text-saltora-terracotta font-bold border-b-2 border-saltora-terracotta pb-1 cursor-pointer whitespace-nowrap">PRODUCTS</a>
+                <a href="/certifications" class="hover:text-saltora-terracotta transition-colors cursor-pointer whitespace-nowrap">CERTIFICATIONS</a>
+                <a href="/export-logistics" class="hover:text-saltora-terracotta transition-colors cursor-pointer whitespace-nowrap">EXPORT & LOGISTICS</a>
+                <a href="/blog" class="hover:text-saltora-terracotta transition-colors cursor-pointer whitespace-nowrap">BLOG</a>
+                <a href="/contact" class="hover:text-saltora-terracotta transition-colors cursor-pointer whitespace-nowrap">CONTACT</a>
             </nav>
 
             <!-- Header Action Button & Quote CTA -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="/contact" class="bg-saltora-dark hover:bg-black text-white px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2.5 group cursor-pointer rounded-xs border border-amber-900/30">
+            <div class="hidden sm:flex items-center gap-3 shrink-0">
+                <a href="/contact" class="bg-saltora-dark hover:bg-black text-white px-4 py-2 text-[11px] font-bold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group cursor-pointer rounded-xs border border-amber-900/30 whitespace-nowrap">
                     <i class="fa-solid fa-file-invoice text-[#e07a5f] group-hover:scale-110 transition-transform text-xs"></i>
                     <span>REQUEST A QUOTE</span>
                 </a>
@@ -1182,68 +1182,68 @@
                         <div class="space-y-3.5 px-0.5">
                             <!-- Category & Tag Row -->
                             <div class="flex items-center justify-between flex-wrap gap-2">
-                                <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
+                                <div class="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-saltora-terracotta truncate">
                                     <span x-text="selectedProduct.category_name"></span>
                                     <template x-if="selectedProduct.subcategory_name">
-                                        <span class="text-stone-300">/</span>
+                                        <span class="text-stone-400">/</span>
                                     </template>
                                     <template x-if="selectedProduct.subcategory_name">
-                                        <span class="text-stone-500 font-normal truncate" x-text="selectedProduct.subcategory_name"></span>
+                                        <span class="text-black font-semibold truncate" x-text="selectedProduct.subcategory_name"></span>
                                     </template>
                                 </div>
-                                <span class="text-[9px] font-bold tracking-widest text-stone-400 uppercase bg-stone-100 px-2 py-0.5 rounded-sm">Technical Specifications</span>
+                                <span class="text-xs font-bold tracking-wider text-black uppercase bg-stone-200/90 px-2.5 py-1 rounded-sm">Technical Specifications</span>
                             </div>
 
                             <!-- Product Title -->
-                            <h2 class="font-serif text-xl sm:text-2xl text-stone-900 font-semibold leading-snug" x-text="selectedProduct.name"></h2>
+                            <h2 class="font-serif text-2xl sm:text-3xl text-black font-bold leading-snug" x-text="selectedProduct.name"></h2>
 
                             <!-- Product Description (if available) -->
                             <template x-if="selectedProduct.description">
-                                <p class="text-xs text-stone-600 font-light leading-relaxed line-clamp-2" x-text="selectedProduct.description"></p>
+                                <p class="text-sm sm:text-base text-black font-normal leading-relaxed line-clamp-3" x-text="selectedProduct.description"></p>
                             </template>
 
                             <!-- Modern Price & MOQ Card -->
-                            <div class="p-3 sm:p-3.5 bg-[#FAF7F2] border border-[#EAE3D6] rounded-xl flex items-center justify-between">
+                            <div class="p-3.5 sm:p-4 bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl flex items-center justify-between">
                                 <div>
-                                    <span class="text-[9px] uppercase font-bold text-stone-400 block tracking-wider">Export Price</span>
-                                    <span class="text-lg sm:text-xl font-bold text-stone-900" x-text="selectedProduct.formatted_price"></span>
+                                    <span class="text-xs uppercase font-bold text-stone-900 block tracking-wider">Export Price</span>
+                                    <span class="text-xl sm:text-2xl font-black text-black" x-text="selectedProduct.formatted_price"></span>
                                 </div>
                                 <div class="text-right">
-                                    <span class="text-[9px] uppercase font-bold text-stone-400 block tracking-wider">Minimum Order (MOQ)</span>
-                                    <span class="text-xs sm:text-sm font-bold text-saltora-terracotta" x-text="selectedProduct.moq || 'Flexible Bulk Order'"></span>
+                                    <span class="text-xs uppercase font-bold text-stone-900 block tracking-wider">Minimum Order (MOQ)</span>
+                                    <span class="text-sm sm:text-base font-bold text-saltora-terracotta" x-text="selectedProduct.moq || 'Flexible Bulk Order'"></span>
                                 </div>
                             </div>
 
                             <!-- Specs Metric Grid (Clean Modern Cards) -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                                 <template x-if="selectedProduct.grain_size">
-                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
-                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Grain Size</span>
-                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.grain_size"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
+                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Grain Size</span>
+                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.grain_size"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.packaging_type">
-                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
-                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Packaging</span>
-                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.packaging_type"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
+                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Packaging</span>
+                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.packaging_type"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.package_weight">
-                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
-                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Unit Weight</span>
-                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.package_weight"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
+                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Unit Weight</span>
+                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.package_weight"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.purity">
-                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2">
-                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Purity</span>
-                                        <span class="text-xs font-semibold text-emerald-800 mt-0.5 block truncate" x-text="selectedProduct.purity"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
+                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Purity</span>
+                                        <span class="text-sm font-bold text-emerald-800 block truncate" x-text="selectedProduct.purity"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.grade">
-                                    <div class="bg-stone-50/90 border border-stone-200/80 rounded-lg p-2 col-span-2 sm:col-span-2">
-                                        <span class="text-[9px] uppercase font-semibold text-stone-400 block">Grade Standard</span>
-                                        <span class="text-xs font-semibold text-stone-800 mt-0.5 block truncate" x-text="selectedProduct.grade"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5 col-span-2 sm:col-span-2">
+                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Grade Standard</span>
+                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.grade"></span>
                                     </div>
                                 </template>
                             </div>
