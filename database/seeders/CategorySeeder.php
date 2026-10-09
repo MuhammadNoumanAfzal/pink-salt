@@ -144,16 +144,6 @@ class CategorySeeder extends Seeder
                         'name' => 'Rectangular Salt Cooking Slabs (8x4x2")',
                         'slug' => 'rectangular-cooking-slabs',
                         'description' => 'Precision machine-cut rectangular cooking slabs engineered for stovetop, oven, and BBQ grill searing.'
-                    ],
-                    [
-                        'name' => 'Gourmet Grilling & Searing Blocks (12x8x1.5")',
-                        'slug' => 'gourmet-searing-blocks',
-                        'description' => 'Extra-large thick cooking salt blocks providing large surface area for simultaneous searing of steaks and skewers.'
-                    ],
-                    [
-                        'name' => 'Round Salt Serving Platters & Chilling Plates',
-                        'slug' => 'round-serving-platters',
-                        'description' => 'Polished circular pink salt discs for serving sushi, sashimi, carpaccio, and artisanal cheeses.'
                     ]
                 ],
                 'products' => [
@@ -177,50 +167,6 @@ class CategorySeeder extends Seeder
                         'short_desc' => 'High-thermal retention pink salt cooking slab. Imparts subtle gourmet mineral notes to meats, fish, and veggies on gas stoves or charcoal grills.',
                         'full_desc' => 'Carefully extracted from solid Khewra salt blocks and precision-cut to 8x4x2 inches. Can be heated slowly to 450°F (230°C) for tabletop cooking or chilled in the freezer for cold appetizers and desserts.',
                         'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Heavy-Duty Himalayan Salt Searing Block (12x8x1.5 in)',
-                        'subcat_slug' => 'gourmet-searing-blocks',
-                        'badge' => 'BBQ & Steakhouse',
-                        'grade' => 'High-Heat Grilling Grade',
-                        'mesh_size' => 'Solid Cut Block (12x8x1.5")',
-                        'grain_size' => 'Solid Cut Block',
-                        'purity' => '98.8% NaCl',
-                        'packaging' => 'Foam-padded retail presentation box, 4 pcs per master carton',
-                        'packaging_type' => 'Master Carton',
-                        'package_weight' => '5.5 kg / piece',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'tile_brick',
-                        'moq' => '200 Pieces',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/searing-block-12x8.jpg',
-                        'short_desc' => 'Oversized commercial-grade Himalayan cooking slab designed for professional steakhouses, BBQ enthusiasts, and gourmet caterers.',
-                        'full_desc' => 'With a generous 12x8 inch surface and 1.5-inch thickness, this block retains heat for extended cooking sessions. Distributes heat evenly without flare-ups, searing meats to perfection while naturally infusing essential trace elements.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Round Himalayan Salt Chilling & Serving Platter (8 in)',
-                        'subcat_slug' => 'round-serving-platters',
-                        'badge' => 'Sushi & Platter',
-                        'grade' => 'Cold Platter & Sushi Grade',
-                        'mesh_size' => 'Polished Round Disc (8" dia x 1.5")',
-                        'grain_size' => 'Polished Round Disc',
-                        'purity' => '98.7% NaCl',
-                        'packaging' => 'Luxury padded gift box with presentation guide',
-                        'packaging_type' => 'Retail Gift Box',
-                        'package_weight' => '2.8 kg / piece',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'tile_brick',
-                        'moq' => '300 Pieces',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/round-platter-8in.jpg',
-                        'short_desc' => 'Circular hand-polished salt serving platter. Chill in the freezer to keep sashimi, fruits, and carpaccio chilled for hours at dinner parties.',
-                        'full_desc' => 'Artisanal round plate carved from solid pink salt crystal. Antimicrobial surface is naturally hygienic and easy to wipe clean after serving. A stunning centerpiece for upscale hospitality and retail gift catalogs.',
-                        'is_featured' => false,
                         'is_active' => true,
                     ]
                 ]
