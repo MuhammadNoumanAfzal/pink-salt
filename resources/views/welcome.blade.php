@@ -823,30 +823,36 @@
                 </div>
             </div>
 
-            <!-- Right 4 Circular Seal Badges -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center reveal-scale">
-                <div class="w-36 h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+            <!-- Right 5 Circular Seal Badges -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center reveal-scale">
+                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
                     <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
                     <span class="font-serif text-sm font-bold text-saltora-text leading-tight">ISO 22000:2018</span>
                     <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD SAFETY</span>
                 </div>
 
-                <div class="w-36 h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
                     <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
                     <span class="font-serif text-base font-bold text-saltora-text leading-tight">Halal</span>
                     <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">CERTIFIED</span>
                 </div>
 
-                <div class="w-36 h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
                     <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
                     <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Codex CXS<br>150:1985</span>
                     <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD GRADE</span>
                 </div>
 
-                <div class="w-36 h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
                     <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
                     <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Chamber of<br>Commerce</span>
                     <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">REGISTERED</span>
+                </div>
+
+                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer col-span-2 sm:col-span-1 mx-auto sm:mx-0">
+                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Salt Mfrs<br>Association</span>
+                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">MEMBER</span>
                 </div>
             </div>
 

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Comprehensive Technical & On-Page SEO -->
-    <title>Certifications & Quality Standards | ISO 22000, Halal, Codex CXS 150 — SALTORA</title>
-    <meta name="description" content="SALTORA's certified Himalayan pink salt quality and food safety compliance: ISO 22000:2018, Halal, Codex Alimentarius CXS 150:1985, HACCP, and third-party laboratory COA reports.">
-    <meta name="keywords" content="Himalayan Salt Certifications, ISO 22000 Salt Exporter, Halal Pink Salt Pakistan, Codex CXS 150, PCSIR Lab Tested Salt, Heavy Metal Free Pink Salt, Certificate of Analysis Saltora, Pakistan Chamber of Commerce Exporter">
+    <title>Certifications & Quality Standards | ISO 22000, Halal, Codex CXS 150, SMAP — SALTORA</title>
+    <meta name="description" content="SALTORA's certified Himalayan pink salt quality and compliance: ISO 22000:2018, Halal, Codex Alimentarius CXS 150:1985, Chamber of Commerce & Industry, and Member Salt Manufacturer Association of Pakistan.">
+    <meta name="keywords" content="Himalayan Salt Certifications, ISO 22000 Salt Exporter, Halal Pink Salt Pakistan, Codex CXS 150, Pakistan Chamber of Commerce Exporter, Member Salt Manufacturer Association of Pakistan, SMAP Salt Exporter">
     <meta name="author" content="SALTORA Quality & Compliance Department">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -15,8 +15,8 @@
     <!-- Open Graph (Facebook / LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SALTORA Himalayan Pink Salt">
-    <meta property="og:title" content="Certifications & Quality Standards | ISO 22000, Halal, Codex CXS 150 — SALTORA">
-    <meta property="og:description" content="Verified international food-safety, religious dietary, and export compliance certifications for Himalayan pink salt. Every shipment is audited and backed by laboratory COAs.">
+    <meta property="og:title" content="Certifications & Quality Standards | ISO 22000, Halal, Codex CXS 150, SMAP — SALTORA">
+    <meta property="og:description" content="Verified international food-safety, religious dietary, and export compliance certifications for Himalayan pink salt. Backed by accredited registries and audited COAs.">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ url('/cert-hero.jpg') }}">
     <meta property="og:locale" content="en_US">
@@ -82,9 +82,8 @@
             "ISO 22000:2018 Food Safety Management System",
             "Halal Dietary Certification for Food Salt",
             "Codex Alimentarius Standard for Food Grade Salt (CXS 150-1985)",
-            "Hazard Analysis Critical Control Point (HACCP)",
-            "Good Manufacturing Practices (GMP)",
-            "Pakistan Council of Scientific & Industrial Research (PCSIR)"
+            "Chamber of Commerce & Industry Registered Exporter",
+            "Member Salt Manufacturer Association of Pakistan (SMAP)"
           ]
         }
       ]
@@ -200,20 +199,18 @@
     <div class="bg-saltora-terracotta text-white py-3 overflow-hidden shadow-inner border-y border-saltora-terracotta-dark">
         <div class="marquee-track flex whitespace-nowrap gap-12 text-xs font-semibold tracking-widest uppercase items-center">
             <div class="flex items-center gap-10 shrink-0">
-                <span class="flex items-center gap-2">✦ ISO 22000:2018 FOOD SAFETY CERTIFIED</span>
-                <span class="flex items-center gap-2">✦ HALAL GLOBAL EXPORT COMPLIANT</span>
-                <span class="flex items-center gap-2">✦ CODEX ALIMENTARIUS CXS 150:1985 PURITY</span>
-                <span class="flex items-center gap-2">✦ REGISTERED CHAMBER OF COMMERCE EXPORTER</span>
-                <span class="flex items-center gap-2">✦ PCSIR INDEPENDENT LAB VERIFIED</span>
-                <span class="flex items-center gap-2">✦ SGS & INTERTEK PRE-SHIPMENT AUDITED</span>
+                <span class="flex items-center gap-2">✦ ISO 22000:2018 FOOD SAFETY MANAGEMENT</span>
+                <span class="flex items-center gap-2">✦ HALAL EXPORT CERTIFIED</span>
+                <span class="flex items-center gap-2">✦ CODEX ALIMENTARIUS CXS 150:1985 COMPLIANT</span>
+                <span class="flex items-center gap-2">✦ CHAMBER OF COMMERCE & INDUSTRY REGISTERED</span>
+                <span class="flex items-center gap-2">✦ MEMBER SALT MANUFACTURER ASSOCIATION OF PAKISTAN</span>
             </div>
             <div class="flex items-center gap-10 shrink-0">
-                <span class="flex items-center gap-2">✦ ISO 22000:2018 FOOD SAFETY CERTIFIED</span>
-                <span class="flex items-center gap-2">✦ HALAL GLOBAL EXPORT COMPLIANT</span>
-                <span class="flex items-center gap-2">✦ CODEX ALIMENTARIUS CXS 150:1985 PURITY</span>
-                <span class="flex items-center gap-2">✦ REGISTERED CHAMBER OF COMMERCE EXPORTER</span>
-                <span class="flex items-center gap-2">✦ PCSIR INDEPENDENT LAB VERIFIED</span>
-                <span class="flex items-center gap-2">✦ SGS & INTERTEK PRE-SHIPMENT AUDITED</span>
+                <span class="flex items-center gap-2">✦ ISO 22000:2018 FOOD SAFETY MANAGEMENT</span>
+                <span class="flex items-center gap-2">✦ HALAL EXPORT CERTIFIED</span>
+                <span class="flex items-center gap-2">✦ CODEX ALIMENTARIUS CXS 150:1985 COMPLIANT</span>
+                <span class="flex items-center gap-2">✦ CHAMBER OF COMMERCE & INDUSTRY REGISTERED</span>
+                <span class="flex items-center gap-2">✦ MEMBER SALT MANUFACTURER ASSOCIATION OF PAKISTAN</span>
             </div>
         </div>
     </div>
@@ -224,111 +221,87 @@
                  activeCategory: 'all',
                  searchQuery: '',
                  
-                 // Standards Database
+                 // Standards Database (Only the 4 certifications from user image + Member Salt Manufacturer Association of Pakistan)
                  standards: [
                      {
                          id: 'iso22000',
                          category: 'food-safety',
-                         categoryLabel: 'Food Safety & Hygiene',
+                         categoryLabel: 'Food Safety Management',
                          code: 'ISO 22000:2018',
-                         title: 'Food Safety Management System (FSMS)',
+                         tagline: 'FOOD SAFETY MANAGEMENT',
+                         title: 'ISO 22000:2018',
                          badge: 'INTERNATIONAL STANDARD',
                          status: 'Audited & Certified',
                          issuingBody: 'International Organization for Standardization / Accredited Registrar',
-                         description: 'Complete FSMS covering the entire supply chain from raw rock sorting, multi-deck rotary sieving, optical grading, to moisture-barrier packing. Assures zero biological, chemical, or physical hazards.',
+                         description: 'Saltora operates with a food-safety management approach aligned to ISO 22000:2018 — covering hygienic handling, processing discipline and batch-level care for food-grade salt.',
+                         detailedScope: 'Complete Food Safety Management System covering the entire supply chain from raw rock sorting, multi-deck rotary sieving, optical grading, to moisture-barrier packing. Assures zero biological, chemical, or physical hazards.',
                          keyMetrics: ['HACCP Integrated', 'Allergen Control Protocol', 'Traceability to Extraction Point'],
-                         validity: 'Annual Third-Party Surveillance Audit'
+                         validity: 'Annual Third-Party Surveillance Audit',
+                         stampType: 'iso'
                      },
                      {
                          id: 'halal',
-                         category: 'dietary',
-                         categoryLabel: 'Religious & Dietary',
+                         category: 'halal',
+                         categoryLabel: 'Halal Certified',
                          code: 'Halal Certified',
-                         title: 'Global Halal Food Compliance',
+                         tagline: 'HALAL CERTIFIED',
+                         title: 'Halal',
                          badge: 'DIETARY COMPLIANT',
                          status: 'Certified for Export',
                          issuingBody: 'Authorized Islamic Food Safety & Halal Certification Authority',
-                         description: 'Guarantees that Saltora Himalayan Pink Salt is 100% natural, free from forbidden additives, cross-contamination, animal derivatives, or non-halal processing aids, meeting strict OIC/SMIIC export standards.',
+                         description: 'Our Himalayan pink salt is Halal certified, giving buyers in Muslim-majority and Halal-sensitive markets full confidence in compliance.',
+                         detailedScope: 'Guarantees that Saltora Himalayan Pink Salt is 100% natural, free from forbidden additives, cross-contamination, animal derivatives, or non-halal processing aids, meeting strict OIC/SMIIC export standards.',
                          keyMetrics: ['100% Pure Rock Salt', 'No Alcohol or Animal Byproducts', 'Dedicated Sanitized Packing Line'],
-                         validity: 'Annual On-Site Facility Verification'
+                         validity: 'Annual On-Site Facility Verification',
+                         stampType: 'halal'
                      },
                      {
                          id: 'codex',
-                         category: 'chemical',
-                         categoryLabel: 'Chemical Purity & Lab',
+                         category: 'codex',
+                         categoryLabel: 'Codex Food-Grade Standard',
                          code: 'Codex CXS 150:1985',
-                         title: 'Standard for Food Grade Salt',
+                         tagline: 'CODEX FOOD-GRADE STANDARD',
+                         title: 'Codex CXS 150:1985',
                          badge: 'GLOBAL CODEX ALIMENTARIUS',
                          status: 'Fully Compliant',
                          issuingBody: 'FAO / WHO Codex Alimentarius Commission',
-                         description: 'Meets and surpasses international benchmark parameters for edible salt: NaCl content &ge; 97.0%, moisture &le; 0.5%, with heavy metal levels (Lead, Arsenic, Cadmium, Mercury) significantly below maximum residue limits.',
+                         description: 'Our edible salt is prepared with reference to the Codex standard for food-grade salt (CXS 150:1985), supporting international food-trade requirements.',
+                         detailedScope: 'Meets and surpasses international benchmark parameters for edible salt: NaCl content ≥ 97.0%, moisture ≤ 0.5%, with heavy metal levels (Lead, Arsenic, Cadmium, Mercury) significantly below maximum residue limits.',
                          keyMetrics: ['98.8% - 99.2% Pure NaCl', 'Lead (Pb) < 0.1 mg/kg', 'Moisture < 0.20%'],
-                         validity: 'Every Production Batch Verified'
+                         validity: 'Every Production Batch Verified',
+                         stampType: 'codex'
                      },
                      {
                          id: 'chamber',
-                         category: 'trade',
-                         categoryLabel: 'Trade & Customs',
-                         code: 'Chamber Registered',
-                         title: 'Lahore & Federal Chamber of Commerce & Industry',
+                         category: 'registered-member',
+                         categoryLabel: 'Registered Member',
+                         code: 'Chamber of Commerce & Industry',
+                         tagline: 'REGISTERED MEMBER',
+                         title: 'Chamber of Commerce & Industry',
                          badge: 'OFFICIAL EXPORT REGISTRATION',
                          status: 'Active Member Exporter',
-                         issuingBody: 'LCCI / Federation of Pakistan Chambers of Commerce & Industry',
-                         description: 'Official Pakistani export registry credentials enabling authenticated Certificates of Origin, commercial invoices, and embassy legalization for customs clearance in Europe, the Americas, Asia, and the GCC.',
+                         issuingBody: 'Lahore & Federal Chamber of Commerce & Industry',
+                         description: 'Saltora is registered with the Chamber of Commerce and Industry — a verifiable, formally registered Pakistani export business.',
+                         detailedScope: 'Official Pakistani export registry credentials enabling authenticated Certificates of Origin, commercial invoices, and embassy legalization for customs clearance in Europe, the Americas, Asia, and the GCC.',
                          keyMetrics: ['Certificate of Origin Issuance', 'Commercial Invoicing Authentication', 'Federal Trade Verification'],
-                         validity: 'Active Standing & Verified'
+                         validity: 'Active Standing & Verified',
+                         stampType: 'chamber'
                      },
                      {
-                         id: 'haccp',
-                         category: 'food-safety',
-                         categoryLabel: 'Food Safety & Hygiene',
-                         code: 'HACCP & GMP Compliant',
-                         title: 'Hazard Analysis Critical Control Point',
-                         badge: 'HYGIENE & PREVENTIVE CONTROLS',
-                         status: 'Implemented & Audited',
-                         issuingBody: 'Independent Food Quality Assurance Body',
-                         description: 'Rigorous CCP monitoring points across crushing, vibrating sieve sizing, magnetic separation (10,000 Gauss traps for ferrous particles), and final metal detector screening prior to palletization.',
-                         keyMetrics: ['Critical Control Points (CCPs)', 'Magnetic Separator Grates', 'Zero Foreign Body Guarantee'],
-                         validity: 'Continuous In-Line Monitoring'
-                     },
-                     {
-                         id: 'kosher',
-                         category: 'dietary',
-                         categoryLabel: 'Religious & Dietary',
-                         code: 'Kosher Approved',
-                         title: 'Pareve Kosher Food Compliance',
-                         badge: 'DIETARY RECOGNITION',
-                         status: 'Kosher Pareve Compliant',
-                         issuingBody: 'Recognized Rabbinical Certification Alliance',
-                         description: 'Saltora natural mineral pink salt is unrefined and chemical-free, compliant with Kosher Pareve regulations for year-round culinary use in North America, Europe, and Israeli distribution networks.',
-                         keyMetrics: ['Naturally Pareve', 'Zero Cross-Contact', 'Unrefined Geological Mineral'],
-                         validity: 'Annual Verification'
-                     },
-                     {
-                         id: 'pcsir',
-                         category: 'chemical',
-                         categoryLabel: 'Chemical Purity & Lab',
-                         code: 'PCSIR Lab Verified',
-                         title: 'Pakistan Council of Scientific & Industrial Research',
-                         badge: 'GOVERNMENT LABORATORY TESTING',
-                         status: 'Batch-by-Batch Testing',
-                         issuingBody: 'Ministry of Science & Technology, Government of Pakistan',
-                         description: 'Independent state laboratory quantitative ICP-MS spectrometry verifying 84+ essential trace elements (Potassium, Magnesium, Calcium, Iron) and confirming the total absence of harmful synthetic additives.',
-                         keyMetrics: ['Trace Mineral Spectrum', 'Atomic Absorption Testing', 'Formal State COA Issued'],
-                         validity: 'Issued Per Production Lot'
-                     },
-                     {
-                         id: 'sgs',
-                         category: 'trade',
-                         categoryLabel: 'Trade & Customs',
-                         code: 'SGS / Intertek Supported',
-                         title: 'Pre-Shipment Inspection (PSI) Compliance',
-                         badge: 'THIRD-PARTY INSPECTION',
-                         status: 'Buyer-Nominated Ready',
-                         issuingBody: 'SGS / Intertek / Bureau Veritas / Cotecna',
-                         description: 'Our Karachi port and manufacturing loading facilities fully accommodate buyer-appointed international inspection bodies for container stuffing supervision, weight verification, and lot sampling.',
-                         keyMetrics: ['Draft Survey & Tare Weights', 'Container Seal Verification', 'Independent Composite Sampling'],
-                         validity: 'Available On-Demand Per FCL'
+                         id: 'smap',
+                         category: 'registered-member',
+                         categoryLabel: 'Registered Member',
+                         code: 'Salt Manufacturers Association of Pakistan',
+                         tagline: 'REGISTERED MEMBER',
+                         title: 'Member Salt Manufacturer Association of Pakistan',
+                         badge: 'NATIONAL INDUSTRY ASSOCIATION',
+                         status: 'Official Member',
+                         issuingBody: 'Salt Manufacturers Association of Pakistan (SMAP)',
+                         description: 'Saltora is an active member of the Salt Manufacturers Association of Pakistan — ensuring compliance with national mining standards, ethical refining practices, and collective industry export excellence.',
+                         detailedScope: 'Accredited member of the premier national association representing recognized salt miners, refiners, and exporters. Ensures adherence to standard operating procedures, sustainable salt harvesting, and fair-trade labor standards.',
+                         keyMetrics: ['National Industry Representation', 'Ethical Mining Standards', 'Authentic Origin Assurance'],
+                         validity: 'Active Standing & Verified',
+                         stampType: 'smap'
                      }
                  ],
 
@@ -342,7 +315,7 @@
                          // Text search
                          if (this.searchQuery.trim() !== '') {
                              const q = this.searchQuery.trim().toLowerCase();
-                             const haystack = [s.code, s.title, s.categoryLabel, s.description, s.issuingBody, ...s.keyMetrics].join(' ').toLowerCase();
+                             const haystack = [s.code, s.title, s.tagline, s.categoryLabel, s.description, s.issuingBody, ...s.keyMetrics].join(' ').toLowerCase();
                              if (!haystack.includes(q)) return false;
                          }
                          return true;
@@ -359,7 +332,7 @@
                     International Quality Frameworks
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
-                    Browse our full suite of food safety certifications, dietary credentials, and laboratory testing protocols. Filter by regulatory domain or search by specific standard.
+                    Browse our core food safety certifications, dietary credentials, and recognized industry memberships. All shipments are backed by audited compliance and laboratory COAs.
                 </p>
             </div>
 
@@ -370,27 +343,27 @@
                     <button @click="activeCategory = 'all'"
                             :class="activeCategory === 'all' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                             class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        All Standards (8)
+                        All Certifications (5)
                     </button>
                     <button @click="activeCategory = 'food-safety'"
                             :class="activeCategory === 'food-safety' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                             class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Food Safety & Hygiene
+                        Food Safety Management
                     </button>
-                    <button @click="activeCategory = 'dietary'"
-                            :class="activeCategory === 'dietary' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                    <button @click="activeCategory = 'halal'"
+                            :class="activeCategory === 'halal' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                             class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Religious & Dietary
+                        Halal Certified
                     </button>
-                    <button @click="activeCategory = 'chemical'"
-                            :class="activeCategory === 'chemical' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                    <button @click="activeCategory = 'codex'"
+                            :class="activeCategory === 'codex' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                             class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Chemical & Lab COA
+                        Codex Standard
                     </button>
-                    <button @click="activeCategory = 'trade'"
-                            :class="activeCategory === 'trade' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
+                    <button @click="activeCategory = 'registered-member'"
+                            :class="activeCategory === 'registered-member' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
                             class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Customs & Trade
+                        Registered Memberships (2)
                     </button>
                 </div>
 
@@ -404,53 +377,138 @@
                 </div>
             </div>
 
-            <!-- STANDARDS CARDS GRID -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                <template x-for="item in filteredStandards" :key="item.id">
-                    <div class="bg-white border border-saltora-border/80 rounded-xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
+            <!-- STANDARDS CARDS GRID (Matches user reference image with Circular Vintage Seal Stamps) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <template x-for="(item, index) in filteredStandards" :key="item.id">
+                    <div :class="(filteredStandards.length === 5 && item.id === 'smap') ? 'md:col-span-2 md:max-w-3xl md:mx-auto w-full' : ''"
+                         class="bg-white border border-stone-200/80 rounded-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-saltora-terracotta/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                         @click="openDocModal(item)">
                         <!-- Top Accent Line -->
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
-                        <div class="space-y-4">
-                            <!-- Card Header Badges -->
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase bg-saltora-blush/80 px-2.5 py-1 rounded-sm" x-text="item.categoryLabel"></span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                    <i class="fa-solid fa-circle-check text-[9px]"></i>
-                                    <span x-text="item.status"></span>
-                                </span>
-                            </div>
+                        <!-- Left Circular Vintage Seal Stamp -->
+                        <div class="shrink-0 flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
+                            <!-- ISO Stamp -->
+                            <template x-if="item.stampType === 'iso'">
+                                <svg class="w-24 h-24 sm:w-26 sm:h-26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="47" stroke="#7A7067" stroke-width="1.2" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="50" cy="50" r="41" stroke="#9C9289" stroke-width="0.8" />
+                                    <circle cx="50" cy="50" r="38" stroke="#D1C7BD" stroke-width="0.5" stroke-dasharray="1 2" />
+                                    <path id="stamp-arc-iso" d="M 22 50 A 28 28 0 0 1 78 50" fill="none" />
+                                    <text font-size="5.5" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="600" letter-spacing="2" fill="#8C8278">
+                                        <textPath href="#stamp-arc-iso" startOffset="50%" text-anchor="middle">SALTORA</textPath>
+                                    </text>
+                                    <text x="50" y="44" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="12" font-weight="600" text-anchor="middle" fill="#3D3630">ISO</text>
+                                    <text x="50" y="58" font-family="'Inter', sans-serif" font-size="9" font-weight="700" letter-spacing="0.5" text-anchor="middle" fill="#29231E">22000:2018</text>
+                                    <text x="50" y="73" font-family="'Inter', sans-serif" font-size="7" font-weight="800" letter-spacing="1.8" text-anchor="middle" fill="#B85D43">CERTIFIED</text>
+                                    <path id="stamp-arc-iso-bot" d="M 74 54 A 28 28 0 0 1 26 54" fill="none" />
+                                    <text font-size="5" fill="#B3A89E">
+                                        <textPath href="#stamp-arc-iso-bot" startOffset="50%" text-anchor="middle">✦ ✦ ✦</textPath>
+                                    </text>
+                                </svg>
+                            </template>
 
-                            <!-- Standard Code & Title -->
-                            <div>
-                                <span class="text-[11px] font-bold text-stone-400 uppercase tracking-wider block" x-text="item.badge"></span>
-                                <h3 class="font-serif text-2xl text-saltora-text font-bold group-hover:text-saltora-terracotta transition-colors duration-200 mt-0.5" x-text="item.code"></h3>
-                                <h4 class="text-xs font-semibold text-stone-700" x-text="item.title"></h4>
-                            </div>
+                            <!-- Halal Stamp -->
+                            <template x-if="item.stampType === 'halal'">
+                                <svg class="w-24 h-24 sm:w-26 sm:h-26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="47" stroke="#7A7067" stroke-width="1.2" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="50" cy="50" r="41" stroke="#9C9289" stroke-width="0.8" />
+                                    <circle cx="50" cy="50" r="38" stroke="#D1C7BD" stroke-width="0.5" stroke-dasharray="1 2" />
+                                    <path id="stamp-arc-halal" d="M 22 50 A 28 28 0 0 1 78 50" fill="none" />
+                                    <text font-size="5.5" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="600" letter-spacing="2" fill="#8C8278">
+                                        <textPath href="#stamp-arc-halal" startOffset="50%" text-anchor="middle">SALTORA</textPath>
+                                    </text>
+                                    <text x="50" y="52" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="16" font-weight="600" text-anchor="middle" fill="#29231E">Halal</text>
+                                    <text x="50" y="70" font-family="'Inter', sans-serif" font-size="7" font-weight="800" letter-spacing="1.8" text-anchor="middle" fill="#B85D43">CERTIFIED</text>
+                                    <path id="stamp-arc-halal-bot" d="M 74 54 A 28 28 0 0 1 26 54" fill="none" />
+                                    <text font-size="5" fill="#B3A89E">
+                                        <textPath href="#stamp-arc-halal-bot" startOffset="50%" text-anchor="middle">✦ ✦ ✦</textPath>
+                                    </text>
+                                </svg>
+                            </template>
 
-                            <!-- Description -->
-                            <p class="text-xs text-saltora-muted leading-relaxed font-light" x-text="item.description"></p>
+                            <!-- Codex Stamp -->
+                            <template x-if="item.stampType === 'codex'">
+                                <svg class="w-24 h-24 sm:w-26 sm:h-26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="47" stroke="#7A7067" stroke-width="1.2" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="50" cy="50" r="41" stroke="#9C9289" stroke-width="0.8" />
+                                    <circle cx="50" cy="50" r="38" stroke="#D1C7BD" stroke-width="0.5" stroke-dasharray="1 2" />
+                                    <path id="stamp-arc-codex" d="M 22 50 A 28 28 0 0 1 78 50" fill="none" />
+                                    <text font-size="5.5" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="600" letter-spacing="2" fill="#8C8278">
+                                        <textPath href="#stamp-arc-codex" startOffset="50%" text-anchor="middle">SALTORA</textPath>
+                                    </text>
+                                    <text x="50" y="40" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="10" font-weight="600" text-anchor="middle" fill="#3D3630">Codex</text>
+                                    <text x="50" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="800" letter-spacing="1" text-anchor="middle" fill="#29231E">CXS</text>
+                                    <text x="50" y="63" font-family="'Inter', sans-serif" font-size="8" font-weight="600" letter-spacing="0.5" text-anchor="middle" fill="#524A42">150:1985</text>
+                                    <text x="50" y="75" font-family="'Inter', sans-serif" font-size="7" font-weight="800" letter-spacing="1.8" text-anchor="middle" fill="#B85D43">CERTIFIED</text>
+                                    <path id="stamp-arc-codex-bot" d="M 74 54 A 28 28 0 0 1 26 54" fill="none" />
+                                    <text font-size="5" fill="#B3A89E">
+                                        <textPath href="#stamp-arc-codex-bot" startOffset="50%" text-anchor="middle">✦ ✦ ✦</textPath>
+                                    </text>
+                                </svg>
+                            </template>
 
-                            <!-- Key Metrics Chips -->
-                            <div class="flex flex-wrap gap-1.5 pt-1">
-                                <template x-for="metric in item.keyMetrics" :key="metric">
-                                    <span class="text-[10px] font-medium bg-stone-100 text-stone-700 px-2.5 py-1 rounded-xs border border-stone-200 flex items-center gap-1">
-                                        <i class="fa-solid fa-check text-[8px] text-emerald-600"></i>
-                                        <span x-text="metric"></span>
-                                    </span>
-                                </template>
-                            </div>
+                            <!-- Chamber Stamp -->
+                            <template x-if="item.stampType === 'chamber'">
+                                <svg class="w-24 h-24 sm:w-26 sm:h-26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="47" stroke="#7A7067" stroke-width="1.2" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="50" cy="50" r="41" stroke="#9C9289" stroke-width="0.8" />
+                                    <circle cx="50" cy="50" r="38" stroke="#D1C7BD" stroke-width="0.5" stroke-dasharray="1 2" />
+                                    <path id="stamp-arc-chamber" d="M 22 50 A 28 28 0 0 1 78 50" fill="none" />
+                                    <text font-size="5.5" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="600" letter-spacing="2" fill="#8C8278">
+                                        <textPath href="#stamp-arc-chamber" startOffset="50%" text-anchor="middle">SALTORA</textPath>
+                                    </text>
+                                    <text x="50" y="38" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="9" font-weight="600" text-anchor="middle" fill="#29231E">Chamber</text>
+                                    <text x="50" y="48" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="8" font-style="italic" text-anchor="middle" fill="#665D55">of</text>
+                                    <text x="50" y="58" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="9" font-weight="600" text-anchor="middle" fill="#29231E">Commerce</text>
+                                    <text x="50" y="67" font-family="'Inter', sans-serif" font-size="7" font-weight="600" letter-spacing="0.5" text-anchor="middle" fill="#524A42">&amp; Industry</text>
+                                    <text x="50" y="78" font-family="'Inter', sans-serif" font-size="6.5" font-weight="800" letter-spacing="1.5" text-anchor="middle" fill="#B85D43">REGISTERED</text>
+                                    <path id="stamp-arc-chamber-bot" d="M 74 54 A 28 28 0 0 1 26 54" fill="none" />
+                                    <text font-size="5" fill="#B3A89E">
+                                        <textPath href="#stamp-arc-chamber-bot" startOffset="50%" text-anchor="middle">✦ ✦ ✦</textPath>
+                                    </text>
+                                </svg>
+                            </template>
+
+                            <!-- SMAP Stamp -->
+                            <template x-if="item.stampType === 'smap'">
+                                <svg class="w-24 h-24 sm:w-26 sm:h-26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="47" stroke="#7A7067" stroke-width="1.2" stroke-dasharray="2.5 2.5" />
+                                    <circle cx="50" cy="50" r="41" stroke="#9C9289" stroke-width="0.8" />
+                                    <circle cx="50" cy="50" r="38" stroke="#D1C7BD" stroke-width="0.5" stroke-dasharray="1 2" />
+                                    <path id="stamp-arc-smap" d="M 22 50 A 28 28 0 0 1 78 50" fill="none" />
+                                    <text font-size="5.5" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="600" letter-spacing="2" fill="#8C8278">
+                                        <textPath href="#stamp-arc-smap" startOffset="50%" text-anchor="middle">SALTORA</textPath>
+                                    </text>
+                                    <text x="50" y="38" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="8.5" font-weight="600" text-anchor="middle" fill="#29231E">Salt Mfrs</text>
+                                    <text x="50" y="48" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="8" font-weight="600" text-anchor="middle" fill="#29231E">Association</text>
+                                    <text x="50" y="58" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="7.5" font-style="italic" text-anchor="middle" fill="#665D55">of Pakistan</text>
+                                    <text x="50" y="67" font-family="'Inter', sans-serif" font-size="7.5" font-weight="800" letter-spacing="1" text-anchor="middle" fill="#3D3630">SMAP</text>
+                                    <text x="50" y="78" font-family="'Inter', sans-serif" font-size="6.5" font-weight="800" letter-spacing="1.5" text-anchor="middle" fill="#B85D43">MEMBER</text>
+                                    <path id="stamp-arc-smap-bot" d="M 74 54 A 28 28 0 0 1 26 54" fill="none" />
+                                    <text font-size="5" fill="#B3A89E">
+                                        <textPath href="#stamp-arc-smap-bot" startOffset="50%" text-anchor="middle">✦ ✦ ✦</textPath>
+                                    </text>
+                                </svg>
+                            </template>
                         </div>
 
-                        <!-- Card Footer -->
-                        <div class="pt-5 border-t border-saltora-border/60 mt-5 flex items-center justify-between text-xs">
-                            <button @click="openDocModal(item)" class="text-saltora-terracotta font-bold hover:underline flex items-center gap-1.5 cursor-pointer">
-                                <span>View Audit Scope & Details</span>
-                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </button>
-                            <a href="/contact" class="text-stone-500 hover:text-saltora-text text-[11px] font-semibold">
-                                Request Copy &rarr;
-                            </a>
+                        <!-- Content (Right) -->
+                        <div class="space-y-2 text-center sm:text-left flex-1">
+                            <span class="text-[11px] font-bold tracking-[0.2em] text-[#B85D43] uppercase block" x-text="item.tagline"></span>
+                            <h3 class="font-serif text-2xl sm:text-[26px] text-saltora-text font-normal leading-snug group-hover:text-saltora-terracotta transition-colors" x-text="item.title"></h3>
+                            <p class="text-[13.5px] text-stone-600 leading-relaxed font-light mt-1.5" x-text="item.description"></p>
+                            
+                            <div class="pt-3 flex items-center justify-center sm:justify-start gap-4">
+                                <button @click.stop="openDocModal(item)" class="text-[11px] font-bold tracking-wider text-saltora-terracotta hover:underline uppercase inline-flex items-center gap-1.5 cursor-pointer">
+                                    <span>View Audit Scope & Details</span>
+                                    <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+                                <span class="text-stone-300">|</span>
+                                <a href="/contact" @click.stop class="text-[11px] font-semibold text-stone-500 hover:text-saltora-text">
+                                    Request Copy &rarr;
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -754,7 +812,7 @@
                         <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
                     <div x-show="activeFaq === 1" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
-                        Our ISO 22000 registration number, Halal certification registry, and Lahore Chamber of Commerce export credentials are all verifiable via their respective issuing registries. We provide full high-resolution certified copies with QR codes and registrar registration numbers upon request.
+                        Our ISO 22000 registration number, Halal certification registry, Chamber of Commerce export credentials, and Salt Manufacturers Association of Pakistan membership are all verifiable via their respective issuing registries. We provide full high-resolution certified copies with QR codes and registrar registration numbers upon request.
                     </div>
                 </div>
 
