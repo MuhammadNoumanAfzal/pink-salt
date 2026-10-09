@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ x<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
@@ -170,7 +170,7 @@
 
                 <!-- Subheading Description -->
                 <p class="text-saltora-muted text-sm sm:text-base md:text-lg leading-relaxed max-w-xl font-normal">
-                    Directly sourced from the historic Salt Range with 98.5%+ certified NaCl purity. SALTORA supplies international importers, food processors, and private-label brands with reliable bulk FCL container shipments, custom grain grading, and complete export documentation.
+                    Directly sourced from the historic Salt Range with 98.5%+ certified NaCl purity. SALTORA supplies international importers, food processors, and private-label brands with reliable bulk FCL/LCL container shipments, custom grain grading, and complete export documentation.
                 </p>
 
                 <!-- Action Buttons -->
