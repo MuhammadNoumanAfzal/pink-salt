@@ -401,8 +401,8 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                     <div class="space-y-3.5">
-                        <!-- 4:3 Aspect Ratio Image (Taller, Prominent) -->
-                        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs" @click="openQuickView(@js($qv))">
+                        <!-- Square Aspect Ratio Image (Taller, Prominent) -->
+                        <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs" @click="openQuickView(@js($qv))">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                             @else

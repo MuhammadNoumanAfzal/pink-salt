@@ -583,8 +583,8 @@
                                 <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                                 <div class="space-y-4">
-                                    <!-- Image Container (Taller, Prominent 4:3 Aspect Ratio) -->
-                                    <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs"
+                                    <!-- Image Container (Taller, Balanced Square Aspect Ratio) -->
+                                    <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs"
                                          @click="openQuickView(product)">
                                         <template x-if="product.image_url">
                                             <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
