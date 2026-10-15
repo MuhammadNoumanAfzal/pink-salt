@@ -58,7 +58,7 @@ class CategorySeeder extends Seeder
                         'product_type' => 'pure_salt',
                         'moq' => '1,000 Pouches (1 Metric Ton)',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/fine-pouch-1kg.jpg',
+                        'image_url' => '/images/products/fine-pouch-1kg.png',
                         'short_desc' => 'Ultra-pure food grade fine Himalayan pink salt calibrated from 0.3mm to 0.8mm. Naturally free-flowing with 84+ trace minerals.',
                         'full_desc' => 'Mined directly from pristine geological seams within the Khewra Salt Range of Pakistan. Our Fine Pink Salt undergoes multi-deck vibrating screen calibration and neodymium magnetic filtration. Free from microplastics, anti-caking agents, or artificial additives.',
                         'is_featured' => true,

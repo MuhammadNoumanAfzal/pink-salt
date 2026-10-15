@@ -9,11 +9,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        DB::statement('ALTER TABLE products MODIFY image_url VARCHAR(255) NULL DEFAULT NULL');
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE products MODIFY image_url VARCHAR(255) NULL DEFAULT NULL');
+        }
     }
 
     public function down(): void
     {
-        DB::statement('ALTER TABLE products MODIFY image_url VARCHAR(255) NOT NULL DEFAULT "/product1.jpg"');
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE products MODIFY image_url VARCHAR(255) NOT NULL DEFAULT "/product1.jpg"');
+        }
     }
 };

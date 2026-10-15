@@ -217,15 +217,11 @@
                         <span class="text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase">BULK · B2B · PRIVATE LABEL</span>
                     </div>
 
-                    <!-- Overlay Text & Export Badge Bottom -->
+                    <!-- Overlay Text Bottom -->
                     <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
                         <div class="text-white">
                             <span class="text-[10px] text-amber-200 uppercase font-semibold tracking-wider block">ORIGIN CERTIFIED</span>
-                            <p class="font-serif italic text-lg sm:text-xl font-normal drop-shadow-md">Khewra Mine, Pakistan</p>
-                        </div>
-                        <div class="bg-saltora-dark/95 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-saltora-dark-border text-white shadow-xl max-w-[180px]">
-                            <span class="block text-[9px] font-bold tracking-widest text-amber-200/90 uppercase mb-0.5">EXPORT SHIPPING</span>
-                            <h4 class="font-serif text-xs font-semibold text-white leading-tight">FOB Karachi & Qasim</h4>
+                            <p class="font-serif italic text-lg sm:text-xl font-normal !text-white drop-shadow-md" style="color: #ffffff !important;">Khewra Mine, Pakistan</p>
                         </div>
                     </div>
                 </div>
@@ -333,7 +329,7 @@
                         </svg>
                         <div>
                             <span class="font-semibold block text-slate-900">International Compliance</span>
-                            <span class="text-[11px] text-saltora-muted leading-tight font-normal">ISO 22000, Halal, Phytosanitary, and full Certificate of Origin.</span>
+                            <span class="text-[11px] text-saltora-muted leading-tight font-normal">ISO 22000, Halal, Phytosanitary, and Certificate of Origin.</span>
                         </div>
                     </div>
                 </div>

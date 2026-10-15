@@ -194,22 +194,20 @@
             </div>
 
             <!-- Trade Metrics Cards (Glassmorphic) -->
-            <div class="pt-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 border-t border-stone-800/80 reveal-on-scroll">
-                <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
-                    <div class="font-serif text-3xl sm:text-4xl text-white font-normal">50,000<span class="text-[#e07a5f]">+</span></div>
-                    <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">MT Annual Export Capacity</div>
-                </div>
-                <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
-                    <div class="font-serif text-3xl sm:text-4xl text-white font-normal">98.5<span class="text-[#e07a5f]">%+</span></div>
-                    <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">Certified NaCl Purity</div>
-                </div>
-                <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
-                    <div class="font-serif text-3xl sm:text-4xl text-white font-normal">40<span class="text-[#e07a5f]">+</span></div>
-                    <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">Global Trade Corridors</div>
-                </div>
-                <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
-                    <div class="font-serif text-3xl sm:text-4xl text-white font-normal">100<span class="text-[#e07a5f]">%</span></div>
-                    <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">Ancient Seabed Origin</div>
+            <div class="pt-6 border-t border-stone-800/80 reveal-on-scroll">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto text-center">
+                    <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
+                        <div class="font-serif text-3xl sm:text-4xl text-white font-normal">50,000<span class="text-[#e07a5f]">+</span></div>
+                        <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">MT Annual Export Capacity</div>
+                    </div>
+                    <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
+                        <div class="font-serif text-3xl sm:text-4xl text-white font-normal">98.5<span class="text-[#e07a5f]">%+</span></div>
+                        <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">Certified NaCl Purity</div>
+                    </div>
+                    <div class="bg-stone-900/60 backdrop-blur-md p-5 rounded-xl border border-stone-800/90 shadow-sm">
+                        <div class="font-serif text-3xl sm:text-4xl text-white font-normal">40<span class="text-[#e07a5f]">+</span></div>
+                        <div class="text-[11px] text-stone-300 uppercase tracking-wider font-semibold pt-1">Global Trade Corridors</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,7 +333,7 @@
                     </div>
                     <div class="flex items-center gap-2.5">
                         <i class="fa-solid fa-circle-check text-saltora-terracotta text-sm"></i>
-                        <span>84+ Naturally Occurring Minerals</span>
+                        <span>Naturally Occurring Minerals</span>
                     </div>
                     <div class="flex items-center gap-2.5">
                         <i class="fa-solid fa-circle-check text-saltora-terracotta text-sm"></i>
