@@ -53,6 +53,40 @@ class FrontendController extends Controller
         return view('products', compact('products', 'categories', 'grainSpecs', 'packagingFormats'));
     }
 
+    public function productDetail($slug)
+    {
+        $product = Product::where('slug', $slug)
+            ->orWhere('id', $slug)
+            ->with(['categoryRef', 'subcategoryRef'])
+            ->firstOrFail();
+
+        if (empty($product->slug)) {
+            $product->slug = Str::slug($product->name);
+            $product->save();
+        }
+
+        $relatedProducts = Product::where('is_active', true)
+            ->where('id', '!=', $product->id)
+            ->when($product->category_id, function($q) use ($product) {
+                $q->where('category_id', $product->category_id);
+            })
+            ->with(['categoryRef', 'subcategoryRef'])
+            ->take(3)
+            ->get();
+
+        if ($relatedProducts->count() < 3) {
+            $extra = Product::where('is_active', true)
+                ->where('id', '!=', $product->id)
+                ->whereNotIn('id', $relatedProducts->pluck('id'))
+                ->with(['categoryRef', 'subcategoryRef'])
+                ->take(3 - $relatedProducts->count())
+                ->get();
+            $relatedProducts = $relatedProducts->merge($extra);
+        }
+
+        return view('product-detail', compact('product', 'relatedProducts'));
+    }
+
     public function certifications()
     {
         return view('certifications');

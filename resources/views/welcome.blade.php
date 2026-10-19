@@ -399,8 +399,8 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                     <div class="space-y-3">
-                        <!-- Square Aspect Ratio Image (10px padding around image from card container) -->
-                        <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs" @click="openQuickView(@js($qv))">
+                        <!-- Square Aspect Ratio Image (10px padding around image, linking to full detail page) -->
+                        <a href="{{ route('products.show', $prod->slug ?: $prod->id) }}" class="relative aspect-square w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs block">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                             @else
@@ -415,14 +415,14 @@
 
                             <!-- Center Hover Quick View Pill -->
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
-                                <span class="bg-white/95 text-saltora-dark text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase shadow-md border border-saltora-border flex items-center gap-1.5 hover:bg-saltora-terracotta hover:text-white transition-colors duration-200">
-                                    <i class="fa-regular fa-eye text-xs"></i>
-                                    Quick View
+                                <span class="bg-white/95 text-saltora-dark text-[9px] font-semibold tracking-wider px-2.5 py-1 rounded-full uppercase shadow-2xs border border-saltora-border flex items-center gap-1 hover:bg-saltora-terracotta hover:text-white transition-colors duration-150">
+                                    <i class="fa-regular fa-eye text-[10px]"></i>
+                                    Full Specs
                                 </span>
                             </div>
-                        </div>
+                        </a>
 
-                        <div class="px-1.5 space-y-2">
+                        <div class="px-1.5 space-y-1.5">
                             <!-- Product Category & Specs Tag Pills -->
                             <div class="flex flex-wrap items-center gap-1.5">
                                 @if($prod->categoryRef)
@@ -437,25 +437,27 @@
                                 @endif
                             </div>
 
-                            <!-- Product Title -->
-                            <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1">
-                                {{ $prod->name }}
-                            </h3>
+                            <!-- Product Title (Refined Size) -->
+                            <a href="{{ route('products.show', $prod->slug ?: $prod->id) }}" class="block">
+                                <h3 class="font-serif text-[13px] sm:text-[14px] text-stone-900 font-semibold group-hover:text-saltora-terracotta transition-colors duration-200 leading-snug line-clamp-1">
+                                    {{ $prod->name }}
+                                </h3>
+                            </a>
 
                             <!-- Price & MOQ Row -->
-                            <div class="pt-2 flex items-baseline justify-between border-t border-slate-100">
+                            <div class="pt-1.5 flex items-baseline justify-between border-t border-slate-100">
                                 <div>
                                     @if($prod->price && $prod->price > 0)
                                     <div class="flex items-baseline gap-1">
-                                        <span class="text-base font-bold text-slate-900">${{ number_format($prod->price, 2) }}</span>
-                                        <span class="text-[10px] text-slate-500 font-semibold">/ {{ ltrim($prod->price_unit ?? 'kg', '/') }}</span>
+                                        <span class="text-sm font-bold text-slate-900">${{ number_format($prod->price, 2) }}</span>
+                                        <span class="text-[9px] text-slate-500 font-medium">/ {{ ltrim($prod->price_unit ?? 'kg', '/') }}</span>
                                     </div>
                                     @else
-                                    <span class="text-[11px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
+                                    <span class="text-[10px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
                                     @endif
                                 </div>
                                 @if($prod->moq)
-                                <div class="text-[10px] text-slate-500 font-medium truncate max-w-[140px]">
+                                <div class="text-[9px] text-slate-500 font-medium truncate max-w-[130px]">
                                     MOQ: {{ $prod->moq }}
                                 </div>
                                 @endif
@@ -463,19 +465,16 @@
                         </div>
                     </div>
 
-                    <!-- Direct Request a Quote & Details CTA -->
-                    <div class="pt-3 border-t border-saltora-border/60 mt-3 flex items-center gap-2 px-1 pb-0.5">
-                        <a href="/contact?product={{ urlencode($prod->name) }}#contactForm" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-lg group/btn relative overflow-hidden">
-                            <i class="fa-solid fa-file-invoice text-amber-200 text-[10px] transition-transform duration-300 group-hover/btn:translate-x-0.5"></i>
-                            <span class="truncate">REQUEST A QUOTE</span>
+                    <!-- Direct Request a Quote & Details CTA (Refined, Perfectly Sized) -->
+                    <div class="pt-2.5 border-t border-saltora-border/60 mt-2 flex items-center gap-2 px-0.5 pb-0.5">
+                        <a href="/contact?product={{ urlencode($prod->name) }}#contactForm" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-1.5 px-2.5 text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 cursor-pointer shadow-2xs hover:shadow rounded-md group/btn relative overflow-hidden">
+                            <i class="fa-solid fa-file-invoice text-amber-200 text-[10px]"></i>
+                            <span class="truncate">QUOTE</span>
                         </a>
-                        <button @click="openQuickView(@js($qv))" class="border border-saltora-text/25 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-saltora-blush text-saltora-text py-2.5 px-3.5 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer rounded-lg group/btn" title="View Specification Sheet">
-                            <svg class="w-3.5 h-3.5 shrink-0 text-saltora-muted group-hover/btn:text-saltora-terracotta transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                            </svg>
+                        <a href="{{ route('products.show', $prod->slug ?: $prod->id) }}" class="border border-stone-200 hover:border-saltora-terracotta hover:text-saltora-terracotta bg-white hover:bg-stone-50 text-stone-600 py-1.5 px-2.5 text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 cursor-pointer rounded-md shadow-2xs" title="View Full Specifications">
+                            <i class="fa-regular fa-eye text-[11px] text-saltora-terracotta"></i>
                             <span>DETAILS</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 @empty

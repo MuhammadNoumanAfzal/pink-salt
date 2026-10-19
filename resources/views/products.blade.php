@@ -585,9 +585,9 @@
                                 <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                                 <div class="space-y-3">
-                                    <!-- Image Container (10px padding around image from card container) -->
-                                    <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs"
-                                         @click="openQuickView(product)">
+                                    <!-- Image Container (10px padding around image, linking to full detail page) -->
+                                    <a :href="'/products/' + (product.slug || product.id)" 
+                                       class="relative aspect-square w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs block">
                                         <template x-if="product.image_url">
                                             <img :src="product.image_url" :alt="product.name" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
                                         </template>
@@ -605,16 +605,16 @@
 
                                         <!-- Center Hover Quick View Pill -->
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
-                                            <span class="bg-white/95 text-stone-800 text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase shadow-md border border-stone-200 flex items-center gap-1.5 hover:bg-saltora-terracotta hover:text-white transition-colors duration-200">
-                                                <i class="fa-regular fa-eye text-xs"></i>
-                                                Quick Specs
+                                            <span class="bg-white/95 text-stone-800 text-[9px] font-semibold tracking-wider px-2.5 py-1 rounded-full uppercase shadow-2xs border border-stone-200 flex items-center gap-1 hover:bg-saltora-terracotta hover:text-white transition-colors duration-150">
+                                                <i class="fa-regular fa-eye text-[10px]"></i>
+                                                Full Specs
                                             </span>
                                         </div>
-                                    </div>
+                                    </a>
 
-                                    <div class="px-1.5 space-y-1.5">
+                                    <div class="px-1.5 space-y-1">
                                         <!-- Clean Category / Subcategory Line -->
-                                        <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
+                                        <div class="flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
                                             <span x-text="product.category_name"></span>
                                             <template x-if="product.subcategory_name">
                                                 <span class="text-stone-300">/</span>
@@ -624,24 +624,25 @@
                                             </template>
                                         </div>
 
-                                        <!-- Product Title -->
-                                        <h3 class="font-serif text-lg text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1 cursor-pointer"
-                                            @click="openQuickView(product)"
-                                            x-text="product.name"></h3>
+                                        <!-- Product Title (Refined Size) -->
+                                        <a :href="'/products/' + (product.slug || product.id)" class="block">
+                                            <h3 class="font-serif text-[13px] sm:text-[14px] text-stone-900 font-semibold group-hover:text-saltora-terracotta transition-colors duration-200 leading-snug line-clamp-1 cursor-pointer"
+                                                x-text="product.name"></h3>
+                                        </a>
                                     </div>
                                 </div>
 
-                                <!-- Action Buttons: Upgraded Details & Inquire (No Clutter on Outer Card) -->
-                                <div class="pt-3 border-t border-[#F0EBE3] flex items-center gap-2 mt-3 px-1 pb-0.5">
-                                    <button @click="openQuickView(product)" 
-                                            class="flex-1 py-2 px-3 rounded-lg border border-stone-200 hover:border-saltora-terracotta bg-white hover:bg-stone-50 text-stone-700 hover:text-saltora-terracotta text-xs font-semibold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs group/dtl">
-                                        <i class="fa-regular fa-eye text-xs text-saltora-terracotta transition-transform group-hover/dtl:scale-110"></i>
+                                <!-- Action Buttons: Sleeker, Perfectly Proportioned -->
+                                <div class="pt-2.5 border-t border-[#F0EBE3] flex items-center gap-2 mt-2 px-0.5">
+                                    <a :href="'/products/' + (product.slug || product.id)" 
+                                       class="flex-1 py-1.5 px-2.5 rounded-md border border-stone-200/90 hover:border-saltora-terracotta bg-white hover:bg-stone-50 text-stone-600 hover:text-saltora-terracotta text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1.5 shadow-2xs group/dtl">
+                                        <i class="fa-regular fa-eye text-[11px] text-saltora-terracotta transition-transform group-hover/dtl:scale-110"></i>
                                         <span>Details</span>
-                                    </button>
+                                    </a>
                                     <a :href="'/contact?product=' + encodeURIComponent(product.name) + '#contactForm'" 
-                                       class="flex-1 py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow group/inq">
+                                       class="flex-1 py-1.5 px-2.5 rounded-md bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 shadow-2xs group/inq">
                                         <span>Inquire</span>
-                                        <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover/inq:translate-x-0.5"></i>
+                                        <i class="fa-solid fa-arrow-right text-[9px] transition-transform group-hover/inq:translate-x-0.5"></i>
                                     </a>
                                 </div>
                             </div>
@@ -653,14 +654,16 @@
                         <template x-for="product in filteredProducts" :key="product.id">
                             <div class="bg-white border border-[#EAE5DC] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-saltora-terracotta/60 hover:shadow-md transition-all">
                                 <div class="flex items-center gap-4">
-                                    <template x-if="product.image_url">
-                                        <img :src="product.image_url" :alt="product.name" class="w-16 h-16 rounded-lg object-cover bg-stone-100 shrink-0 border border-stone-200 cursor-pointer" @click="openQuickView(product)">
-                                    </template>
-                                    <template x-if="!product.image_url">
-                                        <div class="w-16 h-16 rounded-lg bg-[#FAF7F2] border border-dashed border-stone-300 shrink-0 flex items-center justify-center text-stone-400 cursor-pointer" @click="openQuickView(product)">
-                                            <i class="fa-solid fa-cube text-base text-stone-300"></i>
-                                        </div>
-                                    </template>
+                                    <a :href="'/products/' + (product.slug || product.id)" class="shrink-0 block">
+                                        <template x-if="product.image_url">
+                                            <img :src="product.image_url" :alt="product.name" class="w-16 h-16 rounded-lg object-cover bg-stone-100 shrink-0 border border-stone-200 cursor-pointer hover:opacity-90 transition-opacity">
+                                        </template>
+                                        <template x-if="!product.image_url">
+                                            <div class="w-16 h-16 rounded-lg bg-[#FAF7F2] border border-dashed border-stone-300 shrink-0 flex items-center justify-center text-stone-400 cursor-pointer">
+                                                <i class="fa-solid fa-cube text-base text-stone-300"></i>
+                                            </div>
+                                        </template>
+                                    </a>
                                     <div class="space-y-1">
                                         <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta">
                                             <span x-text="product.category_name"></span>
@@ -674,7 +677,9 @@
                                                 <span class="text-[9px] text-stone-500 font-semibold bg-stone-100 px-2 py-0.5 rounded-full ml-1" x-text="product.grain_size"></span>
                                             </template>
                                         </div>
-                                        <h4 class="font-serif text-base font-bold text-saltora-text hover:text-saltora-terracotta transition-colors cursor-pointer" @click="openQuickView(product)" x-text="product.name"></h4>
+                                        <a :href="'/products/' + (product.slug || product.id)" class="block">
+                                            <h4 class="font-serif text-base font-bold text-saltora-text hover:text-saltora-terracotta transition-colors cursor-pointer" x-text="product.name"></h4>
+                                        </a>
                                         <div class="text-xs text-stone-500 flex flex-wrap items-center gap-3">
                                             <template x-if="product.packaging_type">
                                                 <span>Packaging: <strong class="text-stone-700 font-medium" x-text="product.packaging_type"></strong></span>
@@ -701,9 +706,10 @@
                                             <span class="text-xs font-bold text-saltora-terracotta uppercase tracking-wider">Custom Quote</span>
                                         </template>
                                     </div>
-                                    <button @click="openQuickView(product)" class="px-3 py-2 text-xs font-semibold border border-stone-200 hover:border-saltora-terracotta hover:text-saltora-terracotta rounded-lg transition-colors cursor-pointer">
-                                        Specs
-                                    </button>
+                                    <a :href="'/products/' + (product.slug || product.id)" class="px-3 py-2 text-xs font-semibold border border-stone-200 hover:border-saltora-terracotta hover:text-saltora-terracotta rounded-lg transition-colors cursor-pointer flex items-center gap-1">
+                                        <i class="fa-regular fa-eye text-[11px]"></i>
+                                        <span>Details</span>
+                                    </a>
                                     <a :href="'/contact?product=' + encodeURIComponent(product.name) + '#contactForm'" class="px-4 py-2 text-xs font-bold bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white rounded-lg shadow-xs transition-colors uppercase tracking-wider cursor-pointer">
                                         Inquire
                                     </a>
