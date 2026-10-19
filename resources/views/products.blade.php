@@ -580,12 +580,12 @@
                     <!-- GRID VIEW MODE -->
                     <div x-show="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                         <template x-for="product in filteredProducts" :key="product.id">
-                            <div class="bg-white border border-[#EAE5DC] rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-200/60 hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                            <div class="bg-white border border-[#EAE5DC] rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-200/60 hover:border-saltora-terracotta/40 group relative overflow-hidden">
                                 <!-- Top Accent Hover Line -->
                                 <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
-                                <div class="space-y-4">
-                                    <!-- Image Container (Taller, Balanced Square Aspect Ratio) -->
+                                <div class="space-y-3">
+                                    <!-- Image Container (10px padding around image from card container) -->
                                     <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-[#FAF7F2] cursor-pointer group/img shadow-2xs"
                                          @click="openQuickView(product)">
                                         <template x-if="product.image_url">
@@ -612,30 +612,27 @@
                                         </div>
                                     </div>
 
-                                    <!-- Clean Category / Subcategory Line -->
-                                    <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
-                                        <span x-text="product.category_name"></span>
-                                        <template x-if="product.subcategory_name">
-                                            <span class="text-stone-300">/</span>
-                                        </template>
-                                        <template x-if="product.subcategory_name">
-                                            <span class="text-stone-500 font-normal truncate" x-text="product.subcategory_name"></span>
-                                        </template>
+                                    <div class="px-1.5 space-y-1.5">
+                                        <!-- Clean Category / Subcategory Line -->
+                                        <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
+                                            <span x-text="product.category_name"></span>
+                                            <template x-if="product.subcategory_name">
+                                                <span class="text-stone-300">/</span>
+                                            </template>
+                                            <template x-if="product.subcategory_name">
+                                                <span class="text-stone-500 font-normal truncate" x-text="product.subcategory_name"></span>
+                                            </template>
+                                        </div>
+
+                                        <!-- Product Title -->
+                                        <h3 class="font-serif text-lg text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1 cursor-pointer"
+                                            @click="openQuickView(product)"
+                                            x-text="product.name"></h3>
                                     </div>
-
-                                    <!-- Product Title -->
-                                    <h3 class="font-serif text-lg text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1 cursor-pointer"
-                                        @click="openQuickView(product)"
-                                        x-text="product.name"></h3>
-
-                                    <!-- Product Description (Clamped to 2 lines, only if not empty) -->
-                                    <template x-if="product.description">
-                                        <p class="text-xs text-saltora-muted leading-relaxed font-light line-clamp-2" x-text="product.description"></p>
-                                    </template>
                                 </div>
 
                                 <!-- Action Buttons: Upgraded Details & Inquire (No Clutter on Outer Card) -->
-                                <div class="pt-3 border-t border-[#F0EBE3] flex items-center gap-2 mt-4">
+                                <div class="pt-3 border-t border-[#F0EBE3] flex items-center gap-2 mt-3 px-1 pb-0.5">
                                     <button @click="openQuickView(product)" 
                                             class="flex-1 py-2 px-3 rounded-lg border border-stone-200 hover:border-saltora-terracotta bg-white hover:bg-stone-50 text-stone-700 hover:text-saltora-terracotta text-xs font-semibold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs group/dtl">
                                         <i class="fa-regular fa-eye text-xs text-saltora-terracotta transition-transform group-hover/dtl:scale-110"></i>

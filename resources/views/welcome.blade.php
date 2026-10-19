@@ -394,12 +394,12 @@
                         'purity' => $prod->purity ?: null,
                     ];
                 @endphp
-                <div class="bg-white border border-saltora-border/80 rounded-2xl p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
+                <div class="bg-white border border-saltora-border/80 rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
                     <!-- Top Gradient Accent Hover Line -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
-                    <div class="space-y-3.5">
-                        <!-- Square Aspect Ratio Image (Taller, Prominent) -->
+                    <div class="space-y-3">
+                        <!-- Square Aspect Ratio Image (10px padding around image from card container) -->
                         <div class="relative aspect-square w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs" @click="openQuickView(@js($qv))">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
@@ -422,52 +422,49 @@
                             </div>
                         </div>
 
-                        <!-- Product Category & Specs Tag Pills -->
-                        <div class="flex flex-wrap items-center gap-1.5">
-                            @if($prod->categoryRef)
-                                <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2 py-0.5 rounded-full uppercase bg-saltora-blush/60">{{ $prod->categoryRef->name }}</span>
-                            @endif
-                            @if($prod->grain_size && !str_contains($prod->grain_size, 'Not Applicable'))
-                                <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->grain_size }}</span>
-                            @elseif($prod->packaging_type)
-                                <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->packaging_type }}</span>
-                            @elseif($prod->subcategoryRef)
-                                <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-0.5 rounded-full uppercase bg-stone-50">{{ $prod->subcategoryRef->name }}</span>
-                            @endif
-                        </div>
-
-                        <!-- Product Title -->
-                        <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1">
-                            {{ $prod->name }}
-                        </h3>
-
-                        <!-- Product Description -->
-                        <p class="text-xs text-saltora-muted leading-relaxed font-normal line-clamp-2">
-                            {{ $prod->short_desc ?? 'Authentic Pakistani Himalayan pink salt in its natural, mineral-rich form — ideal for gourmet food, retail repackaging, and bulk export.' }}
-                        </p>
-
-                        <!-- Price & MOQ Row -->
-                        <div class="pt-2 flex items-baseline justify-between border-t border-slate-100">
-                            <div>
-                                @if($prod->price && $prod->price > 0)
-                                <div class="flex items-baseline gap-1">
-                                    <span class="text-base font-bold text-slate-900">${{ number_format($prod->price, 2) }}</span>
-                                    <span class="text-[10px] text-slate-500 font-semibold">/ {{ ltrim($prod->price_unit ?? 'kg', '/') }}</span>
-                                </div>
-                                @else
-                                <span class="text-[11px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
+                        <div class="px-1.5 space-y-2">
+                            <!-- Product Category & Specs Tag Pills -->
+                            <div class="flex flex-wrap items-center gap-1.5">
+                                @if($prod->categoryRef)
+                                    <span class="text-[9px] font-bold tracking-wider text-saltora-terracotta border border-saltora-terracotta/20 px-2 py-0.5 rounded-full uppercase bg-saltora-blush/60">{{ $prod->categoryRef->name }}</span>
+                                @endif
+                                @if($prod->grain_size && !str_contains($prod->grain_size, 'Not Applicable'))
+                                    <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->grain_size }}</span>
+                                @elseif($prod->packaging_type)
+                                    <span class="text-[9px] font-semibold tracking-wider text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full uppercase bg-slate-50">{{ $prod->packaging_type }}</span>
+                                @elseif($prod->subcategoryRef)
+                                    <span class="text-[9px] font-semibold tracking-wider text-saltora-muted border border-saltora-border px-2 py-0.5 rounded-full uppercase bg-stone-50">{{ $prod->subcategoryRef->name }}</span>
                                 @endif
                             </div>
-                            @if($prod->moq)
-                            <div class="text-[10px] text-slate-500 font-medium truncate max-w-[140px]">
-                                MOQ: {{ $prod->moq }}
+
+                            <!-- Product Title -->
+                            <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-semibold group-hover:text-saltora-terracotta transition-colors duration-300 leading-snug line-clamp-1">
+                                {{ $prod->name }}
+                            </h3>
+
+                            <!-- Price & MOQ Row -->
+                            <div class="pt-2 flex items-baseline justify-between border-t border-slate-100">
+                                <div>
+                                    @if($prod->price && $prod->price > 0)
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-base font-bold text-slate-900">${{ number_format($prod->price, 2) }}</span>
+                                        <span class="text-[10px] text-slate-500 font-semibold">/ {{ ltrim($prod->price_unit ?? 'kg', '/') }}</span>
+                                    </div>
+                                    @else
+                                    <span class="text-[11px] font-bold text-[#e07a5f] uppercase tracking-wider">Custom Quote</span>
+                                    @endif
+                                </div>
+                                @if($prod->moq)
+                                <div class="text-[10px] text-slate-500 font-medium truncate max-w-[140px]">
+                                    MOQ: {{ $prod->moq }}
+                                </div>
+                                @endif
                             </div>
-                            @endif
                         </div>
                     </div>
 
                     <!-- Direct Request a Quote & Details CTA -->
-                    <div class="pt-3 border-t border-saltora-border/60 mt-3 flex items-center gap-2">
+                    <div class="pt-3 border-t border-saltora-border/60 mt-3 flex items-center gap-2 px-1 pb-0.5">
                         <a href="/contact?product={{ urlencode($prod->name) }}#contactForm" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-3 text-[10px] font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs hover:shadow rounded-lg group/btn relative overflow-hidden">
                             <i class="fa-solid fa-file-invoice text-amber-200 text-[10px] transition-transform duration-300 group-hover/btn:translate-x-0.5"></i>
                             <span class="truncate">REQUEST A QUOTE</span>
