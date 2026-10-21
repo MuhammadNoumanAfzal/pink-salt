@@ -70,6 +70,19 @@
           activeTab: 'all',
           selectedModalPack: null,
           modalOpen: false,
+          lightboxOpen: false,
+          lightboxImage: '',
+          lightboxTitle: '',
+          openLightbox(src, title) {
+              this.lightboxImage = src;
+              this.lightboxTitle = title;
+              this.lightboxOpen = true;
+              document.body.style.overflow = 'hidden';
+          },
+          closeLightbox() {
+              this.lightboxOpen = false;
+              document.body.style.overflow = '';
+          },
           openModal(pack) {
               this.selectedModalPack = pack;
               this.modalOpen = true;
@@ -77,7 +90,8 @@
           closeModal() {
               this.modalOpen = false;
           }
-      }">
+      }"
+      @keydown.escape.window="closeLightbox()">
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
@@ -245,69 +259,72 @@
                 </p>
             </div>
 
-            <!-- GRID OF 6 PACKAGING FORMAT CARDS -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- GRID OF 6 PACKAGING FORMAT CARDS (Compact, Uniform Height, 3x2 Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
 
                 <!-- 1. ZIP POUCH -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="space-y-4">
-                        <!-- Number Badge & Format -->
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
                         <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">1</span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">1</span>
                                 <span>ZIP POUCH</span>
                             </span>
-                            <span class="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full">Resealable Zipper</span>
+                            <span class="text-[10px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Resealable Zipper</span>
                         </div>
 
-                        <!-- Image -->
-                        <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-2xs group-hover:shadow-md transition-shadow">
-                            <img src="/images/packaging/hd-zip-pouch.jpg" alt="SALTORA Himalayan Pink Salt Zip Pouch Lineup" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-zip-pouch.jpg', 'Stand-Up Resealable Zip Pouch Lineup')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-zip-pouch.jpg" alt="SALTORA Himalayan Pink Salt Zip Pouch Lineup" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Stand-Up Resealable Zip Pouch">
                             Stand-Up Resealable Zip Pouch
                         </h3>
 
                         <!-- Available Sizes Badges -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">Available Sizes:</div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">200g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">400g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">500g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">750g</span>
-                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-xs px-2.5 py-1 rounded-md border border-saltora-terracotta/20">1 kg</span>
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">200g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">400g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">500g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">750g</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">1 kg</span>
                             </div>
                         </div>
 
-                        <!-- Specs list -->
-                        <ul class="text-xs text-stone-700 space-y-1.5 pt-2 border-t border-stone-100">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
                                 <span><strong>Finish:</strong> Premium matte black soft-touch texture</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Window:</strong> Clear front window showcasing genuine pink crystals</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Protection:</strong> Multi-layer moisture & oxygen barrier</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Protection:</strong> Multi-layer PE/PET barrier against humidity & oxygen</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Best For:</strong> Supermarket shelves, organic grocery, fine & coarse salt</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Supermarkets & organic retail displays</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bottom Action -->
-                    <div class="pt-4 border-t border-stone-200 mt-5">
-                        <a href="/contact?packaging=Zip+Pouch+(200g-1kg)#contactForm" class="w-full py-2.5 px-4 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-xs">
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=Zip+Pouch+(200g-1kg)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
                             <span>Inquire Zip Pouches</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
@@ -315,64 +332,67 @@
                 </div>
 
                 <!-- 2. PET JAR -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="space-y-4">
-                        <!-- Number Badge & Format -->
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
                         <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">2</span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">2</span>
                                 <span>PET JAR</span>
                             </span>
-                            <span class="text-[11px] font-bold text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded-full">Shatterproof PET</span>
+                            <span class="text-[10px] font-semibold text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">Shatterproof PET</span>
                         </div>
 
-                        <!-- Image -->
-                        <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-2xs group-hover:shadow-md transition-shadow">
-                            <img src="/images/packaging/hd-pet-jar.jpg" alt="SALTORA Himalayan Pink Salt PET Jar Lineup" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-pet-jar.jpg', 'Shatterproof Round PET Jar Lineup')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-pet-jar.jpg" alt="SALTORA Himalayan Pink Salt PET Jar Lineup" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Shatterproof Round PET Jar">
                             Shatterproof Round PET Jar
                         </h3>
 
                         <!-- Available Sizes Badges -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">Available Sizes:</div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">200g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">400g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">500g</span>
-                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-xs px-2.5 py-1 rounded-md border border-saltora-terracotta/20">1 kg</span>
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">200g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">400g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">500g</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">1 kg</span>
                             </div>
                         </div>
 
-                        <!-- Specs list -->
-                        <ul class="text-xs text-stone-700 space-y-1.5 pt-2 border-t border-stone-100">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
                                 <span><strong>Material:</strong> 100% Virgin clear food-contact PET polymer</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Cap:</strong> Threaded black ribbed screw cap with induction heat seal</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Cap:</strong> Threaded ribbed cap with induction heat seal</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Durability:</strong> High impact resistance, lightweight freight savings</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Best For:</strong> Daily household kitchen seasoning, culinary processors</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Household kitchen seasoning & foodservice</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bottom Action -->
-                    <div class="pt-4 border-t border-stone-200 mt-5">
-                        <a href="/contact?packaging=PET+Jar+(200g-1kg)#contactForm" class="w-full py-2.5 px-4 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-xs">
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=PET+Jar+(200g-1kg)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
                             <span>Inquire PET Jars</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
@@ -380,62 +400,66 @@
                 </div>
 
                 <!-- 3. GLASS JAR -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="space-y-4">
-                        <!-- Number Badge & Format -->
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
                         <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">3</span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">3</span>
                                 <span>GLASS JAR</span>
                             </span>
-                            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full">Premium Gold Cap</span>
+                            <span class="text-[10px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Premium Gold Cap</span>
                         </div>
 
-                        <!-- Image -->
-                        <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-2xs group-hover:shadow-md transition-shadow">
-                            <img src="/images/packaging/hd-glass-jar.jpg" alt="SALTORA Himalayan Pink Salt Glass Jar Lineup" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-glass-jar.jpg', 'Luxury Flint Glass Jar Lineup')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-glass-jar.jpg" alt="SALTORA Himalayan Pink Salt Glass Jar Lineup" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Luxury Flint Glass Jar">
                             Luxury Flint Glass Jar
                         </h3>
 
                         <!-- Available Sizes Badges -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">Available Sizes:</div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">250g</span>
-                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-xs px-2.5 py-1 rounded-md border border-saltora-terracotta/20">500g</span>
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">250g</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">500g</span>
+                                <span class="bg-stone-100 text-stone-500 font-semibold text-[10px] px-1.5 py-0.5 rounded border border-stone-200">+ Custom</span>
                             </div>
                         </div>
 
-                        <!-- Specs list -->
-                        <ul class="text-xs text-stone-700 space-y-1.5 pt-2 border-t border-stone-100">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
                                 <span><strong>Material:</strong> Heavy-bottom ultra-clear pure flint glass</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Closure:</strong> Gold / copper airtight lug metal cap with plastisol liner</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Closure:</strong> Gold / copper airtight lug metal cap</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Safety:</strong> Tamper-evident seal band & zero chemical reactivity</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Best For:</strong> Gourmet delicatessens, gift hampers, luxury dining tables</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Gourmet delicatessens & gift hampers</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bottom Action -->
-                    <div class="pt-4 border-t border-stone-200 mt-5">
-                        <a href="/contact?packaging=Glass+Jar+(250g-500g)#contactForm" class="w-full py-2.5 px-4 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-xs">
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=Glass+Jar+(250g-500g)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
                             <span>Inquire Glass Jars</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
@@ -443,218 +467,205 @@
                 </div>
 
                 <!-- 4. GRINDER BOTTLE -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="space-y-4">
-                        <!-- Number Badge & Format -->
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
                         <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">4</span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">4</span>
                                 <span>GRINDER BOTTLE</span>
                             </span>
-                            <span class="text-[11px] font-bold text-stone-800 bg-stone-100 px-2.5 py-0.5 rounded-full">Ceramic Mill</span>
+                            <span class="text-[10px] font-semibold text-stone-800 bg-stone-100 border border-stone-200 px-2 py-0.5 rounded-full">Ceramic Mill</span>
                         </div>
 
-                        <!-- Image -->
-                        <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-2xs group-hover:shadow-md transition-shadow">
-                            <img src="/images/packaging/hd-grinder-bottle.jpg" alt="SALTORA Himalayan Pink Salt Grinder Bottle Series" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-grinder-bottle.jpg', 'Adjustable Ceramic Grinder Bottle Series')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-grinder-bottle.jpg" alt="SALTORA Himalayan Pink Salt Grinder Bottle Series" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Adjustable Ceramic Grinder Bottle">
                             Adjustable Ceramic Grinder Bottle
                         </h3>
 
-                        <!-- Available Formats -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">Available Capacities:</div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">100g Compact</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">150g Standard</span>
-                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-xs px-2.5 py-1 rounded-md border border-saltora-terracotta/20">200g Tall</span>
+                        <!-- Available Sizes Badges -->
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">100g Compact</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">150g Standard</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">200g Tall</span>
                             </div>
                         </div>
 
-                        <!-- Specs list -->
-                        <ul class="text-xs text-stone-700 space-y-1.5 pt-2 border-t border-stone-100">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Grinder Core:</strong> High-hardness non-corrosive adjustable ceramic mill</span>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Core:</strong> High-hardness non-corrosive ceramic mill</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Mechanism:</strong> Twist adjustment from coarse cracked to ultra-fine dust</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Mechanism:</strong> Twist adjustment from coarse to fine</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Salt Filling:</strong> Pre-filled with screened 2-5mm coarse pink rock crystals</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Best For:</strong> Tabletop dining, steakhouse service, consumer spice racks</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Tabletop dining, steakhouses & spice racks</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bottom Action -->
-                    <div class="pt-4 border-t border-stone-200 mt-5">
-                        <a href="/contact?packaging=Grinder+Bottle+(100g-200g)#contactForm" class="w-full py-2.5 px-4 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-xs">
-                            <span>Inquire Grinder Bottles</span>
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=Grinder+Bottle+(100g-200g)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
+                            <span>Inquire Grinders</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 5. SHAKER BOTTLE -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="space-y-4">
-                        <!-- Number Badge & Format -->
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
                         <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">5</span>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">5</span>
                                 <span>SHAKER BOTTLE</span>
                             </span>
-                            <span class="text-[11px] font-bold text-rose-800 bg-rose-50 px-2.5 py-0.5 rounded-full">Dual-Flip Cap</span>
+                            <span class="text-[10px] font-semibold text-rose-800 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full">Dual-Flip Cap</span>
                         </div>
 
-                        <!-- Image -->
-                        <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-2xs group-hover:shadow-md transition-shadow">
-                            <img src="/images/packaging/hd-shaker-bottle.jpg" alt="SALTORA Himalayan Pink Salt Shaker Bottle Series" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-shaker-bottle.jpg', 'Dual-Action Flip Shaker Bottle Series')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-shaker-bottle.jpg" alt="SALTORA Himalayan Pink Salt Shaker Bottle Series" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Dual-Action Flip Shaker Bottle">
                             Dual-Action Flip Shaker Bottle
                         </h3>
 
-                        <!-- Available Formats -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">Available Capacities:</div>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">100g</span>
-                                <span class="bg-stone-100 text-slate-900 font-bold text-xs px-2.5 py-1 rounded-md border border-stone-200">150g</span>
-                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-xs px-2.5 py-1 rounded-md border border-saltora-terracotta/20">200g</span>
+                        <!-- Available Sizes Badges -->
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">100g</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">150g</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">200g</span>
                             </div>
                         </div>
 
-                        <!-- Specs list -->
-                        <ul class="text-xs text-stone-700 space-y-1.5 pt-2 border-t border-stone-100">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Dispenser Cap:</strong> Dual-action flip lid (pour spout + sift sprinkle holes)</span>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Cap:</strong> Dual-action flip lid (pour spout + sprinkle sift)</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Sealing:</strong> Pressure-sensitive freshness inner seal liner beneath cap</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Sealing:</strong> Pressure-sensitive freshness inner seal</span>
                             </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Salt Filling:</strong> 0.3-0.8mm free-flowing fine table grade pink salt</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-saltora-terracotta mt-0.5"></i>
-                                <span><strong>Best For:</strong> Restaurant table shakers, retail condiments, barbecue rubs</span>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Restaurant tables, retail condiments & rubs</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bottom Action -->
-                    <div class="pt-4 border-t border-stone-200 mt-5">
-                        <a href="/contact?packaging=Shaker+Bottle+(100g-200g)#contactForm" class="w-full py-2.5 px-4 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-xs">
-                            <span>Inquire Shaker Bottles</span>
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=Shaker+Bottle+(100g-200g)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
+                            <span>Inquire Shakers</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 6. PP BAGS (FOOD GRADE) -->
-                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-saltora-terracotta/50 group relative overflow-hidden md:col-span-2 lg:col-span-3">
-                    <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <!-- Left side image -->
-                        <div class="lg:col-span-7 space-y-4">
-                            <div class="flex items-center justify-between">
-                                <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                                    <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">6</span>
-                                    <span>PP BAGS (FOOD GRADE)</span>
-                                </span>
-                                <span class="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-3 py-0.5 rounded-full">Heavy Duty Export Grade</span>
-                            </div>
+                    <div class="space-y-3">
+                        <!-- Number Badge & Feature Tag -->
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-4 h-4 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[9px] font-bold">6</span>
+                                <span>PP WOVEN BAGS</span>
+                            </span>
+                            <span class="text-[10px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Heavy Duty FCL</span>
+                        </div>
 
-                            <div class="rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200 shadow-sm group-hover:shadow-md transition-shadow">
-                                <img src="/images/packaging/hd-pp-bags-lineup.jpg" alt="SALTORA Food Grade PP Bags Lineup 2kg to 25kg" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-102">
+                        <!-- Picture Frame (Uniform 4:3 Aspect Ratio, All Pictures Identical Size) -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-b from-stone-50 to-[#FAF7F2] border border-stone-200/80 p-1.5 flex items-center justify-center shrink-0 cursor-pointer group/img"
+                             style="aspect-ratio: 4 / 3;"
+                             @click="openLightbox('/images/packaging/hd-pp-bags-lineup.jpg', 'Food-Grade Polypropylene Export Bags (2kg to 25kg)')"
+                             title="Click to view full image">
+                            <img src="/images/packaging/hd-pp-bags-lineup.jpg" alt="SALTORA Food Grade PP Bags Lineup 2kg to 25kg" class="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover/img:scale-105">
+                            <span class="absolute bottom-2.5 right-2.5 bg-black/60 hover:bg-black/85 backdrop-blur-xs text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-expand text-[9px]"></i>
+                                <span>Full View</span>
+                            </span>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-saltora-terracotta transition-colors line-clamp-1" title="Food-Grade Polypropylene Bags">
+                            Food-Grade Polypropylene Bags
+                        </h3>
+
+                        <!-- Available Sizes Badges -->
+                        <div class="space-y-1">
+                            <div class="text-[10px] font-bold uppercase text-stone-500 tracking-wider">Available Sizes:</div>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">2kg</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">5kg</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">10kg</span>
+                                <span class="bg-stone-100 text-stone-800 font-semibold text-[11px] px-2 py-0.5 rounded border border-stone-200">20kg</span>
+                                <span class="bg-saltora-terracotta/10 text-saltora-terracotta font-bold text-[11px] px-2 py-0.5 rounded border border-saltora-terracotta/25">25 kg</span>
                             </div>
                         </div>
 
-                        <!-- Right side content & specs -->
-                        <div class="lg:col-span-5 space-y-5">
-                            <div>
-                                <h3 class="font-serif text-2xl font-bold text-slate-900 group-hover:text-saltora-terracotta transition-colors">
-                                    Heavy-Duty Food-Grade Polypropylene Bags
-                                </h3>
-                                <p class="text-xs text-stone-700 font-normal leading-relaxed mt-1.5">
-                                    Engineered for high-volume commercial processors, bakeries, restaurant supply, and international container shipments. Built with tear-proof virgin PP woven fabric and protective moisture barrier.
-                                </p>
-                            </div>
+                        <!-- Key Specifications List -->
+                        <ul class="text-xs text-stone-700 space-y-1 pt-2 border-t border-stone-100">
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Build:</strong> Tear-proof virgin PP woven fabric with PE liner</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Barrier:</strong> Multi-wall protection against humidity clumping</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <i class="fa-solid fa-check text-saltora-terracotta text-[10px] mt-1 shrink-0"></i>
+                                <span><strong>Best For:</strong> Commercial bakeries & 20ft container FCL</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <!-- Available Sizes Badges -->
-                            <div class="space-y-2">
-                                <div class="text-[11px] font-bold uppercase text-stone-600 tracking-wider">All 5 Export Capacities:</div>
-                                <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                                    <div class="bg-stone-100 border border-stone-200 rounded-lg p-2 text-center">
-                                        <span class="block text-xs font-bold text-slate-900">2 KG</span>
-                                        <span class="text-[9px] text-stone-500 uppercase">PP Bag</span>
-                                    </div>
-                                    <div class="bg-stone-100 border border-stone-200 rounded-lg p-2 text-center">
-                                        <span class="block text-xs font-bold text-slate-900">5 KG</span>
-                                        <span class="text-[9px] text-stone-500 uppercase">PP Bag</span>
-                                    </div>
-                                    <div class="bg-stone-100 border border-stone-200 rounded-lg p-2 text-center">
-                                        <span class="block text-xs font-bold text-slate-900">10 KG</span>
-                                        <span class="text-[9px] text-stone-500 uppercase">PP Bag</span>
-                                    </div>
-                                    <div class="bg-stone-100 border border-stone-200 rounded-lg p-2 text-center">
-                                        <span class="block text-xs font-bold text-slate-900">20 KG</span>
-                                        <span class="text-[9px] text-stone-500 uppercase">PP Bag</span>
-                                    </div>
-                                    <div class="bg-saltora-terracotta/10 border border-saltora-terracotta/30 rounded-lg p-2 text-center">
-                                        <span class="block text-xs font-bold text-saltora-terracotta">25 KG</span>
-                                        <span class="text-[9px] text-saltora-terracotta/80 uppercase">Standard FCL</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Features Pill Grid -->
-                            <div class="grid grid-cols-2 gap-2 text-xs text-stone-800">
-                                <div class="flex items-center gap-2 p-2 bg-[#FAF7F2] rounded-md border border-stone-200/80">
-                                    <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                                    <span>Food Grade Certified</span>
-                                </div>
-                                <div class="flex items-center gap-2 p-2 bg-[#FAF7F2] rounded-md border border-stone-200/80">
-                                    <i class="fa-solid fa-circle-check text-blue-600"></i>
-                                    <span>Hygienically Packed</span>
-                                </div>
-                                <div class="flex items-center gap-2 p-2 bg-[#FAF7F2] rounded-md border border-stone-200/80">
-                                    <i class="fa-solid fa-circle-check text-amber-600"></i>
-                                    <span>Moisture Protected</span>
-                                </div>
-                                <div class="flex items-center gap-2 p-2 bg-[#FAF7F2] rounded-md border border-stone-200/80">
-                                    <i class="fa-solid fa-circle-check text-purple-600"></i>
-                                    <span>Export Quality Build</span>
-                                </div>
-                            </div>
-
-                            <div class="pt-2">
-                                <a href="/contact?packaging=Food+Grade+PP+Bags+(2kg-25kg)#contactForm" class="w-full py-3 px-6 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shadow-md">
-                                    <span>Inquire 2kg to 25kg PP Bags (Bulk FCL Orders)</span>
-                                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
+                    <!-- Bottom Action Button (Pinned) -->
+                    <div class="pt-3 border-t border-stone-200/80 mt-3.5">
+                        <a href="/contact?packaging=Food+Grade+PP+Bags+(2kg-25kg)#contactForm" class="w-full py-2 px-3 rounded-lg bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 shadow-2xs">
+                            <span>Inquire PP Bags</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -866,6 +877,48 @@
             </div>
         </div>
     </section>
+
+    <!-- FULL IMAGE LIGHTBOX MODAL -->
+    <div x-show="lightboxOpen" 
+         x-cloak
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md"
+         @click.self="closeLightbox()">
+        
+        <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center justify-center bg-stone-900/95 rounded-2xl border border-white/20 p-4 sm:p-6 shadow-2xl overflow-hidden"
+             @click.stop>
+            <!-- Close Button -->
+            <button @click="closeLightbox()" 
+                    class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-saltora-terracotta text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+                    title="Close Full View (Esc)">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+
+            <!-- Image Caption Bar -->
+            <div class="w-full text-center pb-3 border-b border-white/10 mb-3">
+                <span class="text-[11px] font-bold text-amber-400 tracking-mega uppercase">FULL PACKAGING VIEW</span>
+                <h3 class="text-white font-serif text-base sm:text-xl font-bold mt-0.5" x-text="lightboxTitle"></h3>
+            </div>
+
+            <!-- Full-size Image Container -->
+            <div class="relative w-full max-h-[72vh] flex items-center justify-center overflow-auto rounded-xl bg-black/40 p-2 sm:p-4">
+                <img :src="lightboxImage" :alt="lightboxTitle" class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
+            </div>
+
+            <div class="w-full flex items-center justify-between text-xs text-stone-300 pt-3 px-1">
+                <span class="text-stone-400">Press ESC or click anywhere outside to close</span>
+                <a :href="lightboxImage" target="_blank" class="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium">
+                    <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
+                    <span>Open High-Res File</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER SECTION -->
     <x-footer />
