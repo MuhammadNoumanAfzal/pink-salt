@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
                 'name' => 'Himalayan Pink Salt',
                 'slug' => 'himalayan-pink-salt',
                 'description' => '100% Pure, unrefined food-grade Himalayan Pink Salt mined directly from Khewra, Salt Range Pakistan. Calibrated in 4 distinct culinary & export grain sizes: Fine, Medium, Coarse, and Crystal Rock. Certified ISO 22000, CXS 150:1985 Codex, Halal & Kosher.',
-                'image_url' => '/images/products/pink-salt-grains.jpg',
+                'image_url' => '/images/products/pink-salt-medium.jpg',
                 'subcategories' => [
                     [
                         'name' => 'Fine Pink Salt (0.3 - 0.8 mm)',
@@ -58,7 +58,7 @@ class CategorySeeder extends Seeder
                         'product_type' => 'pure_salt',
                         'moq' => '1,000 Pouches (1 Metric Ton)',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/fine-pouch-1kg.png',
+                        'image_url' => '/images/products/pink-salt-fine.jpg',
                         'short_desc' => 'Ultra-pure food grade fine Himalayan pink salt calibrated from 0.3mm to 0.8mm. Naturally free-flowing with 84+ trace minerals.',
                         'full_desc' => 'Mined directly from pristine geological seams within the Khewra Salt Range of Pakistan. Our Fine Pink Salt undergoes multi-deck vibrating screen calibration and neodymium magnetic filtration. Free from microplastics, anti-caking agents, or artificial additives.',
                         'is_featured' => true,
@@ -80,7 +80,7 @@ class CategorySeeder extends Seeder
                         'product_type' => 'pure_salt',
                         'moq' => '1,200 Jars',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/medium-jar-500g.jpg',
+                        'image_url' => '/images/products/pink-salt-medium.jpg',
                         'short_desc' => 'Granulated medium grain pink salt providing a satisfying crunch for gourmet cooking, spice blends, and rubs.',
                         'full_desc' => 'Tailored for culinary processors and supermarket retail shelves. Perfect grain size for savory rubs, bakery toppings, and general kitchen seasoning. Retains vivid pink hues with zero chemical washing.',
                         'is_featured' => true,
@@ -102,7 +102,7 @@ class CategorySeeder extends Seeder
                         'product_type' => 'pure_salt',
                         'moq' => '1,500 Bottles',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/coarse-grinder-200g.jpg',
+                        'image_url' => '/images/products/pink-salt-coarse.jpg',
                         'short_desc' => 'Evenly graded coarse pink salt crystals engineered specifically for smooth, non-jamming operation in ceramic spice grinders.',
                         'full_desc' => 'Export-grade coarse pink crystals screened to prevent grinder jamming. Pre-filled in food-grade heavy glass bottles with durable ceramic grinding mechanisms. Available with private-label OEM sleeve packaging.',
                         'is_featured' => true,
@@ -124,7 +124,7 @@ class CategorySeeder extends Seeder
                         'product_type' => 'pure_salt',
                         'moq' => '25 Metric Tons (1x20ft FCL)',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/crystal-bulk-25kg.jpg',
+                        'image_url' => '/images/products/pink-salt-crystal.jpg',
                         'short_desc' => 'Jewel-like translucent pink crystal chunks ideal for commercial brine making, gourmet presentations, and repackaging.',
                         'full_desc' => 'Direct container-load supply of chunky crystal rock pink salt. High visual appeal and mineral density make it the premium choice for European and North American importers looking to repackage into retail formats.',
                         'is_featured' => false,
@@ -133,7 +133,205 @@ class CategorySeeder extends Seeder
                 ]
             ],
 
-            // 2. Cooking Salt Tiles
+            // 2. Animal Lick Salt
+            [
+                'name' => 'Animal Lick Salt',
+                'slug' => 'animal-lick-salt',
+                'description' => '100% Natural Himalayan mineral lick salt for horses, cattle, sheep, goats, and livestock. Available in natural raw rock with hanging weather-proof ropes and compressed mineral lick blocks in 5kg, 10kg, 15kg, and 20kg weights.',
+                'image_url' => '/images/products/animal-lick-salt-normal.jpg',
+                'subcategories' => [
+                    [
+                        'name' => 'Simple Natural Rock Lick Salt',
+                        'slug' => 'simple-natural-rock-lick',
+                        'description' => 'Raw natural rock chunks drilled with a center hole and fitted with durable hanging rope for pasture & stable use.'
+                    ],
+                    [
+                        'name' => 'Compressed Mineral Lick Salt Blocks',
+                        'slug' => 'compressed-mineral-lick-blocks',
+                        'description' => 'High-density hydraulically compressed lick salt blocks fortified with vital livestock micro-minerals.'
+                    ]
+                ],
+                'products' => [
+                    [
+                        'name' => 'Natural Rock Animal Lick Salt with Rope',
+                        'subcat_slug' => 'simple-natural-rock-lick',
+                        'badge' => 'Equine & Stable',
+                        'grade' => 'Livestock & Equine Feed Grade',
+                        'mesh_size' => 'Natural Solid Rock (3kg - 5kg)',
+                        'grain_size' => 'Natural Rock Lump',
+                        'purity' => '84+ Essential Natural Minerals',
+                        'packaging' => 'Individually shrink-wrapped with durable hemp hanging rope, 4 pcs/carton',
+                        'packaging_type' => 'Shrink Wrap with Rope',
+                        'package_weight' => '3-5 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'animal_lick',
+                        'moq' => '500 Pieces',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/animal-lick-salt-normal.jpg',
+                        'short_desc' => 'Pure rock salt lick mined directly from Khewra. Weather-resistant with durable rope for horse stables and cattle pens.',
+                        'full_desc' => 'Hard natural pink rock crystal prevents animals from biting off large chunks, ensuring long-lasting enjoyment and natural mineral replenishment. Withstands rain and humidity far better than artificial pressed salt.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ],
+                    [
+                        'name' => 'Compressed Mineral Lick Salt Block',
+                        'subcat_slug' => 'compressed-mineral-lick-blocks',
+                        'badge' => 'Weather-Resistant',
+                        'grade' => 'Fortified Feed Grade',
+                        'mesh_size' => 'Hydraulic Compressed Block (5kg / 10kg)',
+                        'grain_size' => 'Compressed Mineral Block',
+                        'purity' => 'Calibrated Minerals (Zinc, Iron, Selenium)',
+                        'packaging' => 'Moisture-proof shrink film with center hole for holder mounting, 4 pcs/carton',
+                        'packaging_type' => 'Shrink Wrap with Center Hole',
+                        'package_weight' => '5kg & 10kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'animal_lick',
+                        'moq' => '1,000 Pieces',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/animal-lick-salt-compressed.jpg',
+                        'short_desc' => 'Precision hydraulically compressed pink salt blocks engineered for standard barn lick holders and automatic feeders.',
+                        'full_desc' => 'Manufactured under extreme pressure to prevent crumbling and rapid dissolving in humid environments. Features a standardized central mounting hole for simple installation in barn feeder troughs.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ]
+                ]
+            ],
+
+            // 3. Pink Salt Lamps
+            [
+                'name' => 'Pink Salt Lamps',
+                'slug' => 'pink-salt-lamps',
+                'description' => 'Artisanal hand-crafted authentic Khewra pink salt crystal lamps emitting warm amber negative ions for air ionization, stress relief, and holistic interior aesthetics. Available in natural rough shapes, fire bowls, and geometric pyramids.',
+                'image_url' => '/images/products/pink-salt-lamp-natural.jpg',
+                'subcategories' => [
+                    [
+                        'name' => 'Natural Shape Pink Salt Lamps (2-3kg, 3-5kg, 5-7kg)',
+                        'slug' => 'natural-shape-salt-lamps',
+                        'description' => 'Authentic hand-chipped natural boulder lamps mounted on treated termite-resistant neem or rosewood bases.'
+                    ],
+                    [
+                        'name' => 'Handcrafted Geometric & Fire Bowl Lamps',
+                        'slug' => 'geometric-fire-bowl-lamps',
+                        'description' => 'Carved artisan lamps including fire bowls filled with glowing massage balls, pyramids, spheres, and columns.'
+                    ]
+                ],
+                'products' => [
+                    [
+                        'name' => 'Natural Shape Himalayan Pink Salt Lamp (3-5 kg)',
+                        'subcat_slug' => 'natural-shape-salt-lamps',
+                        'badge' => 'Best Seller',
+                        'grade' => 'CE / UL / RoHS Certified Electricals',
+                        'mesh_size' => 'Hand-Chipped Crystal (3-5kg)',
+                        'grain_size' => 'Handcrafted Lamps',
+                        'purity' => '100% Khewra Crystal',
+                        'packaging' => 'Individual mail-order color gift box with polystyrene padding & neem wood base',
+                        'packaging_type' => 'Retail Gift Box',
+                        'package_weight' => '3-5 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'lamp_craft',
+                        'moq' => '300 Units',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/pink-salt-lamp-natural.jpg',
+                        'short_desc' => 'Classic natural hand-carved pink crystal lamp. Emits a soothing amber glow that purifies indoor air and creates a serene ambiance.',
+                        'full_desc' => 'Each lamp is uniquely hand-chiseled by master Pakistani artisans to preserve the natural mineral strata of the Khewra mines. Mounted on a durable wooden base and fitted with certified electrical cord with rotary dimmer switch.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ],
+                    [
+                        'name' => 'Handcrafted Spherical Globe Pink Salt Lamp',
+                        'subcat_slug' => 'geometric-fire-bowl-lamps',
+                        'badge' => 'Carved Sphere',
+                        'grade' => 'CE / UL / RoHS Certified Electricals',
+                        'mesh_size' => 'Polished Sphere (18-20cm dia, 4-6kg)',
+                        'grain_size' => 'Handcrafted Lamps',
+                        'purity' => '100% Khewra Crystal',
+                        'packaging' => 'Individual mail-order color gift box with polystyrene padding & solid neem wood base',
+                        'packaging_type' => 'Retail Gift Box',
+                        'package_weight' => '4-6 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'lamp_craft',
+                        'moq' => '200 Units',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/pink-salt-lamp-sphere.jpg',
+                        'short_desc' => 'Artisanal hand-turned sphere salt lamp carved from solid Khewra pink crystal. Radiates a soothing 360-degree ambient glow.',
+                        'full_desc' => 'Turned and hand-polished by master craftsmen into an orb of luminous mineral crystal. Mounted on a rosewood base with certified electrical cable and dimmer rotary switch.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ],
+                    [
+                        'name' => 'Geometric Pyramid Himalayan Crystal Salt Lamp',
+                        'subcat_slug' => 'geometric-fire-bowl-lamps',
+                        'badge' => 'Geometric Art',
+                        'grade' => 'CE / UL Certified',
+                        'mesh_size' => 'Precision Polished Pyramid (2.5-3.5kg)',
+                        'grain_size' => 'Handcrafted Lamps',
+                        'purity' => 'A-Grade Translucent Crystal',
+                        'packaging' => 'Luxury gift box with dimmer switch cord & wooden mahogany base',
+                        'packaging_type' => 'Retail Gift Box',
+                        'package_weight' => '2.5-3.5 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'lamp_craft',
+                        'moq' => '250 Units',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/pink-salt-lamp-pyramid.jpg',
+                        'short_desc' => 'Sleek modern 4-sided pyramid cut from solid translucent pink crystal. Combines ancient mineral wellness with contemporary geometric design.',
+                        'full_desc' => 'Cut and polished to exact angular proportions, this pyramid lamp showcases deep salmon and amber hues when lit. Perfect for executive desks, modern minimalist homes, and meditation corners.',
+                        'is_featured' => false,
+                        'is_active' => true,
+                    ],
+                    [
+                        'name' => 'Artisanal Fire Bowl Salt Lamp with Illuminated Salt Balls',
+                        'subcat_slug' => 'geometric-fire-bowl-lamps',
+                        'badge' => 'Luxury Decor',
+                        'grade' => 'Holistic Wellness & Spa Grade',
+                        'mesh_size' => 'Carved Bowl + 6 Polished Spheres',
+                        'grain_size' => 'Handcrafted Lamps',
+                        'purity' => 'Artisanal Hand-Carved',
+                        'packaging' => 'Reinforced export carton with molded foam inserts (Includes 6 salt massage spheres)',
+                        'packaging_type' => 'Retail Gift Box',
+                        'package_weight' => '4-5 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'lamp_craft',
+                        'moq' => '200 Units',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/pink-salt-lamp-bowl.jpg',
+                        'short_desc' => 'Exquisite hand-carved salt fire bowl filled with glowing heated pink salt spheres. Ideal for spa massage therapy and upscale interior decor.',
+                        'full_desc' => 'A statement piece for living rooms, yoga studios, and luxury spas. The heated salt spheres can be removed and gently rolled on sore muscles for warm stone massage therapy while releasing soothing negative ions into the room.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ],
+                    [
+                        'name' => 'Geometric Pillar & Column Himalayan Pink Salt Lamp',
+                        'subcat_slug' => 'geometric-fire-bowl-lamps',
+                        'badge' => 'Architectural Modern',
+                        'grade' => 'CE / UL / RoHS Certified Electricals',
+                        'mesh_size' => 'Precision Cut Column (8x4x4 in, 4-5kg)',
+                        'grain_size' => 'Handcrafted Lamps',
+                        'purity' => '100% Khewra Crystal',
+                        'packaging' => 'Luxury retail box with custom foam inserts & mahogany finish base',
+                        'packaging_type' => 'Retail Gift Box',
+                        'package_weight' => '4-5 kg',
+                        'price' => null,
+                        'price_unit' => null,
+                        'product_type' => 'lamp_craft',
+                        'moq' => '200 Units',
+                        'origin' => 'Khewra Salt Range, Pakistan',
+                        'image_url' => '/images/products/pink-salt-lamp-pillar.jpg',
+                        'short_desc' => 'Sleek rectangular column lamp cut from solid translucent crystal rock. Combines contemporary minimalist aesthetics with natural ion therapy.',
+                        'full_desc' => 'Straight architectural lines combined with natural crystalline texture create an exquisite conversation piece for modern executive offices, bedrooms, and lounges.',
+                        'is_featured' => true,
+                        'is_active' => true,
+                    ]
+                ]
+            ],
+
+            // 4. Cooking Salt Tiles
             [
                 'name' => 'Cooking Salt Tiles',
                 'slug' => 'cooking-salt-tiles',
@@ -163,213 +361,10 @@ class CategorySeeder extends Seeder
                         'product_type' => 'tile_brick',
                         'moq' => '500 Pieces',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/cooking-tile-8x4x2.jpg',
+                        'image_url' => '/images/products/cooking-salt-tiles.jpg',
                         'short_desc' => 'High-thermal retention pink salt cooking slab. Imparts subtle gourmet mineral notes to meats, fish, and veggies on gas stoves or charcoal grills.',
                         'full_desc' => 'Carefully extracted from solid Khewra salt blocks and precision-cut to 8x4x2 inches. Can be heated slowly to 450°F (230°C) for tabletop cooking or chilled in the freezer for cold appetizers and desserts.',
                         'is_featured' => true,
-                        'is_active' => true,
-                    ]
-                ]
-            ],
-
-            // 3. Animal Lick Salt
-            [
-                'name' => 'Animal Lick Salt',
-                'slug' => 'animal-lick-salt',
-                'description' => '100% Natural Himalayan mineral lick salt for horses, cattle, sheep, goats, and livestock. Available in natural raw rock with hanging weather-proof ropes and compressed mineral lick blocks in 5kg, 10kg, 15kg, and 20kg weights.',
-                'image_url' => '/images/products/animal-lick-salt.jpg',
-                'subcategories' => [
-                    [
-                        'name' => 'Simple Natural Rock Lick Salt (5kg, 10kg, 15kg, 20kg)',
-                        'slug' => 'simple-natural-rock-lick',
-                        'description' => 'Raw natural rock chunks drilled with a center hole and fitted with durable hanging rope for pasture & stable use.'
-                    ],
-                    [
-                        'name' => 'Compressed Mineral Lick Salt Blocks (5kg, 10kg, 15kg, 20kg)',
-                        'slug' => 'compressed-mineral-lick-blocks',
-                        'description' => 'High-density hydraulically compressed lick salt blocks fortified with vital livestock micro-minerals.'
-                    ]
-                ],
-                'products' => [
-                    [
-                        'name' => 'Natural Rock Animal Lick Salt with Rope - 5kg',
-                        'subcat_slug' => 'simple-natural-rock-lick',
-                        'badge' => 'Equine & Stable',
-                        'grade' => 'Livestock & Equine Feed Grade',
-                        'mesh_size' => 'Natural Solid Rock (5 kg)',
-                        'grain_size' => 'Natural Rock Lump',
-                        'purity' => '84+ Essential Natural Minerals',
-                        'packaging' => 'Individually shrink-wrapped with durable hemp hanging rope, 4 pcs/carton',
-                        'packaging_type' => 'Shrink Wrap with Rope',
-                        'package_weight' => '5 kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'animal_lick',
-                        'moq' => '500 Pieces',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/animal-lick-rope-5kg.jpg',
-                        'short_desc' => 'Pure rock salt lick mined directly from Khewra. Weather-resistant with durable rope for horse stables and cattle pens.',
-                        'full_desc' => 'Hard natural pink rock crystal prevents animals from biting off large chunks, ensuring long-lasting enjoyment and natural mineral replenishment. Withstands rain and humidity far better than artificial pressed salt.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Natural Rock Animal Lick Salt with Rope - 10kg',
-                        'subcat_slug' => 'simple-natural-rock-lick',
-                        'badge' => 'Popular Weight',
-                        'grade' => 'Livestock & Equine Feed Grade',
-                        'mesh_size' => 'Natural Solid Rock (10 kg)',
-                        'grain_size' => 'Natural Rock Lump',
-                        'purity' => '84+ Essential Natural Minerals',
-                        'packaging' => 'Individually shrink-wrapped with reinforced rope, 2 pcs/carton',
-                        'packaging_type' => 'Shrink Wrap with Rope',
-                        'package_weight' => '10 kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'animal_lick',
-                        'moq' => '300 Pieces',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/animal-lick-rope-10kg.jpg',
-                        'short_desc' => 'Heavy-duty 10kg natural pink rock lick for cattle herds and commercial dairy farms. Promotes healthy digestion and electrolyte balance.',
-                        'full_desc' => 'Our 10kg natural salt lick is the ideal volume for cattle paddocks and farm pastures. Fitted with a heavy-duty reinforced rope to suspend easily from fence posts or barn railings out of dirt and mud.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Natural Rock Animal Lick Salt with Rope - 15kg & 20kg',
-                        'subcat_slug' => 'simple-natural-rock-lick',
-                        'badge' => 'Heavy Pasture',
-                        'grade' => 'Free-Range Pasture Grade',
-                        'mesh_size' => 'Natural Solid Rock (15kg - 20kg)',
-                        'grain_size' => 'Heavy Pasture Rock',
-                        'purity' => '100% Unrefined Natural Seam',
-                        'packaging' => 'Heavy-duty protective wrap, stacked on shrink-wrapped export wooden pallets',
-                        'packaging_type' => 'Heavy-Duty Palletized',
-                        'package_weight' => '15kg - 20kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'animal_lick',
-                        'moq' => '200 Pieces (or 1 FCL)',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/animal-lick-rock-20kg.jpg',
-                        'short_desc' => 'Massive 15kg - 20kg natural boulder salt licks for extensive cattle ranching, game reserves, and feedlots.',
-                        'full_desc' => 'Heavyweight natural Khewra boulders designed to remain stationed in open pastures through all seasonal conditions. Animals self-regulate their intake of iron, calcium, magnesium, and potassium.',
-                        'is_featured' => false,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Compressed Mineral Lick Salt Block - 5kg & 10kg',
-                        'subcat_slug' => 'compressed-mineral-lick-blocks',
-                        'badge' => 'Weather-Resistant',
-                        'grade' => 'Fortified Feed Grade',
-                        'mesh_size' => 'Hydraulic Compressed Block (5kg / 10kg)',
-                        'grain_size' => 'Compressed Mineral Block',
-                        'purity' => 'Calibrated Minerals (Zinc, Iron, Selenium)',
-                        'packaging' => 'Moisture-proof shrink film with center hole for holder mounting, 4 pcs/carton',
-                        'packaging_type' => 'Shrink Wrap with Center Hole',
-                        'package_weight' => '5kg & 10kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'animal_lick',
-                        'moq' => '1,000 Pieces',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/compressed-lick-block.jpg',
-                        'short_desc' => 'Precision hydraulically compressed pink salt blocks engineered for standard barn lick holders and automatic feeders.',
-                        'full_desc' => 'Manufactured under extreme pressure to prevent crumbling and rapid dissolving in humid environments. Features a standardized central mounting hole for simple installation in barn feeder troughs.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ]
-                ]
-            ],
-
-            // 4. Pink Salt Lamps
-            [
-                'name' => 'Pink Salt Lamps',
-                'slug' => 'pink-salt-lamps',
-                'description' => 'Artisanal hand-crafted authentic Khewra pink salt crystal lamps emitting warm amber negative ions for air ionization, stress relief, and holistic interior aesthetics. Available in natural rough shapes, fire bowls, and geometric pyramids.',
-                'image_url' => '/images/products/pink-salt-lamps.jpg',
-                'subcategories' => [
-                    [
-                        'name' => 'Natural Shape Pink Salt Lamps (2-3kg, 3-5kg, 5-7kg)',
-                        'slug' => 'natural-shape-salt-lamps',
-                        'description' => 'Authentic hand-chipped natural boulder lamps mounted on treated termite-resistant neem or rosewood bases.'
-                    ],
-                    [
-                        'name' => 'Handcrafted Geometric & Fire Bowl Lamps',
-                        'slug' => 'geometric-fire-bowl-lamps',
-                        'description' => 'Carved artisan lamps including fire bowls filled with glowing massage balls, pyramids, and polished spheres.'
-                    ],
-                    [
-                        'name' => 'USB & Miniature Night Light Salt Lamps',
-                        'slug' => 'usb-night-light-salt-lamps',
-                        'description' => 'Compact desktop USB salt lamps and wall plug-in night lights for bedrooms, offices, and wellness studios.'
-                    ]
-                ],
-                'products' => [
-                    [
-                        'name' => 'Natural Shape Himalayan Pink Salt Lamp (3-5 kg)',
-                        'subcat_slug' => 'natural-shape-salt-lamps',
-                        'badge' => 'Best Seller',
-                        'grade' => 'CE / UL / RoHS Certified Electricals',
-                        'mesh_size' => 'Hand-Chipped Crystal (3-5kg)',
-                        'grain_size' => 'Handcrafted Lamps',
-                        'purity' => '100% Khewra Crystal',
-                        'packaging' => 'Individual mail-order color gift box with polystyrene padding & neem wood base',
-                        'packaging_type' => 'Retail Gift Box',
-                        'package_weight' => '3-5 kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'lamp_craft',
-                        'moq' => '300 Units',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/natural-lamp-3to5kg.jpg',
-                        'short_desc' => 'Classic natural hand-carved pink crystal lamp. Emits a soothing amber glow that purifies indoor air and creates a serene ambiance.',
-                        'full_desc' => 'Each lamp is uniquely hand-chiseled by master Pakistani artisans to preserve the natural mineral strata of the Khewra mines. Mounted on a durable wooden base and fitted with certified electrical cord with rotary dimmer switch.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Artisanal Fire Bowl Salt Lamp with Illuminated Salt Balls',
-                        'subcat_slug' => 'geometric-fire-bowl-lamps',
-                        'badge' => 'Luxury Decor',
-                        'grade' => 'Holistic Wellness & Spa Grade',
-                        'mesh_size' => 'Carved Bowl + 6 Polished Spheres',
-                        'grain_size' => 'Handcrafted Lamps',
-                        'purity' => 'Artisanal Hand-Carved',
-                        'packaging' => 'Reinforced export carton with molded foam inserts (Includes 6 salt massage spheres)',
-                        'packaging_type' => 'Retail Gift Box',
-                        'package_weight' => '4-5 kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'lamp_craft',
-                        'moq' => '200 Units',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/fire-bowl-lamp.jpg',
-                        'short_desc' => 'Exquisite hand-carved salt fire bowl filled with glowing heated pink salt spheres. Ideal for spa massage therapy and upscale interior decor.',
-                        'full_desc' => 'A statement piece for living rooms, yoga studios, and luxury spas. The heated salt spheres can be removed and gently rolled on sore muscles for warm stone massage therapy while releasing soothing negative ions into the room.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Geometric Pyramid Himalayan Crystal Salt Lamp',
-                        'subcat_slug' => 'geometric-fire-bowl-lamps',
-                        'badge' => 'Geometric Art',
-                        'grade' => 'CE / UL Certified',
-                        'mesh_size' => 'Precision Polished Pyramid (2.5-3.5kg)',
-                        'grain_size' => 'Handcrafted Lamps',
-                        'purity' => 'A-Grade Translucent Crystal',
-                        'packaging' => 'Luxury gift box with dimmer switch cord & wooden mahogany base',
-                        'packaging_type' => 'Retail Gift Box',
-                        'package_weight' => '2.5-3.5 kg',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'lamp_craft',
-                        'moq' => '250 Units',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/pyramid-salt-lamp.jpg',
-                        'short_desc' => 'Sleek modern 4-sided pyramid cut from solid translucent pink crystal. Combines ancient mineral wellness with contemporary geometric design.',
-                        'full_desc' => 'Cut and polished to exact angular proportions, this pyramid lamp showcases deep salmon and amber hues when lit. Perfect for executive desks, modern minimalist homes, and meditation corners.',
-                        'is_featured' => false,
                         'is_active' => true,
                     ]
                 ]
@@ -386,16 +381,6 @@ class CategorySeeder extends Seeder
                         'name' => 'Smooth Face Himalayan Salt Bricks (8x4x2")',
                         'slug' => 'smooth-face-salt-bricks',
                         'description' => 'Precision six-sided machine cut bricks for smooth, flush salt walls in saunas, spas, and wellness centers.'
-                    ],
-                    [
-                        'name' => 'Natural Rock Face Salt Bricks & Tiles (8x4x1")',
-                        'slug' => 'natural-rock-face-salt-bricks',
-                        'description' => 'Rustic natural split face tiles providing dynamic texture and 3D shadow play in salt therapy caves.'
-                    ],
-                    [
-                        'name' => 'Backlit Salt Wall & Sauna Construction Blocks',
-                        'slug' => 'backlit-salt-wall-blocks',
-                        'description' => 'Translucent high-clarity salt blocks engineered specifically for LED backlighting and sauna installation.'
                     ]
                 ],
                 'products' => [
@@ -415,37 +400,17 @@ class CategorySeeder extends Seeder
                         'product_type' => 'tile_brick',
                         'moq' => '1,000 Bricks (1 Full Pallet)',
                         'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/salt-bricks-smooth-8x4x2.jpg',
+                        'image_url' => '/images/products/salt-bricks.jpg',
                         'short_desc' => 'Smooth 6-sided calibrated pink salt bricks. Engineered for seamless mortar or glue assembly in halotherapy saunas and salt caves.',
                         'full_desc' => 'Direct manufacturer pricing on export pallets of 8x4x2 inch Himalayan salt bricks. Highly translucent crystalline structure allows warm LED backlighting to glow through, transforming wellness centers, private saunas, and luxury spas into therapeutic sanctuaries.',
-                        'is_featured' => true,
-                        'is_active' => true,
-                    ],
-                    [
-                        'name' => 'Rustic Natural Split-Face Himalayan Salt Wall Tiles (8x4x1 in)',
-                        'subcat_slug' => 'natural-rock-face-salt-bricks',
-                        'badge' => 'Salt Cave Wall',
-                        'grade' => 'Textured Decorative Halotherapy Grade',
-                        'mesh_size' => 'Split Rough Face (8x4x1")',
-                        'grain_size' => 'Architectural Salt Bricks',
-                        'purity' => '98.5% Khewra Seam',
-                        'packaging' => '20 tiles per carton with interleaf protection, 1,200 tiles per export pallet',
-                        'packaging_type' => 'Carton & Wooden Pallet',
-                        'package_weight' => '1.1 kg / tile',
-                        'price' => null,
-                        'price_unit' => null,
-                        'product_type' => 'tile_brick',
-                        'moq' => '1,200 Tiles',
-                        'origin' => 'Khewra Salt Range, Pakistan',
-                        'image_url' => '/images/products/salt-tiles-splitface-8x4x1.jpg',
-                        'short_desc' => 'Natural rough split-face salt tiles for 3D textured acoustic wall cladding in halotherapy rooms and commercial spas.',
-                        'full_desc' => 'Features a flat back for easy wall adhesive application and an authentic hand-split front face that diffuses warm light in dramatic patterns. Helps release negative ions and regulate indoor microclimate humidity.',
                         'is_featured' => true,
                         'is_active' => true,
                     ]
                 ]
             ]
         ];
+
+        $validProductSlugs = [];
 
         foreach ($categoriesData as $cData) {
             $category = Category::updateOrCreate(
@@ -475,6 +440,7 @@ class CategorySeeder extends Seeder
             foreach ($cData['products'] as $pData) {
                 $subcatId = $subcatMap[$pData['subcat_slug']] ?? null;
                 $slug = Str::slug($pData['name']);
+                $validProductSlugs[] = $slug;
 
                 Product::updateOrCreate(
                     ['slug' => $slug],
@@ -505,5 +471,8 @@ class CategorySeeder extends Seeder
                 );
             }
         }
+
+        // Clean up any non-canonical or duplicate products
+        Product::whereNotIn('slug', $validProductSlugs)->delete();
     }
 }
