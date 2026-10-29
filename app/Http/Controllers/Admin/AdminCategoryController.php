@@ -10,10 +10,51 @@ use Illuminate\Support\Facades\File;
 
 class AdminCategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::with('allSubcategories')->withCount(['allSubcategories', 'products'])->latest()->get();
-        return view('admin.categories.index', compact('categories'));
+        $totalCategories = Category::count();
+        $activeCategories = Category::where('is_active', true)->count();
+        $totalSubcategories = \App\Models\Subcategory::count();
+
+        $query = Category::with('allSubcategories')->withCount(['allSubcategories', 'products']);
+
+        if ($request->filled('search')) {
+            $search = trim($request->search);
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('status') && $request->status !== 'all') {
+            $query->where('is_active', $request->status === 'active' ? 1 : 0);
+        }
+
+        $perPage = (int) $request->input('per_page', 10);
+        if (!in_array($perPage, [5, 10, 25, 50])) {
+            $perPage = 10;
+        }
+
+        $categories = $query->latest()->paginate($perPage)->withQueryString();
+
+        return view('admin.categories.index', compact('categories', 'totalCategories', 'activeCategories', 'totalSubcategories'));
+    }
+
+    public function create()
+    {
+        return view('admin.categories.create');
+    }
+
+    public function show($id)
+    {
+        $category = Category::with(['allSubcategories', 'products'])->withCount(['allSubcategories', 'products'])->findOrFail($id);
+        return view('admin.categories.show', compact('category'));
+    }
+
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function store(Request $request)
@@ -47,11 +88,15 @@ class AdminCategoryController extends Controller
             'is_active' => $request->has('is_active') || $request->input('is_active') == '1',
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Category created successfully!',
-            'category' => $category
-        ]);
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Category created successfully!',
+                'category' => $category
+            ]);
+        }
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully!');
     }
 
     public function update(Request $request, $id)
@@ -89,11 +134,15 @@ class AdminCategoryController extends Controller
             'is_active' => $request->has('is_active') || $request->input('is_active') == '1',
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Category updated successfully!',
-            'category' => $category
-        ]);
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Category updated successfully!',
+                'category' => $category
+            ]);
+        }
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully!');
     }
 
     public function toggleStatus($id)

@@ -34,17 +34,71 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard', compact('stats', 'products', 'quotes', 'inquiries', 'posts', 'categories'));
     }
 
-    public function productsIndex()
+    public function productsIndex(Request $request)
     {
-        $products = Product::with(['categoryRef', 'subcategoryRef'])->latest()->get();
-        $categories = \App\Models\Category::with('allSubcategories')->get();
-        return view('admin.products.index', compact('products', 'categories'));
+        $totalProducts = Product::count();
+        $activeProducts = Product::where('is_active', true)->count();
+        $featuredProducts = Product::where('is_featured', true)->count();
+        $totalCategories = \App\Models\Category::count();
+
+        $categories = \App\Models\Category::with('allSubcategories')->orderBy('name')->get();
+
+        $query = Product::with(['categoryRef', 'subcategoryRef']);
+
+        if ($request->filled('search')) {
+            $search = trim($request->search);
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('short_desc', 'like', "%{$search}%")
+                  ->orWhere('full_desc', 'like', "%{$search}%")
+                  ->orWhere('badge', 'like', "%{$search}%")
+                  ->orWhere('grade', 'like', "%{$search}%")
+                  ->orWhere('mesh_size', 'like', "%{$search}%")
+                  ->orWhere('grain_size', 'like', "%{$search}%")
+                  ->orWhere('packaging', 'like', "%{$search}%")
+                  ->orWhere('packaging_type', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('category_id') && $request->category_id !== 'all' && $request->category_id !== '') {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->filled('status') && $request->status !== 'all') {
+            $query->where('is_active', $request->status === 'active' ? 1 : 0);
+        }
+
+        $sort = $request->input('sort', 'latest');
+        if ($sort === 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($sort === 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } elseif ($sort === 'name_asc') {
+            $query->orderBy('name', 'asc');
+        } else {
+            $query->latest();
+        }
+
+        $perPage = (int) $request->input('per_page', 10);
+        if (!in_array($perPage, [5, 10, 20, 50])) {
+            $perPage = 10;
+        }
+
+        $products = $query->paginate($perPage)->withQueryString();
+
+        return view('admin.products.index', compact('products', 'categories', 'totalProducts', 'activeProducts', 'featuredProducts', 'totalCategories'));
     }
 
     public function productsCreate()
     {
         $categories = \App\Models\Category::with('allSubcategories')->where('is_active', true)->get();
         return view('admin.products.create', compact('categories'));
+    }
+
+    public function productsShow($id)
+    {
+        $product = Product::with(['categoryRef', 'subcategoryRef'])->findOrFail($id);
+        return view('admin.products.show', compact('product'));
     }
 
     public function productsEdit($id)

@@ -52,51 +52,39 @@
             <!-- Navigation Links -->
             <nav class="p-4 space-y-1 text-xs font-semibold">
                 <!-- 1. Dashboard Overview -->
-                <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                    <i class="fa-solid fa-chart-pie text-sm"></i>
-                    <span>Dashboard Overview</span>
+                <a href="{{ route('admin.dashboard') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-chart-pie text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Dashboard Overview</span>
                 </a>
 
                 <!-- 2. Categories -->
-                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-layer-group text-sm"></i>
-                        <span>Categories</span>
-                    </div>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded-full font-bold">{{ count($categories) }}</span>
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-layer-group text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Categories</span>
                 </a>
 
                 <!-- 3. Subcategories -->
-                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-tags text-sm"></i>
-                        <span>Subcategories</span>
-                    </div>
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-tags text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Subcategories</span>
                 </a>
 
                 <!-- 4. Product Catalog (Active) -->
-                <a href="{{ route('admin.dashboard') }}?tab=products" class="w-full flex items-center justify-between px-3 py-2.5 bg-[#e07a5f]/10 text-[#e07a5f] font-bold rounded-xl transition-all cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-cubes text-sm"></i>
-                        <span>Product Catalog</span>
-                    </div>
-                    <span class="px-2 py-0.5 bg-[#e07a5f] text-white text-[10px] rounded-full font-bold">Create</span>
+                <a href="{{ route('admin.products.index') }}" class="w-full flex items-center gap-3 px-3 py-2.5 bg-[#e07a5f]/10 text-[#e07a5f] font-bold rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-cubes text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Product Catalog</span>
                 </a>
 
                 <!-- 5. Customer Messages -->
-                <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-envelope-open-text text-sm"></i>
-                        <span>Customer Messages</span>
-                    </div>
+                <a href="{{ route('admin.dashboard') }}?tab=inquiries" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-envelope-open-text text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Customer Messages</span>
                 </a>
 
                 <!-- 6. Blogs & Insights -->
-                <a href="{{ route('admin.dashboard') }}?tab=blogs" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-newspaper text-sm"></i>
-                        <span>Blogs & Insights</span>
-                    </div>
+                <a href="{{ route('admin.dashboard') }}?tab=blogs" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-newspaper text-sm shrink-0"></i>
+                    <span class="whitespace-nowrap">Blogs & Insights</span>
                 </a>
 
                 <div class="pt-4 border-t border-slate-100">

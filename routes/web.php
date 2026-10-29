@@ -60,6 +60,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Dedicated Product Management Sub-Pages
     Route::get('/products', [AdminDashboardController::class, 'productsIndex'])->name('admin.products.index');
     Route::get('/products/create', [AdminDashboardController::class, 'productsCreate'])->name('admin.products.create');
+    Route::get('/products/{id}', [AdminDashboardController::class, 'productsShow'])->name('admin.products.show');
     Route::get('/products/{id}/edit', [AdminDashboardController::class, 'productsEdit'])->name('admin.products.edit');
     
     // Product CRUD Operations
@@ -70,14 +71,20 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     
     // Category CRUD Operations
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.categories.index');
+    Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('admin.categories.create');
+    Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
+    Route::get('/categories/{id}/subcategories', [AdminCategoryController::class, 'getSubcategories'])->name('admin.categories.subcategories');
+    Route::get('/categories/{id}', [AdminCategoryController::class, 'show'])->name('admin.categories.show');
     Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
     Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
     Route::post('/categories/{id}/toggle', [AdminCategoryController::class, 'toggleStatus'])->name('admin.categories.toggle');
     Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.delete');
-    Route::get('/categories/{id}/subcategories', [AdminCategoryController::class, 'getSubcategories'])->name('admin.categories.subcategories');
 
     // Subcategory CRUD Operations
     Route::get('/subcategories', [AdminSubcategoryController::class, 'index'])->name('admin.subcategories.index');
+    Route::get('/subcategories/create', [AdminSubcategoryController::class, 'create'])->name('admin.subcategories.create');
+    Route::get('/subcategories/{id}/edit', [AdminSubcategoryController::class, 'edit'])->name('admin.subcategories.edit');
+    Route::get('/subcategories/{id}', [AdminSubcategoryController::class, 'show'])->name('admin.subcategories.show');
     Route::post('/subcategories', [AdminSubcategoryController::class, 'store'])->name('admin.subcategories.store');
     Route::put('/subcategories/{id}', [AdminSubcategoryController::class, 'update'])->name('admin.subcategories.update');
     Route::post('/subcategories/{id}/toggle', [AdminSubcategoryController::class, 'toggleStatus'])->name('admin.subcategories.toggle');

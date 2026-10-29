@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             ['email' => 'saltora1329@gmail.com'],
             [
                 'name' => 'Saltora Master Admin',
-                'password' => Hash::make('Saltora@Admin2026#'),
+                'password' => Hash::make(''),
                 'email_verified_at' => now(),
             ]
         );
