@@ -430,7 +430,7 @@
             </div>
 
             <!-- Quality Credentials Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4 text-center reveal-on-scroll">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-center max-w-4xl mx-auto reveal-on-scroll">
                 <div class="bg-white p-6 rounded-xl border border-saltora-border shadow-xs space-y-2">
                     <div class="text-2xl text-saltora-terracotta"><i class="fa-solid fa-certificate"></i></div>
                     <h4 class="font-serif text-lg font-bold text-saltora-text">ISO 22000 : 2018</h4>
@@ -445,11 +445,6 @@
                     <div class="text-2xl text-saltora-terracotta"><i class="fa-solid fa-moon"></i></div>
                     <h4 class="font-serif text-lg font-bold text-saltora-text">100% Halal Certified</h4>
                     <p class="text-[11px] text-saltora-muted">Dedicated Shariah-compliant Pure Mineral Line</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-saltora-border shadow-xs space-y-2">
-                    <div class="text-2xl text-saltora-terracotta"><i class="fa-solid fa-passport"></i></div>
-                    <h4 class="font-serif text-lg font-bold text-saltora-text">US FDA Registered</h4>
-                    <p class="text-[11px] text-saltora-muted">Verified Foreign Facility for North American Import</p>
                 </div>
             </div>
 
@@ -546,18 +541,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="bg-white p-8 rounded-xl border border-saltora-border space-y-4 shadow-xs reveal-from-left stagger-1">
-                    <div class="w-10 h-10 rounded-lg bg-saltora-blush text-saltora-terracotta flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                    <h4 class="font-serif text-xl font-bold text-saltora-text">Fair Wages & Safety First</h4>
-                    <p class="text-xs text-saltora-muted font-light leading-relaxed">
-                        All mining teams operate under modern subterranean ventilation safety protocols, equipped with full protective gear and receiving fair, direct compensation above local standards.
-                    </p>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl border border-saltora-border space-y-4 shadow-xs reveal-scale stagger-2">
                     <div class="w-10 h-10 rounded-lg bg-saltora-blush text-saltora-terracotta flex items-center justify-center font-bold">
                         <i class="fa-solid fa-leaf"></i>
                     </div>
@@ -567,7 +552,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl border border-saltora-border space-y-4 shadow-xs reveal-from-right stagger-3">
+                <div class="bg-white p-8 rounded-xl border border-saltora-border space-y-4 shadow-xs reveal-from-right stagger-2">
                     <div class="w-10 h-10 rounded-lg bg-saltora-blush text-saltora-terracotta flex items-center justify-center font-bold">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
