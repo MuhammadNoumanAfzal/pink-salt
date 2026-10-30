@@ -270,21 +270,44 @@ header.sticky div[x-show="mobileMenuOpen"] a {
 }
 
 /* Preserve bright crisp text on intentionally dark sections */
+#sourcing p,
+#sourcing span:not([class*="text-[#E07A5F]"]),
+#sourcing .text-stone-300,
+#sourcing .text-stone-400,
 .bg-saltora-dark p,
 .bg-black p,
 [class*="bg-[#181513]"] p,
-.bg-stone-900 p {
-  color: #F5F5F4 !important;
+[class*="bg-[#141211]"] p,
+[class*="from-[#1E1917]"] p,
+.bg-stone-900 p,
+footer p {
+  color: #E7E5E4 !important;
 }
 
+#sourcing .text-stone-200,
+#sourcing .text-stone-300,
+#sourcing .text-stone-400,
 .bg-saltora-dark .text-stone-100,
 .bg-saltora-dark .text-stone-200,
 .bg-saltora-dark .text-stone-300,
 .bg-saltora-dark .text-stone-400,
+.bg-black .text-stone-200,
 .bg-black .text-stone-300,
 .bg-black .text-stone-400,
-[class*="bg-[#181513]"] .text-stone-400 {
-  color: #E7E5E4 !important;
+[class*="bg-[#181513]"] .text-stone-300,
+[class*="bg-[#181513]"] .text-stone-400,
+[class*="from-[#1E1917]"] .text-stone-300,
+[class*="from-[#1E1917]"] .text-stone-400,
+footer .text-stone-200,
+footer .text-stone-300,
+footer .text-stone-400 {
+  color: #D6D3D1 !important;
+}
+
+#sourcing .text-\[\#E07A5F\],
+[class*="from-[#1E1917]"] .text-\[\#E07A5F\],
+[class*="bg-[#181513]"] .text-\[\#E07A5F\] {
+  color: #E07A5F !important;
 }
 
 /* Custom Scrollbar */
