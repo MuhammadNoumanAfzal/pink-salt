@@ -104,25 +104,27 @@
         </div>
     </aside>
 
+    @include('admin.partials.mobile-sidebar')
+
     <!-- MAIN CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
         <!-- Top Navbar -->
-        <header class="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between sticky top-0 z-20 shadow-xs">
-            <div class="flex items-center gap-4">
-                <a href="{{ route('admin.dashboard') }}" class="md:hidden text-slate-500 hover:text-slate-800">
-                    <i class="fa-solid fa-arrow-left text-lg"></i>
-                </a>
-                <h1 class="text-xl font-serif font-bold text-slate-900">Category Catalog Management</h1>
+        <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-3">
+            <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+                <button type="button" @click="mobileSidebarOpen = true" class="md:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer shrink-0" aria-label="Open mobile menu">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+                <h1 class="text-sm sm:text-lg md:text-xl font-serif font-bold text-slate-900 truncate">Category Management</h1>
             </div>
 
-            <a href="{{ route('admin.categories.create') }}" class="bg-[#e07a5f] hover:bg-[#d46a4f] text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-plus text-sm"></i>
-                <span>Add Category</span>
+            <a href="{{ route('admin.categories.create') }}" class="bg-[#e07a5f] hover:bg-[#d46a4f] text-white px-3 sm:px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0">
+                <i class="fa-solid fa-plus text-xs sm:text-sm"></i>
+                <span class="hidden sm:inline">Add Category</span>
             </a>
         </header>
 
         <!-- Page Body -->
-        <main class="p-6 md:p-8 space-y-6 max-w-7xl">
+        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 max-w-7xl">
 
             <!-- Stats Bar -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
@@ -176,7 +178,7 @@
                             <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 per page</option>
                         </select>
 
-                        <div class="relative w-64">
+                        <div class="relative w-full sm:w-64">
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                             <input type="text" name="search" value="{{ request('search') }}" placeholder="Filter categories..." class="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
                             @if(request('search'))
@@ -199,7 +201,7 @@
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse min-w-[650px]">
                         <thead>
                             <tr class="bg-slate-50 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                                 <th class="py-3.5 px-6">Category Details</th>
@@ -288,6 +290,7 @@
     <script>
         function categoryManager() {
             return {
+                mobileSidebarOpen: false,
                 async toggleStatus(id) {
                     const csrf = document.querySelector('meta[name="csrf-token"]').content;
                     try {

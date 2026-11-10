@@ -102,20 +102,29 @@
         </div>
     </aside>
 
+    @include('admin.partials.mobile-sidebar')
+
     <!-- MAIN CONTENT -->
     <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
         
         <!-- HEADER -->
-        <header class="h-16 bg-white border-b border-slate-200/80 px-6 sm:px-8 flex items-center justify-between sticky top-0 z-20">
-            <h1 class="font-serif font-bold text-lg text-slate-900">Product Catalog Management</h1>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('admin.products.create') }}" class="px-4 py-2 bg-[#e07a5f] hover:bg-[#d46a4f] text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
-                    <i class="fa-solid fa-plus text-[10px]"></i> Add Salt Product
+        <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 gap-3">
+            <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+                <button type="button" @click="mobileSidebarOpen = true" class="md:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer shrink-0" aria-label="Open mobile menu">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+                <h1 class="font-serif font-bold text-sm sm:text-base md:text-lg text-slate-900 truncate">Product Catalog Management</h1>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('admin.products.create') }}" class="px-3 sm:px-4 py-2 bg-[#e07a5f] hover:bg-[#d46a4f] text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer">
+                    <i class="fa-solid fa-plus text-[10px]"></i>
+                    <span class="hidden sm:inline">Add Salt Product</span>
+                    <span class="sm:hidden">Add</span>
                 </a>
             </div>
         </header>
 
-        <main class="p-4 sm:p-6 max-w-7xl w-full mx-auto space-y-5">
+        <main class="p-3.5 sm:p-6 max-w-7xl w-full mx-auto space-y-5">
             
             <div class="bg-white border border-slate-200/80 rounded-2xl p-4 px-5 shadow-xs flex items-center justify-between flex-wrap gap-4">
                 <div>
@@ -186,14 +195,8 @@
                     </form>
                 </div>
 
-                <div class="w-full overflow-hidden">
-                    <table class="w-full text-left border-collapse text-xs table-fixed">
-                        <colgroup>
-                            <col class="w-[50%]">
-                            <col class="w-[22%]">
-                            <col class="w-[11%]">
-                            <col class="w-[17%]">
-                        </colgroup>
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs min-w-[680px]">
                         <thead>
                             <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                 <th class="py-3 px-4">Product</th>
@@ -272,6 +275,7 @@
     <script>
         function adminProductsPage() {
             return {
+                mobileSidebarOpen: false,
 
 
                 async toggleStatus(id) {

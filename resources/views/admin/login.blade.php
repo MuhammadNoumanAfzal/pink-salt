@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full overflow-hidden bg-saltora-bg">
+<html lang="en" class="min-h-full bg-saltora-bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="h-full w-full overflow-hidden flex items-center justify-center p-4 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
+<body class="min-h-screen w-full overflow-y-auto flex items-center justify-center p-4 py-8 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
     
     <!-- Clean, Warm Ambient Background (Like before, but cleaner & refined) -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">

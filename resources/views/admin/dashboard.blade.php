@@ -174,28 +174,165 @@
         </div>
     </aside>
 
+    <!-- MOBILE SIDEBAR NAVIGATION DRAWER -->
+    <div x-show="mobileSidebarOpen" 
+         x-cloak
+         class="fixed inset-0 z-50 md:hidden"
+         role="dialog" 
+         aria-modal="true">
+        <!-- Backdrop overlay -->
+        <div x-show="mobileSidebarOpen"
+             x-transition:enter="transition-opacity ease-linear duration-200"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition-opacity ease-linear duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @click="mobileSidebarOpen = false"
+             class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"></div>
+
+        <!-- Drawer Panel -->
+        <div x-show="mobileSidebarOpen"
+             x-transition:enter="transition ease-in-out duration-300 transform"
+             x-transition:enter-start="-translate-x-full"
+             x-transition:enter-end="translate-x-0"
+             x-transition:leave="transition ease-in-out duration-300 transform"
+             x-transition:leave-start="translate-x-0"
+             x-transition:leave-end="-translate-x-full"
+             class="relative flex flex-col max-w-[280px] w-full bg-white h-full shadow-2xl z-10 overflow-y-auto">
+            
+            <!-- Header with Brand & Close Button -->
+            <div class="h-16 flex items-center justify-between px-5 border-b border-slate-100 shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#e07a5f] to-[#d4a373] p-0.5 shadow-md shadow-[#e07a5f]/20">
+                        <div class="w-full h-full bg-white rounded-[9px] flex items-center justify-center">
+                            <img src="/logo.png" alt="SALTORA Logo" class="w-5 h-5 object-contain">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-serif text-lg font-bold tracking-wider text-slate-900 block leading-none">SALTORA</span>
+                        <span class="text-[9px] font-bold text-[#e07a5f] uppercase tracking-widest block mt-0.5">Admin Navigation</span>
+                    </div>
+                </div>
+                <button type="button" @click="mobileSidebarOpen = false" class="p-2 text-slate-400 hover:text-slate-800 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="p-4 space-y-1 text-xs font-semibold flex-1">
+                <!-- 1. Dashboard Overview -->
+                <button @click="switchTab('overview'); mobileSidebarOpen = false" 
+                    :class="activeTab === 'overview' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-chart-pie text-sm shrink-0"></i>
+                    <span>Dashboard Overview</span>
+                </button>
+
+                <!-- 2. Categories -->
+                <a href="{{ route('admin.categories.index') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-layer-group text-sm shrink-0"></i>
+                    <span>Categories</span>
+                </a>
+
+                <!-- 3. Subcategories -->
+                <a href="{{ route('admin.subcategories.index') }}" class="w-full flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-tags text-sm shrink-0"></i>
+                    <span>Subcategories</span>
+                </a>
+
+                <!-- 4. Product Catalog -->
+                <a href="{{ route('admin.products.index') }}" 
+                    :class="activeTab === 'products' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-cubes text-sm shrink-0"></i>
+                    <span>Product Catalog</span>
+                </a>
+
+                <!-- 5. Customer Messages -->
+                <button @click="switchTab('inquiries'); mobileSidebarOpen = false" 
+                    :class="activeTab === 'inquiries' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-envelope-open-text text-sm shrink-0"></i>
+                    <span>Customer Messages</span>
+                </button>
+
+                <!-- 6. Store Orders -->
+                <button @click="switchTab('orders'); mobileSidebarOpen = false" 
+                    :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-box-archive text-sm shrink-0"></i>
+                    <span>Store Orders</span>
+                </button>
+
+                <!-- 7. Blogs & Insights -->
+                <button @click="switchTab('blogs'); mobileSidebarOpen = false" 
+                    :class="activeTab === 'blogs' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
+                    <i class="fa-solid fa-newspaper text-sm shrink-0"></i>
+                    <span>Blogs & Insights</span>
+                </button>
+
+                <div class="pt-4 border-t border-slate-100">
+                    <a href="{{ route('products') }}" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 transition-all text-left cursor-pointer">
+                        <i class="fa-solid fa-store text-sm text-[#e07a5f]"></i>
+                        <span>View Live Store</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-auto opacity-60"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="p-4 border-t border-slate-100 bg-slate-50/50 shrink-0">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                            {{ strtoupper(substr(Auth::user()->name ?? 'Admin', 0, 2)) }}
+                        </div>
+                        <div class="text-xs overflow-hidden min-w-0">
+                            <span class="font-bold text-slate-900 block truncate">{{ Auth::user()->name ?? 'Store Manager' }}</span>
+                            <span class="text-[10px] text-slate-500 block truncate">{{ Auth::user()->email ?? 'admin@saltora.com' }}</span>
+                        </div>
+                    </div>
+                    
+                    <form action="{{ route('admin.logout') }}" method="POST" class="shrink-0">
+                        @csrf
+                        <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer" title="Logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MAIN CONTENT WRAPPER -->
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
 
         <!-- TOP HEADER BAR -->
-        <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs">
-            <div class="flex items-center gap-4 relative" @click.outside="showSearchDropdown = false">
-                <div class="relative w-72 sm:w-96">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+        <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-2">
+            <div class="flex items-center gap-2 sm:gap-4 relative flex-1 min-w-0" @click.outside="showSearchDropdown = false">
+                <!-- Mobile Hamburger Toggle Button -->
+                <button type="button" @click="mobileSidebarOpen = true" class="md:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer shrink-0" aria-label="Open mobile menu">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+
+                <div class="relative w-full max-w-[210px] xs:max-w-[260px] sm:max-w-xs md:max-w-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
                     <input type="text" 
                            x-model="globalSearch" 
                            @focus="if(globalSearch.trim()) showSearchDropdown = true"
                            @input="showSearchDropdown = globalSearch.trim().length > 0"
                            @keydown.escape="showSearchDropdown = false; globalSearch = ''"
                            @keydown.enter.prevent="executeGlobalSearch()"
-                           placeholder="Search products, categories, messages, blogs..." 
-                           class="w-full bg-slate-100/70 border border-slate-200/80 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f] focus:ring-2 focus:ring-[#e07a5f]/20 transition-all">
+                           placeholder="Search products, orders, blogs..." 
+                           class="w-full bg-slate-100/70 border border-slate-200/80 rounded-xl pl-8 sm:pl-9 pr-7 sm:pr-8 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#e07a5f] focus:ring-2 focus:ring-[#e07a5f]/20 transition-all">
                     
                     <!-- Clear (X) Button -->
                     <button type="button" 
                             x-show="globalSearch" 
                             @click="globalSearch = ''; showSearchDropdown = false" 
-                            class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full cursor-pointer transition-colors"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full cursor-pointer transition-colors"
                             title="Clear search">
                         <i class="fa-solid fa-xmark text-xs"></i>
                     </button>
@@ -209,7 +346,7 @@
                          x-transition:leave-start="opacity-100 translate-y-0"
                          x-transition:leave-end="opacity-0 translate-y-1"
                          x-cloak
-                         class="absolute left-0 top-full mt-2 w-[340px] sm:w-[460px] md:w-[520px] bg-white border border-slate-200/90 rounded-2xl shadow-2xl z-50 overflow-hidden text-xs">
+                         class="fixed sm:absolute left-3 right-3 sm:left-0 sm:right-auto top-16 sm:top-full mt-1 sm:mt-2 w-auto sm:w-[460px] md:w-[520px] bg-white border border-slate-200/90 rounded-2xl shadow-2xl z-50 overflow-hidden text-xs">
                         
                         <!-- Dropdown Header -->
                         <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
@@ -347,16 +484,16 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
-                <a href="{{ route('admin.products.create') }}" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('admin.products.create') }}" class="px-3 sm:px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
                     <i class="fa-solid fa-plus text-[10px]"></i>
-                    <span>Add Product</span>
+                    <span class="hidden sm:inline">Add Product</span>
                 </a>
             </div>
         </header>
 
         <!-- MAIN DASHBOARD CONTENT AREA -->
-        <main class="p-4 sm:p-8 space-y-8 max-w-7xl w-full mx-auto">
+        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 sm:space-y-8 max-w-7xl w-full mx-auto">
 
             <!-- TAB 1: OVERVIEW -->
             <div x-show="activeTab === 'overview'" class="space-y-5">
@@ -517,7 +654,7 @@
                         </div>
 
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse text-xs">
+                            <table class="w-full text-left border-collapse text-xs min-w-[580px]">
                                 <thead>
                                     <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                         <th class="p-3.5 px-4">Order Ref #</th>
@@ -570,7 +707,7 @@
                         </div>
 
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse text-xs">
+                            <table class="w-full text-left border-collapse text-xs min-w-[580px]">
                                 <thead>
                                     <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                         <th class="p-3.5 px-4">Sender</th>
@@ -687,7 +824,7 @@
                                 <option :value="50">50 per page</option>
                             </select>
 
-                            <div class="relative w-64">
+                            <div class="relative w-full sm:w-64">
                                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                                 <input type="text" x-model="prodSearchQuery" @input="prodPage = 1" placeholder="Search product..." class="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
                                 <button type="button" x-show="prodSearchQuery" @click="prodSearchQuery = ''; prodPage = 1" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
@@ -701,14 +838,8 @@
                         </div>
                     </div>
 
-                    <div class="w-full overflow-hidden">
-                        <table class="w-full text-left border-collapse text-xs table-fixed">
-                            <colgroup>
-                                <col class="w-[50%]">
-                                <col class="w-[22%]">
-                                <col class="w-[11%]">
-                                <col class="w-[17%]">
-                            </colgroup>
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs min-w-[680px]">
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="py-3 px-4">Product</th>
@@ -801,7 +932,7 @@
                     <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-4 flex-wrap">
                         <h3 class="font-serif text-sm font-bold text-slate-900">Store Orders</h3>
 
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-3 flex-wrap">
                             <select x-model="orderStatusFilter" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#e07a5f] cursor-pointer">
                                 <option value="all">All Order Statuses</option>
                                 <option value="pending">Pending</option>
@@ -810,7 +941,7 @@
                                 <option value="cancelled">Cancelled</option>
                             </select>
 
-                            <div class="relative w-64">
+                            <div class="relative w-full sm:w-64">
                                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                                 <input type="text" x-model="orderSearchQuery" placeholder="Search ref #, buyer, port..." class="w-full pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
                             </div>
@@ -818,7 +949,7 @@
                     </div>
 
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs">
+                        <table class="w-full text-left border-collapse text-xs min-w-[720px]">
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Order Ref #</th>
@@ -910,7 +1041,7 @@
                                 <option :value="50">50 per page</option>
                             </select>
 
-                            <div class="relative w-64">
+                            <div class="relative w-full sm:w-64">
                                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                                 <input type="text" x-model="inquirySearchQuery" @input="inquiryPage = 1" placeholder="Search sender, subject..." class="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
                                 <button type="button" x-show="inquirySearchQuery" @click="inquirySearchQuery = ''; inquiryPage = 1" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
@@ -925,7 +1056,7 @@
                     </div>
 
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs">
+                        <table class="w-full text-left border-collapse text-xs min-w-[700px]">
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Sender Info</th>
@@ -1022,7 +1153,7 @@
                                 <option :value="50">50 per page</option>
                             </select>
 
-                            <div class="relative w-64">
+                            <div class="relative w-full sm:w-64">
                                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                                 <input type="text" x-model="blogSearchQuery" @input="blogPage = 1" placeholder="Search title, author, category..." class="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#e07a5f]">
                                 <button type="button" x-show="blogSearchQuery" @click="blogSearchQuery = ''; blogPage = 1" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
@@ -1037,7 +1168,7 @@
                     </div>
 
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse text-xs">
+                        <table class="w-full text-left border-collapse text-xs min-w-[680px]">
                             <thead>
                                 <tr class="bg-slate-50 text-slate-500 text-[11px] uppercase tracking-wider border-b border-slate-200/80">
                                     <th class="p-4">Article Info</th>
@@ -2136,9 +2267,11 @@
             if (initialTab === 'quotes' || initialTab === 'orders') initialTab = 'overview';
 
             return {
+                mobileSidebarOpen: false,
                 activeTab: initialTab,
                 switchTab(tab) {
                     this.activeTab = tab;
+                    this.mobileSidebarOpen = false;
                     const url = new URL(window.location.href);
                     const paramVal = (tab === 'orders') ? 'quotes' : tab;
                     if (tab === 'overview') {

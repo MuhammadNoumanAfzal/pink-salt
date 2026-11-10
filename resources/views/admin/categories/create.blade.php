@@ -23,6 +23,7 @@
 </head>
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex"
     x-data="{
+        mobileSidebarOpen: false,
         nameVal: '{{ old('name') }}',
         slugVal: '',
         imageMode: 'file',
@@ -125,37 +126,42 @@
         </div>
     </aside>
 
+    @include('admin.partials.mobile-sidebar')
+
     <!-- MAIN CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
         <!-- TOP HEADER BAR -->
-        <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs">
-            <div class="flex items-center gap-3">
-                <a href="{{ route('admin.categories.index') }}" class="p-2 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all" title="Back to Categories">
+        <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-2">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <button type="button" @click="mobileSidebarOpen = true" class="md:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer shrink-0" aria-label="Open mobile menu">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+                <a href="{{ route('admin.categories.index') }}" class="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all shrink-0" title="Back to Categories">
                     <i class="fa-solid fa-arrow-left text-sm"></i>
                 </a>
-                <div>
-                    <div class="flex items-center gap-2 text-[11px] text-slate-400">
+                <div class="min-w-0">
+                    <div class="hidden sm:flex items-center gap-2 text-[11px] text-slate-400">
                         <a href="{{ route('admin.categories.index') }}" class="hover:text-slate-600">Categories</a>
                         <span>/</span>
                         <span class="text-slate-600 font-semibold">New Category</span>
                     </div>
-                    <h1 class="font-serif font-bold text-base sm:text-lg text-slate-900 leading-tight">Add New Category</h1>
+                    <h1 class="font-serif font-bold text-sm sm:text-base md:text-lg text-slate-900 leading-tight truncate">Add New Category</h1>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
-                <a href="{{ route('admin.categories.index') }}" class="px-4 py-2 border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-100 transition-all">
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('admin.categories.index') }}" class="px-3 py-2 border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-100 transition-all hidden sm:inline-flex">
                     Cancel
                 </a>
-                <button type="submit" form="categoryCreateForm" class="px-5 py-2 bg-[#e07a5f] hover:bg-[#d0694e] text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                <button type="submit" form="categoryCreateForm" class="px-3.5 sm:px-5 py-2 bg-[#e07a5f] hover:bg-[#d0694e] text-white font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer">
                     <i class="fa-solid fa-check text-xs"></i>
-                    <span>Save Category</span>
+                    <span>Save</span>
                 </button>
             </div>
         </header>
 
         <!-- PAGE CONTENT -->
-        <main class="p-4 sm:p-8 max-w-4xl w-full mx-auto space-y-6">
+        <main class="p-3.5 sm:p-6 md:p-8 max-w-4xl w-full mx-auto space-y-6">
 
             @if ($errors->any())
             <div class="bg-rose-50 border border-rose-200 text-rose-800 rounded-2xl p-4 text-xs space-y-1">
