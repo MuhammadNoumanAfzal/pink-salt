@@ -1,5 +1,5 @@
 <!-- SALTORA UNIFIED HIGH-CONTRAST FOOTER -->
-<footer id="contact" class="relative bg-[#161311] text-stone-200 py-16 px-6 md:px-12 border-t border-stone-800 text-xs overflow-hidden">
+<footer id="contact" class="relative bg-[#161311] text-stone-200 py-12 sm:py-16 px-4 sm:px-6 md:px-12 border-t border-stone-800 text-xs overflow-hidden">
     <!-- Dot Matrix Grid Background (Matching Global Export Section) -->
     <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
 
