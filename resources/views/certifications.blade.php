@@ -106,11 +106,11 @@
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -142,7 +142,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-4 sm:px-6 py-5 space-y-3.5 text-xs font-semibold tracking-widest uppercase">
             <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/packing" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PACKING</a>
@@ -158,37 +158,37 @@
     </header>
 
     <!-- CERTIFICATIONS HERO SECTION -->
-    <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+    <section class="relative bg-saltora-dark text-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/cert-hero.jpg`) -->
         <img src="/cert-hero.jpg" alt="Certified Food Safety Testing Laboratory Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
         <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto">
-            <div class="space-y-6 max-w-3xl animate-hero-left">
+            <div class="space-y-4 sm:space-y-6 max-w-3xl animate-hero-left">
                 <!-- Category Sub-tag (High Contrast Pill) -->
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>GLOBAL AUDIT & FOOD SAFETY ACCREDITATIONS</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[10px] sm:text-[11px] font-bold tracking-wider sm:tracking-mega text-amber-300 uppercase shadow-lg max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                    <span class="truncate">GLOBAL AUDIT & FOOD SAFETY ACCREDITATIONS</span>
                 </div>
 
                 <!-- Headline with Drop Shadow for Maximum Legibility -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
+                <h1 class="text-3xl sm:text-5xl lg:text-6.5xl font-serif text-white font-normal leading-[1.15] sm:leading-[1.08] drop-shadow-md">
                     Recognised standards, verifiable quality
                 </h1>
 
                 <!-- Paragraph with Solid Bright Text -->
-                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
+                <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     SALTORA operates under strict international food safety, religious dietary, and export frameworks. Every production run is backed by independent laboratory Certificate of Analysis (COA) reports, providing global importers with absolute chemical and microbiological certainty.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#complianceHub" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+                    <a href="#complianceHub" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                         <span>EXPLORE CERTIFICATIONS</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 rounded-xs shadow-md w-full sm:w-auto text-center">
                         <i class="fa-solid fa-file-shield text-amber-300"></i>
                         <span>REQUEST COA & AUDIT DOSSIER</span>
                     </a>
@@ -218,7 +218,7 @@
     </div>
 
     <!-- INTERACTIVE COMPLIANCE STANDARDS & DOCUMENT FILTER HUB -->
-    <section id="complianceHub" class="py-16 md:py-24 px-6 md:px-12 bg-saltora-bg"
+    <section id="complianceHub" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-saltora-bg"
              x-data="{
                  activeCategory: 'all',
                  searchQuery: '',
@@ -339,38 +339,38 @@
             </div>
 
             <!-- INTERACTIVE CATEGORY TABS & SEARCH BAR -->
-            <div class="bg-white p-4 sm:p-5 border border-saltora-border rounded-sm shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+            <div class="bg-white p-3.5 sm:p-5 border border-saltora-border rounded-sm shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
                 <!-- Category Filter Tabs -->
-                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 md:pb-0">
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1.5 md:pb-0">
                     <button @click="activeCategory = 'all'"
                             :class="activeCategory === 'all' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        All Certifications (5)
+                            class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xs text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shrink-0">
+                        All (5)
                     </button>
                     <button @click="activeCategory = 'food-safety'"
                             :class="activeCategory === 'food-safety' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Food Safety Management
+                            class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xs text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shrink-0">
+                        Food Safety
                     </button>
                     <button @click="activeCategory = 'halal'"
                             :class="activeCategory === 'halal' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
+                            class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xs text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shrink-0">
                         Halal Certified
                     </button>
                     <button @click="activeCategory = 'codex'"
                             :class="activeCategory === 'codex' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
+                            class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xs text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shrink-0">
                         Codex Standard
                     </button>
                     <button @click="activeCategory = 'registered-member'"
                             :class="activeCategory === 'registered-member' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200'"
-                            class="px-3.5 py-2 rounded-xs text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap">
-                        Registered Memberships (2)
+                            class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xs text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap shrink-0">
+                        Memberships (2)
                     </button>
                 </div>
 
                 <!-- Search Input -->
-                <div class="relative min-w-[240px]">
+                <div class="relative w-full md:w-auto md:min-w-[240px]">
                     <input type="text" x-model="searchQuery" placeholder="Search standard, COA, ISO..." class="w-full bg-[#FAF7F2] border border-saltora-border px-3.5 py-2 pl-9 pr-7 rounded-xs text-xs focus:outline-none focus:border-saltora-terracotta">
                     <svg class="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -380,10 +380,10 @@
             </div>
 
             <!-- STANDARDS CARDS GRID (Matches user reference image with Circular Vintage Seal Stamps) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <template x-for="(item, index) in filteredStandards" :key="item.id">
                     <div :class="(filteredStandards.length === 5 && item.id === 'smap') ? 'md:col-span-2 md:max-w-3xl md:mx-auto w-full' : ''"
-                         class="bg-white border border-stone-200/80 rounded-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-saltora-terracotta/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                         class="bg-white border border-stone-200/80 rounded-sm p-5 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-saltora-terracotta/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
                          @click="openDocModal(item)">
                         <!-- Top Accent Line -->
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
@@ -501,12 +501,12 @@
                             <h3 class="font-serif text-2xl sm:text-[26px] text-saltora-text font-normal leading-snug group-hover:text-saltora-terracotta transition-colors" x-text="item.title"></h3>
                             <p class="text-[13.5px] text-stone-600 leading-relaxed font-light mt-1.5" x-text="item.description"></p>
                             
-                            <div class="pt-3 flex items-center justify-center sm:justify-start gap-4">
+                            <div class="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2.5 sm:gap-4">
                                 <button @click.stop="openDocModal(item)" class="text-[11px] font-bold tracking-wider text-saltora-terracotta hover:underline uppercase inline-flex items-center gap-1.5 cursor-pointer">
                                     <span>View Audit Scope & Details</span>
                                     <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
                                 </button>
-                                <span class="text-stone-300">|</span>
+                                <span class="text-stone-300 hidden sm:inline">|</span>
                                 <a href="/contact" @click.stop class="text-[11px] font-semibold text-stone-500 hover:text-saltora-text">
                                     Request Copy &rarr;
                                 </a>
@@ -528,8 +528,8 @@
     </section>
 
     <!-- NEW SECTION: 5-STAGE MINE-TO-PORT QUALITY ASSURANCE PROTOCOL -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-white border-t border-saltora-border/70">
-        <div class="max-w-7xl mx-auto space-y-16">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-white border-t border-saltora-border/70">
+        <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
             
             <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TRACEABILITY & PROCESS CONTROL</span>
@@ -542,10 +542,10 @@
             </div>
 
             <!-- 5 Protocol Steps -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 relative">
                 
                 <!-- Step 1 -->
-                <div class="bg-saltora-bg p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-1">
+                <div class="bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-1">
                     <div class="w-10 h-10 rounded-full bg-saltora-terracotta text-white flex items-center justify-center font-bold text-sm shadow-sm">
                         01
                     </div>
@@ -556,7 +556,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="bg-saltora-bg p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-2">
+                <div class="bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-2">
                     <div class="w-10 h-10 rounded-full bg-saltora-terracotta text-white flex items-center justify-center font-bold text-sm shadow-sm">
                         02
                     </div>
@@ -567,7 +567,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="bg-saltora-bg p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-3">
+                <div class="bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-3">
                     <div class="w-10 h-10 rounded-full bg-saltora-terracotta text-white flex items-center justify-center font-bold text-sm shadow-sm">
                         03
                     </div>
@@ -578,7 +578,7 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="bg-saltora-bg p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-4">
+                <div class="bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-4">
                     <div class="w-10 h-10 rounded-full bg-saltora-terracotta text-white flex items-center justify-center font-bold text-sm shadow-sm">
                         04
                     </div>
@@ -589,7 +589,7 @@
                 </div>
 
                 <!-- Step 5 -->
-                <div class="bg-saltora-bg p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-5">
+                <div class="bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border space-y-3 reveal-on-scroll reveal-from-bottom stagger-5 col-span-1 sm:col-span-2 lg:col-span-1">
                     <div class="w-10 h-10 rounded-full bg-saltora-terracotta text-white flex items-center justify-center font-bold text-sm shadow-sm">
                         05
                     </div>
@@ -605,12 +605,12 @@
     </section>
 
     <!-- NEW SECTION: CHEMICAL PURITY MATRIX (CODEX VS SALTORA ACTUAL LAB RESULTS) -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
-        <div class="max-w-7xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
+        <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">ANALYTICAL CHEMISTRY MATRIX</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                <h2 class="text-2xl sm:text-5xl font-serif text-saltora-text font-normal">
                     Codex CXS 150 vs SALTORA Verified Lab Values
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
@@ -618,9 +618,15 @@
                 </p>
             </div>
 
+            <!-- Mobile Swipe Indicator -->
+            <div class="text-[11px] text-stone-500 flex items-center justify-center gap-1.5 sm:hidden">
+                <i class="fa-solid fa-arrows-left-right text-saltora-terracotta"></i>
+                <span>Swipe left/right to view analytical parameters</span>
+            </div>
+
             <!-- Chemical Matrix Table -->
             <div class="overflow-x-auto border border-saltora-border rounded-sm shadow-xs bg-white">
-                <table class="w-full text-left border-collapse text-xs">
+                <table class="w-full text-left border-collapse text-xs min-w-[640px]">
                     <thead>
                         <tr class="bg-[#FAF7F2] text-saltora-text uppercase tracking-wider text-[11px] border-b border-saltora-border font-bold">
                             <th class="p-4 sm:p-5">Chemical Parameter</th>
@@ -692,14 +698,14 @@
             </div>
 
             <!-- Callout Note -->
-            <div class="bg-[#FAF7F2] p-6 rounded-sm border border-saltora-border flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-file-circle-check text-2xl text-saltora-terracotta"></i>
+            <div class="bg-[#FAF7F2] p-4 sm:p-6 rounded-sm border border-saltora-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                <div class="flex items-start sm:items-center gap-3">
+                    <i class="fa-solid fa-file-circle-check text-2xl text-saltora-terracotta shrink-0 mt-0.5 sm:mt-0"></i>
                     <p class="text-xs text-saltora-muted leading-relaxed font-light">
                         <strong class="text-saltora-text font-bold">Official Batch COA:</strong> We issue a container-specific analytical report certified by PCSIR or certified independent labs with every commercial maritime export invoice.
                     </p>
                 </div>
-                <a href="/contact" class="shrink-0 text-xs font-bold text-saltora-terracotta hover:text-saltora-terracotta-dark uppercase tracking-wider flex items-center gap-1.5">
+                <a href="/contact" class="shrink-0 text-xs font-bold text-saltora-terracotta hover:text-saltora-terracotta-dark uppercase tracking-wider flex items-center gap-1.5 self-end sm:self-auto">
                     <span>REQUEST RECENT LAB REPORT</span>
                     <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
@@ -709,12 +715,12 @@
     </section>
 
     <!-- NEW SECTION: QUALITY ASSURANCE FACILITIES GALLERY -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-white border-t border-saltora-border/60">
-        <div class="max-w-7xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-white border-t border-saltora-border/60">
+        <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="space-y-3 max-w-3xl reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TESTING INFRASTRUCTURE</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                <h2 class="text-2xl sm:text-5xl font-serif text-saltora-text font-normal">
                     Precision Laboratory Testing & Clean-Zone Packaging
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
@@ -722,27 +728,27 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 
                 <!-- Facility 1: Laboratory Testing -->
-                <div class="space-y-4 bg-saltora-bg p-6 rounded-sm border border-saltora-border hover:shadow-lg transition-all group">
+                <div class="space-y-3 sm:space-y-4 bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border hover:shadow-lg transition-all group">
                     <div class="aspect-16/10 rounded-sm overflow-hidden border border-saltora-border bg-stone-100">
                         <img src="/cert-lab.jpg" alt="Chemical Purity Titration Testing" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                     </div>
                     <span class="text-[10px] font-bold uppercase tracking-wider text-saltora-terracotta">ISO 17025 ACCREDITED ANALYTICS</span>
-                    <h3 class="font-serif text-2xl text-saltora-text font-normal">Chemical Composition & Titration Lab</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Chemical Composition & Titration Lab</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Food science specialists verify batch-specific purity, moisture levels, and trace mineral distribution using atomic absorption titration equipment prior to bagging.
                     </p>
                 </div>
 
                 <!-- Facility 2: Line Inspection -->
-                <div class="space-y-4 bg-saltora-bg p-6 rounded-sm border border-saltora-border hover:shadow-lg transition-all group">
+                <div class="space-y-3 sm:space-y-4 bg-saltora-bg p-4 sm:p-6 rounded-sm border border-saltora-border hover:shadow-lg transition-all group">
                     <div class="aspect-16/10 rounded-sm overflow-hidden border border-saltora-border bg-stone-100">
                         <img src="/cert-audit.jpg" alt="Quality Control Line Auditor" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                     </div>
                     <span class="text-[10px] font-bold uppercase tracking-wider text-saltora-terracotta">CLEAN ZONE PACKAGING</span>
-                    <h3 class="font-serif text-2xl text-saltora-text font-normal">ISO 22000 Certified Line Audits</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">ISO 22000 Certified Line Audits</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Automated form-fill-seal packaging occurs inside sanitized clean zones with continuous metal detector screenings, magnetic filtration, and weight tare checks.
                     </p>
@@ -754,12 +760,12 @@
     </section>
 
     <!-- NEW SECTION: THIRD-PARTY INSPECTION PARTNERS -->
-    <section class="py-16 md:py-20 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
-        <div class="max-w-6xl mx-auto space-y-8 text-center">
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
+        <div class="max-w-6xl mx-auto space-y-6 sm:space-y-8 text-center">
             
             <div class="space-y-2">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">INDEPENDENT VERIFICATION</span>
-                <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal">
+                <h3 class="font-serif text-xl sm:text-3xl text-saltora-text font-normal">
                     Third-Party Pre-Shipment Inspection Supported
                 </h3>
                 <p class="text-xs text-saltora-muted font-light max-w-2xl mx-auto">
@@ -768,21 +774,21 @@
             </div>
 
             <!-- Inspection Body Badges -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div class="bg-white p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
-                    <div class="font-serif text-xl font-bold text-saltora-text">SGS</div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                <div class="bg-white p-4 sm:p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
+                    <div class="font-serif text-lg sm:text-xl font-bold text-saltora-text">SGS</div>
                     <span class="text-[10px] text-stone-500 uppercase font-semibold">Pre-Shipment Inspection</span>
                 </div>
-                <div class="bg-white p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
-                    <div class="font-serif text-xl font-bold text-saltora-text">Intertek</div>
+                <div class="bg-white p-4 sm:p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
+                    <div class="font-serif text-lg sm:text-xl font-bold text-saltora-text">Intertek</div>
                     <span class="text-[10px] text-stone-500 uppercase font-semibold">Quality & Safety Audit</span>
                 </div>
-                <div class="bg-white p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
-                    <div class="font-serif text-xl font-bold text-saltora-text">Bureau Veritas</div>
+                <div class="bg-white p-4 sm:p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
+                    <div class="font-serif text-lg sm:text-xl font-bold text-saltora-text">Bureau Veritas</div>
                     <span class="text-[10px] text-stone-500 uppercase font-semibold">Conformity Assessment</span>
                 </div>
-                <div class="bg-white p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
-                    <div class="font-serif text-xl font-bold text-saltora-text">PCSIR Labs</div>
+                <div class="bg-white p-4 sm:p-5 rounded-sm border border-saltora-border shadow-xs space-y-1">
+                    <div class="font-serif text-lg sm:text-xl font-bold text-saltora-text">PCSIR Labs</div>
                     <span class="text-[10px] text-stone-500 uppercase font-semibold">State Chemical COA</span>
                 </div>
             </div>
@@ -791,12 +797,12 @@
     </section>
 
     <!-- NEW SECTION: COMPLIANCE & VERIFICATION FAQ ACCORDION -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-white border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
-        <div class="max-w-4xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-white border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
+        <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="text-center space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">AUDIT & CERTIFICATION FAQ</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                <h2 class="text-2xl sm:text-5xl font-serif text-saltora-text font-normal">
                     Frequently Asked Quality Questions
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
@@ -805,59 +811,59 @@
             </div>
 
             <!-- FAQ Accordion List -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
                 
                 <!-- FAQ 1 -->
                 <div class="bg-saltora-bg border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>How can international buyers verify the authenticity of Saltora certificates?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">How can international buyers verify the authenticity of Saltora certificates?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 1" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
+                    <div x-show="activeFaq === 1" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
                         Our ISO 22000 registration number, Halal certification registry, Chamber of Commerce export credentials, and Salt Manufacturers Association of Pakistan membership are all verifiable via their respective issuing registries. We provide full high-resolution certified copies with QR codes and registrar registration numbers upon request.
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
                 <div class="bg-saltora-bg border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Is a batch-specific Certificate of Analysis (COA) included with our container?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Is a batch-specific Certificate of Analysis (COA) included with our container?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 2" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
+                    <div x-show="activeFaq === 2" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
                         Yes. Every maritime shipment is accompanied by a batch-specific laboratory analysis report covering exact Sodium Chloride (NaCl) percentage, moisture content, grain size distribution, water-insoluble matter, and heavy metals screening conducted by certified testing laboratories.
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
                 <div class="bg-saltora-bg border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Is Himalayan Pink Salt free from microplastics and industrial sea pollution?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Is Himalayan Pink Salt free from microplastics and industrial sea pollution?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 3" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
+                    <div x-show="activeFaq === 3" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
                         Unlike modern sea salt which can be contaminated by ocean plastics, petroleum hydrocarbons, and maritime pollutants, Himalayan Pink Salt was formed over 250 million years ago from pristine ancient seabed deposits protected deep inside the Salt Range mountains. It is 100% naturally free of microplastics.
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
                 <div class="bg-saltora-bg border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Can you provide custom third-party inspection (e.g. SGS / Intertek) at loading?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Can you provide custom third-party inspection (e.g. SGS / Intertek) at loading?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 4" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
+                    <div x-show="activeFaq === 4" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
                         Yes. Buyers are welcome to appoint SGS, Intertek, or Bureau Veritas inspectors to oversee pre-shipment sampling, laboratory testing, and container stuffing at our loading docks. Inspection fees can be included directly in the proforma invoice or handled through the buyer's account.
                     </div>
                 </div>
 
                 <!-- FAQ 5 -->
                 <div class="bg-saltora-bg border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>What phytosanitary and export clearance documents are provided?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">What phytosanitary and export clearance documents are provided?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 5" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
+                    <div x-show="activeFaq === 5" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-200 pt-3">
                         We provide a complete export documentation suite: Commercial Invoice, Packing List, Certificate of Origin (LCCI), Bill of Lading (B/L), Halal Certificate, Laboratory COA, and Phytosanitary / Fumigation Certificates where required by the destination port's agricultural authority.
                     </div>
                 </div>
@@ -868,11 +874,11 @@
     </section>
 
     <!-- HIGH CONVERTING CLOSING CTA BANNER -->
-    <section class="py-16 md:py-20 px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 text-center md:text-left">
             <div class="space-y-3 max-w-2xl">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TECHNICAL COMPLIANCE DESK</span>
-                <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                <h3 class="text-2xl sm:text-4xl font-serif text-white font-normal leading-tight">
                     Need a certified audit dossier or custom COA?
                 </h3>
                 <p class="text-stone-300 text-xs sm:text-sm font-light leading-relaxed">
@@ -880,12 +886,12 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-3.5 shrink-0">
-                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 shrink-0 w-full md:w-auto">
+                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-solid fa-file-contract text-amber-200"></i>
                     <span>REQUEST COMPLIANCE DOSSIER</span>
                 </a>
-                <a href="https://wa.me/923180735748?text=Hello%20Saltora%2C%20I%20would%20like%20to%20request%20your%20COA%20and%20Certificates%20Dossier." target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+                <a href="https://wa.me/923180735748?text=Hello%20Saltora%2C%20I%20would%20like%20to%20request%20your%20COA%20and%20Certificates%20Dossier." target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>WHATSAPP DESK</span>
                 </a>
@@ -905,17 +911,17 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
             <!-- Modal Content -->
-            <div x-show="activeDocModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-saltora-bg rounded-sm text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full border border-saltora-border p-6 md:p-8 relative">
+            <div x-show="activeDocModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-saltora-bg rounded-sm text-left overflow-hidden shadow-2xl transform transition-all my-4 sm:my-8 sm:align-middle max-w-full sm:max-w-xl w-full border border-saltora-border p-4 sm:p-8 relative max-h-[90vh] overflow-y-auto">
                 
                 <!-- Close Button -->
-                <button @click="closeDocModal()" class="absolute top-4 right-4 text-saltora-muted hover:text-saltora-text p-2 cursor-pointer z-10" aria-label="Close Modal">
+                <button @click="closeDocModal()" class="absolute top-3 right-3 sm:top-4 sm:right-4 text-saltora-muted hover:text-saltora-text p-2 cursor-pointer z-10" aria-label="Close Modal">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
 
                 <template x-if="selectedCert">
-                    <div class="space-y-5">
+                    <div class="space-y-4 sm:space-y-5">
                         <div class="flex items-center justify-between border-b border-stone-200 pb-3">
                             <span class="text-xs font-bold tracking-widest text-saltora-terracotta uppercase" x-text="selectedCert.categoryLabel"></span>
                             <span class="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full" x-text="selectedCert.status"></span>
@@ -923,11 +929,11 @@
 
                         <div>
                             <span class="text-xs font-bold text-stone-900 uppercase tracking-wider block" x-text="selectedCert.badge"></span>
-                            <h3 class="font-serif text-2xl sm:text-3.5xl text-black font-bold mt-1" x-text="selectedCert.code"></h3>
-                            <h4 class="text-base font-bold text-black mt-1" x-text="selectedCert.title"></h4>
+                            <h3 class="font-serif text-xl sm:text-3.5xl text-black font-bold mt-1" x-text="selectedCert.code"></h3>
+                            <h4 class="text-sm sm:text-base font-bold text-black mt-1" x-text="selectedCert.title"></h4>
                         </div>
 
-                        <div class="bg-white p-4 rounded-sm border border-stone-300 space-y-2.5 text-sm">
+                        <div class="bg-white p-3.5 sm:p-4 rounded-sm border border-stone-300 space-y-2 sm:space-y-2.5 text-xs sm:text-sm">
                             <div class="flex justify-between border-b border-stone-100 pb-2">
                                 <span class="font-bold text-black">Issuing Body:</span>
                                 <span class="font-bold text-black text-right" x-text="selectedCert.issuingBody"></span>
@@ -942,16 +948,16 @@
                             </div>
                         </div>
 
-                        <div class="space-y-2">
+                        <div class="space-y-1.5 sm:space-y-2">
                             <label class="text-xs font-bold text-black uppercase tracking-wider block">Scope of Accreditation</label>
-                            <p class="text-sm sm:text-base text-black leading-relaxed font-normal" x-text="selectedCert.description"></p>
+                            <p class="text-xs sm:text-base text-black leading-relaxed font-normal" x-text="selectedCert.description"></p>
                         </div>
 
-                        <div class="space-y-2">
+                        <div class="space-y-1.5 sm:space-y-2">
                             <label class="text-xs font-bold text-black uppercase tracking-wider block">Verified Key Benchmarks</label>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5 sm:gap-2">
                                 <template x-for="m in selectedCert.keyMetrics" :key="m">
-                                    <span class="text-xs font-bold bg-[#FBF6F4] text-black px-3 py-1.5 rounded-sm border border-saltora-terracotta/30 flex items-center gap-1.5">
+                                    <span class="text-[11px] sm:text-xs font-bold bg-[#FBF6F4] text-black px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-sm border border-saltora-terracotta/30 flex items-center gap-1.5">
                                         <i class="fa-solid fa-check text-[10px] text-saltora-terracotta"></i>
                                         <span x-text="m"></span>
                                     </span>

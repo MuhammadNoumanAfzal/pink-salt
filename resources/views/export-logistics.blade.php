@@ -105,11 +105,11 @@
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -141,7 +141,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-4 sm:px-6 py-5 space-y-3.5 text-xs font-semibold tracking-widest uppercase">
             <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/packing" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PACKING</a>
@@ -157,37 +157,37 @@
     </header>
 
     <!-- HERO SECTION (DARK SHIPPING PORT BACKGROUND OVERLAY) -->
-    <section class="relative bg-saltora-dark text-white py-20 md:py-32 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+    <section class="relative bg-saltora-dark text-white py-14 sm:py-20 md:py-32 px-4 sm:px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/export nd logisyt her.jpg`) -->
         <img src="/export nd logisyt her.jpg" alt="Shipping Container Port Crane Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
         <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto">
-            <div class="space-y-6 max-w-3xl animate-hero-left">
+            <div class="space-y-4 sm:space-y-6 max-w-3xl animate-hero-left">
                 <!-- Category Sub-tag (High Contrast Pill) -->
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>GLOBAL OCEAN FREIGHT & CONTAINER LOGISTICS</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[10px] sm:text-[11px] font-bold tracking-wider sm:tracking-mega text-amber-300 uppercase shadow-lg max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                    <span class="truncate">GLOBAL OCEAN FREIGHT & CONTAINER LOGISTICS</span>
                 </div>
 
                 <!-- Headline with Drop Shadow for Maximum Legibility -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
+                <h1 class="text-3xl sm:text-5xl lg:text-6.5xl font-serif text-white font-normal leading-[1.15] sm:leading-[1.08] drop-shadow-md">
                     A clear, professional buying process
                 </h1>
 
                 <!-- Paragraph with Solid Bright Text -->
-                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
+                <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     From initial inquiry and specification alignment to customs clearance, container stuffing, and maritime delivery at your destination port — Saltora keeps every shipment documented, transparent, and on schedule.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#incoterms" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+                    <a href="#incoterms" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                         <span>VIEW INCOTERMS & WORKFLOW</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 rounded-xs shadow-md w-full sm:w-auto text-center">
                         <i class="fa-solid fa-calculator text-amber-300"></i>
                         <span>CALCULATE FREIGHT QUOTE</span>
                     </a>
@@ -217,36 +217,36 @@
     </div>
 
     <!-- INCOTERMS SELECTION & PAYMENT TERMS SECTION -->
-    <section id="incoterms" class="max-w-7xl mx-auto px-6 py-12" x-data="{ activeTerm: 'fob' }">
-        <div class="bg-white border border-saltora-border p-6 sm:p-8 rounded-sm shadow-sm space-y-6">
+    <section id="incoterms" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12" x-data="{ activeTerm: 'fob' }">
+        <div class="bg-white border border-saltora-border p-4 sm:p-8 rounded-sm shadow-sm space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-5">
                 <div>
                     <span class="text-[10px] font-bold tracking-widest text-saltora-terracotta uppercase block">COMMERCIAL INCOTERMS</span>
-                    <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal">Standard Trading Terms & Payment Framework</h3>
+                    <h3 class="font-serif text-xl sm:text-3xl text-saltora-text font-normal">Standard Trading Terms & Payment Framework</h3>
                 </div>
                 
                 <!-- Term Switcher Tabs -->
-                <div class="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xs">
-                    <button @click="activeTerm = 'fob'" :class="activeTerm === 'fob' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                <div class="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xs overflow-x-auto no-scrollbar max-w-full">
+                    <button @click="activeTerm = 'fob'" :class="activeTerm === 'fob' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'text-stone-700 hover:text-black'" class="px-3 sm:px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap shrink-0">
                         FOB (Recommended)
                     </button>
-                    <button @click="activeTerm = 'cfr'" :class="activeTerm === 'cfr' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                    <button @click="activeTerm = 'cfr'" :class="activeTerm === 'cfr' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'text-stone-700 hover:text-black'" class="px-3 sm:px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap shrink-0">
                         CFR (Cost & Freight)
                     </button>
-                    <button @click="activeTerm = 'cif'" :class="activeTerm === 'cif' ? 'bg-saltora-terracotta text-white font-bold' : 'text-stone-700 hover:text-black'" class="px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer">
+                    <button @click="activeTerm = 'cif'" :class="activeTerm === 'cif' ? 'bg-saltora-terracotta text-white font-bold shadow-xs' : 'text-stone-700 hover:text-black'" class="px-3 sm:px-4 py-1.5 text-xs rounded-xs uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap shrink-0">
                         CIF (With Insurance)
                     </button>
                 </div>
             </div>
 
             <!-- FOB Detail -->
-            <div x-show="activeTerm === 'fob'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div x-show="activeTerm === 'fob'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-center">
                 <div class="md:col-span-2 space-y-2">
-                    <h4 class="font-serif text-xl font-bold text-saltora-text">FOB — Free On Board (Karachi Port / Port Qasim)</h4>
+                    <h4 class="font-serif text-lg sm:text-xl font-bold text-saltora-text">FOB — Free On Board (Karachi Port / Port Qasim)</h4>
                     <p class="text-xs text-saltora-muted leading-relaxed font-light">
                         Under our standard FOB terms, Saltora manages manufacturing, inland freight from the Salt Range, customs clearance, terminal handling charges (THC), and loads the sealed containers on board your nominated shipping vessel.
                     </p>
-                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                    <div class="pt-2 flex flex-wrap gap-2 sm:gap-3 text-xs text-stone-700 font-medium">
                         <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
                             <strong>Payment:</strong> 50% Advance T/T & 50% against original Bill of Lading (B/L) copy
                         </span>
@@ -255,7 +255,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                <div class="bg-[#FAF7F2] p-4 sm:p-5 rounded-xs border border-saltora-border text-center space-y-2">
                     <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
                     <div class="text-sm font-bold text-saltora-text">Importers with Existing Forwarding Contracts</div>
                     <a href="/contact?incoterm=FOB#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
@@ -265,13 +265,13 @@
             </div>
 
             <!-- CFR Detail -->
-            <div x-show="activeTerm === 'cfr'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div x-show="activeTerm === 'cfr'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-center">
                 <div class="md:col-span-2 space-y-2">
-                    <h4 class="font-serif text-xl font-bold text-saltora-text">CFR — Cost & Freight (Delivered to Destination Port)</h4>
+                    <h4 class="font-serif text-lg sm:text-xl font-bold text-saltora-text">CFR — Cost & Freight (Delivered to Destination Port)</h4>
                     <p class="text-xs text-saltora-muted leading-relaxed font-light">
                         Saltora books and prepays the international ocean freight with top shipping carriers (Maersk, MSC, CMA CGM) directly to your designated seaport. The buyer handles destination customs clearance and port duties upon cargo arrival.
                     </p>
-                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                    <div class="pt-2 flex flex-wrap gap-2 sm:gap-3 text-xs text-stone-700 font-medium">
                         <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
                             <strong>Payment:</strong> 50% Advance T/T & 50% upon presentation of Ocean B/L copy
                         </span>
@@ -280,7 +280,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                <div class="bg-[#FAF7F2] p-4 sm:p-5 rounded-xs border border-saltora-border text-center space-y-2">
                     <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
                     <div class="text-sm font-bold text-saltora-text">Buyers Wanting Freight Handled End-to-End</div>
                     <a href="/contact?incoterm=CFR#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
@@ -290,13 +290,13 @@
             </div>
 
             <!-- CIF Detail -->
-            <div x-show="activeTerm === 'cif'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div x-show="activeTerm === 'cif'" x-cloak class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 items-center">
                 <div class="md:col-span-2 space-y-2">
-                    <h4 class="font-serif text-xl font-bold text-saltora-text">CIF — Cost, Insurance & Freight</h4>
+                    <h4 class="font-serif text-lg sm:text-xl font-bold text-saltora-text">CIF — Cost, Insurance & Freight</h4>
                     <p class="text-xs text-saltora-muted leading-relaxed font-light">
                         Full comprehensive shipping solution including ocean freight and all-risk marine cargo insurance (covering 110% of CIF value under Institute Cargo Clauses A). Maximum peace of mind for institutional food manufacturers and supermarket distributors.
                     </p>
-                    <div class="pt-2 flex flex-wrap gap-3 text-xs text-stone-700 font-medium">
+                    <div class="pt-2 flex flex-wrap gap-2 sm:gap-3 text-xs text-stone-700 font-medium">
                         <span class="bg-saltora-blush/80 text-saltora-terracotta px-2.5 py-1 rounded-xs border border-saltora-terracotta/20">
                             <strong>Insurance:</strong> 110% All-Risk Marine Coverage included
                         </span>
@@ -305,7 +305,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="bg-[#FAF7F2] p-5 rounded-xs border border-saltora-border text-center space-y-2">
+                <div class="bg-[#FAF7F2] p-4 sm:p-5 rounded-xs border border-saltora-border text-center space-y-2">
                     <span class="text-[10px] font-bold uppercase text-stone-400">Best For</span>
                     <div class="text-sm font-bold text-saltora-text">Turnkey Commercial Protection & Letters of Credit</div>
                     <a href="/contact?incoterm=CIF#contactForm" class="block w-full py-2 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors">
@@ -316,15 +316,13 @@
         </div>
     </section>
 
-
-
     <!-- SEVEN STEPS FROM INQUIRY TO DELIVERY (VERTICAL INTERACTIVE TIMELINE) -->
-    <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-8 sm:space-y-12">
         
         <!-- Header -->
         <div class="space-y-3 reveal-on-scroll reveal-from-top text-center max-w-3xl mx-auto">
             <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">EXPORT TIMELINE & WORKFLOW</span>
-            <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+            <h2 class="text-2xl sm:text-5xl font-serif text-saltora-text font-normal">
                 Seven steps from inquiry to port arrival
             </h2>
             <p class="text-saltora-muted text-sm sm:text-base font-light">
@@ -336,64 +334,64 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-saltora-border/80">
             
             <!-- Step 01 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-1">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">01</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-1">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">01</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Send Target Inquiry</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Send Target Inquiry</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">Share your required grain mesh size, packaging format, tonnage, and destination port through our quote form or direct WhatsApp.</p>
                 </div>
             </div>
 
             <!-- Step 02 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-2">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">02</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-2">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">02</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Specification & Sample Approval</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Specification & Sample Approval</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">We align on chemical purity, particle grading, packaging artwork, and dispatch courier sample test kits to your facility.</p>
                 </div>
             </div>
 
             <!-- Step 03 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-3">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">03</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-3">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">03</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Formal Proforma & Contract</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Formal Proforma & Contract</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">You receive a binding commercial proforma invoice detailing unit prices, FOB/CIF terms, production schedule, and bank routing details.</p>
                 </div>
             </div>
 
             <!-- Step 04 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-4">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">04</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-4">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">04</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Production & Sieve Calibration</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Production & Sieve Calibration</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">Pure rock salt is extracted, optical sorted, rotary sieved, and hermetically packaged in food-grade moisture barrier sacks or private pouches.</p>
                 </div>
             </div>
 
             <!-- Step 05 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-5">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">05</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-5">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">05</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Batch Testing & Pre-Shipment Audit</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Batch Testing & Pre-Shipment Audit</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">Laboratory analysis verifies purity and heavy metals. Third-party inspectors (SGS, Intertek, or PCSIR) verify weights and sample integrity.</p>
                 </div>
             </div>
 
             <!-- Step 06 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-6">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">06</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-from-bottom stagger-6">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">06</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Container Stuffing & Vessel Loading</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Container Stuffing & Vessel Loading</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">Containers are lined with desiccant protection and floor paper, loaded with cargo, high-security bolt sealed, and hoisted onto ocean vessels.</p>
                 </div>
             </div>
 
             <!-- Step 07 -->
-            <div class="py-6 border-b border-saltora-border/60 flex items-start gap-5 md:col-span-2 cursor-pointer group hover:bg-white transition-colors px-4 rounded-xs reveal-on-scroll reveal-scale">
-                <span class="font-serif text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">07</span>
+            <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start gap-3.5 sm:gap-5 md:col-span-2 cursor-pointer group hover:bg-white transition-colors px-2 sm:px-4 rounded-xs reveal-on-scroll reveal-scale">
+                <span class="font-serif text-2xl sm:text-3xl text-saltora-terracotta/70 group-hover:text-saltora-terracotta group-hover:scale-110 transition-all duration-300 font-bold shrink-0">07</span>
                 <div class="space-y-1">
-                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Document Presentation & Port Arrival</h3>
+                    <h3 class="font-serif text-lg sm:text-2xl text-saltora-text font-normal group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Document Presentation & Port Arrival</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed max-w-xl">Original B/L, Commercial Invoice, Packing List, Certificate of Origin, and COA are transferred. Cargo clears smoothly at your destination terminal.</p>
                 </div>
             </div>
@@ -402,16 +400,16 @@
     </section>
 
     <!-- EXPORT DOCUMENTATION VAULT & PACKAGING SHOWCASE (DARK SECTION) -->
-    <section class="bg-[#181513] text-white py-20 md:py-28 px-6 md:px-12 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section class="bg-[#181513] text-white py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             
             <!-- Left Column: Complete Documentation Checklist (5 cols) -->
-            <div class="lg:col-span-5 space-y-6 reveal-on-scroll reveal-from-left">
+            <div class="lg:col-span-5 space-y-4 sm:space-y-6 reveal-on-scroll reveal-from-left">
                 <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
                     COMPREHENSIVE TRADE VAULT
                 </div>
 
-                <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                <h2 class="text-2xl sm:text-4xl font-serif text-white font-normal leading-tight">
                     Every export document handled with precision
                 </h2>
 
@@ -479,12 +477,12 @@
             </div>
 
             <!-- Right Column: Shipment Packaging Formats Showcase (7 cols) -->
-            <div class="lg:col-span-7 space-y-6 reveal-on-scroll reveal-from-right">
+            <div class="lg:col-span-7 space-y-4 sm:space-y-6 reveal-on-scroll reveal-from-right">
                 <div class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">
                     CARGO PROTECTION STANDARDS
                 </div>
 
-                <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                <h2 class="text-2xl sm:text-4xl font-serif text-white font-normal leading-tight">
                     Engineered for maritime transit
                 </h2>
 
@@ -493,10 +491,10 @@
                 </p>
 
                 <!-- 4 Photo Cards (2x2 Grid) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-2">
                     
                     <!-- Photo 1: 1-Ton Jumbo FIBC Big Bags -->
-                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                    <div class="relative group rounded-sm overflow-hidden h-44 sm:h-52 border border-stone-800 bg-stone-900 cursor-pointer">
                         <img src="/packaging-fibc.jpg" alt="1-Ton Jumbo FIBC Big Bags in Port Warehouse" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -506,7 +504,7 @@
                     </div>
 
                     <!-- Photo 2: 25kg Food-Grade Bags -->
-                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                    <div class="relative group rounded-sm overflow-hidden h-44 sm:h-52 border border-stone-800 bg-stone-900 cursor-pointer">
                         <img src="/packaging-pp-bags.jpg" alt="25kg Food-Grade Polypropylene Export Sacks" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -516,7 +514,7 @@
                     </div>
 
                     <!-- Photo 3: Stand-Up Pouches -->
-                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                    <div class="relative group rounded-sm overflow-hidden h-44 sm:h-52 border border-stone-800 bg-stone-900 cursor-pointer">
                         <img src="/packaging-pouches.jpg" alt="Retail Stand-Up Zipper Pouches" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -526,7 +524,7 @@
                     </div>
 
                     <!-- Photo 4: Jars & Ceramic Grinders -->
-                    <div class="relative group rounded-sm overflow-hidden h-52 border border-stone-800 bg-stone-900 cursor-pointer">
+                    <div class="relative group rounded-sm overflow-hidden h-44 sm:h-52 border border-stone-800 bg-stone-900 cursor-pointer">
                         <img src="/packaging-grinders.jpg" alt="Custom Jars & Ceramic Grinder Bottles" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -542,12 +540,12 @@
     </section>
 
     <!-- NEW SECTION: LOGISTICS & CUSTOMS FAQ ACCORDION -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
-        <div class="max-w-4xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
+        <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="text-center space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">SHIPPING & CLEARANCE FAQ</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+                <h2 class="text-2xl sm:text-5xl font-serif text-saltora-text font-normal">
                     Frequently Asked Logistics Questions
                 </h2>
                 <p class="text-saltora-muted text-sm sm:text-base font-light">
@@ -556,59 +554,59 @@
             </div>
 
             <!-- FAQ Accordion List -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
                 
                 <!-- FAQ 1 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>How does the standard 50% advance and 50% against B/L payment work?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">How does the standard 50% advance and 50% against B/L payment work?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 1" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 1" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Upon contract signing, the buyer transfers a 50% deposit via Telegraphic Transfer (T/T) to initiate crushing, grading, and packaging. Once goods are loaded into ocean containers and the vessel departs Karachi/Port Qasim, the official carrier Bill of Lading (B/L) is issued. We furnish a high-resolution verified copy of the on-board B/L and customs documents. The remaining 50% balance is released against this proof, after which original negotiable documents are surrendered or telex-released.
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>What is the maximum payload capacity of a 20ft container?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">What is the maximum payload capacity of a 20ft container?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 2" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 2" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         For <strong>Palletized 20ft FCL</strong>, maximum capacity is 20 standard pallets (approx. 20.0 to 24.0 Metric Tons net). For <strong>Floor Loaded (Unpalletized) 20ft FCL</strong>, cargo can be loaded up to 26.0 to 28.0 Metric Tons, subject to destination port road weight regulations. Floor loading achieves the lowest ocean freight cost per kilogram.
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>What steps are taken to prevent humidity and moisture damage during sea transit?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">What steps are taken to prevent humidity and moisture damage during sea transit?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 3" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 3" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Salt is naturally hygroscopic. Every 25kg export sack features an airtight polyethylene inner liner. During container stuffing, container floors are lined with moisture-barrier corrugated cardboard, and industrial calcium chloride desiccant hanging poles (Dry-Bag standards) are installed inside the container to absorb ambient maritime condensation.
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Can you quote CIF directly to our regional seaport?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Can you quote CIF directly to our regional seaport?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 4" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 4" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Yes. While FOB Karachi is our standard benchmark, our logistics department regularly books direct vessel space with Maersk, MSC, Hapag-Lloyd, and CMA CGM. We can provide all-inclusive CIF pricing covering ocean freight and marine cargo insurance right to your destination port of discharge.
                     </div>
                 </div>
 
                 <!-- FAQ 5 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Are wood pallets compliant with ISPM-15 international phytosanitary standards?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Are wood pallets compliant with ISPM-15 international phytosanitary standards?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 5" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 5" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         All wooden pallets used for international shipments are heat-treated (HT) and stamped in strict compliance with ISPM-15 international plant health standards. An official Fumigation / Phytosanitary Certificate is provided with shipping documents to ensure zero customs quarantine friction.
                     </div>
                 </div>
@@ -619,11 +617,11 @@
     </section>
 
     <!-- HIGH CONVERTING CLOSING CTA BANNER -->
-    <section class="py-16 md:py-20 px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 text-center md:text-left">
             <div class="space-y-3 max-w-2xl">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">OCEAN FREIGHT DESK</span>
-                <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                <h3 class="text-2xl sm:text-4xl font-serif text-white font-normal leading-tight">
                     Ready to schedule your salt container shipment?
                 </h3>
                 <p class="text-stone-300 text-xs sm:text-sm font-light leading-relaxed">
@@ -631,12 +629,12 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-3.5 shrink-0">
-                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 shrink-0 w-full md:w-auto">
+                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-solid fa-calculator text-amber-200"></i>
                     <span>CALCULATE FREIGHT QUOTE</span>
                 </a>
-                <a href="https://wa.me/923180735748?text=Hello%20Saltora%20Logistics%2C%20I%20would%20like%20to%20check%20container%20shipping%20rates." target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+                <a href="https://wa.me/923180735748?text=Hello%20Saltora%20Logistics%2C%20I%20would%20like%20to%20check%20container%20shipping%20rates." target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>WHATSAPP LOGISTICS</span>
                 </a>
