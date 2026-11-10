@@ -95,11 +95,11 @@
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -131,7 +131,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-4 sm:px-6 py-5 space-y-3.5 text-xs font-semibold tracking-widest uppercase">
             <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/packing" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">PACKING</a>
@@ -147,33 +147,33 @@
     </header>
 
     <!-- 1. HERO SECTION -->
-    <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+    <section class="relative bg-saltora-dark text-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Master Lineup Overview Backdrop -->
         <img src="/packaging-pouches.jpg" alt="SALTORA Export Himalayan Pink Salt Packaging Lineup" class="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-105 contrast-115 pointer-events-none scale-105">
         <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7 space-y-6">
+        <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <div class="lg:col-span-7 space-y-4 sm:space-y-6">
                 <!-- Tag -->
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>CERTIFIED EXPORT PACKING · PRIVATE LABEL & OEM</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[10px] sm:text-[11px] font-bold tracking-wider sm:tracking-mega text-amber-300 uppercase shadow-lg max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                    <span class="truncate">CERTIFIED EXPORT PACKING · PRIVATE LABEL & OEM</span>
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif text-white font-normal leading-tight">
                     Precision Packaging for <br><span class="italic text-saltora-terracotta font-normal">Himalayan Pink Salt</span>
                 </h1>
 
-                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+                <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl">
                     SALTORA provides complete export-compliant packing lines engineered for freshness, shelf appeal, and international transit durability. Discover our 6 signature packaging formats tailored exclusively for pure Himalayan pink salt.
                 </p>
 
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#packagingLines" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+                    <a href="#packagingLines" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                         <span>EXPLORE 6 PACKING FORMATS</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact?subject=Packaging+Inquiry#contactForm" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                    <a href="/contact?subject=Packaging+Inquiry#contactForm" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 rounded-xs shadow-md w-full sm:w-auto text-center">
                         <i class="fa-solid fa-boxes-packing text-amber-300"></i>
                         <span>REQUEST PACKING QUOTE</span>
                     </a>
@@ -182,13 +182,13 @@
 
             <!-- Hero Overview Card -->
             <div class="lg:col-span-5">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-2xl space-y-3 group">
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-2xl space-y-3 group">
                     <div class="rounded-xl overflow-hidden border border-white/15 bg-black/40">
                         <img src="/packaging-pouches.jpg" alt="All 6 SALTORA Himalayan Pink Salt Packaging Lines" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
                     <div class="flex items-center justify-between text-xs text-stone-200 pt-1 px-1">
-                        <span class="font-semibold text-amber-300 uppercase tracking-wider text-[11px]">✦ All 6 Signature Formats</span>
-                        <span class="text-stone-300">Retail Ready to Bulk 25kg</span>
+                        <span class="font-semibold text-amber-300 uppercase tracking-wider text-[10px] sm:text-[11px]">✦ All 6 Signature Formats</span>
+                        <span class="text-stone-300 text-[11px] sm:text-xs">Retail Ready to Bulk 25kg</span>
                     </div>
                 </div>
             </div>
@@ -196,48 +196,48 @@
     </section>
 
     <!-- 2. CORE PACKAGING PILLARS STRIP -->
-    <section class="bg-white border-b border-saltora-border/70 py-8 px-6 md:px-12 shadow-xs">
+    <section class="bg-white border-b border-saltora-border/70 py-6 sm:py-8 px-4 sm:px-6 md:px-12 shadow-xs">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 text-center">
                 
-                <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shadow-2xs border border-emerald-100">
+                <div class="flex flex-col items-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg sm:text-xl shadow-2xs border border-emerald-100">
                         <i class="fa-solid fa-leaf"></i>
                     </div>
-                    <h4 class="font-serif text-sm font-bold text-slate-900">Food Grade</h4>
-                    <p class="text-[11px] text-stone-700 leading-tight">100% Virgin food-contact approved virgin polymers & glass</p>
+                    <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900">Food Grade</h4>
+                    <p class="text-[10px] sm:text-[11px] text-stone-700 leading-tight">100% Virgin food-contact approved virgin polymers & glass</p>
                 </div>
 
-                <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xl shadow-2xs border border-blue-100">
+                <div class="flex flex-col items-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-lg sm:text-xl shadow-2xs border border-blue-100">
                         <i class="fa-solid fa-hands-bubbles"></i>
                     </div>
-                    <h4 class="font-serif text-sm font-bold text-slate-900">Hygienically Packed</h4>
-                    <p class="text-[11px] text-stone-700 leading-tight">ISO 22000 cleanroom automated dust-free filling</p>
+                    <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900">Hygienically Packed</h4>
+                    <p class="text-[10px] sm:text-[11px] text-stone-700 leading-tight">ISO 22000 cleanroom automated dust-free filling</p>
                 </div>
 
-                <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-xl shadow-2xs border border-amber-100">
+                <div class="flex flex-col items-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-lg sm:text-xl shadow-2xs border border-amber-100">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h4 class="font-serif text-sm font-bold text-slate-900">Moisture Protected</h4>
-                    <p class="text-[11px] text-stone-700 leading-tight">Multi-layer barrier preventing ambient humidity clumping</p>
+                    <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900">Moisture Protected</h4>
+                    <p class="text-[10px] sm:text-[11px] text-stone-700 leading-tight">Multi-layer barrier preventing ambient humidity clumping</p>
                 </div>
 
-                <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xl shadow-2xs border border-purple-100">
+                <div class="flex flex-col items-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-lg sm:text-xl shadow-2xs border border-purple-100">
                         <i class="fa-solid fa-ship"></i>
                     </div>
-                    <h4 class="font-serif text-sm font-bold text-slate-900">Export Quality</h4>
-                    <p class="text-[11px] text-stone-700 leading-tight">Tear-proof reinforced build for long-distance sea container freight</p>
+                    <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900">Export Quality</h4>
+                    <p class="text-[10px] sm:text-[11px] text-stone-700 leading-tight">Tear-proof reinforced build for long-distance sea container freight</p>
                 </div>
 
-                <div class="col-span-2 md:col-span-1 flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-rose-50 text-saltora-terracotta flex items-center justify-center text-xl shadow-2xs border border-rose-100">
+                <div class="col-span-2 sm:col-span-1 flex flex-col items-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-50 text-saltora-terracotta flex items-center justify-center text-lg sm:text-xl shadow-2xs border border-rose-100">
                         <i class="fa-solid fa-tags"></i>
                     </div>
-                    <h4 class="font-serif text-sm font-bold text-slate-900">Custom Packaging</h4>
-                    <p class="text-[11px] text-stone-700 leading-tight">Full OEM private label branding, barcoding & language options</p>
+                    <h4 class="font-serif text-xs sm:text-sm font-bold text-slate-900">Custom Packaging</h4>
+                    <p class="text-[10px] sm:text-[11px] text-stone-700 leading-tight">Full OEM private label branding, barcoding & language options</p>
                 </div>
 
             </div>
@@ -245,8 +245,8 @@
     </section>
 
     <!-- 3. THE 6 PACKAGING LINES DETAILED SECTION -->
-    <section id="packagingLines" class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg">
-        <div class="max-w-7xl mx-auto space-y-16">
+    <section id="packagingLines" class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg">
+        <div class="max-w-7xl mx-auto space-y-10 sm:space-y-16">
             
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto space-y-3">
@@ -260,7 +260,7 @@
             </div>
 
             <!-- GRID OF 6 PACKAGING FORMAT CARDS (Compact, Uniform Height, 3x2 Grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
 
                 <!-- 1. ZIP POUCH -->
                 <div class="bg-white border border-[#EAE5DC] rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-saltora-terracotta/40 group relative overflow-hidden">
@@ -675,11 +675,11 @@
     </section>
 
     <!-- 4. MASTER SPECIFICATION COMPARISON MATRIX TABLE -->
-    <section class="py-20 bg-white border-y border-saltora-border/70 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto space-y-10">
+    <section class="py-12 sm:py-20 bg-white border-y border-saltora-border/70 px-4 sm:px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-6 sm:space-y-10">
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TECHNICAL COMPARISON</span>
-                <h2 class="text-3xl sm:text-4xl font-serif text-slate-900 font-normal">
+                <h2 class="text-2xl sm:text-4xl font-serif text-slate-900 font-normal">
                     Packaging Specifications Matrix
                 </h2>
                 <p class="text-xs sm:text-sm text-stone-700">
@@ -687,92 +687,98 @@
                 </p>
             </div>
 
+            <!-- Mobile Swipe Helper Indicator -->
+            <div class="text-[11px] text-stone-500 flex items-center justify-center gap-1.5 sm:hidden">
+                <i class="fa-solid fa-arrows-left-right text-saltora-terracotta"></i>
+                <span>Swipe left/right to view all columns</span>
+            </div>
+
             <!-- Table Responsive Wrapper -->
             <div class="overflow-x-auto rounded-xl border border-stone-200 shadow-sm">
-                <table class="w-full text-left text-xs border-collapse">
+                <table class="w-full text-left text-xs border-collapse min-w-[680px]">
                     <thead>
                         <tr class="bg-stone-100 text-slate-900 font-bold uppercase tracking-wider border-b border-stone-200">
-                            <th class="p-4">Packaging Type</th>
-                            <th class="p-4">Available Sizes</th>
-                            <th class="p-4">Body Material</th>
-                            <th class="p-4">Closure & Sealing</th>
-                            <th class="p-4">Moisture Barrier</th>
-                            <th class="p-4">Recommended Grain</th>
-                            <th class="p-4 text-right">Standard MOQ</th>
+                            <th class="p-3.5 sm:p-4">Packaging Type</th>
+                            <th class="p-3.5 sm:p-4">Available Sizes</th>
+                            <th class="p-3.5 sm:p-4">Body Material</th>
+                            <th class="p-3.5 sm:p-4">Closure & Sealing</th>
+                            <th class="p-3.5 sm:p-4">Moisture Barrier</th>
+                            <th class="p-3.5 sm:p-4">Recommended Grain</th>
+                            <th class="p-3.5 sm:p-4 text-right">Standard MOQ</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-stone-200 text-stone-800">
                         <tr class="hover:bg-amber-50/40 transition-colors">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">1</span>
                                 <span>Zip Pouch</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">200g, 400g, 500g, 750g, 1kg</td>
-                            <td class="p-4">Multi-layer Matte PET/PE</td>
-                            <td class="p-4">Press-to-Close Zip Lock</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ High Barrier Foil</span></td>
-                            <td class="p-4">Fine Table / Coarse</td>
-                            <td class="p-4 text-right font-medium">1,000 Units</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">200g, 400g, 500g, 750g, 1kg</td>
+                            <td class="p-3.5 sm:p-4">Multi-layer Matte PET/PE</td>
+                            <td class="p-3.5 sm:p-4">Press-to-Close Zip Lock</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ High Barrier Foil</span></td>
+                            <td class="p-3.5 sm:p-4">Fine Table / Coarse</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">1,000 Units</td>
                         </tr>
                         <tr class="hover:bg-amber-50/40 transition-colors">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">2</span>
                                 <span>PET Jar</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">200g, 400g, 500g, 1kg</td>
-                            <td class="p-4">Food-Grade Virgin PET</td>
-                            <td class="p-4">Black Ribbed Cap + Induction Seal</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ Induction Heat Liner</span></td>
-                            <td class="p-4">Fine & Medium Grain</td>
-                            <td class="p-4 text-right font-medium">1,200 Units</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">200g, 400g, 500g, 1kg</td>
+                            <td class="p-3.5 sm:p-4">Food-Grade Virgin PET</td>
+                            <td class="p-3.5 sm:p-4">Black Ribbed Cap + Induction Seal</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ Induction Heat Liner</span></td>
+                            <td class="p-3.5 sm:p-4">Fine & Medium Grain</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">1,200 Units</td>
                         </tr>
                         <tr class="hover:bg-amber-50/40 transition-colors">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">3</span>
                                 <span>Glass Jar</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">250g, 500g</td>
-                            <td class="p-4">Flint Glass (Heavy Base)</td>
-                            <td class="p-4">Gold/Copper Metal Lug Cap</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ Vacuum Plastisol Liner</span></td>
-                            <td class="p-4">Coarse Crystal & Fine</td>
-                            <td class="p-4 text-right font-medium">1,000 Units</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">250g, 500g</td>
+                            <td class="p-3.5 sm:p-4">Flint Glass (Heavy Base)</td>
+                            <td class="p-3.5 sm:p-4">Gold/Copper Metal Lug Cap</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ Vacuum Plastisol Liner</span></td>
+                            <td class="p-3.5 sm:p-4">Coarse Crystal & Fine</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">1,000 Units</td>
                         </tr>
                         <tr class="hover:bg-amber-50/40 transition-colors">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">4</span>
                                 <span>Grinder Bottle</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">100g, 150g, 200g</td>
-                            <td class="p-4">Heavy Flint Glass</td>
-                            <td class="p-4">Adjustable Ceramic Mill + Cap</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ Snap Dust Cover</span></td>
-                            <td class="p-4">2-5mm Coarse Crystals</td>
-                            <td class="p-4 text-right font-medium">1,500 Units</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">100g, 150g, 200g</td>
+                            <td class="p-3.5 sm:p-4">Heavy Flint Glass</td>
+                            <td class="p-3.5 sm:p-4">Adjustable Ceramic Mill + Cap</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ Snap Dust Cover</span></td>
+                            <td class="p-3.5 sm:p-4">2-5mm Coarse Crystals</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">1,500 Units</td>
                         </tr>
                         <tr class="hover:bg-amber-50/40 transition-colors">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">5</span>
                                 <span>Shaker Bottle</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">100g, 150g, 200g</td>
-                            <td class="p-4">Clear Glass or PET</td>
-                            <td class="p-4">Dual-Flip Cap (Pour & Sift)</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ Pressure Sensitive Liner</span></td>
-                            <td class="p-4">0.3-0.8mm Fine Table Salt</td>
-                            <td class="p-4 text-right font-medium">1,500 Units</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">100g, 150g, 200g</td>
+                            <td class="p-3.5 sm:p-4">Clear Glass or PET</td>
+                            <td class="p-3.5 sm:p-4">Dual-Flip Cap (Pour & Sift)</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ Pressure Sensitive Liner</span></td>
+                            <td class="p-3.5 sm:p-4">0.3-0.8mm Fine Table Salt</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">1,500 Units</td>
                         </tr>
                         <tr class="hover:bg-amber-50/40 transition-colors bg-stone-50/70">
-                            <td class="p-4 font-bold text-slate-900 flex items-center gap-2">
+                            <td class="p-3.5 sm:p-4 font-bold text-slate-900 flex items-center gap-2">
                                 <span class="w-5 h-5 rounded-full bg-saltora-terracotta text-white flex items-center justify-center text-[10px]">6</span>
                                 <span>Food-Grade PP Bag</span>
                             </td>
-                            <td class="p-4 font-semibold text-saltora-terracotta">2kg, 5kg, 10kg, 20kg, 25kg</td>
-                            <td class="p-4">Woven Polypropylene (Virgin)</td>
-                            <td class="p-4">Heat-Sealed & Stitched Hem</td>
-                            <td class="p-4"><span class="text-emerald-700 font-bold">✦ Polyethylene Inner Liner</span></td>
-                            <td class="p-4">All Granulations (Fine to Chunk)</td>
-                            <td class="p-4 text-right font-medium">500 Bags / 1 FCL</td>
+                            <td class="p-3.5 sm:p-4 font-semibold text-saltora-terracotta">2kg, 5kg, 10kg, 20kg, 25kg</td>
+                            <td class="p-3.5 sm:p-4">Woven Polypropylene (Virgin)</td>
+                            <td class="p-3.5 sm:p-4">Heat-Sealed & Stitched Hem</td>
+                            <td class="p-3.5 sm:p-4"><span class="text-emerald-700 font-bold">✦ Polyethylene Inner Liner</span></td>
+                            <td class="p-3.5 sm:p-4">All Granulations (Fine to Chunk)</td>
+                            <td class="p-3.5 sm:p-4 text-right font-medium">500 Bags / 1 FCL</td>
                         </tr>
                     </tbody>
                 </table>
@@ -781,23 +787,23 @@
     </section>
 
     <!-- 5. OEM PRIVATE LABEL PACKAGING SERVICES -->
-    <section class="py-20 px-6 md:px-12 bg-saltora-bg">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 md:px-12 bg-saltora-bg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            <div class="lg:col-span-6 space-y-6">
+            <div class="lg:col-span-6 space-y-4 sm:space-y-6">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">TURNKEY OEM SOLUTIONS</span>
-                <h2 class="text-3xl sm:text-4xl font-serif text-slate-900 font-normal leading-tight">
+                <h2 class="text-2xl sm:text-4xl font-serif text-slate-900 font-normal leading-tight">
                     Custom Packaging Designed for Your Retail Brand
                 </h2>
-                <p class="text-sm text-stone-700 leading-relaxed font-normal">
+                <p class="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal">
                     We produce complete private-label salt collections for international supermarket chains, gourmet spice labels, and commercial food brands. Select any of our 6 formats and customize every branding element.
                 </p>
 
-                <div class="space-y-3.5 pt-2">
+                <div class="space-y-3 sm:space-y-3.5 pt-2">
                     <div class="flex items-start gap-3">
                         <div class="w-7 h-7 rounded-full bg-saltora-terracotta text-white flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">1</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Die-Line & Artwork Preparation</h4>
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Die-Line & Artwork Preparation</h4>
                             <p class="text-xs text-stone-600">We provide high-resolution engineering templates for pouch rotogravure, jar labels, and multi-color PP bag prints.</p>
                         </div>
                     </div>
@@ -805,7 +811,7 @@
                     <div class="flex items-start gap-3">
                         <div class="w-7 h-7 rounded-full bg-saltora-terracotta text-white flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">2</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Barcode & Regulatory Compliance</h4>
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Barcode & Regulatory Compliance</h4>
                             <p class="text-xs text-stone-600">Full compliance with FDA, EU, and Gulf standard food labeling, bilingual nutrition facts, and GS1 barcodes.</p>
                         </div>
                     </div>
@@ -813,14 +819,14 @@
                     <div class="flex items-start gap-3">
                         <div class="w-7 h-7 rounded-full bg-saltora-terracotta text-white flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">3</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Master Export Cartons & Palletization</h4>
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Master Export Cartons & Palletization</h4>
                             <p class="text-xs text-stone-600">Heavy-duty corrugated 5-ply export master cartons, shrink-wrapped wood pallets, and container desiccants included.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="pt-2">
-                    <a href="/contact?subject=Private+Label+Packaging+Inquiry#contactForm" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-black text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase rounded-xs transition-all shadow-md">
+                    <a href="/contact?subject=Private+Label+Packaging+Inquiry#contactForm" class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase rounded-xs transition-all shadow-md w-full sm:w-auto text-center">
                         <i class="fa-solid fa-file-pen text-amber-300"></i>
                         <span>Start Your Private Label Packaging</span>
                     </a>
@@ -828,27 +834,27 @@
             </div>
 
             <!-- Right Visual Showcase -->
-            <div class="lg:col-span-6 bg-white border border-stone-200 rounded-2xl p-6 shadow-xl space-y-6">
-                <div class="border-b border-stone-100 pb-4 flex items-center justify-between">
+            <div class="lg:col-span-6 bg-white border border-stone-200 rounded-2xl p-4 sm:p-6 shadow-xl space-y-4 sm:space-y-6">
+                <div class="border-b border-stone-100 pb-3 sm:pb-4 flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-saltora-terracotta uppercase tracking-wider">Quality Assurance</span>
-                        <h4 class="font-serif text-lg font-bold text-slate-900">Certified Food Safety Packaging</h4>
+                        <h4 class="font-serif text-base sm:text-lg font-bold text-slate-900">Certified Food Safety Packaging</h4>
                     </div>
-                    <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full">ISO 22000:2018</span>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] sm:text-[11px] font-bold px-2.5 sm:px-3 py-1 rounded-full">ISO 22000:2018</span>
                 </div>
 
                 <div class="rounded-xl overflow-hidden border border-stone-200">
                     <img src="/packaging-grinders.jpg" alt="SALTORA Packaging Overview Lineup" class="w-full h-auto object-cover">
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 text-xs text-stone-700">
-                    <div class="bg-stone-50 p-3 rounded-lg border border-stone-200/80">
+                <div class="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs text-stone-700">
+                    <div class="bg-stone-50 p-2.5 sm:p-3 rounded-lg border border-stone-200/80">
                         <span class="block text-[10px] font-bold uppercase text-stone-500">Hygiene Standard</span>
-                        <strong class="text-slate-900">Codex CXS 150:1985</strong>
+                        <strong class="text-slate-900 text-xs sm:text-sm">Codex CXS 150:1985</strong>
                     </div>
-                    <div class="bg-stone-50 p-3 rounded-lg border border-stone-200/80">
+                    <div class="bg-stone-50 p-2.5 sm:p-3 rounded-lg border border-stone-200/80">
                         <span class="block text-[10px] font-bold uppercase text-stone-500">Origin Salt</span>
-                        <strong class="text-slate-900">100% Khewra Salt Mines</strong>
+                        <strong class="text-slate-900 text-xs sm:text-sm">100% Khewra Mines</strong>
                     </div>
                 </div>
             </div>
@@ -857,21 +863,21 @@
     </section>
 
     <!-- 6. FINAL CALL TO ACTION SECTION -->
-    <section class="bg-saltora-dark text-white py-16 px-6 md:px-12 border-t border-saltora-dark-border">
-        <div class="max-w-5xl mx-auto text-center space-y-6">
+    <section class="bg-saltora-dark text-white py-12 sm:py-16 px-4 sm:px-6 md:px-12 border-t border-saltora-dark-border">
+        <div class="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6">
             <span class="text-[11px] font-bold tracking-mega text-amber-300 uppercase">DIRECT EXPORT INQUIRIES</span>
-            <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal">
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-serif text-white font-normal">
                 Ready to Order Himalayan Pink Salt in Your Chosen Packaging?
             </h2>
-            <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="text-stone-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
                 Contact our commercial export desk with your desired format (Zip Pouch, PET Jar, Glass Jar, Grinder, Shaker, or PP Bags), target quantities, and destination port.
             </p>
-            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <a href="/contact#contactForm" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-8 py-4 text-xs font-bold tracking-wider uppercase transition-all shadow-lg rounded-xs">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
+                <a href="/contact#contactForm" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase transition-all shadow-lg rounded-xs w-full sm:w-auto text-center">
                     REQUEST COMMERCIAL QUOTATION
                 </a>
-                <a href="https://wa.me/923000000000" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-4 text-xs font-bold tracking-wider uppercase transition-all shadow-lg rounded-xs flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                <a href="https://wa.me/923180735748" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-7 py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase transition-all shadow-lg rounded-xs flex items-center justify-center gap-2 w-full sm:w-auto text-center">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
                     <span>WHATSAPP PACKAGING DESK</span>
                 </a>
             </div>
@@ -887,31 +893,31 @@
          x-transition:leave="transition ease-in duration-200"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
-         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md"
+         class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/85 backdrop-blur-md"
          @click.self="closeLightbox()">
         
-        <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center justify-center bg-stone-900/95 rounded-2xl border border-white/20 p-4 sm:p-6 shadow-2xl overflow-hidden"
+        <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center justify-center bg-stone-900/95 rounded-2xl border border-white/20 p-3 sm:p-6 shadow-2xl overflow-hidden"
              @click.stop>
             <!-- Close Button -->
             <button @click="closeLightbox()" 
-                    class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-saltora-terracotta text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+                    class="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/70 hover:bg-saltora-terracotta text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
                     title="Close Full View (Esc)">
-                <i class="fa-solid fa-xmark text-base"></i>
+                <i class="fa-solid fa-xmark text-sm sm:text-base"></i>
             </button>
 
             <!-- Image Caption Bar -->
-            <div class="w-full text-center pb-3 border-b border-white/10 mb-3">
-                <span class="text-[11px] font-bold text-amber-400 tracking-mega uppercase">FULL PACKAGING VIEW</span>
-                <h3 class="text-white font-serif text-base sm:text-xl font-bold mt-0.5" x-text="lightboxTitle"></h3>
+            <div class="w-full text-center pb-2 sm:pb-3 border-b border-white/10 mb-2 sm:mb-3">
+                <span class="text-[10px] sm:text-[11px] font-bold text-amber-400 tracking-mega uppercase">FULL PACKAGING VIEW</span>
+                <h3 class="text-white font-serif text-sm sm:text-xl font-bold mt-0.5 truncate px-8" x-text="lightboxTitle"></h3>
             </div>
 
             <!-- Full-size Image Container -->
-            <div class="relative w-full max-h-[72vh] flex items-center justify-center overflow-auto rounded-xl bg-black/40 p-2 sm:p-4">
-                <img :src="lightboxImage" :alt="lightboxTitle" class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
+            <div class="relative w-full max-h-[70vh] flex items-center justify-center overflow-auto rounded-xl bg-black/40 p-1.5 sm:p-4">
+                <img :src="lightboxImage" :alt="lightboxTitle" class="max-w-full max-h-[68vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
             </div>
 
-            <div class="w-full flex items-center justify-between text-xs text-stone-300 pt-3 px-1">
-                <span class="text-stone-400">Press ESC or click anywhere outside to close</span>
+            <div class="w-full flex items-center justify-between text-[11px] sm:text-xs text-stone-300 pt-2 sm:pt-3 px-1">
+                <span class="text-stone-400">Press ESC to close</span>
                 <a :href="lightboxImage" target="_blank" class="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors font-medium">
                     <i class="fa-solid fa-up-right-from-square text-[10px]"></i>
                     <span>Open High-Res File</span>
