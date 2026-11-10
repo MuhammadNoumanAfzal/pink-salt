@@ -15,5 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/checkout',
         '/quote-request',
         '/admin/logout',
+        '/admin/login',
+        'admin/login',
     ];
 }

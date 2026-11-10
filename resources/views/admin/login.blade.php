@@ -60,7 +60,7 @@
             </div>
 
             <!-- Form -->
-            <form id="adminLoginForm" class="space-y-4">
+            <form id="adminLoginForm" method="POST" action="{{ route('admin.login.submit') }}" class="space-y-4">
                 @csrf
                 
                 <!-- Email -->
@@ -154,11 +154,26 @@
                 const response = await fetch('{{ route("admin.login.submit") }}', {
                     method: 'POST',
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
                         'Accept': 'application/json'
                     },
                     body: formData
                 });
+
+                if (response.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Session Expired',
+                        text: 'Your security session expired. Refreshing the page to continue...',
+                        timer: 1500,
+                        showConfirmButton: false,
+                        background: '#ffffff',
+                        color: '#1c1917'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                    return;
+                }
 
                 const data = await response.json();
 
