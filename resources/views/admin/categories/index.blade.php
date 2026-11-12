@@ -25,7 +25,7 @@
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="categoryManager()">
 
     <!-- LEFT SIDEBAR NAVIGATION -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
+    <aside class="w-72 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -107,7 +107,7 @@
     @include('admin.partials.mobile-sidebar')
 
     <!-- MAIN CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+    <div class="flex-1 flex flex-col min-w-0">
         <!-- Top Navbar -->
         <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-3">
             <div class="flex items-center gap-2 sm:gap-4 min-w-0">
@@ -124,7 +124,7 @@
         </header>
 
         <!-- Page Body -->
-        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 max-w-7xl">
+        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 w-full min-w-0 mx-auto">
 
             <!-- Stats Bar -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">

@@ -39,7 +39,7 @@
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="{ mobileSidebarOpen: false }">
 
     <!-- LEFT SIDEBAR NAVIGATION (PERSISTENT ACROSS ADMIN) -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
+    <aside class="w-72 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -128,7 +128,7 @@
     @include('admin.partials.mobile-sidebar')
 
     <!-- MAIN CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+    <div class="flex-1 flex flex-col min-w-0">
         
         <!-- TOP HEADER BAR -->
         <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-2">
@@ -161,16 +161,16 @@
         </header>
 
         <!-- FULL-PAGE MAIN CONTENT FORM -->
-        <main class="p-3.5 sm:p-6 md:p-8 w-full max-w-7xl mx-auto space-y-6">
+        <main class="p-3.5 sm:p-6 md:p-8 w-full mx-auto space-y-6 min-w-0">
             
             <form id="editBlogForm" class="space-y-6 text-xs">
                 @csrf
                 @method('PUT')
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
                     
                     <!-- LEFT 8 COLUMNS: ARTICLE CONTENT -->
-                    <div class="lg:col-span-8 space-y-6">
+                    <div class="xl:col-span-8 min-w-0 space-y-6">
 
                         <!-- Title & Excerpt -->
                         <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">
@@ -216,7 +216,7 @@
                     </div>
 
                     <!-- RIGHT 4 COLUMNS: FEATURED PHOTO, CATEGORY, METADATA -->
-                    <div class="lg:col-span-4 space-y-6">
+                    <div class="xl:col-span-4 min-w-0 space-y-6">
 
                         <!-- FEATURED IMAGE (PHOTO STUDIO) -->
                         <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xs space-y-4">

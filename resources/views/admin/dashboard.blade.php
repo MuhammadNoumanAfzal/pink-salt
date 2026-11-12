@@ -80,7 +80,7 @@
 <body class="min-h-full font-sans antialiased bg-slate-50 text-slate-800 flex" x-data="adminDashboard()">
 
     <!-- LEFT SIDEBAR NAVIGATION -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
+    <aside class="w-72 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -307,7 +307,7 @@
     </div>
 
     <!-- MAIN CONTENT WRAPPER -->
-    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+    <div class="flex-1 flex flex-col min-w-0">
 
         <!-- TOP HEADER BAR -->
         <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-2">
@@ -493,7 +493,7 @@
         </header>
 
         <!-- MAIN DASHBOARD CONTENT AREA -->
-        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 sm:space-y-8 max-w-7xl w-full mx-auto">
+        <main class="p-3.5 sm:p-6 md:p-8 space-y-6 sm:space-y-8 w-full min-w-0 mx-auto">
 
             <!-- TAB 1: OVERVIEW -->
             <div x-show="activeTab === 'overview'" class="space-y-5">
@@ -584,22 +584,22 @@
                 </div>
 
                 <!-- Charts Section: Monthly Inquiries Trend + Category Distribution -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)] gap-5">
                     <!-- Monthly Platform Activity Bar + Line Chart -->
-                    <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="min-w-0 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                             <h3 class="font-bold text-slate-900 font-serif text-base">Monthly Activity & Growth</h3>
                             <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">2026 YTD</span>
                         </div>
-                        <div class="h-64 relative">
+                        <div class="h-64 2xl:h-80 relative min-w-0">
                             <canvas id="ordersChart"></canvas>
                         </div>
                     </div>
 
                     <!-- Product Category Distribution Doughnut Breakdown -->
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div class="min-w-0 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3">
                         <div>
-                            <div class="flex items-center justify-between mb-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                                 <h3 class="font-bold text-slate-900 font-serif text-base">Catalog by Category</h3>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">{{ count($products) }} Products</span>
                             </div>
@@ -621,10 +621,10 @@
                                     $c = $colors[$cIdx % count($colors)];
                                     $cIdx++;
                                 @endphp
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="flex items-center gap-2 min-w-0">
                                         <span class="w-3 h-3 rounded-md shrink-0" style="background-color: {{ $c }}"></span>
-                                        <span class="font-medium text-slate-700 truncate max-w-[170px]">{{ $catName }}</span>
+                                        <span class="font-medium text-slate-700 truncate">{{ $catName }}</span>
                                     </div>
                                     <span class="font-bold text-slate-900 whitespace-nowrap">{{ $pct }}% <span class="text-[10px] text-slate-400 font-normal">({{ $pCount }} {{ Str::plural('Product', $pCount) }})</span></span>
                                 </div>
@@ -638,10 +638,10 @@
                 </div>
 
                 <!-- Lower Section: Recent Orders Preview & Top Destination Markets -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)] gap-5">
                     {{--
                     <!-- Recent Bulk Orders Quick Widget (COMMENTED OUT) -->
-                    <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="min-w-0 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
                         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
                             <div>
                                 <h3 class="font-serif text-base font-bold text-slate-900">Recent Store Orders</h3>
@@ -697,7 +697,7 @@
                     --}}
 
                     <!-- Recent Customer Inquiries Quick Widget -->
-                    <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+                    <div class="min-w-0 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
                         <div class="p-4 px-5 border-b border-slate-100 flex items-center justify-between">
                             <h3 class="font-serif text-base font-bold text-slate-900">Recent Customer Inquiries</h3>
                             <button @click="switchTab('inquiries')" class="text-xs font-bold text-[#e07a5f] hover:underline flex items-center gap-1 cursor-pointer">
@@ -751,9 +751,9 @@
                     </div>
 
                     <!-- Top Export Markets / Destination Ports -->
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div class="min-w-0 bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3">
                         <div>
-                            <div class="flex items-center justify-between mb-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                                 <h3 class="font-serif text-base font-bold text-slate-900">Top Export Markets</h3>
                             </div>
                             

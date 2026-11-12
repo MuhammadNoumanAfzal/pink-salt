@@ -66,7 +66,7 @@
 }">
 
     <!-- LEFT SIDEBAR NAVIGATION -->
-    <aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
+    <aside class="w-72 bg-white border-r border-slate-200/80 shrink-0 hidden md:flex flex-col justify-between h-screen sticky top-0 z-30 shadow-xs overflow-y-auto">
         <div>
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-100">
@@ -152,7 +152,7 @@
     @include('admin.partials.mobile-sidebar')
 
     <!-- MAIN CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+    <div class="flex-1 flex flex-col min-w-0">
         <!-- TOP HEADER BAR -->
         <header class="h-16 bg-white border-b border-slate-200/80 px-3 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shadow-xs gap-2">
             <div class="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -194,7 +194,7 @@
         </header>
 
         <!-- PAGE CONTENT -->
-        <main class="p-4 sm:p-8 max-w-6xl w-full mx-auto space-y-6">
+        <main class="p-4 sm:p-8 w-full mx-auto space-y-6 min-w-0">
 
             <!-- Subcategory Summary Header Card -->
             <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
