@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full overflow-hidden bg-saltora-bg">
+<html lang="en" class="min-h-full bg-saltora-bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="h-full w-full overflow-hidden flex items-center justify-center p-4 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
+<body class="min-h-screen w-full overflow-y-auto flex items-center justify-center p-4 py-8 font-sans antialiased text-stone-800 bg-[#F8F5EF] relative select-none">
     
     <!-- Clean, Warm Ambient Background (Like before, but cleaner & refined) -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -60,7 +60,7 @@
             </div>
 
             <!-- Form -->
-            <form id="adminLoginForm" class="space-y-4">
+            <form id="adminLoginForm" method="POST" action="{{ route('admin.login.submit') }}" class="space-y-4">
                 @csrf
                 
                 <!-- Email -->
@@ -154,11 +154,26 @@
                 const response = await fetch('{{ route("admin.login.submit") }}', {
                     method: 'POST',
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
                         'Accept': 'application/json'
                     },
                     body: formData
                 });
+
+                if (response.status === 419) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Session Expired',
+                        text: 'Your security session expired. Refreshing the page to continue...',
+                        timer: 1500,
+                        showConfirmButton: false,
+                        background: '#ffffff',
+                        color: '#1c1917'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                    return;
+                }
 
                 const data = await response.json();
 

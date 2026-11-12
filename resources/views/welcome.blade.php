@@ -102,11 +102,11 @@
 
     <!-- Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-2 sm:gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-2 sm:gap-3 shrink-0 group cursor-pointer mr-1 sm:mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -129,7 +129,7 @@
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer" aria-label="Toggle Navigation Menu">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-saltora-text p-2 rounded-md focus:outline-none cursor-pointer shrink-0" aria-label="Toggle Navigation Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -138,7 +138,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-5 py-5 space-y-3.5 text-xs font-semibold tracking-widest uppercase">
             <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/packing" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PACKING</a>
@@ -146,7 +146,7 @@
             <a @click="mobileMenuOpen = false" href="/export-logistics" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">EXPORT & LOGISTICS</a>
             <a @click="mobileMenuOpen = false" href="/blog" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">BLOG</a>
             <a @click="mobileMenuOpen = false" href="/contact" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">CONTACT</a>
-            <a href="/contact" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-4 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
+            <a href="/contact" @click="mobileMenuOpen = false" class="flex items-center justify-center gap-2 w-full mt-3 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-3 text-center text-xs font-bold tracking-wider uppercase cursor-pointer rounded-xs shadow-md transition-colors">
                 <i class="fa-solid fa-file-invoice text-amber-200 text-sm"></i>
                 <span>REQUEST A QUOTE</span>
             </a>
@@ -154,66 +154,66 @@
     </header>
 
     <!-- 1. HERO SECTION (High-Impact B2B Value Proposition) -->
-    <section class="relative py-10 md:py-16 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section class="relative py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <!-- Left Hero Content -->
-            <div class="lg:col-span-7 space-y-6 animate-hero-left">
+            <div class="lg:col-span-7 space-y-5 sm:space-y-6 animate-hero-left">
                 <!-- Category Kicker Tag -->
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-saltora-blush/80 border border-saltora-terracotta/25 rounded-full text-[11px] font-bold tracking-wider text-saltora-terracotta uppercase shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse"></span>
-                    <span>HIMALAYAN PINK SALT · DIRECT EXPORTER · PAKISTAN</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-1.5 bg-saltora-blush/80 border border-saltora-terracotta/25 rounded-full text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta uppercase shadow-2xs max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-saltora-terracotta animate-pulse shrink-0"></span>
+                    <span class="truncate sm:whitespace-normal">HIMALAYAN PINK SALT · DIRECT EXPORTER · PAKISTAN</span>
                 </div>
 
                 <!-- Primary Semantic H1 -->
-                <h1 class="text-3xl sm:text-5xl xl:text-6xl font-serif text-saltora-text leading-[1.12] tracking-tight font-normal">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif text-saltora-text leading-[1.15] sm:leading-[1.12] tracking-tight font-normal">
                     Authentic Himalayan <span class="italic text-saltora-terracotta font-normal">Pink Salt</span> Exporter from Pakistan
                 </h1>
 
                 <!-- Subheading Description -->
-                <p class="text-saltora-muted text-sm sm:text-base md:text-lg leading-relaxed max-w-xl font-normal">
+                <p class="text-saltora-muted text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
                     Directly sourced from the historic Salt Range with 98.5%+ certified NaCl purity. SALTORA supplies international importers, food processors, and private-label brands with reliable bulk FCL/LCL container shipments, custom grain grading, and complete export documentation.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-1">
-                    <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2.5 group cursor-pointer rounded-xs">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
+                    <a href="/contact" class="w-full sm:w-auto bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2.5 group cursor-pointer rounded-xs">
                         <span>REQUEST EXPORT QUOTE</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
                     </a>
-                    <a href="#products" class="border border-saltora-text/30 hover:border-saltora-text hover:bg-saltora-card text-saltora-text px-7 py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer rounded-xs">
+                    <a href="#products" class="w-full sm:w-auto text-center border border-saltora-text/30 hover:border-saltora-text hover:bg-saltora-card text-saltora-text px-7 py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer rounded-xs">
                         EXPLORE PRODUCTS
                     </a>
                 </div>
 
                 <!-- Trust Badges Strip -->
-                <div class="pt-4 border-t border-saltora-border/70 flex flex-wrap items-center gap-y-2.5 gap-x-6 text-xs text-saltora-muted font-medium">
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-saltora-terracotta text-sm"></i> 98.5%+ Pure NaCl</span>
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-saltora-terracotta text-sm"></i> ISO 22000 & Halal Certified</span>
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-box text-saltora-terracotta text-sm"></i> Bulk FCL & OEM Private Label</span>
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-ship text-saltora-terracotta text-sm"></i> FOB Karachi / Port Qasim</span>
+                <div class="pt-4 border-t border-saltora-border/70 grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-y-2.5 gap-x-4 sm:gap-x-6 text-[11px] sm:text-xs text-saltora-muted font-medium">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-saltora-terracotta text-sm shrink-0"></i> 98.5%+ Pure NaCl</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-saltora-terracotta text-sm shrink-0"></i> ISO 22000 & Halal</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-box text-saltora-terracotta text-sm shrink-0"></i> Bulk FCL & OEM</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-ship text-saltora-terracotta text-sm shrink-0"></i> FOB Karachi / Port Qasim</span>
                 </div>
             </div>
 
             <!-- Right Hero Image with Floating Badges -->
             <div class="lg:col-span-5 relative animate-hero-right">
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-saltora-card border border-saltora-border group">
-                    <img src="/heroimg.jpg" alt="Premium Himalayan Pink Salt Crystals mined in Pakistan" class="w-full h-[360px] sm:h-[420px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="/heroimg.jpg" alt="Premium Himalayan Pink Salt Crystals mined in Pakistan" class="w-full h-[300px] sm:h-[400px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
 
                     <!-- Gradient Overlay on Image Bottom -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent pointer-events-none"></div>
 
                     <!-- Badge Top Left: CERTIFIED QUALITY -->
-                    <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/70 shadow-lg z-20 max-w-[180px]">
-                        <span class="block text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase mb-0.5">CERTIFIED QUALITY</span>
-                        <h4 class="font-serif text-xs font-bold text-saltora-text leading-tight">ISO 22000:2018</h4>
-                        <p class="text-[10px] text-saltora-muted font-medium">Halal · Codex CXS 150</p>
+                    <div class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-white/70 shadow-lg z-20 max-w-[150px] sm:max-w-[180px]">
+                        <span class="block text-[8px] sm:text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase mb-0.5">CERTIFIED QUALITY</span>
+                        <h4 class="font-serif text-[11px] sm:text-xs font-bold text-saltora-text leading-tight">ISO 22000:2018</h4>
+                        <p class="text-[9px] sm:text-[10px] text-saltora-muted font-medium">Halal · Codex CXS 150</p>
                     </div>
 
-                    <!-- Badge Top Right: BULK B2B -->
-                    <div class="absolute top-4 right-4 bg-saltora-blush/95 backdrop-blur-md px-3.5 py-2 rounded-xl border border-saltora-terracotta/25 shadow-lg z-20">
+                    <!-- Badge Top Right: BULK B2B (Hidden on mobile to avoid overlapping the left badge) -->
+                    <div class="hidden sm:block absolute top-4 right-4 bg-saltora-blush/95 backdrop-blur-md px-3.5 py-2 rounded-xl border border-saltora-terracotta/25 shadow-lg z-20">
                         <span class="text-[9px] font-bold tracking-widest text-saltora-terracotta uppercase">BULK · B2B · PRIVATE LABEL</span>
                     </div>
 
@@ -221,7 +221,7 @@
                     <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
                         <div class="text-white">
                             <span class="text-[10px] text-amber-200 uppercase font-semibold tracking-wider block">ORIGIN CERTIFIED</span>
-                            <p class="font-serif italic text-lg sm:text-xl font-normal !text-white drop-shadow-md" style="color: #ffffff !important;">Khewra Mine, Pakistan</p>
+                            <p class="font-serif italic text-base sm:text-xl font-normal !text-white drop-shadow-md" style="color: #ffffff !important;">Khewra Mine, Pakistan</p>
                         </div>
                     </div>
                 </div>
@@ -231,9 +231,9 @@
     </section>
 
     <!-- 2. CONTINUOUS MARQUEE TICKER BAR -->
-    <div class="bg-saltora-terracotta text-white py-3.5 overflow-hidden shadow-inner border-y border-saltora-terracotta-dark">
-        <div class="marquee-track flex whitespace-nowrap gap-12 text-xs font-semibold tracking-widest uppercase items-center">
-            <div class="flex items-center gap-10 shrink-0">
+    <div class="bg-saltora-terracotta text-white py-3 sm:py-3.5 overflow-hidden max-w-full shadow-inner border-y border-saltora-terracotta-dark">
+        <div class="marquee-track flex whitespace-nowrap gap-8 sm:gap-12 text-xs font-semibold tracking-widest uppercase items-center">
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0">
                 <span class="flex items-center gap-2">✦ 98.5%+ PURE NaCl</span>
                 <span class="flex items-center gap-2">✦ ISO 22000 & HALAL CERTIFIED</span>
                 <span class="flex items-center gap-2">✦ OEM PRIVATE LABEL PACKAGING</span>
@@ -241,7 +241,7 @@
                 <span class="flex items-center gap-2">✦ 20FT FCL BULK CONTAINER SHIPPING</span>
                 <span class="flex items-center gap-2">✦ 100% UNREFINED NATURAL MINERAL</span>
             </div>
-            <div class="flex items-center gap-10 shrink-0">
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0">
                 <span class="flex items-center gap-2">✦ 98.5%+ PURE NaCl</span>
                 <span class="flex items-center gap-2">✦ ISO 22000 & HALAL CERTIFIED</span>
                 <span class="flex items-center gap-2">✦ OEM PRIVATE LABEL PACKAGING</span>
@@ -249,7 +249,7 @@
                 <span class="flex items-center gap-2">✦ 20FT FCL BULK CONTAINER SHIPPING</span>
                 <span class="flex items-center gap-2">✦ 100% UNREFINED NATURAL MINERAL</span>
             </div>
-            <div class="flex items-center gap-10 shrink-0">
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0">
                 <span class="flex items-center gap-2">✦ 98.5%+ PURE NaCl</span>
                 <span class="flex items-center gap-2">✦ ISO 22000 & HALAL CERTIFIED</span>
                 <span class="flex items-center gap-2">✦ OEM PRIVATE LABEL PACKAGING</span>
@@ -261,19 +261,19 @@
     </div>
 
     <!-- 3. ABOUT SECTION (Origin, Heritage & Processing Discipline) -->
-    <section id="about" class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section id="about" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <!-- Left Image Side -->
             <div class="lg:col-span-5 relative reveal-from-left">
                 <div class="relative rounded-2xl overflow-hidden border border-saltora-border shadow-xl group">
-                    <img src="/aboutimg.jpg" alt="Authentic Pakistani pink salt crystal examination" class="w-full h-[360px] sm:h-[400px] lg:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="/aboutimg.jpg" alt="Authentic Pakistani pink salt crystal examination" class="w-full h-[300px] sm:h-[400px] lg:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105">
                     
                     <!-- Floating Dark Box -->
-                    <div class="absolute bottom-4 right-4 bg-saltora-dark/95 backdrop-blur-md text-white p-4 max-w-[230px] rounded-xl border border-saltora-dark-border shadow-xl">
+                    <div class="absolute bottom-3 right-3 left-3 sm:left-auto sm:bottom-4 sm:right-4 bg-saltora-dark/95 backdrop-blur-md text-white p-3.5 sm:p-4 max-w-none sm:max-w-[230px] rounded-xl border border-saltora-dark-border shadow-xl">
                         <span class="text-[9px] font-bold text-saltora-terracotta uppercase tracking-wider block">B2B EXPORT DESK</span>
-                        <h4 class="font-serif text-base font-normal text-amber-100 mb-1">Direct Manufacturer</h4>
-                        <p class="text-[11px] text-stone-300 font-light leading-snug">
+                        <h4 class="font-serif text-sm sm:text-base font-normal text-amber-100 mb-0.5 sm:mb-1">Direct Manufacturer</h4>
+                        <p class="text-[10px] sm:text-[11px] text-stone-300 font-light leading-snug">
                             Supplying Importers, Wholesalers & Food Manufacturers Worldwide.
                         </p>
                     </div>
@@ -281,8 +281,8 @@
             </div>
 
             <!-- Right Text Content -->
-            <div class="lg:col-span-7 space-y-5 reveal-from-right">
-                <div class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">
+            <div class="lg:col-span-7 space-y-4 sm:space-y-5 reveal-from-right">
+                <div class="text-[10px] sm:text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">
                     ABOUT SALTORA HIMALAYAN EXPORTS
                 </div>
 
@@ -295,7 +295,7 @@
                 </p>
 
                 <!-- 2-Column Checklist Badges -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-saltora-border/70 text-xs font-medium text-saltora-text">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2 border-t border-saltora-border/70 text-xs font-medium text-saltora-text">
                     <div class="flex items-start gap-2.5 bg-white p-3 rounded-lg border border-saltora-border/80 shadow-2xs">
                         <svg class="w-4 h-4 text-saltora-terracotta shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
@@ -349,23 +349,23 @@
     </section>
 
     <!-- 4. PRODUCTS SECTION (Catalog Grid) -->
-    <section id="products" class="py-20 md:py-28 bg-[#F4EAE1]/35 border-y border-saltora-border/60 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+    <section id="products" class="py-14 sm:py-20 md:py-28 bg-[#F4EAE1]/35 border-y border-saltora-border/60 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-10 sm:space-y-12">
             
             <!-- Section Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal-from-top">
-                <div class="max-w-2xl space-y-3">
-                    <div class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">EXPORT RANGE</div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-saltora-text leading-tight">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 reveal-from-top">
+                <div class="max-w-2xl space-y-2 sm:space-y-3">
+                    <div class="text-[10px] sm:text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">EXPORT RANGE</div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif text-saltora-text leading-tight">
                         Himalayan Pink Salt, Graded to International Standards
                     </h2>
-                    <p class="text-saltora-muted text-sm sm:text-base font-light">
+                    <p class="text-saltora-muted text-xs sm:text-base font-light">
                         From food-grade fine table salt to animal lick blocks and raw decorative rocks — graded, sorted, and packed to buyer specifications.
                     </p>
                 </div>
 
-                <div>
-                    <a href="/products" class="inline-flex items-center gap-2 bg-white border border-saltora-text/40 hover:border-saltora-text hover:bg-saltora-card px-6 py-3.5 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer group shadow-2xs">
+                <div class="w-full sm:w-auto">
+                    <a href="/products" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border border-saltora-text/40 hover:border-saltora-text hover:bg-saltora-card px-5 sm:px-6 py-3 sm:py-3.5 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer group shadow-2xs">
                         <span>VIEW COMPLETE CATALOG</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -374,8 +374,8 @@
                 </div>
             </div>
 
-            <!-- Product Cards Grid: 3 cols -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Product Cards Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 
                 @forelse($products as $index => $prod)
                 @php
@@ -394,12 +394,12 @@
                         'purity' => $prod->purity ?: null,
                     ];
                 @endphp
-                <div class="bg-white border border-saltora-border/80 rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
+                <div class="bg-white border border-saltora-border/80 rounded-2xl p-2.5 sm:p-3 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-saltora-terracotta/10 hover:border-saltora-terracotta/50 group relative overflow-hidden reveal-from-bottom stagger-{{ ($index % 3) + 1 }}">
                     <!-- Top Gradient Accent Hover Line -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                     <div class="space-y-3">
-                        <!-- Square Aspect Ratio Image (10px padding around image, linking to full detail page) -->
+                        <!-- Square Aspect Ratio Image -->
                         <a href="{{ route('products.show', $prod->slug ?: $prod->id) }}" class="relative aspect-square w-full overflow-hidden rounded-xl bg-saltora-card cursor-pointer group/img shadow-2xs block">
                             @if($prod->image_url)
                             <img src="{{ asset($prod->image_url) }}" alt="{{ $prod->name }} - Pakistani Himalayan Pink Salt" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108">
@@ -465,7 +465,7 @@
                         </div>
                     </div>
 
-                    <!-- Direct Request a Quote & Details CTA (Refined, Perfectly Sized) -->
+                    <!-- Direct Request a Quote & Details CTA -->
                     <div class="pt-2.5 border-t border-saltora-border/60 mt-2 flex items-center gap-2 px-0.5 pb-0.5">
                         <a href="/contact?product={{ urlencode($prod->name) }}#contactForm" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-1.5 px-2.5 text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 cursor-pointer shadow-2xs hover:shadow rounded-md group/btn relative overflow-hidden">
                             <i class="fa-solid fa-file-invoice text-amber-200 text-[10px]"></i>
@@ -478,11 +478,11 @@
                     </div>
                 </div>
                 @empty
-                <div class="col-span-full bg-white border border-dashed border-saltora-border p-12 text-center rounded-2xl">
+                <div class="col-span-full bg-white border border-dashed border-saltora-border p-8 sm:p-12 text-center rounded-2xl">
                     <div class="w-16 h-16 bg-saltora-card rounded-full flex items-center justify-center mx-auto mb-4 text-saltora-terracotta">
                         <i class="fa-solid fa-boxes-stacked text-2xl"></i>
                     </div>
-                    <h3 class="font-serif text-2xl text-saltora-text font-normal mb-2">Export Catalog Updating</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal mb-2">Export Catalog Updating</h3>
                     <p class="text-xs text-saltora-muted max-w-md mx-auto mb-6">
                         Our product catalog is currently being updated with fresh Himalayan salt export batches. For immediate inquiries or custom bulk specifications, please reach out directly to our export desk.
                     </p>
@@ -497,15 +497,15 @@
 
             </div>
 
-            <!-- View Full Catalog Banner (Centered below the 6 products) -->
-            <div class="pt-6 text-center reveal-from-bottom">
-                <div class="inline-flex flex-col sm:flex-row items-center justify-between gap-6 bg-white border border-saltora-border/90 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow max-w-4xl mx-auto w-full">
-                    <div class="text-left space-y-1">
+            <!-- View Full Catalog Banner -->
+            <div class="pt-4 sm:pt-6 text-center reveal-from-bottom">
+                <div class="inline-flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 bg-white border border-saltora-border/90 p-5 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow max-w-4xl mx-auto w-full text-center sm:text-left">
+                    <div class="space-y-1">
                         <span class="text-[10px] font-bold text-saltora-terracotta uppercase tracking-wider">FULL EXPORT RANGE</span>
-                        <h4 class="font-serif text-xl sm:text-2xl font-bold text-slate-900">Looking for other grades, packaging formats, or bulk rock salt?</h4>
+                        <h4 class="font-serif text-lg sm:text-xl md:text-2xl font-bold text-slate-900">Looking for other grades, packaging formats, or bulk rock salt?</h4>
                         <p class="text-xs text-slate-500 font-light">Explore our complete catalog of food-grade table salt, coarse grinder crystals, animal licks, and raw lumps.</p>
                     </div>
-                    <a href="/products" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2.5 shrink-0 rounded-xs">
+                    <a href="/products" class="w-full sm:w-auto justify-center bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3 sm:py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2.5 shrink-0 rounded-xs">
                         <span>VIEW COMPLETE CATALOG</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
@@ -515,88 +515,88 @@
     </section>
 
     <!-- 5. WHY CHOOSE SALTORA (6 Value Pillars Grid) -->
-    <section id="why-us" class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section id="why-us" class="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
         <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto space-y-3 mb-16 reveal-from-top">
+        <div class="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-16 reveal-from-top">
             <span class="text-xs font-bold tracking-widest text-saltora-terracotta uppercase">WHY PARTNER WITH SALTORA</span>
-            <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif text-saltora-text font-normal">
                 Serious about salt purity. Serious about long-term buyers.
             </h2>
-            <p class="text-saltora-muted text-sm sm:text-base font-light">
+            <p class="text-saltora-muted text-xs sm:text-base font-light">
                 We combine authentic mine sourcing with disciplined export trade operations.
             </p>
         </div>
 
         <!-- 6 Feature Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-saltora-border border-collapse bg-saltora-bg rounded-2xl overflow-hidden shadow-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-saltora-border bg-saltora-bg rounded-2xl overflow-hidden shadow-xs">
             
             <!-- Box 01 -->
-            <div class="p-8 sm:p-10 space-y-4 hover:bg-white transition-colors border-b lg:border-b-0 lg:border-r border-saltora-border cursor-pointer group reveal-from-left stagger-1">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 hover:bg-white transition-colors border-b lg:border-b-0 lg:border-r border-saltora-border cursor-pointer group reveal-from-left stagger-1">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">01</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">01</span>
                     <i class="fa-solid fa-mountain text-saltora-terracotta/60 group-hover:text-saltora-terracotta text-lg transition-colors"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Authentic Khewra Source</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Authentic Khewra Source</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Premium Himalayan pink salt mined from Pakistan's Salt Range — untouched by modern oceanic microplastics and chemical pollutants.
                 </p>
             </div>
 
             <!-- Box 02 (Highlighted) -->
-            <div class="p-8 sm:p-10 space-y-4 bg-[#F5EAE6] border-b lg:border-b-0 lg:border-r border-saltora-border cursor-pointer group reveal-scale stagger-2">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 bg-[#F5EAE6] border-b lg:border-b-0 lg:border-r border-saltora-border cursor-pointer group reveal-scale stagger-2">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-terracotta">02</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-terracotta">02</span>
                     <i class="fa-solid fa-check-double text-saltora-terracotta text-lg"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Strict Quality Control</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Strict Quality Control</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Standardized multi-deck mesh grading, magnetic separation of debris, and certified chemical assay for consistent NaCl purity across every FCL.
                 </p>
             </div>
 
             <!-- Box 03 -->
-            <div class="p-8 sm:p-10 space-y-4 hover:bg-white transition-colors border-b md:border-b-0 border-saltora-border cursor-pointer group reveal-from-right stagger-3">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 hover:bg-white transition-colors border-b md:border-b-0 border-saltora-border cursor-pointer group reveal-from-right stagger-3">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">03</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">03</span>
                     <i class="fa-solid fa-boxes-packing text-saltora-terracotta/60 group-hover:text-saltora-terracotta text-lg transition-colors"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Flexible Volume Supply</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Flexible Volume Supply</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Practical supply solutions for importers and food factories — from single 20ft container trial shipments (25 Metric Tons) to monthly recurring contracts.
                 </p>
             </div>
 
             <!-- Box 04 -->
-            <div class="p-8 sm:p-10 space-y-4 border-t lg:border-r border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-from-left stagger-4">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 border-b md:border-b-0 border-t md:border-t lg:border-r border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-from-left stagger-4">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">04</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">04</span>
                     <i class="fa-solid fa-file-contract text-saltora-terracotta/60 group-hover:text-saltora-terracotta text-lg transition-colors"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Turnkey OEM Private Label</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Turnkey OEM Private Label</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Complete private label packaging: retail pouches, glass grinders, shaker bottles, carton master boxes, and customized barcode labeling.
                 </p>
             </div>
 
             <!-- Box 05 -->
-            <div class="p-8 sm:p-10 space-y-4 border-t lg:border-r border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-scale stagger-5">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 border-b md:border-b-0 border-t md:border-t lg:border-r border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-scale stagger-5">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">05</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">05</span>
                     <i class="fa-solid fa-ship text-saltora-terracotta/60 group-hover:text-saltora-terracotta text-lg transition-colors"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Export Documentation Desk</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Export Documentation Desk</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Hassle-free customs clearance with complete documentation: Bill of Lading, Certificate of Origin, Phytosanitary, Fumigation, and Lab COA.
                 </p>
             </div>
 
             <!-- Box 06 -->
-            <div class="p-8 sm:p-10 space-y-4 border-t border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-from-right stagger-6">
+            <div class="p-5 sm:p-7 md:p-10 space-y-3 sm:space-y-4 border-t border-saltora-border hover:bg-white transition-colors cursor-pointer group reveal-from-right stagger-6">
                 <div class="flex items-center justify-between">
-                    <span class="font-serif text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">06</span>
+                    <span class="font-serif text-2xl sm:text-3xl font-light text-saltora-muted/60 group-hover:text-saltora-terracotta transition-colors">06</span>
                     <i class="fa-solid fa-handshake text-saltora-terracotta/60 group-hover:text-saltora-terracotta text-lg transition-colors"></i>
                 </div>
-                <h3 class="font-serif text-2xl text-saltora-text font-normal">Direct Factory Pricing</h3>
+                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal">Direct Factory Pricing</h3>
                 <p class="text-xs text-saltora-muted leading-relaxed font-light">
                     Transparent FOB pricing direct from the Pakistani processor without broker or intermediary markups, ensuring superior commercial margins.
                 </p>
@@ -606,13 +606,13 @@
     </section>
 
     <!-- 6. SOURCING, MANUFACTURING & SUPPLY (Deep Luxury Dark Pipeline) -->
-    <section id="sourcing" class="bg-gradient-to-b from-[#1E1917] via-[#151210] to-[#1E1917] text-white py-16 md:py-24 px-6 md:px-12 border-t border-stone-800 overflow-hidden">
+    <section id="sourcing" class="bg-gradient-to-b from-[#1E1917] via-[#151210] to-[#1E1917] text-white py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 border-t border-stone-800 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 <!-- Left Text Process Steps -->
-                <div class="lg:col-span-6 space-y-5 reveal-on-scroll reveal-from-left">
-                    <div class="text-[11px] font-bold tracking-widest text-[#E07A5F] uppercase">
+                <div class="lg:col-span-6 space-y-4 sm:space-y-5 reveal-on-scroll reveal-from-left">
+                    <div class="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#E07A5F] uppercase">
                         FROM MINE TO SEAPORT
                     </div>
 
@@ -625,38 +625,38 @@
                     </p>
 
                     <!-- Process Steps Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-3 border-t border-stone-800/80">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 pt-2 sm:pt-3 border-t border-stone-800/80">
                         
-                        <div class="p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
-                            <div class="flex items-center gap-2 mb-1.5">
+                        <div class="p-3 sm:p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
                                 <span class="font-serif text-xs font-bold text-[#E07A5F]">01</span>
-                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Hand Sourcing</h4>
+                                <h4 class="font-serif text-sm sm:text-base text-white font-normal group-hover:text-amber-100 transition-colors">Hand Sourcing</h4>
                             </div>
-                            <p class="text-[12px] text-stone-300 font-normal leading-relaxed">Natural pink boulders extracted from Khewra and sorted by crystal color.</p>
+                            <p class="text-[11px] sm:text-[12px] text-stone-300 font-normal leading-relaxed">Natural pink boulders extracted from Khewra and sorted by crystal color.</p>
                         </div>
 
-                        <div class="p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
-                            <div class="flex items-center gap-2 mb-1.5">
+                        <div class="p-3 sm:p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
                                 <span class="font-serif text-xs font-bold text-[#E07A5F]">02</span>
-                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Milling & Sieving</h4>
+                                <h4 class="font-serif text-sm sm:text-base text-white font-normal group-hover:text-amber-100 transition-colors">Milling & Sieving</h4>
                             </div>
-                            <p class="text-[12px] text-stone-300 font-normal leading-relaxed">Washed, dried, crushed, and graded to fine, medium, coarse, or chunk specs.</p>
+                            <p class="text-[11px] sm:text-[12px] text-stone-300 font-normal leading-relaxed">Washed, dried, crushed, and graded to fine, medium, coarse, or chunk specs.</p>
                         </div>
 
-                        <div class="p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
-                            <div class="flex items-center gap-2 mb-1.5">
+                        <div class="p-3 sm:p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
                                 <span class="font-serif text-xs font-bold text-[#E07A5F]">03</span>
-                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Lab Assay Testing</h4>
+                                <h4 class="font-serif text-sm sm:text-base text-white font-normal group-hover:text-amber-100 transition-colors">Lab Assay Testing</h4>
                             </div>
-                            <p class="text-[12px] text-stone-300 font-normal leading-relaxed">Verified for 98.5%+ NaCl, moisture under 0.2%, and zero foreign matter.</p>
+                            <p class="text-[11px] sm:text-[12px] text-stone-300 font-normal leading-relaxed">Verified for 98.5%+ NaCl, moisture under 0.2%, and zero foreign matter.</p>
                         </div>
 
-                        <div class="p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
-                            <div class="flex items-center gap-2 mb-1.5">
+                        <div class="p-3 sm:p-3.5 bg-stone-900/80 rounded-xl border border-stone-800 group cursor-pointer hover:border-[#E07A5F]/60 transition-colors">
+                            <div class="flex items-center gap-2 mb-1">
                                 <span class="font-serif text-xs font-bold text-[#E07A5F]">04</span>
-                                <h4 class="font-serif text-base text-white font-normal group-hover:text-amber-100 transition-colors">Container Packing</h4>
+                                <h4 class="font-serif text-sm sm:text-base text-white font-normal group-hover:text-amber-100 transition-colors">Container Packing</h4>
                             </div>
-                            <p class="text-[12px] text-stone-300 font-normal leading-relaxed">Loaded into 20ft FCLs at Port Qasim / Karachi Port under verified FOB terms.</p>
+                            <p class="text-[11px] sm:text-[12px] text-stone-300 font-normal leading-relaxed">Loaded into 20ft FCLs at Port Qasim / Karachi Port under verified FOB terms.</p>
                         </div>
 
                     </div>
@@ -665,12 +665,12 @@
                 <!-- Right Mine Image (Authentic Khewra Mine Photo) -->
                 <div class="lg:col-span-6 relative reveal-on-scroll reveal-from-right">
                     <div class="relative rounded-2xl overflow-hidden border border-stone-800 shadow-2xl group">
-                        <img src="/khewra-mine.jpg" alt="The Historic Khewra Salt Mine Pakistan - Translucent Pink Rock Extraction" class="w-full h-[360px] sm:h-[400px] lg:h-[430px] object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="/khewra-mine.jpg" alt="The Historic Khewra Salt Mine Pakistan - Translucent Pink Rock Extraction" class="w-full h-[260px] sm:h-[360px] lg:h-[430px] object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
-                        <div class="absolute bottom-5 left-5 text-white z-10">
-                            <span class="text-[10px] font-bold tracking-widest text-[#E07A5F] uppercase block mb-1">AUTHENTIC MINE EXTRACTION</span>
-                            <h4 class="font-serif text-xl sm:text-2xl font-normal text-white">The Historic Khewra Salt Mine, Pakistan</h4>
-                            <p class="text-xs text-stone-200 font-normal mt-0.5">500+ Million-Year-Old Ancient Pre-Cambrian Marine Salt Deposits</p>
+                        <div class="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-auto text-white z-10">
+                            <span class="text-[9px] sm:text-[10px] font-bold tracking-widest text-[#E07A5F] uppercase block mb-0.5 sm:mb-1">AUTHENTIC MINE EXTRACTION</span>
+                            <h4 class="font-serif text-lg sm:text-xl md:text-2xl font-normal text-white leading-tight">The Historic Khewra Salt Mine, Pakistan</h4>
+                            <p class="text-[11px] sm:text-xs text-stone-200 font-normal mt-0.5">500+ Million-Year-Old Ancient Pre-Cambrian Marine Salt Deposits</p>
                         </div>
                     </div>
                 </div>
@@ -680,15 +680,15 @@
     </section>
 
     <!-- 7. INDUSTRIES WE SERVE -->
-    <section id="industries" class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg overflow-hidden">
-        <div class="max-w-7xl mx-auto space-y-12">
+    <section id="industries" class="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
             
-            <div class="space-y-3 max-w-3xl reveal-from-top">
-                <span class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">TARGET BUYERS & APPLICATIONS</span>
-                <h2 class="text-3xl sm:text-5xl font-serif text-saltora-text font-normal">
+            <div class="space-y-2 sm:space-y-3 max-w-3xl reveal-from-top">
+                <span class="text-[10px] sm:text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">TARGET BUYERS & APPLICATIONS</span>
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif text-saltora-text font-normal">
                     One mineral, many global markets
                 </h2>
-                <p class="text-saltora-muted text-sm sm:text-base font-light">
+                <p class="text-saltora-muted text-xs sm:text-base font-light">
                     SALTORA supplies buyers across food processing, retail distribution, livestock farming, and wellness sectors.
                 </p>
             </div>
@@ -696,22 +696,22 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-saltora-border/80">
                 
                 <!-- 01 Food & Beverage Processing -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-left stagger-1">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-left stagger-1">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 3v8a4 4 0 004 4v6m4-18v8a4 4 0 01-4 4m10-18v18m0-18a4 4 0 00-4 4v4a4 4 0 004 4"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">01</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Food & Beverage Processing</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">01</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Food & Beverage Processing</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">High-purity food-grade salt for packaged food brands, bakeries, and canning lines.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -719,22 +719,22 @@
                 </div>
 
                 <!-- 02 Gourmet & Retail Brands -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-right stagger-2">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-right stagger-2">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">02</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Gourmet & Retail Brands</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">02</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Gourmet & Retail Brands</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Attractive translucent pink crystal salts for premium supermarket shelf packaging.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -742,22 +742,22 @@
                 </div>
 
                 <!-- 03 Spice & Seasoning Blenders -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-left stagger-3">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-left stagger-3">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">03</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Spice & Seasoning Blenders</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">03</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Spice & Seasoning Blenders</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Standardized sieve sizes for barbecue dry rubs, marinades, and seasoning mixes.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -765,22 +765,22 @@
                 </div>
 
                 <!-- 04 Wholesale & Food Service -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-right stagger-4">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-right stagger-4">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">04</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Wholesale & Food Service</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">04</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Wholesale & Food Service</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">25kg PP bags and palletized supply for restaurant suppliers and regional distributors.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -788,22 +788,22 @@
                 </div>
 
                 <!-- 05 Animal Nutrition & Livestock -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-left stagger-5">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-left stagger-5">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">05</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Animal Nutrition & Livestock</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">05</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Animal Nutrition & Livestock</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Natural solid salt lick blocks with rope for horses, cattle, and sheep ranches.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -811,22 +811,22 @@
                 </div>
 
                 <!-- 06 Spa, Bath & Wellness Brands -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-right stagger-6">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-right stagger-6">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">06</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Spa, Bath & Wellness Brands</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">06</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Spa, Bath & Wellness Brands</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Coarse mineral bath crystals, body scrubs, and salt therapy cave raw materials.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -834,22 +834,22 @@
                 </div>
 
                 <!-- 07 OEM Private Label Programs -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-left">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-left">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">07</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">OEM Private Label Programs</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">07</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">OEM Private Label Programs</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Your brand, your artwork, our authentic salt — turn-key and ready for customs import.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -857,22 +857,22 @@
                 </div>
 
                 <!-- 08 Industrial & Water Softening -->
-                <div class="py-6 border-b border-saltora-border/60 flex items-start justify-between gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-3 reveal-from-right">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="py-4 sm:py-6 border-b border-saltora-border/60 flex items-start justify-between gap-3 sm:gap-4 group cursor-pointer hover:bg-saltora-card/50 transition-colors px-1 sm:px-3 reveal-from-right">
+                    <div class="flex items-start gap-3 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-saltora-blush/80 border border-saltora-border/80 flex items-center justify-center text-saltora-terracotta shrink-0 group-hover:bg-saltora-terracotta group-hover:text-white transition-all duration-300 shadow-2xs mt-0.5">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                             </svg>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">08</span>
-                                <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Industrial & Water Softening</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-saltora-terracotta font-mono">08</span>
+                                <h3 class="font-serif text-lg sm:text-xl md:text-2xl text-saltora-text font-normal group-hover:text-saltora-terracotta transition-colors">Industrial & Water Softening</h3>
                             </div>
                             <p class="text-xs text-saltora-muted font-light mt-1">Coarse chunk salt for water softening systems, de-icing, and chemical applications.</p>
                         </div>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
+                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-saltora-blush/60 border border-saltora-border/60 flex items-center justify-center text-saltora-terracotta group-hover:bg-saltora-terracotta group-hover:text-white transition-all shrink-0 mt-1 shadow-2xs">
                         <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                         </svg>
@@ -884,12 +884,12 @@
     </section>
 
     <!-- 8. QUALITY & VERIFIABLE CERTIFICATIONS -->
-    <section id="certifications" class="bg-[#F5EAE6] py-16 md:py-24 px-6 md:px-12 border-y border-saltora-terracotta/20 overflow-hidden">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section id="certifications" class="bg-[#F5EAE6] py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 border-y border-saltora-terracotta/20 overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
             
-            <div class="space-y-4 max-w-lg reveal-from-left">
-                <span class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">VERIFIABLE CREDENTIALS</span>
-                <h2 class="text-3xl sm:text-4xl font-serif text-saltora-text font-normal leading-tight">
+            <div class="space-y-3 sm:space-y-4 max-w-lg reveal-from-left text-center lg:text-left">
+                <span class="text-[10px] sm:text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">VERIFIABLE CREDENTIALS</span>
+                <h2 class="text-2xl sm:text-4xl font-serif text-saltora-text font-normal leading-tight">
                     Internationally recognized standards and verifiable registrations
                 </h2>
                 <p class="text-saltora-muted text-xs sm:text-sm font-normal">
@@ -906,35 +906,35 @@
             </div>
 
             <!-- Right 5 Circular Seal Badges -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center reveal-scale">
-                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
-                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
-                    <span class="font-serif text-sm font-bold text-saltora-text leading-tight">ISO 22000:2018</span>
-                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD SAFETY</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 items-center reveal-scale w-full lg:w-auto justify-items-center">
+                <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                    <span class="text-[7.5px] sm:text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-xs sm:text-sm font-bold text-saltora-text leading-tight">ISO 22000:2018</span>
+                    <span class="text-[7.5px] sm:text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD SAFETY</span>
                 </div>
 
-                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
-                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
-                    <span class="font-serif text-base font-bold text-saltora-text leading-tight">Halal</span>
-                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">CERTIFIED</span>
+                <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                    <span class="text-[7.5px] sm:text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-sm sm:text-base font-bold text-saltora-text leading-tight">Halal</span>
+                    <span class="text-[7.5px] sm:text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">CERTIFIED</span>
                 </div>
 
-                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
-                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
-                    <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Codex CXS<br>150:1985</span>
-                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD GRADE</span>
+                <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                    <span class="text-[7.5px] sm:text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-[11px] sm:text-xs font-bold text-saltora-text leading-tight">Codex CXS<br>150:1985</span>
+                    <span class="text-[7.5px] sm:text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-1">FOOD GRADE</span>
                 </div>
 
-                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
-                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
-                    <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Chamber of<br>Commerce</span>
-                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">REGISTERED</span>
+                <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer">
+                    <span class="text-[7.5px] sm:text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-[11px] sm:text-xs font-bold text-saltora-text leading-tight">Chamber of<br>Commerce</span>
+                    <span class="text-[7.5px] sm:text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">REGISTERED</span>
                 </div>
 
-                <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer col-span-2 sm:col-span-1 mx-auto sm:mx-0">
-                    <span class="text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
-                    <span class="font-serif text-xs font-bold text-saltora-text leading-tight">Salt Mfrs<br>Association</span>
-                    <span class="text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">MEMBER</span>
+                <div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full border-2 border-dashed border-saltora-terracotta/40 p-2 flex flex-col items-center justify-center text-center bg-white/70 shadow-sm relative group hover:border-saltora-terracotta transition-colors cursor-pointer col-span-2 sm:col-span-1 mx-auto sm:mx-0">
+                    <span class="text-[7.5px] sm:text-[8px] tracking-widest text-saltora-muted uppercase block font-semibold mb-1">SALTORA · PAKISTAN</span>
+                    <span class="font-serif text-[11px] sm:text-xs font-bold text-saltora-text leading-tight">Salt Mfrs<br>Association</span>
+                    <span class="text-[7.5px] sm:text-[8px] font-bold tracking-widest text-saltora-terracotta uppercase mt-0.5">MEMBER</span>
                 </div>
             </div>
 
@@ -942,21 +942,78 @@
     </section>
 
     <!-- 9. GLOBAL EXPORT ROUTES & SEAPORT SHIPPING -->
-    <section class="bg-[#181513] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+    <section class="bg-[#181513] text-white py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto text-center space-y-4 relative z-10 reveal-from-top">
-            <span class="text-[11px] font-bold tracking-widest text-[#E07A5F] uppercase">GLOBAL EXPORT NETWORK</span>
+        <div class="max-w-7xl mx-auto text-center space-y-3 sm:space-y-4 relative z-10 reveal-from-top">
+            <span class="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#E07A5F] uppercase">GLOBAL EXPORT NETWORK</span>
             
-            <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal max-w-4xl mx-auto leading-tight">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif text-white font-normal max-w-4xl mx-auto leading-tight">
                 Supplying Pakistani Himalayan pink salt to seaports worldwide
             </h2>
             
-            <p class="text-stone-300 text-sm sm:text-base font-normal max-w-2xl mx-auto leading-relaxed">
+            <p class="text-stone-300 text-xs sm:text-base font-normal max-w-2xl mx-auto leading-relaxed">
                 From Pakistan's Salt Range via Port Qasim & Karachi Port to destination hubs across the GCC, Europe, North America, and the Asia-Pacific.
             </p>
 
-            <div class="relative mt-16 max-w-4xl mx-auto h-[360px] sm:h-[420px] flex items-center justify-center reveal-scale">
+            <!-- Mobile Export Destinations Grid (Shown on screens < 768px) -->
+            <div class="block md:hidden mt-6 text-left space-y-3">
+                <!-- Origin Badge -->
+                <div class="p-3.5 bg-gradient-to-r from-stone-900 to-stone-900/90 border border-saltora-terracotta/40 rounded-xl flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-full bg-saltora-terracotta flex items-center justify-center shrink-0">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest text-amber-200 uppercase block">PRIMARY EXPORT PORT</span>
+                            <span class="font-serif text-sm font-bold text-white">Karachi Port & Port Qasim (Pakistan)</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-700/50 px-2 py-0.5 rounded-full">FOB ORIGIN</span>
+                </div>
+
+                <!-- 6 Regional Route Cards -->
+                <div class="grid grid-cols-2 gap-2.5 text-xs">
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">MIDDLE EAST (GCC)</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">Jebel Ali, Dammam, Doha</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 4–7 Days</span>
+                    </div>
+
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">EUROPE</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">Rotterdam, Hamburg, Felixstowe</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 18–24 Days</span>
+                    </div>
+
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">NORTH AMERICA</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">New York, Houston, LA</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 28–35 Days</span>
+                    </div>
+
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">ASIA-PACIFIC</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">Sydney, Melbourne, Auckland</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 14–20 Days</span>
+                    </div>
+
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">EAST ASIA</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">Singapore, Busan, Tokyo</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 12–16 Days</span>
+                    </div>
+
+                    <div class="p-3 bg-stone-900/70 border border-stone-800 rounded-xl">
+                        <span class="text-[9px] font-bold tracking-wider text-amber-200 block uppercase">AFRICA</span>
+                        <span class="text-white font-medium text-[11px] block mt-0.5">Durban, Mombasa, Alexandria</span>
+                        <span class="text-[10px] text-stone-400 mt-1 block">Transit: 12–18 Days</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop & Tablet Interactive Map (Shown on screens >= 768px) -->
+            <div class="hidden md:flex relative mt-16 max-w-4xl mx-auto h-[360px] sm:h-[420px] items-center justify-center reveal-scale">
                 <div class="absolute z-20 flex flex-col items-center cursor-pointer">
                     <div class="relative flex items-center justify-center">
                         <span class="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-saltora-terracotta opacity-40"></span>
@@ -968,7 +1025,7 @@
                     <span class="text-[10px] text-amber-200">FOB Karachi & Port Qasim</span>
                 </div>
 
-                <svg class="absolute inset-0 w-full h-full pointer-events-none stroke-saltora-terracotta/40" fill="none">
+                <svg class="absolute inset-0 w-full h-full pointer-events-none stroke-saltora-terracotta/40" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" fill="none">
                     <path d="M 500 210 Q 300 120 220 120" stroke-dasharray="4 4" stroke-width="1.5" />
                     <path d="M 500 210 Q 280 200 120 260" stroke-dasharray="4 4" stroke-width="1.5" />
                     <path d="M 500 210 Q 450 260 440 280" stroke-dasharray="4 4" stroke-width="1.5" />
@@ -1009,7 +1066,7 @@
             </div>
 
             <!-- Export Packaging & Specialized Grade Showcase (Generated Assets) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto pt-12 text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto pt-8 sm:pt-12 text-left">
                 <!-- Card 1: Bulk Palletized Container Shipping -->
                 <div class="bg-stone-900/90 border border-stone-800 rounded-2xl overflow-hidden shadow-2xl group hover:border-saltora-terracotta/50 transition-all duration-300">
                     <div class="relative aspect-video w-full overflow-hidden">
@@ -1019,9 +1076,9 @@
                             PORT DEPOT & PALLETIZING
                         </span>
                     </div>
-                    <div class="p-6 space-y-2">
+                    <div class="p-4 sm:p-6 space-y-2">
                         <span class="text-[10px] text-amber-200 uppercase font-semibold tracking-wider">FCL BULK SUPPLY</span>
-                        <h4 class="font-serif text-xl text-white font-bold">25kg Export Bags & 1000kg FIBC Jumbo Totes</h4>
+                        <h4 class="font-serif text-lg sm:text-xl text-white font-bold">25kg Export Bags & 1000kg FIBC Jumbo Totes</h4>
                         <p class="text-xs text-stone-300 font-normal leading-relaxed">
                             Heavy-duty moisture-proof woven packaging, shrink-wrapped on heat-treated ISPM-15 export pallets for 20ft container ocean freight.
                         </p>
@@ -1037,9 +1094,9 @@
                             ANIMAL NUTRITION GRADE
                         </span>
                     </div>
-                    <div class="p-6 space-y-2">
+                    <div class="p-4 sm:p-6 space-y-2">
                         <span class="text-[10px] text-amber-200 uppercase font-semibold tracking-wider">LIVESTOCK SUPPLEMENT</span>
-                        <h4 class="font-serif text-xl text-white font-bold">Hand-Carved Himalayan Mineral Salt Licks</h4>
+                        <h4 class="font-serif text-lg sm:text-xl text-white font-bold">Hand-Carved Himalayan Mineral Salt Licks</h4>
                         <p class="text-xs text-stone-300 font-normal leading-relaxed">
                             Weather-resistant natural solid crystal salt blocks with pre-drilled organic jute ropes for horses, dairy cattle, and sheep.
                         </p>
@@ -1051,22 +1108,22 @@
 
     <!-- 10. LATEST TRADE INSIGHTS & EXPORT GUIDES (Blog Section) -->
     @if(isset($latestPosts) && count($latestPosts) > 0)
-    <section class="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-        <div class="space-y-12">
+    <section class="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <div class="space-y-8 sm:space-y-12">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal-from-top">
-                <div class="max-w-2xl space-y-3">
-                    <div class="text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">SALTORA INTELLIGENCE DESK</div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-saltora-text leading-tight">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 reveal-from-top">
+                <div class="max-w-2xl space-y-2 sm:space-y-3">
+                    <div class="text-[10px] sm:text-[11px] font-bold tracking-widest text-saltora-terracotta uppercase">SALTORA INTELLIGENCE DESK</div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif text-saltora-text leading-tight">
                         Latest Trade Insights & Export Guides
                     </h2>
-                    <p class="text-saltora-muted text-sm sm:text-base font-light">
+                    <p class="text-saltora-muted text-xs sm:text-base font-light">
                         Expert analysis on mining quality standards, ocean freight logistics, ISO compliance, and GCC market trends.
                     </p>
                 </div>
 
-                <div>
-                    <a href="/blog" class="inline-flex items-center gap-2 border border-saltora-text/40 hover:border-saltora-text px-6 py-3.5 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer group rounded-xs bg-white shadow-2xs">
+                <div class="w-full sm:w-auto">
+                    <a href="/blog" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-saltora-text/40 hover:border-saltora-text px-5 sm:px-6 py-3 sm:py-3.5 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer group rounded-xs bg-white shadow-2xs">
                         <span>EXPLORE ALL ARTICLES</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -1076,7 +1133,7 @@
             </div>
 
             <!-- Articles Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 @foreach($latestPosts as $post)
                 <div class="bg-white rounded-2xl border border-saltora-border/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
                     <div class="space-y-4">
@@ -1086,13 +1143,13 @@
                                 {{ $post->category }}
                             </span>
                         </div>
-                        <div class="p-6 space-y-3">
+                        <div class="p-5 sm:p-6 space-y-2 sm:space-y-3">
                             <div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
                                 <span><i class="fa-regular fa-calendar text-[11px] mr-1"></i> {{ $post->created_at->format('M d, Y') }}</span>
                                 <span>&bull;</span>
                                 <span><i class="fa-regular fa-clock text-[11px] mr-1"></i> {{ $post->read_time }}</span>
                             </div>
-                            <h3 class="font-serif text-xl text-slate-900 font-bold group-hover:text-[#e07a5f] transition-colors leading-snug line-clamp-2">
+                            <h3 class="font-serif text-lg sm:text-xl text-slate-900 font-bold group-hover:text-[#e07a5f] transition-colors leading-snug line-clamp-2">
                                 <a href="{{ route('blog.detail', $post->slug) }}">{{ $post->title }}</a>
                             </h3>
                             <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 font-light">
@@ -1100,7 +1157,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="p-6 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between">
+                    <div class="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between">
                         <span class="text-xs font-semibold text-slate-700">{{ $post->author }}</span>
                         <a href="{{ route('blog.detail', $post->slug) }}" class="text-xs font-bold text-[#e07a5f] group-hover:translate-x-1 transition-transform flex items-center gap-1.5">
                             <span>Read More</span>
@@ -1116,7 +1173,7 @@
     @endif
 
     <!-- 11. BOTTOM CONVERSION CTA BANNER (Compact & Sleek) -->
-    <section class="relative bg-[#141211] py-14 md:py-18 px-6 text-center text-white overflow-hidden">
+    <section class="relative bg-[#141211] py-12 sm:py-16 md:py-18 px-4 sm:px-6 text-center text-white overflow-hidden">
         <!-- Vibrant Himalayan Salt Crystals Backdrop -->
         <img src="/heroimg.jpg" alt="Himalayan salt crystals background texture" class="absolute inset-0 w-full h-full object-cover opacity-60 md:opacity-65 filter brightness-105 contrast-105 pointer-events-none scale-105">
         
@@ -1126,7 +1183,7 @@
         <!-- Subtle Ambient Warm Glow behind Text -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[220px] bg-[#e07a5f]/15 rounded-full blur-[90px] pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-2xl mx-auto space-y-4 reveal-from-bottom">
+        <div class="relative z-10 max-w-2xl mx-auto space-y-3 sm:space-y-4 reveal-from-bottom">
             <span class="text-[10px] font-bold tracking-widest text-[#f4a261] uppercase block drop-shadow-sm">START SOURCING TODAY</span>
             
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-white font-normal leading-snug drop-shadow-md">
@@ -1137,12 +1194,12 @@
                 Send your volume specifications, grain mesh requirements, or private-label packaging details. Receive a comprehensive quotation with transparent FOB Karachi terms within 12–24 business hours.
             </p>
             
-            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3 text-xs font-bold tracking-wider uppercase transition-all shadow-xl hover:shadow-2xl flex items-center gap-2.5 group cursor-pointer rounded-xs">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-2">
+                <a href="/contact" class="w-full sm:w-auto bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2.5 group cursor-pointer rounded-xs">
                     <span>REQUEST A FORMAL QUOTE</span>
                     <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
                 </a>
-                <a href="/contact" class="bg-black/45 hover:bg-black/70 backdrop-blur-md border border-white/40 hover:border-white text-white px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer rounded-xs shadow-md">
+                <a href="/contact" class="w-full sm:w-auto text-center bg-black/45 hover:bg-black/70 backdrop-blur-md border border-white/40 hover:border-white text-white px-6 py-3.5 text-xs font-bold tracking-wider uppercase transition-all cursor-pointer rounded-xs shadow-md">
                     CONTACT EXPORT DESK
                 </a>
             </div>

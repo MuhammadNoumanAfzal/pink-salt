@@ -149,11 +149,11 @@
 
     <!-- Single Sticky Navigation Header -->
     <header class="sticky top-0 z-40 bg-saltora-bg/95 backdrop-blur-md border-b border-saltora-border/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 md:h-18 flex items-center justify-between gap-4">
             <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
-                <img src="/logo.png" alt="SALTORA Logo" class="h-9 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
+            <a href="/" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer mr-2 lg:mr-6" title="SALTORA Home">
+                <img src="/logo.png" alt="SALTORA Logo" class="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-saltora-text">SALTORA</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -185,7 +185,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="lg:hidden bg-saltora-bg border-b border-saltora-border px-4 sm:px-6 py-5 space-y-3.5 text-xs font-semibold tracking-widest uppercase">
             <a @click="mobileMenuOpen = false" href="/about" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">ABOUT</a>
             <a @click="mobileMenuOpen = false" href="/products" class="block py-2 text-saltora-terracotta font-bold cursor-pointer">PRODUCTS</a>
             <a @click="mobileMenuOpen = false" href="/packing" class="block py-2 text-saltora-text hover:text-saltora-terracotta cursor-pointer">PACKING</a>
@@ -201,37 +201,37 @@
     </header>
 
     <!-- PRODUCTS HERO SECTION -->
-    <section class="relative bg-saltora-dark text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
+    <section class="relative bg-saltora-dark text-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 overflow-hidden border-b border-saltora-dark-border">
         <!-- Backdrop Image (`/products-hero.jpg`) -->
         <img src="/products-hero.jpg" alt="Pure Himalayan Pink Salt Range Backdrop" class="absolute inset-0 w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 pointer-events-none transition-transform duration-1000 scale-105">
         <!-- Left-to-right gradient: dark behind text on left, light & visible over image on right -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto">
-            <div class="space-y-6 max-w-3xl animate-hero-left">
+            <div class="space-y-4 sm:space-y-6 max-w-3xl animate-hero-left">
                 <!-- Category Sub-tag (High Contrast Pill) -->
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[11px] font-bold tracking-mega text-amber-300 uppercase shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>PAKISTAN KHEWRA SALT RANGE — B2B DIRECT EXPORT</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-[10px] sm:text-[11px] font-bold tracking-wider sm:tracking-mega text-amber-300 uppercase shadow-lg max-w-full">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                    <span class="truncate">PAKISTAN KHEWRA SALT RANGE — B2B DIRECT EXPORT</span>
                 </div>
 
                 <!-- Headline with Drop Shadow for Maximum Legibility -->
-                <h1 class="text-4xl sm:text-6xl lg:text-6.5xl font-serif text-white font-normal leading-[1.08] drop-shadow-md">
+                <h1 class="text-3xl sm:text-5xl lg:text-6.5xl font-serif text-white font-normal leading-[1.15] sm:leading-[1.08] drop-shadow-md">
                     The Saltora Export Catalog
                 </h1>
 
                 <!-- Paragraph with Solid Bright Text -->
-                <p class="text-stone-100 sm:text-stone-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
+                <p class="text-stone-100 sm:text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl drop-shadow-sm">
                     Direct Khewra mine-sourced Himalayan pink salt for international importers, food manufacturers, retail brands, and industrial processors. Calibrated from 0.2mm ultra-fine to 8mm crystal rock, packed in private-label pouches, 25kg PP bags, or 1-ton bulk jumbo bags.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="#catalogSection" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 rounded-xs">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+                    <a href="#catalogSection" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                         <span>EXPLORE PRODUCTS</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center gap-2 rounded-xs shadow-md">
+                    <a href="/contact" class="bg-black/50 hover:bg-black/70 border border-white/40 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2 rounded-xs shadow-md w-full sm:w-auto text-center">
                         <i class="fa-solid fa-file-contract text-amber-300"></i>
                         <span>REQUEST CUSTOM QUOTE</span>
                     </a>
@@ -271,7 +271,7 @@
     </div>
 
     <!-- MAIN PRODUCT CATALOG & INTERACTIVE FILTERS SECTION -->
-    <section id="catalogSection" class="py-16 md:py-24 px-6 md:px-12 bg-saltora-bg" 
+    <section id="catalogSection" class="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-saltora-bg" 
              x-data="{
                  selectedCategory: '',
                  selectedSubcategory: '',
@@ -372,12 +372,12 @@
 
 
             <!-- TOP CONTROLS & ACTIVE FILTERS BAR -->
-            <div class="bg-white p-4 border border-saltora-border rounded-sm shadow-xs flex flex-wrap items-center justify-between gap-4">
+            <div class="bg-white p-3 sm:p-4 border border-saltora-border rounded-sm shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
                 <!-- Left: Result Count & Active Filter Tags -->
-                <div class="flex flex-wrap items-center gap-2.5">
-                    <div class="text-xs text-stone-600 font-semibold flex items-center gap-1.5">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                    <div class="text-xs text-stone-600 font-semibold flex items-center gap-1.5 shrink-0">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span>Showing <strong class="text-saltora-text" x-text="filteredProducts.length"></strong> of <strong class="text-saltora-text">{{ count($products) }}</strong> export items</span>
+                        <span>Showing <strong class="text-saltora-text" x-text="filteredProducts.length"></strong> of <strong class="text-saltora-text">{{ count($products) }}</strong> items</span>
                     </div>
 
                     <!-- Active Badges -->
@@ -389,7 +389,7 @@
                     </template>
                     <template x-if="selectedSubcategory">
                         <span class="inline-flex items-center gap-1 bg-amber-100/80 border border-amber-300 text-amber-900 text-[11px] px-2.5 py-0.5 rounded-full font-semibold">
-                            <span>Subcategory: <strong x-text="products.find(p => String(p.subcategory_id) === String(selectedSubcategory))?.subcategory_name || selectedSubcategory"></strong></span>
+                            <span>Sub: <strong x-text="products.find(p => String(p.subcategory_id) === String(selectedSubcategory))?.subcategory_name || selectedSubcategory"></strong></span>
                             <button @click="selectedSubcategory = ''" class="hover:text-red-600 text-amber-700 font-bold ml-1 cursor-pointer">&times;</button>
                         </span>
                     </template>
@@ -413,22 +413,22 @@
                     </template>
                     
                     <button @click="resetFilters()" x-show="activeFilterCount > 0" x-cloak class="text-[11px] text-saltora-terracotta hover:underline font-bold uppercase tracking-wider ml-1 cursor-pointer">
-                        Clear All Filters
+                        Clear All
                     </button>
                 </div>
 
                 <!-- Right: Sort, View Switcher & Mobile Filter Toggle -->
-                <div class="flex items-center gap-3 ml-auto">
+                <div class="flex items-center justify-between md:justify-end gap-2.5 sm:gap-3 w-full md:w-auto pt-2 md:pt-0 border-t md:border-t-0 border-stone-200">
                     <!-- Mobile Filter Toggle Button -->
-                    <button @click="mobileFilterOpen = true" class="lg:hidden bg-stone-100 hover:bg-stone-200 border border-stone-300 px-3.5 py-1.5 rounded-xs text-xs font-bold text-saltora-text flex items-center gap-2 cursor-pointer">
+                    <button @click="mobileFilterOpen = true" class="lg:hidden bg-stone-100 hover:bg-stone-200 border border-stone-300 px-3 py-1.5 rounded-xs text-xs font-bold text-saltora-text flex items-center gap-1.5 cursor-pointer shrink-0">
                         <i class="fa-solid fa-sliders text-saltora-terracotta"></i>
                         <span>Filter (<strong x-text="activeFilterCount"></strong>)</span>
                     </button>
 
                     <!-- Sort Select -->
-                    <div class="flex items-center gap-1.5 text-xs text-stone-600">
-                        <label for="sortDropdown" class="hidden sm:inline font-medium">Sort By:</label>
-                        <select id="sortDropdown" x-model="sortBy" class="bg-[#FAF7F2] border border-saltora-border px-3 py-1.5 rounded-xs text-xs font-medium text-stone-800 focus:outline-none focus:border-saltora-terracotta cursor-pointer">
+                    <div class="flex items-center gap-1.5 text-xs text-stone-600 flex-1 md:flex-initial justify-end">
+                        <label for="sortDropdown" class="hidden sm:inline font-medium shrink-0">Sort By:</label>
+                        <select id="sortDropdown" x-model="sortBy" class="w-full sm:w-auto bg-[#FAF7F2] border border-saltora-border px-2.5 sm:px-3 py-1.5 rounded-xs text-xs font-medium text-stone-800 focus:outline-none focus:border-saltora-terracotta cursor-pointer">
                             <option value="featured">Featured / Recommended</option>
                             <option value="name-asc">Name (A &rarr; Z)</option>
                             <option value="name-desc">Name (Z &rarr; A)</option>
@@ -438,7 +438,7 @@
                     </div>
 
                     <!-- View Switcher -->
-                    <div class="hidden sm:flex items-center border border-saltora-border rounded-xs overflow-hidden">
+                    <div class="hidden sm:flex items-center border border-saltora-border rounded-xs overflow-hidden shrink-0">
                         <button @click="viewMode = 'grid'" :class="viewMode === 'grid' ? 'bg-saltora-terracotta text-white' : 'bg-white text-stone-600 hover:bg-stone-100'" class="p-1.5 px-2.5 transition-colors cursor-pointer" title="Grid View">
                             <i class="fa-solid fa-grip text-xs"></i>
                         </button>
@@ -578,9 +578,9 @@
                 <div class="lg:col-span-9 space-y-6">
                     
                     <!-- GRID VIEW MODE -->
-                    <div x-show="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                    <div x-show="viewMode === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7">
                         <template x-for="product in filteredProducts" :key="product.id">
-                            <div class="bg-white border border-[#EAE5DC] rounded-2xl p-2.5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-200/60 hover:border-saltora-terracotta/40 group relative overflow-hidden">
+                            <div class="bg-white border border-[#EAE5DC] rounded-xl sm:rounded-2xl p-2.5 sm:p-3 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-200/60 hover:border-saltora-terracotta/40 group relative overflow-hidden">
                                 <!-- Top Accent Hover Line -->
                                 <div class="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-saltora-terracotta via-amber-600 to-saltora-terracotta scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
@@ -635,12 +635,12 @@
                                 <!-- Action Buttons: Sleeker, Perfectly Proportioned -->
                                 <div class="pt-2.5 border-t border-[#F0EBE3] flex items-center gap-2 mt-2 px-0.5">
                                     <a :href="'/products/' + (product.slug || product.id)" 
-                                       class="flex-1 py-1.5 px-2.5 rounded-md border border-stone-200/90 hover:border-saltora-terracotta bg-white hover:bg-stone-50 text-stone-600 hover:text-saltora-terracotta text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1.5 shadow-2xs group/dtl">
+                                       class="flex-1 py-1.5 px-2 rounded-md border border-stone-200/90 hover:border-saltora-terracotta bg-white hover:bg-stone-50 text-stone-600 hover:text-saltora-terracotta text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 shadow-2xs group/dtl">
                                         <i class="fa-regular fa-eye text-[11px] text-saltora-terracotta transition-transform group-hover/dtl:scale-110"></i>
                                         <span>Details</span>
                                     </a>
                                     <a :href="'/contact?product=' + encodeURIComponent(product.name) + '#contactForm'" 
-                                       class="flex-1 py-1.5 px-2.5 rounded-md bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 shadow-2xs group/inq">
+                                       class="flex-1 py-1.5 px-2 rounded-md bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white text-[10px] font-semibold tracking-wider uppercase transition-all duration-150 flex items-center justify-center gap-1 shadow-2xs group/inq">
                                         <span>Inquire</span>
                                         <i class="fa-solid fa-arrow-right text-[9px] transition-transform group-hover/inq:translate-x-0.5"></i>
                                     </a>
@@ -652,35 +652,35 @@
                     <!-- COMPACT SPEC LIST VIEW MODE -->
                     <div x-show="viewMode === 'compact'" class="space-y-3">
                         <template x-for="product in filteredProducts" :key="product.id">
-                            <div class="bg-white border border-[#EAE5DC] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-saltora-terracotta/60 hover:shadow-md transition-all">
-                                <div class="flex items-center gap-4">
+                            <div class="bg-white border border-[#EAE5DC] rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:border-saltora-terracotta/60 hover:shadow-md transition-all">
+                                <div class="flex items-center gap-3 sm:gap-4">
                                     <a :href="'/products/' + (product.slug || product.id)" class="shrink-0 block">
                                         <template x-if="product.image_url">
-                                            <img :src="product.image_url" :alt="product.name" class="w-16 h-16 rounded-lg object-cover bg-stone-100 shrink-0 border border-stone-200 cursor-pointer hover:opacity-90 transition-opacity">
+                                            <img :src="product.image_url" :alt="product.name" class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg object-cover bg-stone-100 shrink-0 border border-stone-200 cursor-pointer hover:opacity-90 transition-opacity">
                                         </template>
                                         <template x-if="!product.image_url">
-                                            <div class="w-16 h-16 rounded-lg bg-[#FAF7F2] border border-dashed border-stone-300 shrink-0 flex items-center justify-center text-stone-400 cursor-pointer">
+                                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-[#FAF7F2] border border-dashed border-stone-300 shrink-0 flex items-center justify-center text-stone-400 cursor-pointer">
                                                 <i class="fa-solid fa-cube text-base text-stone-300"></i>
                                             </div>
                                         </template>
                                     </a>
-                                    <div class="space-y-1">
-                                        <div class="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta">
+                                    <div class="space-y-1 min-w-0">
+                                        <div class="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-saltora-terracotta truncate">
                                             <span x-text="product.category_name"></span>
                                             <template x-if="product.subcategory_name">
                                                 <span class="text-stone-300">/</span>
                                             </template>
                                             <template x-if="product.subcategory_name">
-                                                <span class="text-stone-500 font-normal" x-text="product.subcategory_name"></span>
+                                                <span class="text-stone-500 font-normal truncate" x-text="product.subcategory_name"></span>
                                             </template>
                                             <template x-if="product.grain_size">
-                                                <span class="text-[9px] text-stone-500 font-semibold bg-stone-100 px-2 py-0.5 rounded-full ml-1" x-text="product.grain_size"></span>
+                                                <span class="text-[9px] text-stone-500 font-semibold bg-stone-100 px-1.5 py-0.5 rounded-full ml-1 shrink-0" x-text="product.grain_size"></span>
                                             </template>
                                         </div>
                                         <a :href="'/products/' + (product.slug || product.id)" class="block">
-                                            <h4 class="font-serif text-base font-bold text-saltora-text hover:text-saltora-terracotta transition-colors cursor-pointer" x-text="product.name"></h4>
+                                            <h4 class="font-serif text-sm sm:text-base font-bold text-saltora-text hover:text-saltora-terracotta transition-colors cursor-pointer truncate" x-text="product.name"></h4>
                                         </a>
-                                        <div class="text-xs text-stone-500 flex flex-wrap items-center gap-3">
+                                        <div class="text-[11px] sm:text-xs text-stone-500 flex flex-wrap items-center gap-2 sm:gap-3">
                                             <template x-if="product.packaging_type">
                                                 <span>Packaging: <strong class="text-stone-700 font-medium" x-text="product.packaging_type"></strong></span>
                                             </template>
@@ -694,25 +694,27 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
-                                    <div class="text-right mr-2 hidden md:block">
+                                <div class="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-stone-100">
+                                    <div class="text-left sm:text-right mr-2">
                                         <template x-if="product.price && product.price > 0">
                                             <div>
-                                                <span class="text-base font-bold text-slate-900" x-text="'$' + Number(product.price).toFixed(2)"></span>
+                                                <span class="text-sm sm:text-base font-bold text-slate-900" x-text="'$' + Number(product.price).toFixed(2)"></span>
                                                 <span class="text-[10px] text-stone-500" x-text="'/' + (product.price_unit ? product.price_unit.replace('/', '') : 'kg')"></span>
                                             </div>
                                         </template>
                                         <template x-if="!product.price || product.price <= 0">
-                                            <span class="text-xs font-bold text-saltora-terracotta uppercase tracking-wider">Custom Quote</span>
+                                            <span class="text-[11px] sm:text-xs font-bold text-saltora-terracotta uppercase tracking-wider">Custom Quote</span>
                                         </template>
                                     </div>
-                                    <a :href="'/products/' + (product.slug || product.id)" class="px-3 py-2 text-xs font-semibold border border-stone-200 hover:border-saltora-terracotta hover:text-saltora-terracotta rounded-lg transition-colors cursor-pointer flex items-center gap-1">
-                                        <i class="fa-regular fa-eye text-[11px]"></i>
-                                        <span>Details</span>
-                                    </a>
-                                    <a :href="'/contact?product=' + encodeURIComponent(product.name) + '#contactForm'" class="px-4 py-2 text-xs font-bold bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white rounded-lg shadow-xs transition-colors uppercase tracking-wider cursor-pointer">
-                                        Inquire
-                                    </a>
+                                    <div class="flex items-center gap-2">
+                                        <a :href="'/products/' + (product.slug || product.id)" class="px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs font-semibold border border-stone-200 hover:border-saltora-terracotta hover:text-saltora-terracotta rounded-lg transition-colors cursor-pointer flex items-center gap-1">
+                                            <i class="fa-regular fa-eye text-[11px]"></i>
+                                            <span>Details</span>
+                                        </a>
+                                        <a :href="'/contact?product=' + encodeURIComponent(product.name) + '#contactForm'" class="px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white rounded-lg shadow-xs transition-colors uppercase tracking-wider cursor-pointer">
+                                            Inquire
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -750,15 +752,15 @@
         <!-- MOBILE SLIDE-OVER FILTER DRAWER -->
         <div x-show="mobileFilterOpen" x-cloak class="fixed inset-0 z-50 overflow-hidden lg:hidden" role="dialog" aria-modal="true">
             <div class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity" @click="mobileFilterOpen = false"></div>
-            <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-                <div class="w-screen max-w-md bg-white p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
-                    <div class="space-y-6">
-                        <div class="flex items-center justify-between border-b border-stone-200 pb-4">
-                            <h3 class="font-serif text-xl font-bold text-saltora-text flex items-center gap-2">
+            <div class="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
+                <div class="w-screen max-w-md bg-white p-4 sm:p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
+                    <div class="space-y-5 sm:space-y-6">
+                        <div class="flex items-center justify-between border-b border-stone-200 pb-3 sm:pb-4">
+                            <h3 class="font-serif text-lg sm:text-xl font-bold text-saltora-text flex items-center gap-2">
                                 <i class="fa-solid fa-sliders text-saltora-terracotta"></i>
                                 <span>Filter & Sort</span>
                             </h3>
-                            <button @click="mobileFilterOpen = false" class="text-stone-400 hover:text-stone-700 p-2 text-xl">&times;</button>
+                            <button @click="mobileFilterOpen = false" class="text-stone-400 hover:text-stone-700 p-2 text-2xl leading-none">&times;</button>
                         </div>
 
                         <!-- Mobile Search -->
@@ -839,8 +841,8 @@
 
 
     <!-- PACKAGING & PRIVATE LABEL OEM SOLUTIONS SECTION -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
-        <div class="max-w-7xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60">
+        <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="space-y-3 max-w-3xl reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">PACKAGING & LOGISTICS</span>
@@ -853,51 +855,51 @@
             </div>
 
             <!-- 4 Packaging Photo Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 
                 <!-- Format 1 -->
-                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-1 bg-white p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
+                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-1 bg-white p-3.5 sm:p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
                     <div class="aspect-4/3 rounded-sm overflow-hidden border border-saltora-border bg-saltora-card">
-                        <img src="/packaging-fibc.jpg" alt="1-Ton Jumbo FIBC Big Bags Export Format" class="w-full h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bulk.jpg';">
+                        <img src="/packaging-fibc.jpg" alt="1-Ton Jumbo FIBC Big Bags Export Format" class="w-full h-44 sm:h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bulk.jpg';">
                     </div>
                     <span class="text-[10px] font-bold uppercase text-saltora-terracotta tracking-wider">Heavy Industry</span>
-                    <h3 class="font-serif text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">1-Ton Jumbo FIBC Bags</h3>
+                    <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">1-Ton Jumbo FIBC Bags</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Heavy-duty UV-stabilized woven polypropylene bags with bottom discharge spout for volume processors and container vessel loading.
                     </p>
                 </div>
 
                 <!-- Format 2 -->
-                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-2 bg-white p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
+                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-2 bg-white p-3.5 sm:p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
                     <div class="aspect-4/3 rounded-sm overflow-hidden border border-saltora-border bg-saltora-card">
-                        <img src="/packaging-pp-bags.jpg" alt="25 kg Food-Grade PP Bags Export Format" class="w-full h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/product4.jpg';">
+                        <img src="/packaging-pp-bags.jpg" alt="25 kg Food-Grade PP Bags Export Format" class="w-full h-44 sm:h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/product4.jpg';">
                     </div>
                     <span class="text-[10px] font-bold uppercase text-saltora-terracotta tracking-wider">Food Manufacturing</span>
-                    <h3 class="font-serif text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">25 kg Food-Grade PP Bags</h3>
+                    <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">25 kg Food-Grade PP Bags</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Polypropylene woven bags lined with polyethylene moisture barriers (2kg, 5kg, 10kg, 25kg, 50kg) for bulk food manufacturers.
                     </p>
                 </div>
 
                 <!-- Format 3 -->
-                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-3 bg-white p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
+                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-3 bg-white p-3.5 sm:p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
                     <div class="aspect-4/3 rounded-sm overflow-hidden border border-saltora-border bg-saltora-card">
-                        <img src="/packaging-pouches.jpg" alt="Retail Stand-Up Zipper Pouches with Window" class="w-full h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bag1.jpg';">
+                        <img src="/packaging-pouches.jpg" alt="Retail Stand-Up Zipper Pouches with Window" class="w-full h-44 sm:h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bag1.jpg';">
                     </div>
                     <span class="text-[10px] font-bold uppercase text-saltora-terracotta tracking-wider">Retail Distribution</span>
-                    <h3 class="font-serif text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Stand-Up Zipper Pouches</h3>
+                    <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Stand-Up Zipper Pouches</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Airtight kraft, matte finish, or high-barrier transparent foil stand-up pouches (200g to 1kg) with resealable zip-lock and tear notch.
                     </p>
                 </div>
 
                 <!-- Format 4 -->
-                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-4 bg-white p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
+                <div class="space-y-3 group cursor-pointer reveal-on-scroll reveal-from-bottom stagger-4 bg-white p-3.5 sm:p-4 rounded-sm border border-saltora-border/70 hover:shadow-lg transition-all">
                     <div class="aspect-4/3 rounded-sm overflow-hidden border border-saltora-border bg-saltora-card">
-                        <img src="/packaging-grinders.jpg" alt="Gourmet Glass Spice Jars and Ceramic Grinder Bottles" class="w-full h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bag2.jpg';">
+                        <img src="/packaging-grinders.jpg" alt="Gourmet Glass Spice Jars and Ceramic Grinder Bottles" class="w-full h-44 sm:h-48 object-cover transition-transform duration-700 ease-out group-hover:scale-105" onError="this.onerror=null;this.src='/bag2.jpg';">
                     </div>
                     <span class="text-[10px] font-bold uppercase text-saltora-terracotta tracking-wider">Gourmet & OEM</span>
-                    <h3 class="font-serif text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Jars & Ceramic Grinders</h3>
+                    <h3 class="font-serif text-lg sm:text-xl text-saltora-text font-normal pt-1 group-hover:translate-x-1.5 transition-transform duration-300 ease-out group-hover:text-saltora-terracotta">Jars & Ceramic Grinders</h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
                         Pre-filled clear PET shakers, luxury heavy flint glass jars, and refillable bottles fitted with corrosion-proof ceramic grinder tops.
                     </p>
@@ -906,9 +908,9 @@
             </div>
 
             <!-- Soft Blush CTA Box -->
-            <div class="bg-[#F5EAE6] p-8 sm:p-10 rounded-sm border border-saltora-terracotta/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm mt-8 reveal-on-scroll reveal-scale">
+            <div class="bg-[#F5EAE6] p-6 sm:p-10 rounded-sm border border-saltora-terracotta/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 shadow-sm mt-6 sm:mt-8 reveal-on-scroll reveal-scale">
                 <div class="space-y-2 max-w-2xl">
-                    <h3 class="font-serif text-2xl sm:text-3xl text-saltora-text font-normal">
+                    <h3 class="font-serif text-xl sm:text-3xl text-saltora-text font-normal">
                         Need a custom private label formulation?
                     </h3>
                     <p class="text-xs text-saltora-muted font-light leading-relaxed">
@@ -916,8 +918,8 @@
                     </p>
                 </div>
 
-                <div class="shrink-0 flex items-center gap-3">
-                    <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-8 py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center gap-2 group cursor-pointer">
+                <div class="shrink-0 w-full md:w-auto">
+                    <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-bold tracking-wider uppercase transition-all shadow flex items-center justify-center gap-2 group cursor-pointer w-full md:w-auto text-center">
                         <span>REQUEST FORMULATION QUOTE</span>
                         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -930,8 +932,8 @@
     </section>
 
     <!-- NEW SECTION: 20FT FCL CONTAINER LOAD & PALLETIZATION GUIDE -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-white border-t border-saltora-border/60">
-        <div class="max-w-7xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-white border-t border-saltora-border/60">
+        <div class="max-w-7xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="text-center max-w-3xl mx-auto space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">OCEAN FREIGHT & CONTAINER LOGISTICS</span>
@@ -943,14 +945,14 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 
                 <!-- Card 1: Palletized 20ft FCL -->
-                <div class="bg-saltora-bg p-6 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-1">
+                <div class="bg-saltora-bg p-5 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-1">
                     <div class="w-12 h-12 rounded-full bg-saltora-terracotta/15 text-saltora-terracotta flex items-center justify-center text-xl">
                         <i class="fa-solid fa-boxes-stacked"></i>
                     </div>
-                    <h3 class="font-serif text-2xl text-saltora-text font-semibold">20ft FCL Palletized</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-semibold">20ft FCL Palletized</h3>
                     <p class="text-xs text-saltora-muted leading-relaxed">
                         Ideal for mechanized forklift unloading at modern distribution centers. Every pallet is strapped and shrink-wrapped with moisture-proof polyethylene film.
                     </p>
@@ -971,11 +973,11 @@
                 </div>
 
                 <!-- Card 2: Floor Loaded 20ft FCL -->
-                <div class="bg-saltora-bg p-6 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-2">
+                <div class="bg-saltora-bg p-5 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-2">
                     <div class="w-12 h-12 rounded-full bg-saltora-terracotta/15 text-saltora-terracotta flex items-center justify-center text-xl">
                         <i class="fa-solid fa-dolly"></i>
                     </div>
-                    <h3 class="font-serif text-2xl text-saltora-text font-semibold">20ft FCL Floor Loaded</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-semibold">20ft FCL Floor Loaded</h3>
                     <p class="text-xs text-saltora-muted leading-relaxed">
                         Maximizes freight payload per container. 25kg PP bags or retail master cartons are stacked floor-to-ceiling over corrugated container floor lining.
                     </p>
@@ -996,11 +998,11 @@
                 </div>
 
                 <!-- Card 3: 1-Ton Jumbo Big Bags -->
-                <div class="bg-saltora-bg p-6 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-3">
+                <div class="bg-saltora-bg p-5 sm:p-8 rounded-sm border border-saltora-border space-y-4 reveal-on-scroll reveal-from-bottom stagger-3">
                     <div class="w-12 h-12 rounded-full bg-saltora-terracotta/15 text-saltora-terracotta flex items-center justify-center text-xl">
                         <i class="fa-solid fa-ship"></i>
                     </div>
-                    <h3 class="font-serif text-2xl text-saltora-text font-semibold">1-Ton Jumbo FIBC Loading</h3>
+                    <h3 class="font-serif text-xl sm:text-2xl text-saltora-text font-semibold">1-Ton Jumbo FIBC Loading</h3>
                     <p class="text-xs text-saltora-muted leading-relaxed">
                         Engineered for international chemical processors and salt repacking plants. Fitted with 4 heavy-duty lifting loops for overhead crane discharge.
                     </p>
@@ -1026,8 +1028,8 @@
     </section>
 
     <!-- NEW SECTION: B2B FREQUENTLY ASKED QUESTIONS ACCORDION -->
-    <section class="py-20 md:py-28 px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
-        <div class="max-w-4xl mx-auto space-y-12">
+    <section class="py-12 sm:py-20 md:py-28 px-4 sm:px-6 md:px-12 bg-saltora-bg border-t border-saltora-border/60" x-data="{ activeFaq: 1 }">
+        <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
             
             <div class="text-center space-y-3 reveal-on-scroll reveal-from-top">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">PROCUREMENT & SOURCING FAQ</span>
@@ -1040,59 +1042,59 @@
             </div>
 
             <!-- FAQ Accordion List -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
                 
                 <!-- FAQ 1 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>What is your standard Minimum Order Quantity (MOQ)?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 1 ? null : 1" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">What is your standard Minimum Order Quantity (MOQ)?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 1 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 1" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 1" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Our standard export MOQ for full container load (FCL) shipments is one 20ft container (approx. 20-25 Metric Tons). For retail packaged pouches and specialty salt lamps, we also accommodate mixed container orders or LCL consolidated trial orders for qualifying commercial distributors.
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Can you produce private-label packaging with our custom brand artwork?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 2 ? null : 2" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Can you produce private-label packaging with our custom brand artwork?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 2 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 2" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 2" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Yes. We provide complete OEM private label manufacturing. We print rotogravure stand-up barrier pouches (kraft or matte film), customized retail shaker jars with tamper seals, and branded 5-ply export master cartons according to your exact dieline artwork, languages, and barcode requirements.
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Do you provide Certificate of Analysis (COA) and independent inspection?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 3 ? null : 3" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Do you provide Certificate of Analysis (COA) and independent inspection?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 3 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 3" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 3" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         Every export lot is issued a comprehensive batch Certificate of Analysis (COA) specifying NaCl purity (&ge; 98.5%), moisture content (&le; 0.2%), insoluble matter, and heavy metals (Lead, Arsenic, Cadmium, Mercury well below Codex limits). We welcome pre-shipment inspections by SGS, Intertek, or Bureau Veritas at the loading facility.
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>How can we request product sample kits before placing a contract?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 4 ? null : 4" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">How can we request product sample kits before placing a contract?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 4 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 4" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 4" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         We send sample kits containing our calibrated grain mesh sizes (Fine, Medium, Coarse, Crystal) and pouch formats via DHL / FedEx international air courier. Samples are provided complimentary for verified corporate buyers; air courier freight is credited back against your initial container commercial order.
                     </div>
                 </div>
 
                 <!-- FAQ 5 -->
                 <div class="bg-white border border-saltora-border rounded-sm overflow-hidden transition-all shadow-xs">
-                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-5 text-left font-serif text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
-                        <span>Which international shipping Incoterms and payment methods do you support?</span>
-                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
+                    <button @click="activeFaq = activeFaq === 5 ? null : 5" class="w-full p-4 sm:p-5 text-left font-serif text-base sm:text-lg text-saltora-text font-semibold flex items-center justify-between cursor-pointer">
+                        <span class="pr-3">Which international shipping Incoterms and payment methods do you support?</span>
+                        <i class="fa-solid text-saltora-terracotta text-sm transition-transform shrink-0" :class="activeFaq === 5 ? 'fa-minus' : 'fa-plus'"></i>
                     </button>
-                    <div x-show="activeFaq === 5" x-collapse class="px-5 pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
+                    <div x-show="activeFaq === 5" x-collapse class="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-saltora-muted leading-relaxed font-light border-t border-stone-100 pt-3">
                         We quote FOB Karachi Port / Port Qasim, CFR destination port, or CIF destination port with comprehensive marine insurance. We accept Telegraphic Transfer (T/T) and Irrevocable Confirmed Letter of Credit (L/C at sight) through top-tier international banking channels.
                     </div>
                 </div>
@@ -1103,11 +1105,11 @@
     </section>
 
     <!-- HIGH CONVERTING CLOSING CTA BANNER -->
-    <section class="py-16 md:py-20 px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 bg-saltora-dark text-white border-t border-saltora-dark-border">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 text-center md:text-left">
             <div class="space-y-3 max-w-2xl">
                 <span class="text-[11px] font-bold tracking-mega text-saltora-terracotta uppercase">B2B EXPORT CONTRACTS</span>
-                <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal leading-tight">
+                <h3 class="text-2xl sm:text-4xl font-serif text-white font-normal leading-tight">
                     Ready to source direct from Pakistan's Salt Range?
                 </h3>
                 <p class="text-stone-300 text-xs sm:text-sm font-light leading-relaxed">
@@ -1115,12 +1117,12 @@
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-3.5 shrink-0">
-                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 shrink-0 w-full md:w-auto">
+                <a href="/contact" class="bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-solid fa-file-invoice text-amber-200"></i>
                     <span>REQUEST FORMAL QUOTE</span>
                 </a>
-                <a href="https://wa.me/923180735748" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center gap-2 rounded-xs">
+                <a href="https://wa.me/923180735748" target="_blank" class="bg-emerald-700 hover:bg-emerald-800 text-white px-6 sm:px-7 py-3.5 text-xs font-bold tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2 rounded-xs w-full sm:w-auto text-center">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>WHATSAPP DESK</span>
                 </a>
@@ -1140,19 +1142,19 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
             <!-- Modal Content -->
-            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full border border-stone-200/80 p-4 sm:p-5 relative max-h-[92vh] overflow-y-auto">
+            <div x-show="quickViewModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all my-4 sm:my-8 align-middle max-w-full sm:max-w-xl w-full border border-stone-200/80 p-3.5 sm:p-5 relative max-h-[90vh] overflow-y-auto">
                 
                 <!-- Close Button (Explicit Top-Right) -->
-                <button @click="closeQuickView()" style="position: absolute; top: 14px; right: 14px; left: auto;" class="w-8 h-8 rounded-full bg-white/95 hover:bg-white text-stone-700 hover:text-stone-950 border border-stone-200 shadow-sm flex items-center justify-center transition-all cursor-pointer z-30" aria-label="Close Modal">
+                <button @click="closeQuickView()" style="position: absolute; top: 12px; right: 12px; left: auto;" class="w-8 h-8 rounded-full bg-white/95 hover:bg-white text-stone-700 hover:text-stone-950 border border-stone-200 shadow-sm flex items-center justify-center transition-all cursor-pointer z-30" aria-label="Close Modal">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
 
                 <template x-if="selectedProduct">
-                    <div class="space-y-4">
+                    <div class="space-y-3.5 sm:space-y-4">
                         <!-- TOP IMAGE (Small, Framed with Rounded Corners) -->
-                        <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200/60 shadow-xs shrink-0">
+                        <div class="relative w-full h-32 sm:h-44 rounded-xl overflow-hidden bg-[#FAF7F2] border border-stone-200/60 shadow-xs shrink-0">
                             <template x-if="selectedProduct.image_url">
                                 <img :src="selectedProduct.image_url" :alt="selectedProduct.name" class="w-full h-full object-cover">
                             </template>
@@ -1174,10 +1176,10 @@
                         </div>
 
                         <!-- CONTENT BELOW BLOCK (Clean, Padded Inside, Balanced) -->
-                        <div class="space-y-3.5 px-0.5">
+                        <div class="space-y-3 sm:space-y-3.5 px-0.5">
                             <!-- Category & Tag Row -->
                             <div class="flex items-center justify-between flex-wrap gap-2">
-                                <div class="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-saltora-terracotta truncate">
+                                <div class="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wider uppercase text-saltora-terracotta truncate">
                                     <span x-text="selectedProduct.category_name"></span>
                                     <template x-if="selectedProduct.subcategory_name">
                                         <span class="text-stone-400">/</span>
@@ -1186,65 +1188,65 @@
                                         <span class="text-black font-semibold truncate" x-text="selectedProduct.subcategory_name"></span>
                                     </template>
                                 </div>
-                                <span class="text-xs font-bold tracking-wider text-black uppercase bg-stone-200/90 px-2.5 py-1 rounded-sm">Technical Specifications</span>
+                                <span class="text-[10px] sm:text-xs font-bold tracking-wider text-black uppercase bg-stone-200/90 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-sm">Technical Specifications</span>
                             </div>
 
                             <!-- Product Title -->
-                            <h2 class="font-serif text-2xl sm:text-3xl text-black font-bold leading-snug" x-text="selectedProduct.name"></h2>
+                            <h2 class="font-serif text-xl sm:text-3xl text-black font-bold leading-snug" x-text="selectedProduct.name"></h2>
 
                             <!-- Product Description (if available) -->
                             <template x-if="selectedProduct.description">
-                                <p class="text-sm sm:text-base text-black font-normal leading-relaxed line-clamp-3" x-text="selectedProduct.description"></p>
+                                <p class="text-xs sm:text-base text-black font-normal leading-relaxed line-clamp-3" x-text="selectedProduct.description"></p>
                             </template>
 
                             <!-- Modern Price & MOQ Card -->
-                            <div class="p-3.5 sm:p-4 bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl flex items-center justify-between">
+                            <div class="p-3 sm:p-4 bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl flex items-center justify-between">
                                 <div>
-                                    <span class="text-xs uppercase font-bold text-stone-900 block tracking-wider">Export Price</span>
-                                    <span class="text-xl sm:text-2xl font-black text-black" x-text="selectedProduct.formatted_price"></span>
+                                    <span class="text-[11px] sm:text-xs uppercase font-bold text-stone-900 block tracking-wider">Export Price</span>
+                                    <span class="text-lg sm:text-2xl font-black text-black" x-text="selectedProduct.formatted_price"></span>
                                 </div>
                                 <div class="text-right">
-                                    <span class="text-xs uppercase font-bold text-stone-900 block tracking-wider">Minimum Order (MOQ)</span>
-                                    <span class="text-sm sm:text-base font-bold text-saltora-terracotta" x-text="selectedProduct.moq || 'Flexible Bulk Order'"></span>
+                                    <span class="text-[11px] sm:text-xs uppercase font-bold text-stone-900 block tracking-wider">MOQ</span>
+                                    <span class="text-xs sm:text-base font-bold text-saltora-terracotta" x-text="selectedProduct.moq || 'Flexible Bulk Order'"></span>
                                 </div>
                             </div>
 
                             <!-- Specs Metric Grid (Clean Modern Cards) -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2 text-xs">
                                 <template x-if="selectedProduct.grain_size">
-                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
-                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Grain Size</span>
-                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.grain_size"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2 sm:p-2.5">
+                                        <span class="text-[10px] sm:text-xs uppercase font-bold text-stone-900 block mb-0.5">Grain Size</span>
+                                        <span class="text-xs sm:text-sm font-bold text-black block truncate" x-text="selectedProduct.grain_size"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.packaging_type">
-                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
-                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Packaging</span>
-                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.packaging_type"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2 sm:p-2.5">
+                                        <span class="text-[10px] sm:text-xs uppercase font-bold text-stone-900 block mb-0.5">Packaging</span>
+                                        <span class="text-xs sm:text-sm font-bold text-black block truncate" x-text="selectedProduct.packaging_type"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.package_weight">
-                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
-                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Unit Weight</span>
-                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.package_weight"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2 sm:p-2.5">
+                                        <span class="text-[10px] sm:text-xs uppercase font-bold text-stone-900 block mb-0.5">Unit Weight</span>
+                                        <span class="text-xs sm:text-sm font-bold text-black block truncate" x-text="selectedProduct.package_weight"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.purity">
-                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5">
-                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Purity</span>
-                                        <span class="text-sm font-bold text-emerald-800 block truncate" x-text="selectedProduct.purity"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2 sm:p-2.5">
+                                        <span class="text-[10px] sm:text-xs uppercase font-bold text-stone-900 block mb-0.5">Purity</span>
+                                        <span class="text-xs sm:text-sm font-bold text-emerald-800 block truncate" x-text="selectedProduct.purity"></span>
                                     </div>
                                 </template>
                                 <template x-if="selectedProduct.grade">
-                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2.5 col-span-2 sm:col-span-2">
-                                        <span class="text-xs uppercase font-bold text-stone-900 block mb-0.5">Grade Standard</span>
-                                        <span class="text-sm font-bold text-black block truncate" x-text="selectedProduct.grade"></span>
+                                    <div class="bg-stone-50 border border-stone-300 rounded-lg p-2 sm:p-2.5 col-span-2 sm:col-span-2">
+                                        <span class="text-[10px] sm:text-xs uppercase font-bold text-stone-900 block mb-0.5">Grade Standard</span>
+                                        <span class="text-xs sm:text-sm font-bold text-black block truncate" x-text="selectedProduct.grade"></span>
                                     </div>
                                 </template>
                             </div>
 
                             <!-- Modern Action Buttons -->
-                            <div class="pt-1 flex flex-col sm:flex-row gap-2.5">
+                            <div class="pt-1 flex flex-col sm:flex-row gap-2 sm:gap-2.5">
                                 <a :href="'/contact?product=' + encodeURIComponent(selectedProduct.name) + '#contactForm'" class="flex-1 bg-saltora-terracotta hover:bg-saltora-terracotta-dark text-white py-2.5 px-4 rounded-xl text-center text-xs font-bold tracking-wider uppercase transition-all shadow-xs hover:shadow flex items-center justify-center gap-2 cursor-pointer">
                                     <i class="fa-solid fa-file-invoice text-amber-200 text-xs"></i>
                                     <span>REQUEST FORMAL QUOTE</span>

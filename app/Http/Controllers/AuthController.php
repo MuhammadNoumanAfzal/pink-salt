@@ -24,17 +24,28 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             $request->session()->regenerate();
-            return response()->json([
-                'success' => true,
-                'message' => 'Login successful! Redirecting to admin dashboard...',
-                'redirect' => route('admin.dashboard')
-            ]);
+
+            if ($request->wantsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login successful! Redirecting to admin dashboard...',
+                    'redirect' => route('admin.dashboard')
+                ]);
+            }
+
+            return redirect()->intended(route('admin.dashboard'));
         }
 
-        return response()->json([
-            'success' => false,
-            'message' => 'Invalid email or password credentials provided.'
-        ], 401);
+        if ($request->wantsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid email or password credentials provided.'
+            ], 401);
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid email or password credentials provided.'
+        ])->withInput($request->only('email'));
     }
 
     public function logout(Request $request)
