@@ -80,14 +80,7 @@
                 <span>Customer Messages</span>
             </a>
 
-            <!-- 6. Store Orders -->
-            <a href="{{ route('admin.dashboard') }}?tab=orders" 
-               class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all cursor-pointer {{ request('tab') === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
-                <i class="fa-solid fa-box-archive text-sm shrink-0"></i>
-                <span>Store Orders</span>
-            </a>
-
-            <!-- 7. Blogs & Insights -->
+            <!-- 6. Blogs & Insights -->
             <a href="{{ route('admin.dashboard') }}?tab=blogs" 
                class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all cursor-pointer {{ request('tab') === 'blogs' || request()->routeIs('admin.blogs.*') ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
                 <i class="fa-solid fa-newspaper text-sm shrink-0"></i>
