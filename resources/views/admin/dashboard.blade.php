@@ -257,15 +257,7 @@
                     <span>Customer Messages</span>
                 </button>
 
-                <!-- 6. Store Orders -->
-                <button @click="switchTab('orders'); mobileSidebarOpen = false" 
-                    :class="activeTab === 'orders' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
-                    class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
-                    <i class="fa-solid fa-box-archive text-sm shrink-0"></i>
-                    <span>Store Orders</span>
-                </button>
-
-                <!-- 7. Blogs & Insights -->
+                <!-- 6. Blogs & Insights -->
                 <button @click="switchTab('blogs'); mobileSidebarOpen = false" 
                     :class="activeTab === 'blogs' ? 'bg-[#e07a5f]/10 text-[#e07a5f] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
                     class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-left cursor-pointer whitespace-nowrap">
