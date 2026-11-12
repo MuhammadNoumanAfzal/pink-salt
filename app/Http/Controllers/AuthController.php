@@ -38,11 +38,19 @@ class AuthController extends Controller
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json([
+                'success' => true,
+                'message' => 'Login successful! Redirecting to admin dashboard...',
+                'redirect' => route('admin.dashboard')
+            ]);
                 'success' => false,
                 'message' => 'Invalid email or password credentials provided.'
             ], 401);
         }
 
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid email or password credentials provided.'
+        ], 401);
         return back()->withErrors([
             'email' => 'Invalid email or password credentials provided.'
         ])->withInput($request->only('email'));

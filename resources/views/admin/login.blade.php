@@ -60,6 +60,7 @@
             </div>
 
             <!-- Form -->
+            <form id="adminLoginForm" class="space-y-4">
             <form id="adminLoginForm" method="POST" action="{{ route('admin.login.submit') }}" class="space-y-4">
                 @csrf
                 
@@ -154,6 +155,7 @@
                 const response = await fetch('{{ route("admin.login.submit") }}', {
                     method: 'POST',
                     headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
                         'Accept': 'application/json'
                     },
