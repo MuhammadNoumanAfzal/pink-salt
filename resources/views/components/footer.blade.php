@@ -8,7 +8,7 @@
     <div class="absolute -top-24 right-1/4 w-[500px] h-[250px] bg-[#f4a261]/10 rounded-full blur-[130px] pointer-events-none"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-        
+
         <!-- Brand & Provenance Column -->
         <div class="lg:col-span-2 space-y-5">
             <a href="/" class="flex items-center gap-3.5 group cursor-pointer inline-flex">
@@ -93,7 +93,7 @@
                         <i class="fa-solid fa-building text-saltora-terracotta"></i>
                         <span>Head Office & Export Desk</span>
                     </p>
-                    <p class="text-stone-300 text-xs pl-5 pt-0.5 font-normal">Salt Range Region / Lahore, Pakistan</p>
+                    <p class="text-stone-300 text-xs pl-5 pt-0.5 font-normal">Shahpur City( Sargodha), Pakistan</p>
                 </div>
                 <p class="flex items-center gap-2.5">
                     <i class="fa-solid fa-envelope text-saltora-terracotta text-xs w-4 text-center shrink-0"></i>
